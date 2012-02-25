@@ -17,9 +17,12 @@ gem 'rails', '~> 3.0.10'
 gem 'meta_where'
 gem 'meta_search'
 gem 'state_machine'
+
+gem 'omniauth', '>= 0.2.6'
 gem 'omniauth-facebook'
 gem 'omniauth-openid'
 gem 'omniauth-twitter'
+
 gem 'acts_as_follower'
 gem 'paper_trail', '~> 2'
 gem 'acts_as_commentable_with_threading'
