@@ -4,12 +4,9 @@ class Declaration < ActiveRecord::Migration
       t.string  :title, :default => ""
       t.text    :body
       t.integer :promise_id
-      t.string  :kind
 
       t.timestamps
     end
-
-    drop_table :comments
   end
 
   def self.down
