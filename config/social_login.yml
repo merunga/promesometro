@@ -1,0 +1,5 @@
+defaults:
+  twitter_add_id:       TWITTER_APP_ID
+  twitter_app_secret:   TWITTER_SECRET_ID
+  facebook_add_id:      FACEBOOK_APP_ID
+  facebook_app_secret:  FACEBOOK_APP_ID
