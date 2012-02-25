@@ -11,10 +11,10 @@
   %h1 Perú
 
 #vox_populi
-  = render :partial => 'comment', :collection => @citizens
+  = render :partial => 'comment', :collection => @comments
 
 #official_declaration
-  = render :partial => 'comment', :collection => @government
+  = render :partial => 'declaration', :collection => @declarations
 
 #peru
   = image_tag('peru_home.png', :usemap => '#home_map')
