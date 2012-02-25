@@ -1,5 +1,4 @@
 class Promise < ActiveRecord::Base
-  
   #
   # Associations
   #
@@ -7,6 +6,8 @@ class Promise < ActiveRecord::Base
   belongs_to :official
   has_and_belongs_to_many :topics
   has_many :declarations
+
+  acts_as_commentable
   
   #
   # Delegates
@@ -16,8 +17,6 @@ class Promise < ActiveRecord::Base
   delegate :avatar_url, :to => :official, :allow_nil => true, :prefix => true
   delegate :political_party_name, :to => :official, :allow_nil => true, :prefix => true
   delegate :position_name, :to => :official, :allow_nil => true, :prefix => true
-  #delegate :citizens_approved, :to => :comments, :allow_nil => true, :prefix => true
-  delegate :government, :to => :declarations, :allow_nil => true, :prefix => true
   delegate :state_name, :to => :official, :allow_nil => true, :prefix => true
   delegate :promises, :to => :official, :allow_nil => true, :prefix => true
   

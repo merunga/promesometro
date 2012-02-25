@@ -44,7 +44,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `declarations` WRITE;
 /*!40000 ALTER TABLE `declarations` DISABLE KEYS */;
-INSERT INTO `declarations` VALUES (1,'Esta es una declaracion hecho por el gobierno (titulo)','cuerpo de la declaracion',1,'government','2011-09-23 07:55:55','2011-09-23 07:55:55');
+INSERT INTO `declarations` VALUES (1,'Esta es una declaracion hecho por el gobierno (titulo)','cuerpo de la declaracion',1,'2011-09-23 07:55:55','2011-09-23 07:55:55');
 /*!40000 ALTER TABLE `declarations` ENABLE KEYS */;
 UNLOCK TABLES;
 
