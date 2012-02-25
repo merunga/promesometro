@@ -1,16 +1,24 @@
 server: &server
-  adapter: postgresql
-  encoding: unicode
-  reconnect: false
+#  adapter: postgresql
+#  encoding: unicode
+#  reconnect: false
+#  pool: 5
+#  host: 127.0.0.1
+#  port: 5432
+#  username: jparbros
+#  password:
+
+  adapter: mysql2  # Rails 3.x uses the mysql2 adapter
+  encoding: utf8
+  database: promesometro
   pool: 5
-  host: 127.0.0.1
-  port: 5432
-  username: jparbros
+  username: root
   password:
+  socket: /opt/lampp/var/mysql/mysql.sock
 
 development:
   <<: *server
-  database: promesometro_development
+  database: promesometro
 
 test: &test
   <<: *server
@@ -18,4 +26,4 @@ test: &test
 
 production:
   <<: *server
-  database: promesometro
+  database: promesometro_prod

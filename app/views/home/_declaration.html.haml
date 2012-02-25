@@ -1,0 +1,19 @@
+- official = declaration.promise.official
+- official = declaration.promise.official
+- state = declaration.promise.official_state_name.humanize
+.comment
+  %p.top
+    %span.title 
+      = link_to official.name, promesas_filters_path(:official, official.name)
+    %span.date= declaration.created_at.to_s(:date)
+    %br
+    %span.gobierno
+      Gobierno de
+      = link_to (official.province ? official.province_name : official.state_name), (official.province ? promesas_filters_path(:province, official.province_name) : promesas_filters_path(:state, official.state_name))
+  %p.comment_content
+    = "\"#{declaration.body}\""
+  %span.compartir 
+    .share-fb
+      <a name="fb_share" type="button" share_url="#{promesa_url(declaration.promise.slug)}">Enviar</a>
+    .share-tw
+      <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="es">Tweet</a>

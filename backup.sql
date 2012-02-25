@@ -42,10 +42,10 @@ CREATE TABLE `comments` (
 -- Dumping data for table `comments`
 --
 
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,'Este es mi comentario\r\n','Este es mi nombre','Promise',1,'citizen',1,'2011-09-23 06:58:48','2011-09-23 07:01:18','Este es mi titulo',NULL),(2,'Este es otro comentario :D :D','Este es mi nombre','Promise',1,'citizen',1,'2011-09-23 06:59:19','2011-09-23 07:01:41','Estes es un titulo',NULL),(3,'Estes es un comentario hecho por el gobierno',NULL,'Promise',1,'government',1,'2011-09-23 07:55:55','2011-09-23 07:55:55',NULL,NULL);
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+LOCK TABLES `declarations` WRITE;
+/*!40000 ALTER TABLE `declarations` DISABLE KEYS */;
+INSERT INTO `declarations` VALUES (1,'Esta es una declaracion hecho por el gobierno (titulo)','cuerpo de la declaracion',1,'government','2011-09-23 07:55:55','2011-09-23 07:55:55');
+/*!40000 ALTER TABLE `declarations` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

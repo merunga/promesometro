@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111113173746) do
+ActiveRecord::Schema.define(:version => 20120225170848) do
 
   create_table "admins", :force => true do |t|
-    t.string   "email",                                                :null => false
-    t.string   "encrypted_password",     :limit => 128,                :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -32,17 +32,13 @@ ActiveRecord::Schema.define(:version => 20111113173746) do
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
-  create_table "comments", :force => true do |t|
-    t.text     "comment"
-    t.string   "author"
-    t.string   "commentable_type"
-    t.integer  "commentable_id"
-    t.text     "kind"
-    t.boolean  "approved",         :default => false
+  create_table "declarations", :force => true do |t|
+    t.string   "title",      :default => ""
+    t.text     "body"
+    t.integer  "promise_id"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
-    t.integer  "parent_id"
   end
 
   create_table "milestones", :force => true do |t|
@@ -61,6 +57,11 @@ ActiveRecord::Schema.define(:version => 20111113173746) do
     t.string   "note_by"
     t.integer  "noteable_id"
     t.string   "noteable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "official_declarations", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,8 +125,8 @@ ActiveRecord::Schema.define(:version => 20111113173746) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                                :null => false
-    t.string   "encrypted_password",     :limit => 128,                :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
