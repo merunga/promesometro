@@ -17,6 +17,7 @@ class CommentMailer < ActionMailer::Base
   protected
     def emails_for_comment(comment)
       emails = []
+      #Comment.find_comments_for_parent(comment) do |c|
       comment.root.self_and_descendants.each do |c|
         emails << c.user.email unless emails.include?(c.user.email) if c.user
       end
