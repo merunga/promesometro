@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
 
   # Send an email to everyone in the thread
   def after_create
-    CommentMailer.new_comment(self).deliver #if self.notifications_on
+    CommentMailer.new_comment(self).deliver #if self.send_notifications
   end
   
   #helper method to check if a comment has children
@@ -48,6 +48,10 @@ class Comment < ActiveRecord::Base
   # commentable class name and commentable id.
   scope :find_comments_for_commentable, lambda { |commentable_str, commentable_id|
     where(:commentable_type => commentable_str.to_s, :commentable_id => commentable_id).order('created_at DESC')
+  }
+
+  scope :find_comments_for_parent, lambda { |c|
+    Comment.find_comments_for_commentable(c.commentable_str,c.commentable_id)
   }
 
   # Helper class method to look up a commentable object
