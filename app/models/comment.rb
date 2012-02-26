@@ -27,6 +27,11 @@ class Comment < ActiveRecord::Base
     c.user_id = user_id
     return c
   end
+
+  # Send an email to everyone in the thread
+  def after_create
+    CommentMailer.new_comment(self).deliver #if self.notifications_on
+  end
   
   #helper method to check if a comment has children
   def has_children?
