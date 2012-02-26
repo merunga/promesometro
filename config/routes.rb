@@ -1,5 +1,6 @@
 Promesometro::Application.routes.draw do
   devise_for :admins, :controllers => { :sessions => "admin/sessions" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -40,9 +41,6 @@ Promesometro::Application.routes.draw do
 
   match "/representantes/:lugar", :to => "representantes#show"
 
-  match "/facebook", :to => "home#facebook"
-  match "/oauth", :to => "home#oauth"
-
   match "/promesas/:search/:query", :to => "promesas#index", :as => "promesas_filters"
 
   match "promesas/hito/:milestone_id/comentario", :to => "comments#create", :as => "hito_comentario"
@@ -52,5 +50,7 @@ Promesometro::Application.routes.draw do
   match "contacto/new", :to => "contacto#new", :as => "new_contacto"
   match "contacto", :to => "contacto#create", :as => "contacto", :via => :post
   match "regiones/:region_name", :to => "regiones#show", :as => "region"
+
+  match '/token' => 'home#token', :as => :token
 
 end

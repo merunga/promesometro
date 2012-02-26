@@ -1,6 +1,7 @@
 class Admin::AdminsController < Admin::BaseController
   
-  before_filter :access?
+  #before_filter :access?
+  before_filter :authenticate_admin!
   
   def index
     @admins = Admin.all
