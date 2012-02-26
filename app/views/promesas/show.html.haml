@@ -7,13 +7,8 @@
     %h1 Promesas del mismo candidato
     
   .promesa
-    - if flash[:notice]
-      %div(class="alert alert-success")
-        = flash[:notice]
-
-    - if flash[:error]
-      %div(class="alert alert-error")
-        = flash[:error]
+    = render 'base/alert_success'
+    = render 'base/alert_error'
 
     %p.promesa_top
       %span.region
@@ -63,12 +58,12 @@
           <div class="fb-send" data-href="http://www.promesometro.pe"></div>
         .share-tw
           <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="es">Tweet</a>
-    
-    = render :partial => 'comments/comment', :collection => @comments
-    = paginate @comments
 
     .post_comment
       = render :partial => 'comments/form', :locals => {:promise => @promise}
+
+    = render :partial => 'comments/comment', :collection => @comments
+    = paginate @comments
 
   .promesas_candidato
     - @promise.official_promises.each do |promise|
