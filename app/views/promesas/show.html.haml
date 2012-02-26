@@ -7,6 +7,8 @@
     %h1 Promesas del mismo candidato
     
   .promesa
+    - flash[:notice]
+    - flash[:error]
     %p.promesa_top
       %span.region
         Region:
@@ -48,20 +50,20 @@
         - hito_imagen(5, @promise)
     
     .share
-      - comentarios_count(@promise)
+      -comentarios_count(@promise)
 
       .compartir
         .share-fb
           <div class="fb-send" data-href="http://www.promesometro.pe"></div>
         .share-tw
           <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="es">Tweet</a>
+    
+    = render :partial => 'comments/comment', :collection => @comments
+    = paginate @comments
 
     .post_comment
-      = render :partial => 'comment_form', :locals => {:promise => @promise}
-    
-    = render :partial => 'comment', :collection => @comments
-    = paginate @comments
-    
+      = render :partial => 'comments/form', :locals => {:promise => @promise}
+
   .promesas_candidato
     - @promise.official_promises.each do |promise|
       .representante_promesa

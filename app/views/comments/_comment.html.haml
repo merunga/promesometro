@@ -1,0 +1,6 @@
+.comment
+  .comment_content
+    %p.promesa_top
+      %span.author= comment.user.screen_name
+      %span.fecha= comment.created_at.to_s(:date)
+    %p.the_comment= "\"#{comment.body}\""

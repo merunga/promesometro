@@ -1,7 +1,0 @@
-.comment{:class => "#{comment.kind}"}
-  .comment_content
-    %p.promesa_top
-      %span.author= (comment.government?)? "Respuesta de Gobierno" : comment.author
-      %span.fecha= comment.created_at.to_s(:date)
-    %p.the_comment= "\"#{comment.comment}\""
-  

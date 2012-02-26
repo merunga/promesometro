@@ -3,12 +3,7 @@
     = image_tag "#{current_user.login_type}.png",
       :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_user.login_type}"
     |
-    - if current_user.name
-      = current_user.name
-    - elsif current_user.login
-      = current_user.login
-    - else
-      current_user.email
+    = current_user.screen_name
     |
     = link_to 'mi perfil', edit_user_registration_path
     |
