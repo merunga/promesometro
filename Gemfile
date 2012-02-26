@@ -26,6 +26,7 @@ gem 'omniauth-twitter'
 gem 'acts_as_follower'
 gem 'paper_trail', '~> 2'
 gem 'acts_as_commentable_with_threading'
+gem 'custom_error_message'
 
 group :development do
   gem 'ruby-debug19'

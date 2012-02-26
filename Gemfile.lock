@@ -52,6 +52,7 @@ GEM
       sass (~> 3.1)
     crack (0.3.1)
     crummy (1.5.0)
+    custom_error_message (1.1.1)
     daemons (1.1.8)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
@@ -233,6 +234,7 @@ DEPENDENCIES
   carrierwave
   compass
   crummy
+  custom_error_message
   devise
   fog
   haml

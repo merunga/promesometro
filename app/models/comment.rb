@@ -1,8 +1,8 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   
-  validates_presence_of :body
   validates_presence_of :user
+  validates_presence_of :body, :message => '^Comentario vacio'
 
   scope :by_newest, :order => "comments.created_at DESC"
   scope :by_oldest, :order => "comments.created_at ASC"
