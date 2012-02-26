@@ -3,6 +3,11 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :body
   validates_presence_of :user
+
+  scope :by_newest, :order => "comments.created_at DESC"
+  scope :by_oldest, :order => "comments.created_at ASC"
+  scope :newer_than, lambda { |*args| where("comments.created_at > ?", args.first || 1.week.ago) }
+  scope :by_user, lambda { |*args| where('comments.user_id = ?', args.first) }
   
   # NOTE: install the acts_as_votable plugin if you 
   # want user to vote on the quality of comments.
@@ -20,7 +25,7 @@ class Comment < ActiveRecord::Base
     c.commentable_type = obj.class.name 
     c.body = comment 
     c.user_id = user_id
-    c
+    return c
   end
   
   #helper method to check if a comment has children

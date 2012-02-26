@@ -1,0 +1,14 @@
+- if user_signed_in?
+  %span.estado Agrega tu comentario
+  %div{:id=>"promise_#{promise.id}_comments"}
+    %form
+    = form_for(promise.comment_threads.build, :url => hito_comentario_path(@promise)) do |form|
+      .ta_comment
+        .input
+          = form.text_area :body, :class => 'xlarge', :rows => 7
+        = hidden_field_tag "comment[user_id]", current_user.id
+      .actions
+        = form.submit 'Publicar', :class => 'button'
+- else
+  %span.estado Debes estar loggueado para poder comentar
+  = render 'home/login_info'

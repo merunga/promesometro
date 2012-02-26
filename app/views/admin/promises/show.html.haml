@@ -30,7 +30,7 @@
     = render :partial => 'comment', :collection => @comments
   
   = paginate @comments
-  = render :partial => 'comment_form', :locals => { :promise => @promise }
+  = render :partial => 'comments/form', :locals => { :promise => @promise }
   
 %script
   $(document).ready(function(){

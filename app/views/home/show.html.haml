@@ -10,11 +10,10 @@
   %h1 Perú
 
 #vox_populi
-  = render :partial => 'comment', :collection => @comments
+  = latest_comments
 
-- if user_signed_in?
-  #official_declaration
-    = render :partial => 'declaration', :collection => @declarations
+#official_declaration
+  = render :partial => 'declaration', :collection => @declarations
 
 #peru
   = image_tag('peru_home.png', :usemap => '#home_map')

@@ -56,4 +56,14 @@ class User < ActiveRecord::Base
       )
     end
   end
+
+  def screen_name
+    if self.name
+      self.name
+    elsif self.login
+      self.login
+    else
+      self.email
+    end
+  end
 end

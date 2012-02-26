@@ -1,11 +1,19 @@
 class CommentsController < ApplicationController
+  before_filter :authenticate_user!
   
   def create
     @promise = Promise.find(params[:milestone_id])
-    if params[:email].blank?
-      @comment = @promise.comments.new_citizen(params[:comment])
-      message = @comment.save ? {:notice  => 'Comentario creado'} :  { :error => 'Error al crear el comentario'}
-    end
-    redirect_to promesa_url(@promise.slug), message || ''
+    @comment = Comment.build_from(@promise, params[:comment][:user_id], params[:comment][:body])
+    @comment.save!
+    flash[:notice]= 'El comentario ha sido creado con exito'
+  #rescue ActiveRecord::RecordInvalid => ex
+  #  if @comment
+  #    errors = @comment.errors.full_messages.to_sentence
+  #  else
+  #    errors = ex
+  #  end
+  #  flash[:error] = errors
+  #ensure
+    redirect_to promesa_url(@promise.slug)
   end
 end

@@ -13,8 +13,6 @@ class CreateUsers < ActiveRecord::Migration
       t.trackable
       t.lockable
       t.timestamps
-
-      t.column :authentication_token, :string, :default => nil, :null => true
     end
     self.change_column :users, :email, :string, :null => true
   end

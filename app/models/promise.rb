@@ -1,4 +1,6 @@
 class Promise < ActiveRecord::Base
+  acts_as_commentable
+
   #
   # Associations
   #
@@ -6,8 +8,6 @@ class Promise < ActiveRecord::Base
   belongs_to :official
   has_and_belongs_to_many :topics
   has_many :declarations
-
-  acts_as_commentable
   
   #
   # Delegates
