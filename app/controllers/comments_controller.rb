@@ -6,14 +6,14 @@ class CommentsController < ApplicationController
     @comment = Comment.build_from(@promise, params[:comment][:user_id], params[:comment][:body])
     @comment.save!
     flash[:notice]= 'El comentario ha sido creado con exito'
-  #rescue ActiveRecord::RecordInvalid => ex
-  #  if @comment
-  #    errors = @comment.errors.full_messages.to_sentence
-  #  else
-  #    errors = ex
-  #  end
-  #  flash[:error] = errors
-  #ensure
+  rescue ActiveRecord::RecordInvalid => ex
+    if @comment
+      errors = @comment.errors.full_messages.to_sentence
+    else
+      errors = ex
+    end
+    flash[:error] = errors
+  ensure
     redirect_to promesa_url(@promise.slug)
   end
 end
