@@ -27,7 +27,14 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  <script type="text/javascript">var mpq=[];mpq.push(["init","3ceb8a43ebe0f86a05265246453f4e37"]);(function(){var b,a,e,d,c;b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=(document.location.protocol==="https:"?"https:":"http:")+"//api.mixpanel.com/site_media/js/api/mixpanel.js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);e=function(f){return function(){mpq.push([f].concat(Array.prototype.slice.call(arguments,0)))}};d=["init","track","track_links","track_forms","register","register_once","identify","name_tag","set_config"];for(c=0;c<d.length;c++){mpq[d[c]]=e(d[c])}})();</script>
+    %meta(property="og:site_name" content="promesometro.pe")
+    %meta(property="og:title" content="promesometro.pe")
+    %meta(property="og:image" content="http://promesometro.pe/images/accelerometer.png")
+    %meta(property="og:url" content="http://promesometro.pe")
+    %meta(property="og:type" content="cause")
+    %meta(property="og:description" content="No más palabras vacías: Mide y discute el progreso de las promesas de tus representantes")
+
+    <script type="text/javascript">var mpq=[];mpq.push(["init","3ceb8a43ebe0f86a05265246453f4e37"]);(function(){var b,a,e,d,c;b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=(document.location.protocol==="https:"?"https:":"http:")+"//api.mixpanel.com/site_media/js/api/mixpanel.js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);e=function(f){return function(){mpq.push([f].concat(Array.prototype.slice.call(arguments,0)))}};d=["init","track","track_links","track_forms","register","register_once","identify","name_tag","set_config"];for(c=0;c<d.length;c++){mpq[d[c]]=e(d[c])}})();</script>
   %body{:class => "#{controller.controller_name}"}
     #container
       %header
@@ -39,14 +46,7 @@
             %li= link_to 'Promesas', promesas_path
             %li= link_to 'Acerca de', acerca_de_index_path
             %li= link_to 'Contacto', new_contacto_path
-          %ul.follow_us
-            %li Siguenos en:
-            %li
-              %span
-                = link_to image_tag('facebook.png'), 'http://www.facebook.com/pages/Promesometro/219767341418599', :target => '_blank'
-            %li
-              %span
-                = link_to image_tag('twitter.png'), 'http://www.twitter.com/promesometroPE', :target => '_blank'
+          = render 'base/social_widgets'
 
         #search_box
           - unless controller.controller_name == 'home'
@@ -64,14 +64,3 @@
             %li.no-border.logo= link_to(image_tag('citivox.png'), 'http://citivox.com/', :target => '_blank')
             %li.no-border.logo= link_to(image_tag('proetica.png'), 'http://www.proetica.org.pe/', :target => '_blank')
             %li.no-border &copy; Todos los derechos reservados
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) {return;}
-js = d.createElement(s); js.id = id;
-js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1&appId=287374454607456";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
