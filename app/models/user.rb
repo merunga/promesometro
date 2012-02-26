@@ -1,16 +1,23 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :lockable, :recoverable,
-      :rememberable, :registerable, :trackable, :timeoutable, :validatable,
+      :rememberable, :registerable, :trackable, :timeoutable,
       :token_authenticatable, :omniauthable
 
-  attr_accessible :login, :email, :password, :password_confirmation
+  attr_accessible :login, :login_type, :email, :name, :password, :password_confirmation
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = User.where(:email => data.email).first
       user
     else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20]) 
+      User.create!(
+          :email => data.email,
+          :login => data.email,
+          :login_type => 'facebook',
+          :name => "#{data.first_name} #{data.last_name}",
+          :password => Devise.friendly_token[0,20],
+          :image => access_token.info.image
+      )
     end
   end
   
@@ -27,16 +34,26 @@ class User < ActiveRecord::Base
     if user = User.where(:email => data.email).first
       user
     else
-      User.create!(:email => data.email, :login => data.email, :password => Devise.friendly_token[0,20])
+      User.create!(
+          :email => data.email,
+          :login => data.email,
+          :login_type => 'google',
+          :password => Devise.friendly_token[0,20]
+      )
     end
   end
   
   def self.find_for_twitter(access_token, signed_in_resource=nil)
     data = access_token.info
-    if user = User.where(:login => data.nickname).first
+    nickname = "@#{data.nickname}"
+    if user = User.where(:login => nickname).first
       user
     else
-      User.create!(:login => data.nickname, :email => 'a@a.com', :password => Devise.friendly_token[0,20])
+      User.create!(
+        :login => nickname,
+        :login_type => 'twitter',
+        :password => Devise.friendly_token[0,20]
+      )
     end
   end
 end
