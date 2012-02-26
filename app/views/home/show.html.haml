@@ -2,7 +2,6 @@
   = image_tag 'mide.png'
   = image_tag 'accelerometer.png'
 
-
 #vp_title
   %h1 Vox Populi
 #od_title
@@ -13,8 +12,9 @@
 #vox_populi
   = render :partial => 'comment', :collection => @comments
 
-#official_declaration
-  = render :partial => 'declaration', :collection => @declarations
+- if user_signed_in?
+  #official_declaration
+    = render :partial => 'declaration', :collection => @declarations
 
 #peru
   = image_tag('peru_home.png', :usemap => '#home_map')

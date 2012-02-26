@@ -1,0 +1,21 @@
+#user_login_box(style="float:right")
+  - if user_signed_in?
+    = current_user.email
+    |
+    = link_to 'mi perfil', edit_user_registration_path
+    |
+    = link_to 'salir', destroy_user_session_path, :method => :delete
+  - else
+    %span(style='vertical-align: top')
+      login:
+    = link_to image_tag('google.png'), user_omniauth_authorize_path(:google)
+    = link_to image_tag('facebook.png'), user_omniauth_authorize_path(:facebook)
+    = link_to image_tag('twitter.png'), user_omniauth_authorize_path(:twitter)
+
+- if admin_signed_in?
+  #user_login_box(style="float:left")
+    = current_admin.email
+    |
+    = llink_to 'Admin section', admins_path
+    |
+    = link_to 'Sign out', destroy_admin_session_path, :method => :delete

@@ -130,6 +130,9 @@ ActiveRecord::Schema.define(:version => 20120225170848) do
     t.string   "name",                                  :default => nil, :null => true
     t.string   "avatar_src",                            :default => nil, :null => true
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -138,8 +141,12 @@ ActiveRecord::Schema.define(:version => 20120225170848) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",                       :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "login",                                 :default => ""
     t.string   "authentication_token"
   end
 

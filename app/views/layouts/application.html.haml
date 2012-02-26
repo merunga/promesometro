@@ -31,6 +31,7 @@
     #container
       %header
         = link_to image_tag('logo.png', :id => 'logo'), root_path
+        = render 'home/login_info'
         %nav
           %ul
             %li.no-border= link_to 'Autoridades', directorio_path
