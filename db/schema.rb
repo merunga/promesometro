@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20120225170848) do
     t.string   "email",                                 :default => "",  :null => true
     t.string   "login",                                 :default => nil, :null => false
     t.string   "name",                                  :default => nil, :null => true
-    t.string   "avatar_src",                            :default => nil, :null => true
+    t.string   "image",                            :default => nil, :null => true
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"

@@ -1,6 +1,11 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
+      t.column :login_type, :string, :null => false
+      t.column :login, :string, :default => nil
+      t.column :name, :string, :default => nil, :null => true
+      t.column :image, :string, :default => nil, :null => true
+
       t.database_authenticatable
       t.confirmable
       t.recoverable
@@ -10,9 +15,6 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
 
       t.column :authentication_token, :string, :default => nil, :null => true
-      t.column :login, :string, :default => nil
-      t.column :name, :string, :default => nil, :null => true
-      t.column :avatar_src, :string, :default => nil, :null => true
     end
     self.change_column :users, :email, :string, :null => true
   end
