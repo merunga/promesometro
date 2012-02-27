@@ -37,6 +37,12 @@ Promesometro::Application.routes.draw do
 
   resource :promise_filter, :controller => :promise_filter, :only => [:create]
 
+  namespace :social do
+    #resource :meta_data
+    match "/metadata/declaration/:id", :to => "meta_data#declaration", :as => :declaration_metadata
+  end
+
+
   match "/estados/:estado/provincias", :to => "provincias#index"
 
   match "/representantes/:lugar", :to => "representantes#show"

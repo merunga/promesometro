@@ -1,40 +1,12 @@
-$args['link'] = 			$link1;
-$args['title'] = 			substr(strip_tags($post->post_title), 0, 120);
-$args['desc'] = 			substr(strip_tags($post->post_content), 0, 200);
-$args['fc'] = 				$lacands_opt_cntr_font_color;
-$args['fs'] = 				$lacands_opt_widget_font_style;
-$args['fblname'] = 			$lacands_opt_widget_fb_like;
-$args['fblref'] = 			$lacands_opt_widget_fb_ref;
-$args['fbllang'] = 			$lacands_opt_widget_fb_like_lang;
-$args['fblshow'] = 			$lacands_opt_widget_fb_like_show;
-$args['fbsbutton'] = 		$lacands_opt_widget_fb_share_button;
-$args['fbsctr'] = 			$lacands_opt_widget_fb_share_counter;
-$args['fbslang'] =			$lacands_opt_widget_fb_share_lang;
-$args['fbsendbutton'] = 	$lacands_opt_widget_fb_send_button;
-$args['twbutton'] = 		$lacands_opt_widget_twitter_button;
-$args['twlang'] = 			$lacands_opt_widget_twitter_lang;
-$args['twmention'] = 		$lacands_opt_widget_twitter_mention;
-$args['twrelated1'] = 		$lacands_opt_widget_twitter_related1;
-$args['twrelated2'] = 		$lacands_opt_widget_twitter_related2;
-$args['twctr'] = 			$lacands_opt_widget_twitter_counter;
-
-if(isset($_SERVER['HTTP_REFERER'])) {
-$args['referer'] = $_SERVER['HTTP_REFERER'];
-}
-$args_data = http_build_query($args);
-
-$widget_width = 460;
-if($lacands_opt_widget_fb_share_button and $lacands_opt_widget_g1_button) {
-if($lacands_opt_widget_g1_counter) {
-$widget_width += 90;
-} else {
-$widget_width += 32;
-}
-}
-
-$lacands_widget_display_cntrs = '<div style="'.$position.';">
-  <iframe
-  style="height:25px !important; border:0px solid gray !important; overflow:hidden !important; width:'.$widget_width.'px !important;" frameborder="0" scrolling="no" allowTransparency="true"
-  src="http://www.linksalpha.com/social?'.$args_data.'">
-  </iframe>
-</div>';
+<div style="padding-top:5px;padding-right:0px;padding-bottom:5px;padding-left:0px;">
+  <div style="float: left;">
+    <div class="fb-like" data-href="<%=metadata_link%>" data-send="true"
+         data-layout="button_count" data-width="80" data-show-faces="false"></div>
+  </div>
+  <div style="float: left;">
+    <a href="https://twitter.com/share" class="twitter-share-button"
+       data-url="<%= link %>" data-text="<%= title %>"
+       data-via="promesometroPE" data-lang="es">Twittear</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
+</div>
