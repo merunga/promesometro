@@ -8,3 +8,4 @@ config/social_login.yml
 config/database.yml
 *~
 .idea/workspace.xml
+routes.txt
