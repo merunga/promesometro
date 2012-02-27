@@ -10,4 +10,10 @@ class PromesasController < ApplicationController
     @promise = Promise.find_by_slug(params[:slug])
     @comments = @promise.comment_threads.order('created_at desc').page(params[:page]).per(5)
   end
+
+  #def search
+  #  @search = PromiseSearch.new(params[:search], params[:page])
+  #  @promises = @search.promises
+  #  render 'index'
+  #end
 end
