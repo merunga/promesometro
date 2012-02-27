@@ -1,15 +1,15 @@
 %h2 Busqueda Avanzada
-= form_tag promise_filter_path, :method => :post
+= form_tag promise_filter_path, :method => :get
 %section.container
   %section
     .input
-      = select_tag 'search[province]', options_from_collection_for_select(State.used, 'id','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Región -'
+      = select_tag 'search[state]', options_from_collection_for_select(State.used, 'id','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Región -'
     .input
       = select_tag 'search[province]', options_from_collection_for_select(Province.used, 'id','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Provincia -'
 
   %section
     .input
-      = select_tag 'search[topic]', options_from_collection_for_select(Topic.used, 'name','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Temas -'
+      = select_tag 'search[topic]', options_from_collection_for_select(Topic.used, 'id','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Temas -'
     .input
       = select_tag 'search[official]', options_from_collection_for_select(Official.with_promises, 'id','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Autoridad -'
 

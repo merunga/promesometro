@@ -11,13 +11,12 @@ class PromiseSearch
   def find_promises conditions, current_page
     @promise_search = Promise
     if conditions
-      puts conditions.inspect
-      find_by_title conditions[:title] if conditions[:title]
       find_by_state_id conditions[:state] if conditions[:state]
-      find_by_province_id conditions[:province] if conditions[:province]
+      #find_by_province_id conditions[:province] if conditions[:province]
       find_by_official_id conditions[:official] if conditions[:official]
-      find_by_keywords conditions[:keywords] if conditions[:keywords]
+      find_by_keywords conditions[:keyword] if conditions[:keyword]
       find_by_topic_id conditions[:topic] if conditions[:topic]
+      find_by_political_party_id conditions[:political_party] if conditions[:political_party]
     end
     @promise_search.page current_page
   end
@@ -27,7 +26,7 @@ class PromiseSearch
   end
 
   def find_by_state state_name
-    @promise_search = @promise_search.joins(:official => :state).where('states.name iLIKE ?',"%#{state_name}%") if state_name
+    find_by_name({:official => :state},'states.name iLIKE ?', state_name)
   end
 
   def find_by_state_id state_id
@@ -35,7 +34,7 @@ class PromiseSearch
   end
 
   def find_by_province_name province_name
-    @promise_search = @promise_search.joins(:official => :province).where('provinces.name iLIKE ?',"%#{province_name}%") if province_name
+    find_by_name({:official => :province},'provinces.name iLIKE ?', province_name)
   end
 
   def find_by_province_id province_id
@@ -43,19 +42,27 @@ class PromiseSearch
   end
 
   def find_by_official_name official_name
-    @promise_search = @promise_search.joins(:official).where('officials.name iLIKE ?',"%#{official_name}%") if official_name
+    find_by_name(:official,'officials.name iLIKE ?',official_name)
   end
 
   def find_by_official_id official_id
     find_by_id(:official,'officials.id = ?',official_id)
   end
 
+  def find_by_political_party_name pp_name
+    find_by_name({:official => :political_party},'political_parties.name iLIKE ?',pp_name)
+  end
+
+  def find_by_political_party_id pp_id
+    find_by_id({:official => :political_party},'political_parties.id = ?',pp_id)
+  end
+
   def find_by_keywords keywords
-    @promise_search = @promise_search.where('title iLIKE ? OR description iLIKE ?',"%#{keywords}%", "%#{keywords}%") if keywords
+    @promise_search = @promise_search.where('upper(title) LIKE upper(?) OR upper(description) LIKE upper(?)',"%#{keywords}%", "%#{keywords}%") if keywords
   end
 
   def find_by_topic_name topic_name
-    @promise_search = @promise_search.joins(:topics).where('topics.name iLIKE ?',"%#{topic_name}%") if topic_name
+    find_by_name(:topics,'topics.name iLIKE ?',topic_name)
   end
 
   def find_by_topic_id topic_id
@@ -64,6 +71,14 @@ class PromiseSearch
 
   private
     def find_by_id(join,cond,id)
-      @promise_search = @promise_search.joins(join).where(cond,id) if id
+      if id != '' then
+        @promise_search = @promise_search.joins(join).where(cond,id)
+      end
+    end
+
+    def find_by_name(join,cond,name)
+      if name != '' then
+        @promise_search = @promise_search.joins(join).where(cond,name)
+      end
     end
 end
