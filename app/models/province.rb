@@ -1,7 +1,7 @@
 class Province < ActiveRecord::Base
   belongs_to :state
-  has_one :official
+  has_many :officials
 
   default_scope order('name ASC')
-  scope :used, :joins => {:state => {:officials => :promises}}, :group => "name"
+  scope :used, :joins => {:officials => :promises}, :group => "name"
 end
