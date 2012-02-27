@@ -34,7 +34,6 @@ GEM
       moretea-awesome_nested_set
     acts_as_follower (0.1.1)
     addressable (2.2.7)
-    archive-tar-minitar (0.5.2)
     arel (2.0.10)
     bcrypt-ruby (3.0.1)
     bitly (0.7.0)
@@ -45,7 +44,6 @@ GEM
     carrierwave (0.5.8)
       activesupport (~> 3.0)
     chunky_png (1.2.5)
-    columnize (0.3.6)
     compass (0.11.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -103,8 +101,6 @@ GEM
       multi_json (~> 1.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
-    linecache19 (0.5.12)
-      ruby_core_source (>= 0.1.4)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -183,18 +179,8 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    ruby-debug-base19 (0.11.25)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby_core_source (>= 0.1.4)
-    ruby-debug19 (0.11.6)
-      columnize (>= 0.3.1)
-      linecache19 (>= 0.5.11)
-      ruby-debug-base19 (>= 0.11.19)
     ruby-hmac (0.4.0)
     ruby-openid (2.1.8)
-    ruby_core_source (0.1.5)
-      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.6.1)
     sass (3.1.15)
     sequel (3.20.0)
@@ -252,8 +238,8 @@ DEPENDENCIES
   omniauth-openid
   omniauth-twitter
   paper_trail (~> 2)
-  rails (~> 3.0.10)
-  ruby-debug19
+  rack
+  rails (~> 3.0.3)
   state_machine
   taps
   thin
