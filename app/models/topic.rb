@@ -4,8 +4,8 @@ class Topic < ActiveRecord::Base
   # Validates
   #
   validates :name, :presence => true, :uniqueness => true
-  
   has_and_belongs_to_many :promises
+
   #
   # Scopes
   #
@@ -22,6 +22,12 @@ class Topic < ActiveRecord::Base
     def grouped_by_first_letter
       self.all.group_by {|topic| topic.name.chars.first.upcase}
     end
+  end
+
+  def self.used
+    Topic.all.find_all{ |t|
+      t.promises.size > 0
+    }
   end
   
 end

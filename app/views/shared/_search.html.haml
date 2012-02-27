@@ -1,7 +1,7 @@
 = form_tag promise_filter_path, :method => :post
 
 - if params[:controller] == 'promesas'
-  = select_tag :tema, options_from_collection_for_select(Topic.all, 'name','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => 'temas'
+  = select_tag :tema, options_from_collection_for_select(Topic.used, 'name','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => 'temas'
 
 = text_field_tag 'search[keyword]', nil, :placeholder => 'Busqueda'
 
