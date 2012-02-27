@@ -11,10 +11,11 @@
   %p.descripcion= promesa.description_scaped 
   %p
     .compartir
-      .share-fb
-        <a name="fb_share" type="button" share_url="#{promesa_url(promesa.slug)}">Enviar</a>
-      .share-tw
-        <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="es">Tweet</a>
+      = render 'social/node_widgets', |
+        :link => promesa_url(promesa.slug)+"/?mdm=promise&mdi=#{promesa.id}", |
+        :title => promesa.title, |
+        :desc => promesa.description, |
+        :width => 280
 .arrow
 .status
   .representante

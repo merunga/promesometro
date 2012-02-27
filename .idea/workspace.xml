@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f17eedbc-afc0-4748-ba9a-c3623ef46888" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/promesas_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/promesas_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/_declaration.html.haml" afterPath="$PROJECT_DIR$/app/views/home/_declaration.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/promesas/_promesa.html.haml" afterPath="$PROJECT_DIR$/app/views/promesas/_promesa.html.haml" />
     </list>
     <ignored path="promesometro.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +30,16 @@
       <file leaf-file-name="_declaration.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/home/_declaration.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="23" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
+            <state line="17" column="64" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_promesa.html.haml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/promesas/_promesa.html.haml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="61" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -36,16 +48,25 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="32" selection-start="1623" selection-end="1634" vertical-scroll-proportion="0.0">
+            <state line="31" column="45" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meta_data_helper.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="meta_data_helper.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="25" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
+            <state line="31" column="30" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.60150373">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="promise.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/promise.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -60,10 +81,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="promesas_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="promesas_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/promesas_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="51" selection-start="379" selection-end="379" vertical-scroll-proportion="0.37593985">
+            <state line="10" column="51" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,7 +103,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/devise/shared/_links.haml" />
         <option value="$PROJECT_DIR$/app/views/social/_login.html.haml" />
         <option value="$PROJECT_DIR$/app/views/social/_page_widgets.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/social.css" />
@@ -93,11 +113,12 @@
         <option value="$PROJECT_DIR$/app/models/comment.rb" />
         <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/_declaration.html.haml" />
         <option value="$PROJECT_DIR$/app/views/social/_node_widgets.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/promesas_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/_declaration.html.haml" />
+        <option value="$PROJECT_DIR$/app/views/promesas/_promesa.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/promesas_controller.rb" />
       </list>
     </option>
   </component>
@@ -197,7 +218,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="layouts" />
+              <option name="myItemId" value="promesas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -219,7 +240,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -234,42 +255,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promesometro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promesometro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="helpers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promesometro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="promesometro" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -655,27 +640,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20120226164659_add_send_notifications_to_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="66" selection-start="213" selection-end="213" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20120226070421_acts_as_commentable_with_threading_migration.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -732,23 +696,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/models/promise.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="32" selection-start="1623" selection-end="1634" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/_declaration.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="23" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="25" selection-start="193" selection-end="193" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -762,7 +712,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/promesas_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="51" selection-start="379" selection-end="379" vertical-scroll-proportion="0.37593985">
+        <state line="10" column="51" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/promesas/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.43782383">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/_declaration.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="64" selection-start="774" selection-end="774" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/promesas/_promesa.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="61" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="45" selection-start="1647" selection-end="1647" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/helpers/social/meta_data_helper.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="30" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.60150373">
           <folding />
         </state>
       </provider>

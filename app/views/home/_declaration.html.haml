@@ -15,7 +15,7 @@
     = "\"#{declaration.body}\""
   %span.compartir
     = render 'social/node_widgets', |
-      :link => promesa_url(promise.slug)+"/?md[]=declarations&md[]=#{declaration.id}", |
+      :link => promesa_url(promise.slug)+"/?mdm=declarations&mdi=#{declaration.id}", |
       :title => "Declaración de #{official.name} acerca de #{promise.title}", |
       :desc => declaration.body, |
-      :width => 280,
+      :width => 280
