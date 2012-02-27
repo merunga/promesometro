@@ -58,4 +58,9 @@ Promesometro::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  if ENV['RAILS_ENV'] == 'production'  # don't bother on dev
+    ENV['GEM_PATH'] = "/home/#{ENV["HOME"]}/.gems" #+ ':/usr/lib/ruby/gems/1.8'  # Need this or Passenger fails to start
+    require "/home/#{ENV["HOME"]}/.gems/gems/RedCloth-4.1.9/lib/redcloth.rb"  # Need this for EACH LOCAL gem you want to use, otherwise it uses the ones in /usr/lib
+  end
 end
