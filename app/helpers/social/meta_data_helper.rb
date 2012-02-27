@@ -5,9 +5,17 @@ module Social::MetaDataHelper
          @d = Declaration.find(id)
          @p = @d.promise
          render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(@p.slug)+"/?md[]=#{model}&md[]=#{id}",
+             :link => promesa_url(@p.slug)+"/?mdm=#{model}&mdi=#{id}",
              :title => "Declaracion de #{@p.official.name} acerca de #{@p.title}",
              :desc => @d.body
+         }
+
+       when 'promise' then
+         @p = Promise.find(id)
+         render :partial => 'social/meta_data_tags', :locals => {
+             :link => promesa_url(@p.slug)+"/?mdm=#{model}&mdi=#{id}",
+             :title => @p.title,
+             :desc => @p.description
          }
      end
   end
@@ -19,9 +27,9 @@ module Social::MetaDataHelper
          :link => 'http://promesometro.pe'
   end
 
-  def meta_data_tags(node=nil)
-    if node
-      node_meta_data node[0], node[1]
+  def meta_data_tags(model,id)
+    if model and id
+      node_meta_data model, id
     else
       page_meta_data
     end
