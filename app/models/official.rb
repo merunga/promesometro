@@ -31,6 +31,8 @@ class Official < ActiveRecord::Base
   scope :mayors, where('position', 0)
   scope :governors, where('position', 1)
   scope :president, where('position', 2)
+  default_scope order('name asc')
+  scope :with_promises, :joins =>:promises, :group => "name"
   
   #
   # Delegates
