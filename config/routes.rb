@@ -26,7 +26,7 @@ Promesometro::Application.routes.draw do
     root :to => "dashboard#index"
   end
 
-  root :to => "home#show"
+  root :to => "home#show", :as => :root
 
   resources :promesas, :only => [:index] do
     resource :comments, :only => :create
