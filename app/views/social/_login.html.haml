@@ -1,4 +1,4 @@
-#user_login_box(style="float:right")
+#user_login_box
   - if user_signed_in?
     = image_tag "#{current_user.login_type}.png",
       :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_user.login_type}"
