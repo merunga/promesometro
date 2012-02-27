@@ -35,7 +35,8 @@ Promesometro::Application.routes.draw do
   resources :acerca_de, :only => [:index]
   resources :temas, :only => [:index]
 
-  resource :promise_filter, :controller => :promise_filter, :only => [:create]
+  resource :promise_filter, :controller => :promise_filter, :only => [:create], :via => :get
+  #match '/promesas_buscar/*query', :to => 'promise_filter#create', :via => :get, :as => :promise_filter
 
   namespace :social do
     #resource :meta_data
