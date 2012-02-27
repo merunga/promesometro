@@ -13,11 +13,9 @@
       = link_to (official.province ? official.province_name : official.state_name), (official.province ? promesas_filters_path(:province, official.province_name) : promesas_filters_path(:state, official.state_name))
   %p.comment_content
     = "\"#{declaration.body}\""
-    - metadata_link = social_declaration_metadata_url(declaration.id)
   %span.compartir
     = render 'social/node_widgets', |
-      :link => promesa_url(promise.slug), |
+      :link => promesa_url(promise.slug)+"/?md[]=declarations&md[]=#{declaration.id}", |
       :title => "Declaración de #{official.name} acerca de #{promise.title}", |
       :desc => declaration.body, |
-      :width => 280, |
-      :metadata_link =>  metadata_link
+      :width => 280,
