@@ -11,11 +11,7 @@
   %p.descripcion= promesa.description_scaped 
   %p
     .compartir
-      = render 'social/node_widgets', |
-        :link => promesa_url(promesa.slug)+"/?mdm=promise&mdi=#{promesa.id}", |
-        :title => promesa.title, |
-        :desc => promesa.description, |
-        :width => 280
+      = promise_social_widgets(promesa)
 .arrow
 .status
   .representante

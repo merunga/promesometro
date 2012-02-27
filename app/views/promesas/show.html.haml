@@ -54,10 +54,7 @@
       -comentarios_count(@promise)
 
       .compartir
-        .share-fb
-          <div class="fb-send" data-href="http://www.promesometro.pe"></div>
-        .share-tw
-          <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-lang="es">Tweet</a>
+        = promise_social_widgets(@promise)
 
     .post_comment
       = render :partial => 'comments/form', :locals => {:promise => @promise}
