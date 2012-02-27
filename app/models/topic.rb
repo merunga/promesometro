@@ -10,6 +10,7 @@ class Topic < ActiveRecord::Base
   # Scopes
   #
   default_scope order('position ASC')
+  scope :used, :joins =>:promises, :group => "name"
   
   class << self
     def update_sort(topic_sort)
@@ -23,11 +24,4 @@ class Topic < ActiveRecord::Base
       self.all.group_by {|topic| topic.name.chars.first.upcase}
     end
   end
-
-  def self.used
-    Topic.all.find_all{ |t|
-      t.promises.size > 0
-    }
-  end
-  
 end

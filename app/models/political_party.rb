@@ -9,4 +9,7 @@ class PoliticalParty < ActiveRecord::Base
   # CarrierWave
   #
   mount_uploader :logo, LogoUploader
+
+  default_scope order('name ASC')
+  scope :with_promises, :joins =>{:officials => :promises}, :group => "name"
 end
