@@ -43,7 +43,7 @@
         = link_to image_tag('logo.png', :id => 'logo'), root_path
         = render 'social/login'
         %nav
-          %ul
+          %ul(style="float:left")
             %li.no-border= link_to 'Autoridades', directorio_path
             %li= link_to 'Promesas', promesas_path
             %li= link_to 'Acerca de', acerca_de_index_path
