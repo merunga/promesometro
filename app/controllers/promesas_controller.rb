@@ -8,6 +8,6 @@ class PromesasController < ApplicationController
   def show
     @search = Promise.search(params[:search])
     @promise = Promise.find_by_slug(params[:slug])
-    @comments = @promise.comment_threads.page(params[:page]).per(5)
+    @comments = @promise.comment_threads.order('created_at desc').page(params[:page]).per(5)
   end
 end
