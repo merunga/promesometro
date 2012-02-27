@@ -1,0 +1,99 @@
+                    new_admin_session GET    /admins/sign_in(.:format)                                                        {:controller=>"admin/sessions", :action=>"new"}
+                        admin_session POST   /admins/sign_in(.:format)                                                        {:controller=>"admin/sessions", :action=>"create"}
+                destroy_admin_session DELETE /admins/sign_out(.:format)                                                       {:controller=>"admin/sessions", :action=>"destroy"}
+                       admin_password POST   /admins/password(.:format)                                                       {:controller=>"devise/passwords", :action=>"create"}
+                   new_admin_password GET    /admins/password/new(.:format)                                                   {:controller=>"devise/passwords", :action=>"new"}
+                  edit_admin_password GET    /admins/password/edit(.:format)                                                  {:controller=>"devise/passwords", :action=>"edit"}
+                                      PUT    /admins/password(.:format)                                                       {:controller=>"devise/passwords", :action=>"update"}
+                     new_user_session GET    /users/sign_in(.:format)                                                         {:controller=>"devise/sessions", :action=>"new"}
+                         user_session POST   /users/sign_in(.:format)                                                         {:controller=>"devise/sessions", :action=>"create"}
+                 destroy_user_session DELETE /users/sign_out(.:format)                                                        {:controller=>"devise/sessions", :action=>"destroy"}
+               user_omniauth_callback        /users/auth/:action/callback(.:format)                                           {:controller=>"users/omniauth_callbacks", :action=>/twitter|facebook|google/}
+                        user_password POST   /users/password(.:format)                                                        {:controller=>"devise/passwords", :action=>"create"}
+                    new_user_password GET    /users/password/new(.:format)                                                    {:controller=>"devise/passwords", :action=>"new"}
+                   edit_user_password GET    /users/password/edit(.:format)                                                   {:controller=>"devise/passwords", :action=>"edit"}
+                                      PUT    /users/password(.:format)                                                        {:controller=>"devise/passwords", :action=>"update"}
+             cancel_user_registration GET    /users/cancel(.:format)                                                          {:controller=>"devise/registrations", :action=>"cancel"}
+                    user_registration POST   /users(.:format)                                                                 {:controller=>"devise/registrations", :action=>"create"}
+                new_user_registration GET    /users/sign_up(.:format)                                                         {:controller=>"devise/registrations", :action=>"new"}
+               edit_user_registration GET    /users/edit(.:format)                                                            {:controller=>"devise/registrations", :action=>"edit"}
+                                      PUT    /users(.:format)                                                                 {:controller=>"devise/registrations", :action=>"update"}
+                                      DELETE /users(.:format)                                                                 {:controller=>"devise/registrations", :action=>"destroy"}
+                          user_unlock POST   /users/unlock(.:format)                                                          {:controller=>"devise/unlocks", :action=>"create"}
+                      new_user_unlock GET    /users/unlock/new(.:format)                                                      {:controller=>"devise/unlocks", :action=>"new"}
+                                      GET    /users/unlock(.:format)                                                          {:controller=>"devise/unlocks", :action=>"show"}
+             admin_official_provinces        /admin/officials/provinces/:state_id(.:format)                                   {:controller=>"admin/officials", :action=>"provinces"}
+    admin_official_promise_milestones GET    /admin/officials/:official_id/promises/:promise_id/milestones(.:format)          {:controller=>"admin/milestones", :action=>"index"}
+                                      POST   /admin/officials/:official_id/promises/:promise_id/milestones(.:format)          {:controller=>"admin/milestones", :action=>"create"}
+ new_admin_official_promise_milestone GET    /admin/officials/:official_id/promises/:promise_id/milestones/new(.:format)      {:controller=>"admin/milestones", :action=>"new"}
+edit_admin_official_promise_milestone GET    /admin/officials/:official_id/promises/:promise_id/milestones/:id/edit(.:format) {:controller=>"admin/milestones", :action=>"edit"}
+     admin_official_promise_milestone GET    /admin/officials/:official_id/promises/:promise_id/milestones/:id(.:format)      {:controller=>"admin/milestones", :action=>"show"}
+                                      PUT    /admin/officials/:official_id/promises/:promise_id/milestones/:id(.:format)      {:controller=>"admin/milestones", :action=>"update"}
+                                      DELETE /admin/officials/:official_id/promises/:promise_id/milestones/:id(.:format)      {:controller=>"admin/milestones", :action=>"destroy"}
+              admin_official_promises GET    /admin/officials/:official_id/promises(.:format)                                 {:controller=>"admin/promises", :action=>"index"}
+                                      POST   /admin/officials/:official_id/promises(.:format)                                 {:controller=>"admin/promises", :action=>"create"}
+           new_admin_official_promise GET    /admin/officials/:official_id/promises/new(.:format)                             {:controller=>"admin/promises", :action=>"new"}
+          edit_admin_official_promise GET    /admin/officials/:official_id/promises/:id/edit(.:format)                        {:controller=>"admin/promises", :action=>"edit"}
+               admin_official_promise GET    /admin/officials/:official_id/promises/:id(.:format)                             {:controller=>"admin/promises", :action=>"show"}
+                                      PUT    /admin/officials/:official_id/promises/:id(.:format)                             {:controller=>"admin/promises", :action=>"update"}
+                                      DELETE /admin/officials/:official_id/promises/:id(.:format)                             {:controller=>"admin/promises", :action=>"destroy"}
+                      admin_officials GET    /admin/officials(.:format)                                                       {:controller=>"admin/officials", :action=>"index"}
+                                      POST   /admin/officials(.:format)                                                       {:controller=>"admin/officials", :action=>"create"}
+                   new_admin_official GET    /admin/officials/new(.:format)                                                   {:controller=>"admin/officials", :action=>"new"}
+                  edit_admin_official GET    /admin/officials/:id/edit(.:format)                                              {:controller=>"admin/officials", :action=>"edit"}
+                       admin_official GET    /admin/officials/:id(.:format)                                                   {:controller=>"admin/officials", :action=>"show"}
+                                      PUT    /admin/officials/:id(.:format)                                                   {:controller=>"admin/officials", :action=>"update"}
+                                      DELETE /admin/officials/:id(.:format)                                                   {:controller=>"admin/officials", :action=>"destroy"}
+                         admin_admins GET    /admin/admins(.:format)                                                          {:controller=>"admin/admins", :action=>"index"}
+                                      POST   /admin/admins(.:format)                                                          {:controller=>"admin/admins", :action=>"create"}
+                      new_admin_admin GET    /admin/admins/new(.:format)                                                      {:controller=>"admin/admins", :action=>"new"}
+                     edit_admin_admin GET    /admin/admins/:id/edit(.:format)                                                 {:controller=>"admin/admins", :action=>"edit"}
+                          admin_admin GET    /admin/admins/:id(.:format)                                                      {:controller=>"admin/admins", :action=>"show"}
+                                      PUT    /admin/admins/:id(.:format)                                                      {:controller=>"admin/admins", :action=>"update"}
+                                      DELETE /admin/admins/:id(.:format)                                                      {:controller=>"admin/admins", :action=>"destroy"}
+              admin_comment_milestone        /admin/promises/milestones/:milestone_id/comment(.:format)                       {:controller=>"admin/comments", :action=>"create"}
+      admin_comment_milestone_destroy DELETE /admin/promises/milestones/:milestone_id/comment/:id(.:format)                   {:controller=>"admin/comments", :action=>"destroy"}
+                admin_milestone_state POST   /admin/promises/milestones/:milestone_id/milestone_state(.:format)               {:controller=>"admin/milestone_state", :action=>"create"}
+                admin_milestone_state PUT    /admin/promises/milestones/:milestone_id/milestone_state(.:format)               {:controller=>"admin/milestone_state", :action=>"update"}
+       admin_comment_comment_approval POST   /admin/comments/:comment_id/comment_approval(.:format)                           {:controller=>"admin/comment_approval", :action=>"create"}
+                                      DELETE /admin/comments/:comment_id/comment_approval(.:format)                           {:controller=>"admin/comment_approval", :action=>"destroy"}
+                       admin_comments GET    /admin/comments(.:format)                                                        {:controller=>"admin/comments", :action=>"index"}
+                                      POST   /admin/comments(.:format)                                                        {:controller=>"admin/comments", :action=>"create"}
+                    new_admin_comment GET    /admin/comments/new(.:format)                                                    {:controller=>"admin/comments", :action=>"new"}
+                   edit_admin_comment GET    /admin/comments/:id/edit(.:format)                                               {:controller=>"admin/comments", :action=>"edit"}
+                        admin_comment GET    /admin/comments/:id(.:format)                                                    {:controller=>"admin/comments", :action=>"show"}
+                                      PUT    /admin/comments/:id(.:format)                                                    {:controller=>"admin/comments", :action=>"update"}
+                                      DELETE /admin/comments/:id(.:format)                                                    {:controller=>"admin/comments", :action=>"destroy"}
+              admin_political_parties GET    /admin/political_parties(.:format)                                               {:controller=>"admin/political_parties", :action=>"index"}
+                                      POST   /admin/political_parties(.:format)                                               {:controller=>"admin/political_parties", :action=>"create"}
+            new_admin_political_party GET    /admin/political_parties/new(.:format)                                           {:controller=>"admin/political_parties", :action=>"new"}
+           edit_admin_political_party GET    /admin/political_parties/:id/edit(.:format)                                      {:controller=>"admin/political_parties", :action=>"edit"}
+                admin_political_party GET    /admin/political_parties/:id(.:format)                                           {:controller=>"admin/political_parties", :action=>"show"}
+                                      PUT    /admin/political_parties/:id(.:format)                                           {:controller=>"admin/political_parties", :action=>"update"}
+                                      DELETE /admin/political_parties/:id(.:format)                                           {:controller=>"admin/political_parties", :action=>"destroy"}
+                         admin_topics GET    /admin/topics(.:format)                                                          {:controller=>"admin/topics", :action=>"index"}
+                                      POST   /admin/topics(.:format)                                                          {:controller=>"admin/topics", :action=>"create"}
+                      new_admin_topic GET    /admin/topics/new(.:format)                                                      {:controller=>"admin/topics", :action=>"new"}
+                     edit_admin_topic GET    /admin/topics/:id/edit(.:format)                                                 {:controller=>"admin/topics", :action=>"edit"}
+                          admin_topic PUT    /admin/topics/:id(.:format)                                                      {:controller=>"admin/topics", :action=>"update"}
+                                      DELETE /admin/topics/:id(.:format)                                                      {:controller=>"admin/topics", :action=>"destroy"}
+                    admin_sort_topics        /admin/topics/sort(.:format)                                                     {:controller=>"admin/topics", :action=>"sort"}
+                           admin_root        /admin(.:format)                                                                 {:controller=>"admin/dashboard", :action=>"index"}
+                                 root        /(.:format)                                                                      {:controller=>"home", :action=>"show"}
+                     promesa_comments POST   /promesas/:promesa_id/comments(.:format)                                         {:controller=>"comments", :action=>"create"}
+                             promesas GET    /promesas(.:format)                                                              {:controller=>"promesas", :action=>"index"}
+                      acerca_de_index GET    /acerca_de(.:format)                                                             {:controller=>"acerca_de", :action=>"index"}
+                                temas GET    /temas(.:format)                                                                 {:controller=>"temas", :action=>"index"}
+                       promise_filter POST   /promise_filter(.:format)                                                        {:controller=>"promise_filter", :action=>"create"}
+                                      GET    /promesas_buscar/*query                                                          {:controller=>"promise_filter", :action=>"create"}
+          social_declaration_metadata        /social/metadata/declaration/:id(.:format)                                       {:controller=>"social/meta_data", :action=>"declaration"}
+                                             /estados/:estado/provincias(.:format)                                            {:controller=>"provincias", :action=>"index"}
+                                             /representantes/:lugar(.:format)                                                 {:controller=>"representantes", :action=>"show"}
+                     promesas_filters        /promesas/:search/:query(.:format)                                               {:controller=>"promesas", :action=>"index"}
+                      hito_comentario        /promesas/hito/:milestone_id/comentario(.:format)                                {:controller=>"comments", :action=>"create"}
+                              promesa        /promesas/:slug(.:format)                                                        {:controller=>"promesas", :action=>"show"}
+                           directorio        /directorio(.:format)                                                            {:controller=>"regiones", :action=>"index"}
+                         new_contacto        /contacto/new(.:format)                                                          {:controller=>"contacto", :action=>"new"}
+                             contacto POST   /contacto(.:format)                                                              {:controller=>"contacto", :action=>"create"}
+                               region        /regiones/:region_name(.:format)                                                 {:controller=>"regiones", :action=>"show"}
+                                token        /token(.:format)                                                                 {:controller=>"home", :action=>"token"}
