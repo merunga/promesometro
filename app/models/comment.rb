@@ -30,7 +30,16 @@ class Comment < ActiveRecord::Base
 
   # Send an email to everyone in the thread
   def after_create
-    CommentMailer.new_comment(self).deliver #if self.send_notifications
+    emails = []
+    #Comment.find_comments_for_parent(comment) do |c|
+    parent = self.commentable_type.classify.constantize.find(self.commentable_id)
+    parent.comment_threads.each do |c|
+      emails << c.user.email unless emails.include?(c.user.email) if c.user and c.user.send_notifications
+    end
+
+    if !emails.empty? then
+      CommentMailer.new_comment(self).deliver
+    end
   end
   
   #helper method to check if a comment has children
