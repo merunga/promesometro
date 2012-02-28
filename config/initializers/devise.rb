@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "merunga@gmail.com"
+  config.mailer_sender = 'noreply@promesometro.pe'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -197,13 +197,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  #SOCIAL_LOGIN = YAML.load_file(  "#{RAILS_ROOT}/config/social_login.yml" )
+  SOCIAL_LOGIN = YAML.load_file(  "#{Rails.root}/config/social_login.yml" )
 
-  #config.omniauth :twitter, SOCIAL_LOGIN['twitter_app_id'], SOCIAL_LOGIN['twitter_app_secret']
-  config.omniauth :twitter, '1JCM2WwVzyQlmAZ9oQGDQ', 'MWEypD67uFqSsyaTOF8YZ9SuwwG043DrFhVnHQgN010'
-
-  #config.omniauth :facebook, SOCIAL_LOGIN['facebook_app_id'], SOCIAL_LOGIN['facebook_app_secret']
-  config.omniauth :facebook, '197179487050722', 'f5c85fa59c30ced21cf6e3a4a4fef353'
+  config.omniauth :twitter, SOCIAL_LOGIN['twitter_app_id'], SOCIAL_LOGIN['twitter_app_secret']
+  config.omniauth :facebook, SOCIAL_LOGIN['facebook_app_id'], SOCIAL_LOGIN['facebook_app_secret']
 
   require 'openid/store/filesystem'
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google',
