@@ -32,7 +32,7 @@
  html body nav.pagination ul {display: inline-block; margin: 20px auto}
  html body nav.pagination .no-border {border: 0}
  html body nav.pagination .active a {color: #cc6666}
- html body nav {display: inline; float: left; margin-right: 10px; width: 670px; margin-right: 0; padding-left: 40px; color: #363636; font-family: "Open Sans Condensed", sans-serif; font-size: 18px; background: url("../images/menu_nav.png") no-repeat 68px 0; height: 90px; margin: 50px 0 0 0}
+ html body nav {display: inline; float: left; margin-right: 10px; width: 670px; margin-right: 0; padding-left: 40px; color: #363636; font-family: "Open Sans Condensed", sans-serif; font-size: 18px; background: url("../images/menu_nav.png") no-repeat 68px 0; height: 90px; margin: 35px 0 0 0}
  * html html body nav {overflow-x: hidden}
  html body nav ul {display: inline-block; list-style-type: none; margin: 38px 0 0 65px}
  html body nav ul li {border-left: 1px solid #363636; float: left; font-family: "Open Sans Condensed", sans-serif; font-size: 18px; font-weight: normal; margin: 0 15px 0 0; padding: 0 0 0 15px}
