@@ -16,9 +16,9 @@
     = link_to image_tag('twitter.png'), user_omniauth_authorize_path(:twitter)
 
 - if admin_signed_in?
-  #user_login_box(style="float:left")
+  #admin_login_box(style="float:left")
     = current_admin.email
     |
-    = llink_to 'Admin section', admins_path
+    = link_to 'Admin section', admin_root_path
     |
     = link_to 'Sign out', destroy_admin_session_path, :method => :delete
