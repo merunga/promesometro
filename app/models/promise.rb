@@ -102,8 +102,12 @@ class Promise < ActiveRecord::Base
   
   def state_scaped
     return 'Nuevo' if milestones.started.count == 0 and milestones.completed.count == 0
-    return 'En Progreso' if milestones.started.count > 0
     return 'Terminado' if milestones.started.count > 0 and milestones.not_started.count == 0
+    return 'En Progreso' if milestones.started.count > 0
+  end
+
+  def hito_actual
+    self[self.milestones.completed.size]
   end
   
   def self.general_search(query)
