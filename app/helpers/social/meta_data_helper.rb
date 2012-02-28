@@ -33,7 +33,7 @@ module Social::MetaDataHelper
     render 'social/meta_data_tags',
        :title => 'promesometro.pe',
        :desc => 'Mide y discute el progreso de las promesas de tus representantes',
-       :link => 'http://promesometro.pe'
+       :link => 'http://www.promesometro.pe'
   end
 
   def meta_data_tags(model,id)
