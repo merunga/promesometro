@@ -9,3 +9,4 @@ config/database.yml
 *~
 .idea/workspace.xml
 routes.txt
+vendor
