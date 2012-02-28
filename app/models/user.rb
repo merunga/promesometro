@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   def screen_name
     if self.name
       self.name
-    elsif self.login
+    elsif self.login.starts_with?('@')
       self.login
     else
       self.email
