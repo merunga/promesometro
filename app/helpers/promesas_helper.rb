@@ -8,6 +8,12 @@ module PromesasHelper
       link_to( text.nil? ? "Perfil del #{official.position_name}" : text , presidentes_regionale_path(official))
     end
   end
+
+  def mensaje_dias(hito,promise)
+    days_left = promise
+    "Segun prometido, faltan N dias para verificar el cumplimiento del hito"
+    "Han pasado N dias pero aun no hemos verificado el cumplimiento del hito"
+  end
   
   def promesa_state(promise)
     "Finalizado" if promise.finished?
@@ -67,6 +73,12 @@ module PromesasHelper
   end
   
   def promesas_temas(promesa)
-    concat raw '<i>Categoria:</i> ' + promesa.topics.collect {|topic| link_to topic.name, promesas_filters_path(:topic, topic.name)}.join(', ')
+    topics = promesa.topics.collect {|topic| link_to topic.name, promesas_filters_path(:topic, topic.name)}.join(', ')
+    logger.info(topics)
+    if topics != ''
+      concat raw '<i>Categorias:</i> ' + topics
+    else
+      ''
+    end
   end
 end

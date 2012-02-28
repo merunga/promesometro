@@ -3,15 +3,16 @@
     %span.region
       = link_to promesa.official_state_name.humanize, promesas_filters_path(:state, promesa.official_state_name.humanize)
     %span.fecha
-      = promesa.created_at.to_s(:date)
+      creada hace
+      = time_ago_in_words(promesa.created_at)
   %p
     %span.title
       %i La promesa:
       =link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
   %p.topic
     - promesas_temas(promesa)
-  %p.descripcion
-    %i La promesa:
+  %p.descripcion(style='text-align:left;padding-left:0px')
+    %i Lo prometido:
     = promesa.description_scaped
   %p
     .compartir
@@ -28,6 +29,7 @@
       %span.progreso Progreso
     .dias_progreso
       %span.dias Dias
+
     .hito
       = image_tag hito_actual(promesa)
       %span.progreso Etapa/Hito
