@@ -68,4 +68,8 @@ class Comment < ActiveRecord::Base
   def self.find_commentable(commentable_str, commentable_id)
     commentable_str.constantize.find(commentable_id)
   end
+
+  def commentable
+    self.commentable_type.constantize.find(self.commentable_id)
+  end
 end
