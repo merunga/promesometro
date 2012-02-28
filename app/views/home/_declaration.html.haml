@@ -4,13 +4,17 @@
 - promise = declaration.promise
 .comment
   %p.top
-    %span.title 
+    %span.title(style='float:left')
+      %i El que promete:
       = link_to official.name, promesas_filters_path(:official, official.name)
-    %span.date= declaration.created_at.to_s(:date)
+    %span.date(style='float:right')= "hace #{time_ago_in_words declaration.created_at}"
     %br
-    %span.gobierno
-      Gobierno de
-      = link_to (official.province ? official.province_name : official.state_name), (official.province ? promesas_filters_path(:province, official.province_name) : promesas_filters_path(:state, official.state_name))
+      %span.gobierno(style='float:left')
+        Gobierno de
+        = link_to (official.province ? official.province_name : official.state_name), (official.province ? promesas_filters_path(:province, official.province_name) : promesas_filters_path(:state, official.state_name))
+  %div
+    %i Lo prometido:
+    = link_to promise.title_scaped.humanize, promesa_path(promise.slug)
   %p.comment_content
     = "\"#{declaration.body}\""
   %span.compartir
