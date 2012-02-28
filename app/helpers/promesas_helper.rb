@@ -9,10 +9,33 @@ module PromesasHelper
     end
   end
 
-  def mensaje_dias(hito,promise)
-    days_left = promise
-    "Segun prometido, faltan N dias para verificar el cumplimiento del hito"
-    "Han pasado N dias pero aun no hemos verificado el cumplimiento del hito"
+  def mensaje_dias(promise,hito=nil)
+    milestones = promise.milestones
+    if milestones.started.count == 0 and milestones.completed.count == 0 then
+      "Todavia no comienza la ejecucion"
+    elsif milestones.started.count > 0 and milestones.not_started.count == 0 then
+      "Promesa completa"
+    elsif milestones.started.count > 0 then #en progreso
+      if not hito
+         hito = promise.hito_actual
+=begin
+        curr_hitos = promise.milestones.filter{|h| h.state == :in_progress }
+        if !curr_hitos.empty? then
+          hito = curr_hitos.each_with_index.inject(curr_hitos.first){|min, (h,i)|
+            h.started_at < min.started_at ? h : min
+          }
+        end
+=end
+      end
+      diff = Time.now()-hito.ended_at
+      if diff > 0 then
+        "Segun prometido, faltan #{diff} dias para verificar el cumplimiento del hito"
+      elsif diff == 0 then
+        "Hoy es la fecha limite de este hito, todavia no hemos verificado el cumplimiento del hito"
+      else
+        "Han pasado #{diff} dias pero aun no hemos verificado el cumplimiento del hito"
+      end
+    end
   end
   
   def promesa_state(promise)
