@@ -54,13 +54,13 @@ Promesometro::Application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
-  config.i18n.fallbacks = true
+  #config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
   if ENV['RAILS_ENV'] == 'production'  # don't bother on dev
-    ENV['GEM_PATH'] = "#{ENV["HOME"]}/.gems" #+ ':/usr/lib/ruby/gems/1.8'  # Need this or Passenger fails to start
+    ENV['GEM_PATH'] = "/home/promesometro/.gems" #+ ':/usr/lib/ruby/gems/1.8'  # Need this or Passenger fails to start
     #require "#{ENV["HOME"]}/.gems/gems/RedCloth-4.1.9/lib/redcloth.rb"  # Need this for EACH LOCAL gem you want to use, otherwise it uses the ones in /usr/lib
   end
 end
