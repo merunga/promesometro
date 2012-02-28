@@ -10,18 +10,22 @@
     = render 'base/alert_success'
     = render 'base/alert_error'
 
-    %p.promesa_top
+    %p.promesa_top(style='float:right')
       %span.region
-        Region:
-        = link_to @promise.official_state_name.humanize, promesas_filters_path(:state, @promise.official_state_name.humanize)
+        = raw "en #{link_to @promise.official_state_name.humanize, promesas_filters_path(:state, @promise.official_state_name.humanize)}"
       %span.fecha
-        Fecha:
-        = @promise.created_at.to_s(:date)
-        
-    %span.title= @promise.title
+        = "hace #{time_ago_in_words @promise.created_at}"
+
+    %span(style='float:left')
+      %i Lo prometido:
+      %span.title
+        = link_to @promise.title.humanize, promesas_path(@promise.slug)
+
+    %div(style='clear:both')
+    %br
     
     %p.topic
-      - promesas_temas(@promise)
+      = promesas_temas(@promise)
     
     .representante
       = image_tag @promise.official_avatar_url, :class => 'foto_representante'
@@ -29,10 +33,7 @@
       %span.partido_representante= @promise.official_political_party_name
       
       .promesa_status
-        .dias_progreso
-          %span.numero= @promise.days_started
-        .dias_progreso
-          %span.dias Dias
+        = render 'promesas/dias_progreso', :promesa => @promise, :show_label => false
     
     %p.descripcion= @promise.description
     
@@ -66,12 +67,12 @@
     - @promise.official_promises.each do |promise|
       .representante_promesa
         %p.promesa_top
-          %span.fecha= promise.created_at.to_s(:date)
-        %span.title= promise.title[0,20]
+          %span.fecha
+            = time_ago_in_words promise.created_at
+        %span.title
+          = link_to promise.title.humanize, promesas_path(promise.slug)
         %p.topic
-          Promesa de 
-          - promise.topics.each do |topic|
-            =  topic.name.humanize
+          = promesas_temas(@promise)
 
         %p.descripcion= promise.description_scaped
         

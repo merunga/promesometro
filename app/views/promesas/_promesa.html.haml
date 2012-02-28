@@ -24,18 +24,8 @@
     %span.nombre_representante= link_to promesa.official_name, promesas_filters_path(:official, promesa.official_name)
     %span.partido_representante= promesa.official_political_party_name
   .promesa_status
-    - popover_id = "hito_msg__#{promesa.slug}"
-    - mensaje = mensaje_dias(promesa)
-    %script(type='text/javascript')
-      $(document).ready(function(){
-      = "$('\##{popover_id}').popover({html : true, placement: 'above'});"
-      })
-    .dias_progreso(title=mensaje id=popover_id)
-      %span.numero= promesa.days_started
-      %span.progreso Progreso
-    .dias_progreso
-      %span.dias Dias
+    = render 'promesas/dias_progreso', :promesa => promesa, :show_label => true
 
     .hito
-      = image_tag hito_actual(promesa)
+      = image_tag hito_actual(promesa), :style => 'margin: 6px 0;'
       %span.progreso Etapa/Hito
