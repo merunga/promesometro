@@ -1,4 +1,7 @@
 #user_login_box {
+ float: right
+}
+#user_login_box_containter {
     position: absolute;
     top: 5px;
     right: 12%
