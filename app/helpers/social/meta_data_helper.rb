@@ -2,20 +2,29 @@ module Social::MetaDataHelper
   def node_meta_data(model,id)
      case model
        when 'd' then
-         @d = Declaration.find(id)
-         @p = @d.promise
+         d = Declaration.find(id)
+         p = d.promise
          render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(@p.slug)+"/?mdm=d&mdi=#{id}",
-             :title => "Declaracion de #{@p.official.name} acerca de #{@p.title}",
-             :desc => @d.body
+             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
+             :title => "Declaracion de #{p.official.name} acerca de #{p.title}",
+             :desc => d.body
          }
 
        when 'p' then
-         @p = Promise.find(id)
+         p = Promise.find(id)
          render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(@p.slug)+"/?mdm=p&mdi=#{id}",
-             :title => @p.title,
-             :desc => @p.description
+             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
+             :title => p.title,
+             :desc => p.description
+         }
+
+       when 'c' then
+         c = Comment.find(id)
+         p = c.commentable
+         render :partial => 'social/meta_data_tags', :locals => {
+             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
+             :title => "#{c.user.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
+             :desc => p.description
          }
      end
   end
@@ -50,5 +59,13 @@ module Social::MetaDataHelper
       :title => "Declaracion de #{p.official.name} acerca de #{p.title}",
       :desc => d.body,
       :width => 280
+  end
+
+  def comentario_social_widgets(c)
+    p = c.commentable
+    render 'social/node_widgets',
+      :link => promesa_url(p.slug)+"/?mdm=c&mdi=#{c.id}",
+      :title => "#{c.user.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
+      :desc => p.description
   end
 end

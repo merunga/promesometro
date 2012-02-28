@@ -1,6 +1,18 @@
+- promesa = comment.commentable
 .comment
-  .comment_content
-    %p.promesa_top
-      %span.author= comment.user.screen_name
-      %span.fecha= comment.created_at.to_s(:date)
-    %p.the_comment= "\"#{comment.body}\""
+  %p.top
+    %span.title
+      %i Promesa:
+      = link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
+    %span.region(style='float:right')= promesa.official.state.name
+    %div(syle='font-size:small !important')
+      %span(style='float:left')
+        Comentario de
+        = comment.user.screen_name
+      %span(style='float:right')
+        -#%span.author= comment.user.screen_name
+        %span.fecha= "hace #{time_ago_in_words comment.created_at}"
+  %p.comment_content= "\"#{comment.body}\""
+  %p
+    = comentario_social_widgets comment
+
