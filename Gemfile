@@ -28,6 +28,9 @@ gem 'paper_trail', '~> 2'
 gem 'acts_as_commentable_with_threading'
 gem 'custom_error_message'
 
+gem 'rake', '0.9.2.2'
+
+
 group :development do
   #gem 'ruby-debug19'
   gem 'heroku'
