@@ -32,11 +32,11 @@ Promesometro::Application.configure do
   config.serve_static_assets = true
   
   ActionMailer::Base.smtp_settings = {
-    :address        => 'http://mail.promesometro.pe/',
+    :address        => 'mail.promesometro.pe/',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
+    :user_name      => ENV['NOREPLY_USERNAME'],
+    :password       => ENV['NOREPLY_PASSWORD'],
     :domain         => 'www.promesometro.pe'
   }
   ActionMailer::Base.delivery_method = :smtp
