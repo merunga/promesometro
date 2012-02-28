@@ -5,10 +5,14 @@
     %span.fecha
       = promesa.created_at.to_s(:date)
   %p
-    %span.title= link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
+    %span.title
+      %i La promesa:
+      =link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
   %p.topic
     - promesas_temas(promesa)
-  %p.descripcion= promesa.description_scaped 
+  %p.descripcion
+    %i La promesa:
+    = promesa.description_scaped
   %p
     .compartir
       = promise_social_widgets(promesa)
