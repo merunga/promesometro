@@ -10,16 +10,14 @@ class CommentMailer < ActionMailer::Base
     @display_name = display_name
     @account_type = comment.user.login_type
     @login = comment.user.login
-    emails = emails_for_comment(comment)
-    emails.delete(comment.user.email)
+    emails = comment.emails_to_notify
     p = comment.commentable
     @promise =  p.title
     @official = p.official.name
     @promise_link = promesa_url p.slug
     subject = "[promesometro.pe] Novedades sobre la Promesa de #{@promise} de #{@official}"
 
-    mail(:bcc => emails_for_comment(comment),
-         :subject => subject) do |format|
+    mail(:bcc => emails, :subject => subject) do |format|
       format.html
       format.text
     end
@@ -54,16 +52,4 @@ class CommentMailer < ActionMailer::Base
       format.text
     end
   end
-  
-  protected
-    def emails_for_comment(comment)
-      emails = []
-      #Comment.find_comments_for_parent(comment) do |c|
-      parent = comment.commentable_type.classify.constantize.find(comment.commentable_id)
-      parent.comment_threads.each do |c|
-        emails << c.user.email unless emails.include?(c.user.email) if c.user and c.user.send_notifications
-      end
-      emails
-    end
-    
 end
