@@ -1,6 +1,250 @@
-<p><%= h(@display_name) %> comentó:</p>
+<html>
+<head><title>[promesometro] mail de seguimiento a promesa</title>
+  <style type="text/css">ol {
+      margin: 0;
+      padding: 0
+  }
 
-<p><%= h(@comment.body) %>.</p>
+  p {
+      margin: 0
+  }
 
-<p>Thanks, <br />
+  .c4 {
+      color: #999999;
+      font-size: 8pt;
+      font-style: italic;
+      font-family: Trebuchet MS
+  }
+
+  .c13 {
+      color: #0000ff;
+      font-size: 18pt;
+      font-weight: bold
+  }
+
+  .c6 {
+      list-style-type: disc;
+      margin: 0;
+      padding: 0
+  }
+
+  .c7 {
+      font-size: 8pt;
+      font-style: italic;
+      font-family: Trebuchet MS
+  }
+
+  .c2 {
+      padding-left: 0pt;
+      margin-left: 36pt
+  }
+
+  .c8 {
+      color: #ff0000;
+      background-color: #ffffff
+  }
+
+  .c5 {
+      color: inherit;
+      text-decoration: inherit
+  }
+
+  .c3 {
+      color: #1155cc;
+      text-decoration: underline
+  }
+
+  .c0 {
+      height: 11pt;
+      direction: ltr
+  }
+
+  .c11 {
+      max-width: 468pt;
+      padding: 72pt 72pt 72pt 72pt
+  }
+
+  .c12 {
+      font-size: 14pt
+  }
+
+  .c9 {
+      background-color: #ffffff
+  }
+
+  .c1 {
+      direction: ltr
+  }
+
+  .c10 {
+      text-decoration: underline
+  }
+
+  .title {
+      padding-top: 24pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #000000;
+      font-size: 36pt;
+      font-family: Arial;
+      font-weight: bold;
+      padding-bottom: 6pt
+  }
+
+  .subtitle {
+      padding-top: 18pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #666666;
+      font-style: italic;
+      font-size: 24pt;
+      font-family: Georgia;
+      padding-bottom: 4pt
+  }
+
+  body {
+      color: #000000;
+      font-size: 11pt;
+      font-family: Arial
+  }
+
+  h1 {
+      padding-top: 24pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #000000;
+      font-size: 18pt;
+      font-family: Arial;
+      font-weight: bold;
+      padding-bottom: 6pt
+  }
+
+  h2 {
+      padding-top: 18pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #000000;
+      font-size: 14pt;
+      font-family: Arial;
+      font-weight: bold;
+      padding-bottom: 4pt
+  }
+
+  h3 {
+      padding-top: 14pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #666666;
+      font-size: 12pt;
+      font-family: Arial;
+      font-weight: bold;
+      padding-bottom: 4pt
+  }
+
+  h4 {
+      padding-top: 12pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #666666;
+      font-style: italic;
+      font-size: 11pt;
+      font-family: Arial;
+      padding-bottom: 2pt
+  }
+
+  h5 {
+      padding-top: 11pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #666666;
+      font-size: 10pt;
+      font-family: Arial;
+      font-weight: bold;
+      padding-bottom: 2pt
+  }
+
+  h6 {
+      padding-top: 10pt;
+      line-height: 1.15;
+      text-align: left;
+      color: #666666;
+      font-style: italic;
+      font-size: 10pt;
+      font-family: Arial;
+      padding-bottom: 2pt
+  }</style>
+</head>
+<body class="c9 c11"><p class="c1"><span>Hola!</span></p>
+
+<p class="c0"><span></span></p>
+
+<p class="c1"><span>&iexcl;Tenemos novedades desde Promes&oacute;metro.pe sobre la promesa de <%= h(@promise) %> de <%= h(@official) %>!</span>
 </p>
+
+<p class="c1">
+  <span class="c9">&nbsp;</span><span class="c9">&ldquo;<%= h(@display_name) %> ha comentado sobre la promesa.&rdquo;</span>
+</p>
+
+<p class="c0"><span class="c8"></span></p>
+
+<p class="c1"><span class="c9 c12">Para retomar el seguimiento de &eacute;sta promesa, </span></p>
+
+<p class="c1"><span class="c9 c10 c13">haz click aqu&iacute;</span><span class="c12 c9"><a href="<%= h(@promise_link)%>"></span>
+</p>
+
+<p class="c0"><span></span></p>
+
+<p class="c0"><span></span></p>
+
+<p class="c1">
+  <span>No olvides volver siempre a: </span><span class="c3"><a class="c5" href="http://promesometro.pe">http://promesometro.pe</a></span><span>&nbsp;para..</span>
+</p>
+
+<p class="c0"><span></span></p>
+<ol class="c6" start="1">
+  <li class="c2 c1"><span>Conocer las principales promesas de tus gobernantes.</span></li>
+</ol>
+<p class="c0"><span></span></p>
+<ol class="c6" start="2">
+  <li class="c1 c2"><span>Fiscalizar el cumplimiento de las promesas de tus autoridades. </span></li>
+</ol>
+<p class="c0"><span></span></p>
+<ol class="c6" start="1">
+  <li class="c2 c1"><span>Ser un ciudadan@ informad@, que no se contenta con discursos al aire. </span></li>
+</ol>
+<p class="c0"><span></span></p>
+
+<p class="c1"><span>Recuerda que es tu derecho exigir explicaciones! Que el gobierno cumpla con lo que promete!</span>
+</p>
+
+<p class="c0"><span></span></p>
+
+<p class="c1"><span>&iexcl;Gracias por tu participaci&oacute;n!</span></p>
+
+<p class="c0"><span></span></p>
+
+<p class="c1"><span>El equipo de Promes&oacute;metro.pe</span></p>
+
+<p class="c0"><span></span></p>
+
+<p class="c1"><span class="c4">Notas:</span></p>
+
+<p class="c0"><span class="c4"></span></p>
+
+<p class="c1">
+  <span class="c4">Pro&eacute;tica es la instituci&oacute;n de la sociedad civil que administra esta p&aacute;gina web. Nuestra experiencia desde 2002 trabajando con ciudadanos, organizaciones sociales e instituciones p&uacute;blicas nos permite estar en posici&oacute;n de asegurar el manejo imparcial de los contenidos que aqu&iacute;
+    se comparten.Ten en cuenta que no se aceptar&aacute;n insultos de ning&uacute;n tipo y que &eacute;sta no es una p&aacute;gina de recepci&oacute;n de denuncias, aunque puedes hacerlo, en cuyo caso se redireccionar&aacute;
+    a las entidades competentes.</span></p>
+
+<p class="c0"><span class="c4"></span></p>
+
+<p class="c1">
+  <span class="c4">Para ponerte en contacto con nosotros, escr&iacute;benos a </span><span class="c4 c10"><a class="c5" href="mailto:promesometro@proetica.org.pe">promesometro@proetica.org.pe</a></span>
+</p>
+
+<p class="c0"><span class="c4"></span></p>
+
+<p class="c1">
+  <span class="c4">Si deseas eliminar tu cuenta, por favor ingresa a &eacute;sta direcci&oacute;n: </span><span class="c3 c7"><a class="c5" href="http://www.promesometro.pe/users/edit">link</a></span>
+</p></body>
+</html>
