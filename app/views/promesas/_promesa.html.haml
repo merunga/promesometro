@@ -3,17 +3,17 @@
     %span.region
       = link_to promesa.official_state_name.humanize, promesas_filters_path(:state, promesa.official_state_name.humanize)
     %span.fecha
-      creada hace
+      prometido hace
       = time_ago_in_words(promesa.created_at)
   %p
     %span.title
-      %i La promesa:
+      %i Lo prometido:
       =link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
   %p.topic
     - promesas_temas(promesa)
-  %p.descripcion(style='text-align:left;padding-left:0px')
-    %i Lo prometido:
-    = promesa.description_scaped
+  %p.descripcion
+    %i
+      = "\"#{promesa.description_scaped}\""
   %p
     .compartir
       = promise_social_widgets(promesa)
