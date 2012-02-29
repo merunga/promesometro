@@ -34,16 +34,19 @@ Promesometro::Application.configure do
       :host => "www.promesometro.pe"
   }
   ActionMailer::Base.default :from => 'noreply@promesometro.pe'
-  
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'mail.promesometro.pe/',
-    :port           => '587',
-    :authentication => :plain,
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address        => 'mail.promesometro.pe',
+    :port           => 587,
+    :domain         => 'promesometro.pe',
+    :authentication => :login,
     :user_name      => ENV['NOREPLY_USERNAME'],
-    :password       => ENV['NOREPLY_PASSWORD'],
-    :domain         => 'www.promesometro.pe'
+    :password       => ENV['NOREPLY_PASSWORD']
   }
-  ActionMailer::Base.delivery_method = :smtp
+
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_charset = 'utf-8'
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
