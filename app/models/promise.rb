@@ -97,7 +97,7 @@ class Promise < ActiveRecord::Base
   end
   
   def description_scaped
-    description[0,140] + "..."
+    description[0,200] #+ ('...' if description.length > 200)
   end
   
   def state_scaped

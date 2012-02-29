@@ -10,5 +10,9 @@
       .actions
         = form.submit 'Publicar', :class => 'button'
 - else
-  %span.estado Debes estar loggueado para poder comentar
-  = render 'social/login'
+  %span.estado
+    %div(style='float:left')
+      Para comentar y mantenerte informado&nbsp;
+    %div(style='float:left')
+      = render 'social/login'
+

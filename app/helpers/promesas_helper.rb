@@ -14,7 +14,7 @@ module PromesasHelper
     if milestones.started.count == 0 and milestones.completed.count == 0 then
       "Todavia no comienza la ejecucion"
     elsif milestones.started.count > 0 and milestones.not_started.count == 0 then
-      "Promesa completa"
+      "Promesa cumplida"
     elsif milestones.started.count > 0 then #en progreso
       if not hito
          hito = promise.hito_actual
@@ -28,10 +28,10 @@ module PromesasHelper
 =end
       end
       diff = Time.now()-hito.ended_at
-      if diff > 0 then
+      if diff < 0 then
         "Segun prometido, faltan #{diff} dias para verificar el cumplimiento del hito"
       elsif diff == 0 then
-        "Hoy es la fecha limite de este hito, todavia no hemos verificado el cumplimiento del hito"
+        "Hoy es la fecha limite de este hito, todavia no hemos verificado su cumplimiento"
       else
         "Han pasado #{diff} dias pero aun no hemos verificado el cumplimiento del hito"
       end
