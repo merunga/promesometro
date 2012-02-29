@@ -1,7 +1,5 @@
 class CommentMailer < ActionMailer::Base
 
-  @mail_address = 'merunga@gmail.com'
-
   def new_comment(comment)
     if comment.user
       display_name = comment.user.screen_name
@@ -20,7 +18,7 @@ class CommentMailer < ActionMailer::Base
     @promise_link = promesa_url p.slug
     subject = "[promesometro.pe] Novedades sobre la Promesa de #{@promise} de #{@official}"
 
-    mail(:from => 'merunga@gmail.com', :bcc => emails_for_comment(comment),
+    mail(:bcc => emails_for_comment(comment),
          :subject => subject) do |format|
       format.html
       format.text
@@ -33,7 +31,7 @@ class CommentMailer < ActionMailer::Base
     @account_type = user.login_type
     @login = user.login
 
-    mail(:from => 'merunga@gmail.com', :to => user.email,
+    mail(:to => user.email,
          :subject => subject) do |format|
       format.html
       format.text
