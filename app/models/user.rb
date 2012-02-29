@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
       :rememberable, :registerable, :trackable, :timeoutable,
       :token_authenticatable, :omniauthable
 
-  attr_accessible :login, :login_type, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :login_type, :email, :name, :password, :password_confirmation, :send_notifications
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def contact_name
-    if self.name
+    if self.name and not self.name.blank?
       self.name
     elsif self.login
       self.login

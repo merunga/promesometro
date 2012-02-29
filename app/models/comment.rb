@@ -30,12 +30,7 @@ class Comment < ActiveRecord::Base
 
   # Send an email to everyone in the thread
   def after_create
-    emails = []
-    #Comment.find_comments_for_parent(comment) do |c|
-    parent = self.commentable_type.classify.constantize.find(self.commentable_id)
-    parent.comment_threads.each do |c|
-      emails << c.user.email unless emails.include?(c.user.email) if c.user and c.user.send_notifications
-    end
+    emails = self.emails_to_notify
 
     if !emails.empty? then
       CommentMailer.new_comment(self).deliver
@@ -71,5 +66,18 @@ class Comment < ActiveRecord::Base
 
   def commentable
     self.commentable_type.constantize.find(self.commentable_id)
+  end
+
+
+  def emails_to_notify
+    comment = self
+    emails = []
+    #Comment.find_comments_for_parent(comment) do |c|
+    parent = comment.commentable_type.classify.constantize.find(comment.commentable_id)
+    parent.comment_threads.each do |c|
+      emails << c.user.email unless emails.include?(c.user.email) if c.user and c.user.send_notifications
+    end
+    emails.delete(comment.user.email)
+    emails
   end
 end

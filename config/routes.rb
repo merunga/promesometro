@@ -1,6 +1,12 @@
 Promesometro::Application.routes.draw do
   devise_for :admins, :controllers => { :sessions => "admin/sessions" }
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {
+      :omniauth_callbacks => "users/omniauth_callbacks"
+  }
+
+  devise_scope :user do
+    match "users/profile/", :to => "users/profile#update", :as => "users_update_profile"
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
