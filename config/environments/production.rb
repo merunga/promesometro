@@ -36,6 +36,7 @@ Promesometro::Application.configure do
   ActionMailer::Base.default :from => 'noreply@promesometro.pe'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => false,
     :address        => 'mail.promesometro.pe',
     :port           => 587,
     :domain         => 'promesometro.pe',
