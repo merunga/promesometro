@@ -71,7 +71,15 @@ class PromiseSearch
   end
 
   def find_by_keywords keywords
-    @promise_search = @promise_search.where('upper(title) LIKE upper(?) OR upper(description) LIKE upper(?)',"%#{keywords}%", "%#{keywords}%") if keywords
+    @promise_search = @promise_search.joins(
+        'LEFT JOIN milestones ON milestones.promise_id = promises.id'
+    ).where(
+        'upper(promises.title) LIKE upper(:keywords) '+
+        'OR upper(promises.description) LIKE upper(:keywords) '+
+        'OR upper(milestones.name) LIKE upper(:keywords) '+
+        'OR upper(milestones.description) LIKE upper(:keywords) ',
+        :keywords => "%#{keywords}%"
+    ).select("distinct promises.*") if keywords
   end
 
   def find_by_topic_name topic_name

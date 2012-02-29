@@ -69,9 +69,15 @@ module PromesasHelper
     hito_actual = promesa.milestones.completed.size
     milestone = promesa.milestones[hito-1]
     if hito <= promesa.milestones.size
+      if milestone.name != milestone.description then
+        popup_text = "#{milestone.name} <br> #{milestone.description}"
+      else
+        popup_text =  milestone.description
+      end
+
       if (milestone.in_progress?) || (milestone.new? && promesa.milestones[hito-2].finished?) || (hito == 1 && hito_actual == 0)
         content = []
-        content << image_tag("hito_#{hito}_rojo.png", :id => "hito-#{hito}", :title => "Hito #{hito} - #{milestone.started_at.to_s(:date) if milestone.started_at}" , 'data-content' => "#{milestone.name} <br> #{milestone.description}")
+        content << image_tag("hito_#{hito}_rojo.png", :id => "hito-#{hito}", :title => "Hito #{hito} - #{milestone.started_at.to_s(:date) if milestone.started_at}" , 'data-content' => popup_text)
         container = []
         div1 = []
         div1 << content_tag('span', 'Tiempo transcurrido', :class => 'etiqueta')
@@ -86,7 +92,7 @@ module PromesasHelper
         content << content_tag(:div, raw(container.join), :class => 'hito_status')
         concat raw(content.join(''))
       else
-        concat(image_tag("hito_#{hito}_gris.png", :id => "hito-#{hito}", :title => "Hito #{hito} - #{milestone.started_at.to_s(:date) if milestone.started_at}" , 'data-content' => "#{milestone.name} <br> #{milestone.description}"))
+        concat(image_tag("hito_#{hito}_gris.png", :id => "hito-#{hito}", :title => "Hito #{hito} - #{milestone.started_at.to_s(:date) if milestone.started_at}" , 'data-content' => popup_text))
       end
     end
   end
@@ -99,7 +105,7 @@ module PromesasHelper
     topics = promesa.topics.collect {|topic| link_to topic.name, promesas_filters_path(:topic, topic.name)}.join(', ')
     logger.info(topics)
     if topics != ''
-      raw ('<i>Categorias:</i> ') + topics
+    raw ('<i>Categorias:</i> ') + topics
     else
       ''
     end
