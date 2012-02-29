@@ -94,12 +94,12 @@ module PromesasHelper
   def comentarios_count(promesa)
     concat(content_tag(:span, promesa.comment_threads.count.to_s + " Comentarios", :class => 'comentarios_counter'))
   end
-  
+
   def promesas_temas(promesa)
     topics = promesa.topics.collect {|topic| link_to topic.name, promesas_filters_path(:topic, topic.name)}.join(', ')
     logger.info(topics)
     if topics != ''
-      concat raw ('<i>Categorias:</i> ') + topics
+      raw ('<i>Categorias:</i> ' + topics)
     else
       ''
     end
