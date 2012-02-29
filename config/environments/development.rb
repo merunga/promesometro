@@ -14,6 +14,11 @@ Promesometro::Application.configure do
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
+  config.action_mailer.default_url_options = {
+      :host => "dev.promesometro.pe:3000",
+      :from => 'merunga@gmail.com'
+  }
+
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true
 

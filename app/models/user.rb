@@ -7,10 +7,8 @@ class User < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = User.where(:email => data.email).first
-      user
-    else # Create a user with a stub password. 
-      User.create!(
+    if not (user = User.where(:email => data.email).first)
+      user = User.create!(
           :email => data.email,
           :login => data.email,
           :login_type => 'facebook',
@@ -18,7 +16,9 @@ class User < ActiveRecord::Base
           :password => Devise.friendly_token[0,20],
           :image => access_token.info.image
       )
+      CommentMailer.welcome(user).deliver
     end
+    user
   end
   
   def self.new_with_session(params, session)
@@ -31,36 +31,46 @@ class User < ActiveRecord::Base
   
   def self.find_for_open_id(access_token, signed_in_resource=nil)
     data = access_token.info
-    if user = User.where(:email => data.email).first
-      user
-    else
-      User.create!(
+    if not (user = User.where(:email => data.email).first)
+      user=User.create!(
           :email => data.email,
           :login => data.email,
           :login_type => 'google',
           :password => Devise.friendly_token[0,20]
       )
+      CommentMailer.welcome(user).deliver
     end
+    user
   end
   
   def self.find_for_twitter(access_token, signed_in_resource=nil)
     data = access_token.info
     nickname = "@#{data.nickname}"
-    if user = User.where(:login => nickname).first
-      user
-    else
-      User.create!(
+    if not (user = User.where(:login => nickname).first)
+      user = User.create!(
         :login => nickname,
         :login_type => 'twitter',
         :password => Devise.friendly_token[0,20]
       )
+      #CommentMailer.welcome(user).deliver
     end
+    user
   end
 
   def screen_name
     if self.name
       self.name
     elsif self.login.starts_with?('@')
+      self.login
+    else
+      'un usuario'
+    end
+  end
+
+  def contact_name
+    if self.name
+      self.name
+    elsif self.login
       self.login
     else
       self.email

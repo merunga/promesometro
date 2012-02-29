@@ -1,4 +1,6 @@
 class CommentMailer < ActionMailer::Base
+
+  @mail_address = 'merunga@gmail.com'
   
   def new_comment(comment)
     if comment.user
@@ -8,11 +10,31 @@ class CommentMailer < ActionMailer::Base
     end
     @comment = comment
     @display_name = display_name
+    @account_type = comment.user.login_type
+    @login = comment.user.login
     emails = emails_for_comment(comment)
+    emails.delete(comment.user.email)
+    p = comment.commentable
+    @promise =  p.title
+    @official = p.official.name
+    @promise_link = promesa_url p.slug
+    subject = "[promesometro.pe] Novedades sobre la Promesa de #{@promise} de #{@official}"
 
     mail(:from => 'merunga@gmail.com', :bcc => emails_for_comment(comment),
-         :subject => I18n.t('muck.comments.new_comment_email_subject',
-         :name => display_name, :application_name => 'promesometro')) do |format|
+         :subject => subject) do |format|
+      format.html
+      format.text
+    end
+  end
+
+  def welcome(user)
+    subject = '[promesometro.pe] Bienvenido ciudadano a construir con el Promesometro'
+    @display_name = user.contact_name
+    @account_type = user.login_type
+    @login = user.login
+
+    mail(:from => 'merunga@gmail.com', :to => user.email,
+         :subject => subject) do |format|
       format.html
       format.text
     end
@@ -25,10 +47,11 @@ class CommentMailer < ActionMailer::Base
       display_name = I18n.t('muck.comment.anonymous')
     end
     @display_name = display_name
+    #subject = "[promesometro.pe] Novedades sobre la Promesa de #{} de %NombrePromesa%!"
 
-    mail(:from => 'merunga@gmail.com', :bcc => emails,
-         :subject => I18n.t('muck.comments.new_comment_email_subject',
-                            :name => display_name, :application_name => 'promesometro')) do |format|
+    mail(:from => @mail_address, :bcc => emails,
+        :subject => I18n.t('muck.comments.new_comment_email_subject',
+        :name => display_name, :application_name => 'promesometro')) do |format|
       format.html
       format.text
     end
