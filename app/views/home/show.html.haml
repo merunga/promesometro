@@ -1,4 +1,8 @@
 #banner
+  - if flash[:notice]
+    %div(class="alert alert-success" style="position:relative;margin-top:-42px")
+      = flash[:notice]
+
   = image_tag 'mide.png'
   = image_tag 'accelerometer.png'
 

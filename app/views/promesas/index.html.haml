@@ -1,6 +1,8 @@
+= render "base/flash"
+
 - content_for :title, ":: Promesas"
 #promesas
-    
+
   - if (params[:controller] == 'promesas' && params[:action] == 'index') or (params[:controller] == 'promise_filter')
     #filter-container
       = render 'shared/advanced_search'
