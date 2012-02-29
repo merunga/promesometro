@@ -21,7 +21,7 @@
 .status
   .representante
     = image_tag promesa.official_avatar_url, :class => 'foto_representante'
-    %span.nombre_representante= link_to promesa.official_name, promesas_filters_path(:official, promesa.official_name)
+    %span.nombre_representante= link_to promesa.official_name, promesas_filters_path(:official, promesa.official.id)
     %span.partido_representante= promesa.official_political_party_name
   .promesa_status
     = render 'promesas/dias_progreso', :promesa => promesa, :show_label => true
