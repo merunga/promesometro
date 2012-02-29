@@ -4,7 +4,7 @@
   = content_tag :strong, comment.author if comment.citizen?
   %p
     = comment.comment
-    
+
   .buttons
     = link_to image_tag('delete.gif'), admin_comment_milestone_destroy_path(params[:id], comment), :method => :delete, :confirmation => '¿Seguro que desea eliminar el comentario?'
 %hr
