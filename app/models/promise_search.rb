@@ -11,6 +11,7 @@ class PromiseSearch
   def find_promises conditions, current_page
     @promise_search = Promise
     if conditions
+
       find_by_state_id conditions[:state] if conditions[:state]
       find_by_province_id conditions[:province] if conditions[:province]
       find_by_official_id conditions[:official] if conditions[:official]
@@ -19,6 +20,17 @@ class PromiseSearch
       find_by_political_party_id conditions[:political_party] if conditions[:political_party]
     end
     @promise_search.page current_page
+  end
+
+  def set_id_value(conditions, field)
+    if conditions[:query] then
+      if search == param_name.to_s then
+        # TODO: funciona solo para officials TOTALLY HACK
+        Official.where("name = '#{params[:query]}'").first.id
+      end
+    else
+      conditions[:state]
+    end
   end
 
   def find_by_title title

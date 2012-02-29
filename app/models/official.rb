@@ -1,5 +1,5 @@
 class Official < ActiveRecord::Base
-  
+  attr_accessible :id
   #
   # Associations
   #
