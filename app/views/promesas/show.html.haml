@@ -28,7 +28,7 @@
     
     .representante
       = image_tag @promise.official_avatar_url, :class => 'foto_representante'
-      %span.nombre_representante= link_to @promise.official_name, promesas_filters_path(:official, @promise.official_name)
+      %span.nombre_representante= link_to @promise.official_name, promesas_filters_path(:official, @promise.official.id)
       %span.partido_representante= @promise.official_political_party_name
       
       .promesa_status
