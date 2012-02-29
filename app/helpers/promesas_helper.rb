@@ -99,7 +99,7 @@ module PromesasHelper
     topics = promesa.topics.collect {|topic| link_to topic.name, promesas_filters_path(:topic, topic.name)}.join(', ')
     logger.info(topics)
     if topics != ''
-      concat raw '<i>Categorias:</i> ' + topics
+      concat raw ('<i>Categorias:</i> ') + topics
     else
       ''
     end
