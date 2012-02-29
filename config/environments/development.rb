@@ -16,8 +16,8 @@ Promesometro::Application.configure do
 
   config.action_mailer.default_url_options = {
       :host => "dev.promesometro.pe:3000",
-      :from => 'merunga@gmail.com'
   }
+  ActionMailer::Base.default :from => 'merunga@gmail.com'
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = true

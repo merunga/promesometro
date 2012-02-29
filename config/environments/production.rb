@@ -19,7 +19,7 @@ Promesometro::Application.configure do
   # just comment this out and Rails will serve the files
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -31,9 +31,9 @@ Promesometro::Application.configure do
   # In production, Apache or nginx will already do this
   config.serve_static_assets = true
   config.action_mailer.default_url_options = {
-      :host => "www.promesometro.pe",
-      :from => 'noreply@promesometro.pe'
+      :host => "www.promesometro.pe"
   }
+  ActionMailer::Base.default :from => 'noreply@promesometro.pe'
   
   ActionMailer::Base.smtp_settings = {
     :address        => 'mail.promesometro.pe/',

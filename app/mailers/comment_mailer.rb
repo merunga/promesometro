@@ -1,7 +1,7 @@
 class CommentMailer < ActionMailer::Base
 
   @mail_address = 'merunga@gmail.com'
-  
+
   def new_comment(comment)
     if comment.user
       display_name = comment.user.screen_name
