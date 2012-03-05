@@ -29,7 +29,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'custom_error_message'
 
 gem 'rake', '0.9.2.2'
-gem 'rack', '1.2.1'
+gem 'rack', '1.2.5'
 
 group :development do
   #gem 'ruby-debug19'
