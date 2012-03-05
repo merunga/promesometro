@@ -54,10 +54,18 @@
       %footer
         %nav
           %ul
-            %li.no-border= link_to 'Promesas', promesas_path
-            %li= link_to 'Directorio', directorio_path
-            %li= link_to 'Contacto', new_contacto_path
+            %li.no-border= link_to 'Autoridades', directorio_path
+            %li= link_to 'Promesas', promesas_path
             %li= link_to 'Acerca De', acerca_de_index_path
-            %li.no-border.logo= link_to(image_tag('citivox.png'), 'http://citivox.com/', :target => '_blank')
-            %li.no-border.logo= link_to(image_tag('proetica.png'), 'http://www.proetica.org.pe/', :target => '_blank')
-            -#%li.no-border &copy; Todos los derechos reservados
+            %li= link_to 'Contacto', new_contacto_path
+          %div.logo(style='float:right')
+            %span(style='width:350px;float:right;text-align:right')
+              &copy;
+              %i Proetica
+              es una marca registrada
+              <br /><span style="vertical-align:top">El contenido de la p&aacute;gina es</span>         |
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"> |
+                <img alt="Creative Commons License" style="border-width:0"            |
+                  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />         |
+              </a>
+          %div.no-border.logo(style='float:right')= link_to(image_tag('proetica.png'), 'http://www.proetica.org.pe/', :target => '_blank')
