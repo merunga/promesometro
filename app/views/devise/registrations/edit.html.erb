@@ -1,15 +1,15 @@
 <h2>Preferencias</h2>
 
-<%= form_for(resource, :as => resource_name, :url => users_update_profile_url, :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => ciudadanos_update_profile_url, :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <p><label for="user_email">Email</label><br />
+  <p><label for="ciudadano_email">Email</label><br />
   <%= f.email_field :email, :readonly => true %></p>
 
-  <p><label for="user_name">Nombre</label><br />
+  <p><label for="ciudadano_name">Nombre</label><br />
   <%= f.text_field :name%></p>
 
-  <label for="user_send_notification">Recibir notificaciones</label>
+  <label for="ciudadano_send_notification">Recibir notificaciones</label>
   <%= f.check_box :send_notifications %></p>
 
   <p><%= f.submit "Actualizar", :style =>'height: 25px' %><br /></p>

@@ -1,2 +1,2 @@
-module Admin::CommentApprovalHelper
+module Admin::ComentarioApprovalHelper
 end

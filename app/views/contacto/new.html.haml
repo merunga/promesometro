@@ -1,8 +1,26 @@
+= render 'base/flash'
+- if params[:error]
+  %div(class="alert alert-error")
+    = params[:error]
+- if params[:notice]
+  %div(class="alert alert-success")
+    = params[:notice]
+
 %h1 Contacto
 
 = render "admin/shared/error_messages", :target => @contact_form
 
 = form_for @contact_form, :url => '/contacto', :method => :post do |form|
+  .nombre
+    .input
+      = form.radio_button(:tipo, 'contacto', :checked => true, :style => 'width:auto')
+      pregunta / comentario
+      %br
+      = form.radio_button(:tipo, 'denuncia', :style => 'width:auto')
+      denuncia
+      %br
+      %br
+
   .nombre
     = form.label :nombre
     .input

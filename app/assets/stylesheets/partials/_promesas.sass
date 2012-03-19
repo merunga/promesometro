@@ -1,0 +1,177 @@
+#promesas, #show-promesa
+  .promesa_titulo
+    +column(16)
+    
+  span.title a
+    color: #cc6666
+    font-family: 'Open Sans Condensed', sans-serif
+    font-size: 14px
+    
+  p.topic, p.topic a
+    color: #959595
+
+  span.region
+    color: #333333
+    margin-right: 25px
+    
+  span.etiqueta
+    color: #464646
+
+  p.promesa_top
+    text-align: right
+    margin-bottom: 5px
+  
+  #filter-container
+    +column(24)
+    background-color: #ffffff
+    margin: 0 0 20px 0
+    padding: 10px
+    
+    
+    h2
+      color: #CC6666
+      margin-bottom: 0
+      
+    span
+      color: #dddddd
+    
+    section
+      +column(6)
+      border-right: 1px dashed #999999
+      margin: 0 10px
+      padding: 0 10px
+      
+      &.container
+        +column-base(true)
+        border-top: 1px dashed #999999
+        border-bottom: 1px dashed #999999
+        border-right: 0
+        margin: 10px 0
+        padding: 10px 0
+        width: 930px
+      
+      &.button
+        +column(2,true)
+        border: 0
+        margin-top: 43px
+
+    .input
+      +column(6, true)
+      padding: 5px 0
+
+  
+  .compartir
+    float: right
+    margin-top: -5px
+    .share-tw, .share-fb
+      float: right
+      margin-right: 5px
+    
+  .representante
+    border-bottom: 1px dashed #999999
+    float: left
+    margin-bottom: 10px
+    padding-bottom: 10px
+
+    img.foto_representante
+      +border-radius(3px)
+      height: 37px
+      margin-right: 10px
+      width: 41px
+
+    span.nombre_representante, span.nombre_representante a
+      color: #cc6666
+      display: inline-block
+      font-size: 14px
+      margin-right: 10px
+      width: 110px
+
+    span.partido_representante
+      display: inline-block
+      width: 120px
+      
+  .promesa_status
+    .dias_progreso
+      +column_base
+      width: 40px
+      .numero
+        +column(1, true)
+        color: #cc6666
+        font-family: 'Oswald', sans-serif
+        font-size: 54px
+      .dias
+        color: #cc6666
+        display: inline-block
+        font-family: 'Oswald', sans-serif
+        margin-left: 10px
+        margin-top: 10px
+        
+  span.estado
+    color: #cc6666
+    font-family: 'Oswald', sans-serif
+    font-size: 14px
+  
+#promesas
+
+  .promesa_titulo
+    +column(16)
+    
+    h1
+      font-size: 30px
+    
+  .filtro-temas
+    +column(4)
+    text-transform: capitalize
+    
+  .promesa_estado_titulo
+    +column(8, true)
+  
+  .promesa_status
+    +column(6, true)
+    margin-top: -10px
+    +prepend(1)
+    .progreso
+      color: #898989
+    .hito
+      +column(2)
+      margin: 0 0 0 25px
+      img
+        margin: 11px 0
+    .estado_contenedor
+      +column(3, true)
+      margin-top: 10px
+
+  p.descripcion
+    +column(12, true)
+    +prepend(1)
+    +append(1)
+    border-bottom: 1px dashed #999999
+    height: 55px
+    text-align: center
+    margin-top: 10px
+    margin-bottom: 10px
+    padding-bottom: 10px
+    
+  span.ver_mas a
+    color: #cc6666
+    float: left
+    
+  .promesa
+    +column(14)
+    background: url('/assets/promesa-bg.png')
+    height: 164px
+    margin: 0 0 10px 0
+    padding: 15px 0 0 20px
+    
+  .arrow
+    background: url('/assets/arrow.png')
+    display: inline
+    float: left
+    height: 179px
+    width: 50px
+    
+  .status
+    +column(8, true)
+    background: url('/assets/promesa-bg.png')
+    height: 164px
+    padding: 15px 0 0 20px

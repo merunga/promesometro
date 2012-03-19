@@ -1,21 +1,21 @@
-#user_login_box
-  - if user_signed_in?
-    = image_tag "#{current_user.login_type}.png",
-      :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_user.login_type}"
+#ciudadano_login_box
+  - if ciudadano_signed_in?
+    = image_tag "#{current_ciudadano.login_type}.png",
+      :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"
     |
-    = current_user.contact_name
+    = current_ciudadano.contact_name
     |
-    = link_to 'mi perfil', edit_user_registration_path
+    = link_to 'mi perfil', edit_ciudadano_registration_path
     |
-    = link_to 'salir', destroy_user_session_path, :method => :delete
+    = link_to 'salir', destroy_ciudadano_session_path, :method => :delete
   - else
     %span(style='vertical-align: top')
       con&eacute;ctate con
-      = link_to image_tag('google.png'), user_omniauth_authorize_path(:google)
+      = link_to image_tag('google.png'), ciudadano_omniauth_authorize_path(:google)
       &oacute;
-      = link_to image_tag('facebook.png'), user_omniauth_authorize_path(:facebook)
+      = link_to image_tag('facebook.png'), ciudadano_omniauth_authorize_path(:facebook)
       -# &oacute;
-      -# = link_to image_tag('twitter.png'), user_omniauth_authorize_path(:twitter)
+      -# = link_to image_tag('twitter.png'), ciudadano_omniauth_authorize_path(:twitter)
 
 - if admin_signed_in?
   #admin_login_box(style="float:left")

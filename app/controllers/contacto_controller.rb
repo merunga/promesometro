@@ -6,8 +6,11 @@ class ContactoController < ApplicationController
   def create
     @contact_form = ContactForm.new params[:contact_form]
     if @contact_form.valid?
-      Contacto.send_email(@contact_form.email, @contact_form.nombre, @contact_form.comentario).deliver
-      redirect_to :action => :new, :notice => 'Email enviado, pronto recibiras respuesta.'
+      tipo = @contact_form.tipo
+      ContactoMailer.send_email(@contact_form).deliver
+      notice = 'Email enviado, pronto recibiras respuesta.' if tipo == 'contacto'
+      notice = 'Denuncia recibida, te avisaremos sobre su avance.' if tipo == 'denuncia'
+      redirect_to :action => :new, :notice => notice
     else
       render :new
     end

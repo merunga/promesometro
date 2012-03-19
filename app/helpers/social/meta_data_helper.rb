@@ -19,11 +19,11 @@ module Social::MetaDataHelper
          }
 
        when 'c' then
-         c = Comment.find(id)
+         c = Comentario.find(id)
          p = c.commentable
          render :partial => 'social/meta_data_tags', :locals => {
              :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
-             :title => "#{c.user.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
+             :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
              :desc => p.description
          }
      end
@@ -65,7 +65,7 @@ module Social::MetaDataHelper
     p = c.commentable
     render 'social/node_widgets',
       :link => promesa_url(p.slug)+"/?mdm=c&mdi=#{c.id}",
-      :title => "#{c.user.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
+      :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
       :desc => p.description
   end
 end
