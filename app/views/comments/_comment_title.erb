@@ -1,9 +1,9 @@
 <div id="<%= comment_title.dom_id %>" class="comment_holder">
-  <%= icon comment_title.user, :small, :class => 'left avatar_on_comment' %> 
+  <%= icon comment_title.ciudadano, :small, :class => 'left avatar_on_comment' %> 
 	<div class="date_details">
-	  <%= _("%{comment_age} ago %{user_name_link} wrote :") % {:comment_age => time_ago_in_words(comment_title.created_at), 
-																														 :user_name_link => (link_to h(comment_title.user.full_name),
-																														 										profile_path(comment_title.user))} %> 
+	  <%= _("%{comment_age} ago %{ciudadano_name_link} wrote :") % {:comment_age => time_ago_in_words(comment_title.created_at), 
+																														 :ciudadano_name_link => (link_to h(comment_title.ciudadano.full_name),
+																														 										profile_path(comment_title.ciudadano))} %> 
 	</div>
 	<div class="comment_message">
       <%= comment_title.body %>

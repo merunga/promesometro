@@ -1,15 +1,15 @@
-class CommentMailer < ActionMailer::Base
+class ComentarioMailer < ActionMailer::Base
 
   def new_comment(comment)
-    if comment.user
-      display_name = comment.user.screen_name
+    if comment.ciudadano
+      display_name = comment.ciudadano.screen_name
     else
       display_name = I18n.t('muck.comment.anonymous')
     end
     @comment = comment
     @display_name = display_name
-    @account_type = comment.user.login_type
-    @login = comment.user.login
+    @account_type = comment.ciudadano.login_type
+    @login = comment.ciudadano.login
     emails = comment.emails_to_notify
     p = comment.commentable
     @promise =  p.title
@@ -23,22 +23,22 @@ class CommentMailer < ActionMailer::Base
     end
   end
 
-  def welcome(user)
+  def welcome(ciudadano)
     subject = '[promesometro.pe] Bienvenido ciudadano a construir con el Promesometro'
-    @display_name = user.contact_name
-    @account_type = user.login_type
-    @login = user.login
+    @display_name = ciudadano.contact_name
+    @account_type = ciudadano.login_type
+    @login = ciudadano.login
 
-    mail(:to => user.email,
+    mail(:to => ciudadano.email,
          :subject => subject) do |format|
       format.html
       format.text
     end
   end
 
-  def new_from_emails(emails, curr_user)
-    if curr_user and curr_user.screen_name
-      display_name = curr_user.screen_name
+  def new_from_emails(emails, curr_ciudadano)
+    if curr_ciudadano and curr_ciudadano.screen_name
+      display_name = curr_ciudadano.screen_name
     else
       display_name = I18n.t('muck.comment.anonymous')
     end

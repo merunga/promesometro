@@ -1,4 +1,4 @@
-- if user_signed_in?
+- if ciudadano_signed_in?
   %span.estado Agrega tu comentario
   %div{:id=>"promise_#{promise.id}_comments"}
     %form
@@ -6,7 +6,7 @@
       .ta_comment
         .input
           = form.text_area :body, :class => 'xlarge', :rows => 7
-        = hidden_field_tag "comment[user_id]", current_user.id
+        = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
       .actions
         = form.submit 'Publicar', :class => 'button'
 - else

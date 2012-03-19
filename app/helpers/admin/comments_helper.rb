@@ -1,4 +1,4 @@
-module Admin::CommentsHelper
+module Admin::ComentariosHelper
   
   def comment_kind_base(kind)
     case kind

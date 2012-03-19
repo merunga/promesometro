@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Promesometro::Application.config.secret_token = '1032895c43d21ea7e73580c6ec61df07558b8fd2325bd35cb6368795952759f9ce2374243e989f40114a979034a937d92d693d76494c48413777c395667d93ff'
+Promesometro2::Application.config.secret_token = '3a4a0601432097601ef71f3543d8352a0b94cdf8a872b2d4c3790cf90c9d72876de642069e61ec690213b855ed3bc0c0f212e04f8209660550f0570d58d70806'

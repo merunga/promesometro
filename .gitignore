@@ -1,13 +1,9 @@
 .bundle
 db/*.sqlite3
-log/*.log
+log/
 tmp/
-.sass-cache/*
-.DS_Store
 config/social_login.yml
 config/database.yml
 *~
-.idea/workspace.xml
-routes.txt
-vendor
+vendor/
 .project

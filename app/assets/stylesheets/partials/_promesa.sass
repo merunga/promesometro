@@ -1,0 +1,137 @@
+#show-promesa
+  .promesa_estado_titulo
+    +column(7, true)
+    +prepend(1)
+  
+  .sidebar-box
+    +column(24)
+  
+  .promesa
+    +column(15)
+    background: url('/assets/promesa_detail-bg.png') no-repeat
+    margin-right: 40px
+    min-height: 750px
+    padding: 20px
+
+  .promesas_candidato
+    +column-base(true)
+    background: url('/assets/promesas_candidato-bg.png') no-repeat
+    padding: 10px
+    min-height: 750px
+    width: 250px
+    p.topic
+      border-bottom: 1px dashed #666666
+    p.descripcion
+      +column(6)
+
+  span.ver_mas 
+    float: right
+    margin-left: 15px
+    a
+      color: #cc6666
+  
+  .nombre, .titulo
+    +column-base(true)
+    width: 290px
+    input
+      width: 280px
+  .nombre
+    margin-right: 10px
+  
+  .ta_comment, .actions
+    +column(15,true)
+    margin: 10px 0
+    
+  .comment
+    +column(15, true)
+    background: url('/assets/comment_arrow.png') no-repeat 37px bottom
+    border-bottom: 1px dashed #666666
+    margin: 10px 0
+    padding-bottom: 18px
+    .comment_content
+      +border-radius(5px)
+      background: url('/assets/comment_bg.png') repeat
+      padding: 15px
+      span.author
+        color: #cc6666
+        font-size: 14px
+        float: left
+      p.title
+        border-bottom: 1px dashed #666666
+        color: #333333
+      p.the_comment
+        margin: 20px 0
+        text-align: center
+
+  .government
+    background: url('/assets/comment_gov_arrow.png') no-repeat 37px bottom !important
+    .comment_content
+      background: url('/assets/comment_gov_bg.png') repeat !important
+    span.author
+      color: #b69ad0 !important
+
+  .representante
+    +column(15, true)
+    
+    .promesa_status
+      float: right
+      margin-top: -25px
+  
+  p.descripcion
+    +column(15)
+    margin: 10px 0
+    text-align: center
+  
+  ul#hito
+    background-color: #f3f3f3
+    border: 1px dashed #666666
+    display: inline-block
+    float: left
+    height: 90px
+    list-style-type: none
+    width: 100%
+
+    li.no-border
+      border: 0
+      padding: 0
+
+    div.hito_status
+      float: left
+      margin: 0 0 0 10px
+      width: 175px
+      
+      span.estado
+        font-size: 14px
+      
+      div.tiempo_hito
+        width: 115px
+        float: left
+        
+      
+      div.estado_hito
+        width: 55px
+        float: left
+        margin-left: 5px
+        
+    img
+      float: left
+    
+    li
+      float: left
+      border-left: 1px dashed #666666
+      margin: 15px 0 0 15px
+      max-width: 250px
+      padding-left: 15px
+      
+  .share
+    border: 1px dashed #666
+    border-left: 0
+    border-right: 0
+    display: inline-block
+    margin: 20px 0
+    padding: 5px 0
+    width: 100%
+    
+    .comentarios_counter
+      color: #cc6666
+      

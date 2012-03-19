@@ -1,41 +1,66 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'bitly'
-gem 'carrierwave'
-gem 'compass'
-gem 'crummy'
+gem 'rails', '3.2.2'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+#gem 'sqlite3'
+
+gem 'json'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  # gem 'therubyracer'
+
+  gem 'uglifier', '>= 1.0.3'
+  
+  gem 'compass-rails'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+# gem 'bcrypt-ruby', '~> 3.0.0'
+
+# To use Jbuilder templates for JSON
+# gem 'jbuilder'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Deploy with Capistrano
+# gem 'capistrano'
+
+# To use debugger
+gem 'ruby-debug'
+
+gem 'mysql2'
+gem 'cancan'
 gem 'devise'
-gem 'fog'
-gem 'haml'
-gem 'hpricot'
-gem 'jquery-rails', '~> 1.0.12'
-gem 'kaminari'
-gem 'koala'
-gem 'mini_magick'
-gem 'mysql2','0.2.7'
-gem 'rails', '~> 3.0.3'
-gem 'meta_where'
-gem 'meta_search'
-gem 'state_machine'
+gem 'carrierwave'
 
 gem 'omniauth', '>= 0.2.6'
 gem 'omniauth-facebook'
 gem 'omniauth-openid'
 gem 'omniauth-twitter'
 
+gem 'crummy'
+gem 'kaminari'
+gem 'haml-rails'
+gem 'meta_search'
+
 gem 'acts_as_follower'
 gem 'paper_trail', '~> 2'
-gem 'acts_as_commentable_with_threading'
+gem 'acts_as_commentable_with_threading', :git => 'https://github.com/elight/acts_as_commentable_with_threading'
 gem 'custom_error_message'
+gem 'foreigner'
+gem 'acts-as-taggable-on', '~> 2.2.2'
 
-gem 'rake', '0.9.2.2'
-gem 'rack', '1.2.5'
-
-group :development do
-  #gem 'ruby-debug19'
-  gem 'heroku'
-  gem 'taps'
-  gem 'thin'
-end
-
-
+gem 'fastercsv' # Only required on Ruby 1.8 and below
+gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
