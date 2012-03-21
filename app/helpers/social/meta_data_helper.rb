@@ -19,7 +19,7 @@ module Social::MetaDataHelper
          }
 
        when 'c' then
-         c = Comentario.find(id)
+         c = Comment.find(id)
          p = c.commentable
          render :partial => 'social/meta_data_tags', :locals => {
              :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",

@@ -21,6 +21,6 @@
   #admin_login_box(style="float:left")
     = current_admin.email
     |
-    = link_to raw('p&aacute;gina de admin'), admin_root_path
+    =# link_to raw('p&aacute;gina de admin'), rails_admin, :method => :show
     |
     = link_to 'salir', destroy_admin_session_path, :method => :delete

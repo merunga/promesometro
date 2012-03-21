@@ -1,4 +1,4 @@
-class ComentarioMailer < ActionMailer::Base
+class CommentMailer < ActionMailer::Base
 
   def new_comment(comment)
     if comment.ciudadano

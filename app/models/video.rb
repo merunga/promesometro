@@ -1,0 +1,2 @@
+class Video < Recurso
+end

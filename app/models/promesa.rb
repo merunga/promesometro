@@ -5,8 +5,9 @@ class Promesa < ActiveRecord::Base
     :on => [:create, :update]
   )
   
-  belongs_to :ciudadano, :as => :creador
-  belongs_to :ciudadano, :as => :funcionario, :through => :info_funcionario
+  belongs_to :ciudadano
+  has_one :info_funcionario  
+  #has_one :ciudadano, :as => :funcionario, :through => :info_funcionario
   
   has_many :pruebas
 end

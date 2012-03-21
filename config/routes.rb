@@ -1,35 +1,13 @@
-Promesometro2::Application.routes.draw do
-  devise_for :admins, :controllers => { :sessions => "admin/sessions" }
+Promesometro::Application.routes.draw do
+  devise_for :admines, :controllers => { :sessions => "admin/sessions" }
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   devise_for :ciudadanos, :controllers => {
       :omniauth_callbacks => "ciudadanos/omniauth_callbacks"
   }
 
   devise_scope :ciudadano do
     match "ciudadanos/profile/", :to => "ciudadanos/profile#update", :as => "ciudadanos_update_profile"
-  end
-
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  namespace :admin do
-    match 'officials/provinces/:state_id', :to => "officials#provinces", :as => 'official_provinces'
-    resources :officials do
-      resources :promises do
-        resources :milestones
-      end
-    end
-    resources :admins
-    match "promises/milestones/:milestone_id/comment", :to => "comments#create", :as => "comment_milestone"
-    match "promises/milestones/:milestone_id/comment/:id", :to => "comments#destroy", :as => "comment_milestone_destroy", :via =>:delete
-    match "promises/milestones/:milestone_id/milestone_state", :to => "milestone_state#create", :as => "milestone_state", :via => :post
-    match "promises/milestones/:milestone_id/milestone_state", :to => "milestone_state#update", :as => "milestone_state", :via => :put
-    resources :comments do
-      resource :comment_approval, :controller => :comment_approval, :only => [:create, :destroy]
-    end
-    resources :political_parties
-    resources :topics, :except => [:show]
-    match 'topics/sort', :to => "topics#sort", :as => 'sort_topics'
-    root :to => "dashboard#index"
   end
 
   root :to => "home#show", :as => :root
