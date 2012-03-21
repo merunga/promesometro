@@ -50,4 +50,5 @@ class DeviseCreateAdmines < ActiveRecord::Migration
 
   def self.down
     drop_table :admines
+  end
 end
