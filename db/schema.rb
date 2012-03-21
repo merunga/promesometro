@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20120320065739) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "admines", ["authentication_token"], :name => "index_admines_on_authentication_token", :unique => true
-  add_index "admines", ["email"], :name => "index_admines_on_email", :unique => true
-  add_index "admines", ["reset_password_token"], :name => "index_admines_on_reset_password_token", :unique => true
+  add_index "admines", ["authentication_token"], :name => "index_admins_on_authentication_token", :unique => true
+  add_index "admines", ["email"], :name => "index_admins_on_email", :unique => true
+  add_index "admines", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "ciudadanos", :force => true do |t|
     t.string   "name"
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20120320065739) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "regions", :force => true do |t|
+  create_table "regiones", :force => true do |t|
     t.string   "nombre",                                    :null => false
     t.decimal  "long",       :precision => 10, :scale => 0
     t.decimal  "lat",        :precision => 10, :scale => 0
