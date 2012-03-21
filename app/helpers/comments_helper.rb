@@ -1,11 +1,11 @@
-module ComentariosHelper
+module CommentsHelper
   
   #def latest_simple_comments(limit = 5, truncate_comment = true, length = 30, omission = '...')
-  #  render :partial => 'comments/simple_comment', :collection => Comentario.by_newest.limit(limit), :locals => { :truncate_comment => truncate_comment, :length => length, :omission => omission }
+  #  render :partial => 'comments/simple_comment', :collection => Comment.by_newest.limit(limit), :locals => { :truncate_comment => truncate_comment, :length => length, :omission => omission }
   #end
   #
   def latest_comments(limit = 5, truncate_comment = true, length = 30, omission = '...')
-    render :partial => 'comments/comment', :collection => Comentario.by_newest.limit(limit), :locals => { :truncate_comment => truncate_comment, :length => length, :omission => omission }
+    render :partial => 'comments/comment', :collection => Comment.by_newest.limit(limit), :locals => { :truncate_comment => truncate_comment, :length => length, :omission => omission }
   end
 
   #def show_comments(comments, truncate_comment = false, length = 30, omission = '...')
@@ -69,8 +69,8 @@ module ComentariosHelper
   ## Extra instructions from the disqus site:
   ## Append #disqus_thread to the end of permalinks. The comment count code will replace the text of these links with the comment count.
   ## For example, you may have a link with this HTML:
-  ## <a href="http://example.com/my_article.html#disqus_thread">Comentarios</a>
-  ## The comment count code will replace the text "Comentarios" with the number of comments on the page http://example.com/my_article.html
+  ## <a href="http://example.com/my_article.html#disqus_thread">Comments</a>
+  ## The comment count code will replace the text "Comments" with the number of comments on the page http://example.com/my_article.html
   ##
   ## disqus_short_name: The short name you selected when setting up your site.
   #def disqus(disqus_short_name)

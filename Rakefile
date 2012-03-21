@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Promesometro2::Application.load_tasks
+Promesometro::Application.load_tasks

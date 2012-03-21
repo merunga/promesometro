@@ -8,8 +8,8 @@ class Ciudadano < ActiveRecord::Base
   attr_accessible :login, :login_type, :email, :name,
     :password, :password_confirmation, :send_notifications
     
-  has_many :promesas, :as => :promesas_creadas, :inverse_of => :creator
-  has_many :promesas, :as => :promesas_legitimizadas, :through => :info_funcionario
+  has_many :promesas, :inverse_of => :creator, :as => :promesas_creadas
+  #has_many :promesas, :through => :info_funcionario, :as => :promesas_legitimizadas
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -22,7 +22,7 @@ class Ciudadano < ActiveRecord::Base
           :password => Devise.friendly_token[0,20],
           :image => access_token.info.image
       )
-      ComentarioMailer.welcome(ciudadano).deliver
+      CommentMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
@@ -44,7 +44,7 @@ class Ciudadano < ActiveRecord::Base
           :login_type => 'google',
           :password => Devise.friendly_token[0,20]
       )
-      ComentarioMailer.welcome(ciudadano).deliver
+      CommentMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
@@ -58,7 +58,7 @@ class Ciudadano < ActiveRecord::Base
         :login_type => 'twitter',
         :password => Devise.friendly_token[0,20]
       )
-      #ComentarioMailer.welcome(ciudadano).deliver
+      #CommentMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end

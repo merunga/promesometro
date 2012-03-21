@@ -1,8 +1,8 @@
-class Comentario < ActiveRecord::Base
+class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   
   validates_presence_of :ciudadano
-  validates_presence_of :body, :message => '^Comentario vacio'
+  validates_presence_of :body, :message => '^Comment vacio'
 
   scope :by_newest, :order => "comments.created_at DESC"
   scope :by_oldest, :order => "comments.created_at ASC"
@@ -13,7 +13,7 @@ class Comentario < ActiveRecord::Base
   # want ciudadano to vote on the quality of comments.
   #acts_as_voteable
   
-  # NOTE: Comentarios belong to a ciudadano
+  # NOTE: Comments belong to a ciudadano
   belongs_to :ciudadano
   
   # Helper class method that allows you to build a comment
@@ -33,7 +33,7 @@ class Comentario < ActiveRecord::Base
     emails = self.emails_to_notify
 
     if !emails.empty? then
-      ComentarioMailer.new_comment(self).deliver
+      CommentMailer.new_comment(self).deliver
     end
   end
   
@@ -55,7 +55,7 @@ class Comentario < ActiveRecord::Base
   }
 
   scope :find_comments_for_parent, lambda { |c|
-    Comentario.find_comments_for_commentable(c.commentable_str,c.commentable_id)
+    Comment.find_comments_for_commentable(c.commentable_str,c.commentable_id)
   }
 
   # Helper class method to look up a commentable object
@@ -72,7 +72,7 @@ class Comentario < ActiveRecord::Base
   def emails_to_notify
     comment = self
     emails = []
-    #Comentario.find_comments_for_parent(comment) do |c|
+    #Comment.find_comments_for_parent(comment) do |c|
     parent = comment.commentable_type.classify.constantize.find(comment.commentable_id)
     parent.comment_threads.each do |c|
       emails << c.ciudadano.email unless emails.include?(c.ciudadano.email) if c.ciudadano and c.ciudadano.send_notifications

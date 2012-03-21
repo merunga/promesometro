@@ -1,0 +1,2 @@
+class Mapa < Recurso
+end

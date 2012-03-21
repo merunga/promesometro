@@ -10,9 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317003449) do
+ActiveRecord::Schema.define(:version => 20120320065739) do
 
-  create_table "admins", :force => true do |t|
+  create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -29,17 +29,19 @@ ActiveRecord::Schema.define(:version => 20120317003449) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "admins", ["authentication_token"], :name => "index_admins_on_authentication_token", :unique => true
-  add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
-  add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+  add_index "admines", ["authentication_token"], :name => "index_admines_on_authentication_token", :unique => true
+  add_index "admines", ["email"], :name => "index_admines_on_email", :unique => true
+  add_index "admines", ["reset_password_token"], :name => "index_admines_on_reset_password_token", :unique => true
 
   create_table "ciudadanos", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "name"
     t.string   "login"
     t.string   "login_type",                                            :null => false
-    t.string   "name"
-    t.string   "image"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.integer  "info_funcionario_id"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -130,6 +132,19 @@ ActiveRecord::Schema.define(:version => 20120317003449) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      :limit => 2
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "recursos", :force => true do |t|
     t.integer  "prueba_id"

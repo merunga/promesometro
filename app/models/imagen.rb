@@ -1,0 +1,2 @@
+class Imagen < Archivo
+end

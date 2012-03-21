@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: 24599526c946be33986be626878f4a9b6160f83e
+  revision: 76c6c10076733e5581eed7d7ab2a40ab621f2188
   specs:
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.5)
@@ -82,7 +82,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-rails (1.0.0)
+    compass-rails (1.0.1)
       compass (~> 0.12.0)
     crummy (1.5.0)
     custom_error_message (1.1.1)
@@ -205,7 +205,7 @@ GEM
       linecache (>= 0.3)
     ruby-openid (2.1.8)
     sass (3.1.15)
-    sass-rails (3.2.4)
+    sass-rails (3.2.5)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)

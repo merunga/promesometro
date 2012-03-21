@@ -1,9 +1,9 @@
-class ComentarioController < ApplicationController
+class CommentController < ApplicationController
   before_filter :authenticate_user!
   
   def create
     @promise = Promise.find(params[:milestone_id])
-    @comment = Comentario.build_from(@promise, params[:comment][:ciudadano_id], params[:comment][:body])
+    @comment = Comment.build_from(@promise, params[:comment][:ciudadano_id], params[:comment][:body])
     @comment.save!
     flash[:notice]= 'El comentario ha sido creado con exito'
   rescue ActiveRecord::RecordInvalid => ex

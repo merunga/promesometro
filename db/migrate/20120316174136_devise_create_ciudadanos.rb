@@ -8,7 +8,7 @@ class DeviseCreateCiudadanos < ActiveRecord::Migration
       
       t.string :facebook
       t.string :twitter
-      t.references :info_ciudadano
+      t.references :info_funcionario
       
       ## Database authenticatable
       t.string :email,              :null => false

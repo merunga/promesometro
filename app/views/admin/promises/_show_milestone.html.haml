@@ -1,9 +1,0 @@
-%div{:id => show_milestone.id}
-  %h4= show_milestone.name
-  %p= show_milestone.description
-  %p
-    Estado: 
-    %b
-      = milestone_states(show_milestone)
-      - started_at_in_words(show_milestone)
-    = milestone_state_button(show_milestone)

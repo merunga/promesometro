@@ -4797,7 +4797,7 @@ Sizzle.getText = function( elems ) {
 
 	// Create a fake element
 	var div = document.createElement("div");
-	div.appendChild( document.createComentario("") );
+	div.appendChild( document.createComment("") );
 
 	// Make sure no comments are found
 	if ( div.getElementsByTagName("*").length > 0 ) {
