@@ -20,7 +20,10 @@ class Ability
     }
     can :editar, Promesa { |la_promesa|
       ciudadano.es_funcionario_de? la_promesa ||
-      (!la_promesa.esta_legitimizada? && ciudadano.es_duenio_de?(la_promesa))
+      (!la_promesa.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
+    }
+    can :editar, Prueba { |la_prueba|
+      ciudadano.es_uploader_de? la_prueba
     }
    
   end

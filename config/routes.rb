@@ -1,6 +1,6 @@
 Promesometro::Application.routes.draw do
-  devise_for :admines, :controllers => { :sessions => "admin/sessions" }
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/siteadmin', :as => 'rails_admin'
+  devise_for :admines
   
   devise_for :ciudadanos, :controllers => {
       :omniauth_callbacks => "ciudadanos/omniauth_callbacks"
