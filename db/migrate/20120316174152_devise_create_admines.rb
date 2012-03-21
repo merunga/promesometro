@@ -1,4 +1,4 @@
-class DeviseCreateAdmins < ActiveRecord::Migration
+class DeviseCreateAdmines < ActiveRecord::Migration
   def self.up
     create_table(:admines) do |t|
       ## Database authenticatable
@@ -41,14 +41,13 @@ class DeviseCreateAdmins < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :admins, :email,                :unique => true
-    add_index :admins, :reset_password_token, :unique => true
+    add_index :admines, :email,                :unique => true
+    add_index :admines, :reset_password_token, :unique => true
     # add_index :admins, :confirmation_token,   :unique => true
     # add_index :admins, :unlock_token,         :unique => true
-    add_index :admins, :authentication_token, :unique => true
+    add_index :admines, :authentication_token, :unique => true
   end
 
   def self.down
-    drop_table :admins
-  end
+    drop_table :admines
 end
