@@ -1,5 +1,35 @@
-#promesa-denuncia
-  =form_for @promesa, :url => crear_promesas_path do |f|
-    =f.label :lo_prometido
-    =f.text_area :lo_prometido
+#denuncia
+  .promesa
+    %h1 Nueva Promesa
+    =form_for @promesa, :url => crear_promesas_path do |f|
+      - if @promesa.errors.any?
+        #errores
+          =flash
+      
+      .info_funcionario
+        = f.fields_for :info_funcionario do |iff|
+          .nombre
+            =iff.label :nombre
+            =iff.text_field :nombre
+          .cargo
+            =iff.label :cargo
+            =iff.text_field :cargo
+          .entidad
+            =iff.label :entidad
+            =iff.text_field :entidad
+      
+      .lo_prometido
+        =f.label :lo_prometido
+        %br
+        =f.text_area :lo_prometido
+      
+      .tags
+        =f.label :tag_list, 'Tags'
+        =f.text_field :tag_list
+      
+      .fecha_declaracion
+        =f.label :fecha_declaracion, 'Cúando?'
+        =f.text_field :fecha_declaracion, :class => 'datepicker'
+        
+      =f.submit
      

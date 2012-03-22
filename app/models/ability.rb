@@ -3,7 +3,7 @@ class Ability
 
   def initialize(ciudadano)
     can :manage, :all if ciudadano.es_admin?
-    can [:ver,:denunciar,:buscar], Promesa
+    can [:ver,:buscar], Promesa
     can :agregar_prueba, Promesa
     can :comentar, :all
     can :seguir, Promesa

@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20120320065739) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "admines", ["authentication_token"], :name => "index_admins_on_authentication_token", :unique => true
-  add_index "admines", ["email"], :name => "index_admins_on_email", :unique => true
-  add_index "admines", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+  add_index "admines", ["authentication_token"], :name => "index_admines_on_authentication_token", :unique => true
+  add_index "admines", ["email"], :name => "index_admines_on_email", :unique => true
+  add_index "admines", ["reset_password_token"], :name => "index_admines_on_reset_password_token", :unique => true
 
   create_table "ciudadanos", :force => true do |t|
     t.string   "name"
@@ -107,13 +107,15 @@ ActiveRecord::Schema.define(:version => 20120320065739) do
   end
 
   create_table "info_funcionarios", :force => true do |t|
-    t.string   "nombre",     :null => false
+    t.string   "nombre",         :null => false
     t.string   "cargo"
     t.string   "entidad"
     t.string   "dni"
     t.string   "telefono"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "promesa_id"
+    t.integer  "funcionario_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "promesas", :force => true do |t|
@@ -128,9 +130,10 @@ ActiveRecord::Schema.define(:version => 20120320065739) do
   end
 
   create_table "pruebas", :force => true do |t|
-    t.text     "descripcion", :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.text     "descripcion",  :null => false
+    t.integer  "ciudadano_id", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

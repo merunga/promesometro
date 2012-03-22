@@ -6,7 +6,9 @@ class Promesa < ActiveRecord::Base
   )
   
   belongs_to :uploader, :class_name => :ciudadano, :inverse_of => :promesas
-  has_one :info_funcionario  
+  has_one :info_funcionario
+  accepts_nested_attributes_for :info_funcionario
+  validates_presence_of :lo_prometido, :fecha_declaracion
   #has_one :funcionario, :class_name => :ciudadano, :through => :info_funcionario
   
   has_many :pruebas

@@ -5,7 +5,7 @@ class CreatePromesas < ActiveRecord::Migration
       t.references :info_funcionario, :null => false
       t.date :fecha_declaracion, :null => false
       t.references :region
-      t.references :ciudadano, :as => :creador, :null => false
+      t.references :ciudadano, :as => :uploader, :null => false
       t.date :fecha_compromiso
       
       t.timestamps
