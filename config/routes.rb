@@ -12,37 +12,29 @@ Promesometro::Application.routes.draw do
 
   root :to => "home#show", :as => :root
 
-  resources :promesas, :only => [:index] do
-    resource :comments, :only => :create
+  #resources :promesas, :only => [:index] do
+  #  resource :comments, :only => :create
+  #end
+  resources :promesas, :except => [:index, :new, :edit, :delete]  do
+    collection do
+      get :ver_todas, :denunciar, :buscar
+    end
+    member do
+      get :ver
+      post :editar, :crear
+    end
   end
 
   resources :acerca_de, :only => [:index]
-  resources :temas, :only => [:index]
-
-  resource :promise_filter, :controller => :promise_filter, :only => [:create], :via => :get
   #match '/promesas_buscar/*query', :to => 'promise_filter#create', :via => :get, :as => :promise_filter
+
+  match "contacto/new", :to => "contacto#new", :as => "new_contacto"
+  match "contacto", :to => "contacto#create", :as => "contacto", :via => :post
 
   namespace :social do
     #resource :meta_data
     match "/metadata/declaration/:id", :to => "meta_data#declaration", :as => :declaration_metadata
   end
-
-
-  match "/estados/:estado/provincias", :to => "provincias#index"
-
-  match "/representantes/:lugar", :to => "representantes#show"
-
-  match "/promesas/:search/:query", :to => "promesas#index", :as => "promesas_filters"
-
-  match "promesas/hito/:milestone_id/comentario", :to => "comments#create", :as => "hito_comentario"
-  match "promesas/:slug", :to => "promesas#show", :as => "promesa"
-
-  match "directorio", :to => "regiones#index", :as => "directorio"
-  match "contacto/new", :to => "contacto#new", :as => "new_contacto"
-  match "contacto", :to => "contacto#create", :as => "contacto", :via => :post
-  match "regiones/:region_name", :to => "regiones#show", :as => "region"
-
-  match '/token' => 'home#token', :as => :token
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

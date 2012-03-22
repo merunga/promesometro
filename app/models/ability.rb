@@ -3,7 +3,7 @@ class Ability
 
   def initialize(ciudadano)
     can :manage, :all if ciudadano.es_admin?
-    can :denunciar, Promesa
+    can [:ver,:denunciar,:buscar], Promesa
     can :agregar_prueba, Promesa
     can :comentar, :all
     can :seguir, Promesa
@@ -20,11 +20,10 @@ class Ability
     }
     can :editar, Promesa { |la_promesa|
       ciudadano.es_funcionario_de? la_promesa ||
-      (!la_promesa.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
+      (la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
     }
     can :editar, Prueba { |la_prueba|
       ciudadano.es_uploader_de? la_prueba
     }
-   
   end
 end
