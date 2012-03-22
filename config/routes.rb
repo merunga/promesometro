@@ -15,13 +15,13 @@ Promesometro::Application.routes.draw do
   #resources :promesas, :only => [:index] do
   #  resource :comments, :only => :create
   #end
-  resources :promesas, :except => [:index, :new, :edit, :delete]  do
+  resources :promesas, :except => [:index, :new, :edit, :destroy, :show, :update, :create]  do
     collection do
-      get :ver_todas, :denunciar, :buscar
+      get :ver_todas, :buscar, :denunciar
+      post :crear
     end
     member do
-      get :ver
-      post :editar, :crear
+      get :ver, :editar, :actualizar
     end
   end
 
