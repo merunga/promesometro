@@ -1,20 +1,20 @@
 class PromesasController < ApplicationController
+  def denunciar
+    @promesa = Promesa.new
+  end
+  
   def ver
     
   end
   
-  def denunciar
-    @promesa = Promesa.new
+  def crear
+    
   end
   
   def editar
   end
   
   def ver_todas
-  end
-  
-  def crear
-    
   end
   
   def buscar

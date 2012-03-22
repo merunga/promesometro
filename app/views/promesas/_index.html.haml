@@ -1,0 +1,24 @@
+= render "base/flash"
+
+- content_for :title, ":: Promesas"
+#promesas
+
+  - if (params[:controller] == 'promesas' && params[:action] == 'index') or (params[:controller] == 'promise_filter')
+    #filter-container
+      = render 'shared/advanced_search'
+
+  .promesa_titulo
+    %h1 Promesas
+
+  .promesa_estado_titulo
+    %h1 Estado de la Promesa
+
+  - titulo_filtro_promesas({})
+      
+
+  = render :partial => 'promesas/promesa', :collection => @promises
+  - if @promises.empty?
+    %h3
+      No existen coincidencias para su busqueda
+
+  = paginate @promises

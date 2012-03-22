@@ -1,0 +1,52 @@
+                  rails_admin        /siteadmin                                  RailsAdmin::Engine
+            new_admin_session GET    /admines/sign_in(.:format)                  devise/sessions#new
+                admin_session POST   /admines/sign_in(.:format)                  devise/sessions#create
+        destroy_admin_session DELETE /admines/sign_out(.:format)                 devise/sessions#destroy
+               admin_password POST   /admines/password(.:format)                 devise/passwords#create
+           new_admin_password GET    /admines/password/new(.:format)             devise/passwords#new
+          edit_admin_password GET    /admines/password/edit(.:format)            devise/passwords#edit
+                              PUT    /admines/password(.:format)                 devise/passwords#update
+        new_ciudadano_session GET    /ciudadanos/sign_in(.:format)               devise/sessions#new
+            ciudadano_session POST   /ciudadanos/sign_in(.:format)               devise/sessions#create
+    destroy_ciudadano_session DELETE /ciudadanos/sign_out(.:format)              devise/sessions#destroy
+  ciudadano_omniauth_callback        /ciudadanos/auth/:action/callback(.:format) ciudadanos/omniauth_callbacks#(?-mix:twitter|facebook|google)
+           ciudadano_password POST   /ciudadanos/password(.:format)              devise/passwords#create
+       new_ciudadano_password GET    /ciudadanos/password/new(.:format)          devise/passwords#new
+      edit_ciudadano_password GET    /ciudadanos/password/edit(.:format)         devise/passwords#edit
+                              PUT    /ciudadanos/password(.:format)              devise/passwords#update
+cancel_ciudadano_registration GET    /ciudadanos/cancel(.:format)                devise/registrations#cancel
+       ciudadano_registration POST   /ciudadanos(.:format)                       devise/registrations#create
+   new_ciudadano_registration GET    /ciudadanos/sign_up(.:format)               devise/registrations#new
+  edit_ciudadano_registration GET    /ciudadanos/edit(.:format)                  devise/registrations#edit
+                              PUT    /ciudadanos(.:format)                       devise/registrations#update
+                              DELETE /ciudadanos(.:format)                       devise/registrations#destroy
+             ciudadano_unlock POST   /ciudadanos/unlock(.:format)                devise/unlocks#create
+         new_ciudadano_unlock GET    /ciudadanos/unlock/new(.:format)            devise/unlocks#new
+                              GET    /ciudadanos/unlock(.:format)                devise/unlocks#show
+    ciudadanos_update_profile        /ciudadanos/profile(.:format)               ciudadanos/profile#update
+                         root        /                                           home#show
+           ver_todas_promesas GET    /promesas/ver_todas(.:format)               promesas#ver_todas
+              buscar_promesas GET    /promesas/buscar(.:format)                  promesas#buscar
+           denunciar_promesas GET    /promesas/denunciar(.:format)               promesas#denunciar
+               crear_promesas POST   /promesas/crear(.:format)                   promesas#crear
+                  ver_promesa GET    /promesas/:id/ver(.:format)                 promesas#ver
+               editar_promesa GET    /promesas/:id/editar(.:format)              promesas#editar
+           actualizar_promesa GET    /promesas/:id/actualizar(.:format)          promesas#actualizar
+              acerca_de_index GET    /acerca_de(.:format)                        acerca_de#index
+                 new_contacto        /contacto/new(.:format)                     contacto#new
+                     contacto POST   /contacto(.:format)                         contacto#create
+  social_declaration_metadata        /social/metadata/declaration/:id(.:format)  social/meta_data#declaration
+
+Routes for RailsAdmin::Engine:
+    dashboard GET         /                                      rails_admin/main#dashboard
+        index GET|POST    /:model_name(.:format)                 rails_admin/main#index
+          new GET|POST    /:model_name/new(.:format)             rails_admin/main#new
+       export GET|POST    /:model_name/export(.:format)          rails_admin/main#export
+  bulk_delete POST|DELETE /:model_name/bulk_delete(.:format)     rails_admin/main#bulk_delete
+history_index GET         /:model_name/history(.:format)         rails_admin/main#history_index
+  bulk_action POST        /:model_name/bulk_action(.:format)     rails_admin/main#bulk_action
+         show GET         /:model_name/:id(.:format)             rails_admin/main#show
+         edit GET|PUT     /:model_name/:id/edit(.:format)        rails_admin/main#edit
+       delete GET|DELETE  /:model_name/:id/delete(.:format)      rails_admin/main#delete
+ history_show GET         /:model_name/:id/history(.:format)     rails_admin/main#history_show
+  show_in_app GET         /:model_name/:id/show_in_app(.:format) rails_admin/main#show_in_app
