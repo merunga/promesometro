@@ -1,23 +1,23 @@
 %h2 Busqueda Avanzada
-%form(action=promise_filter_path method='post')
+%form(action=buscar_promesas_path method='post')
   %section.container
     %section
       .input
-        = select_tag 'search[state]', options_from_collection_for_select(State.used, 'id','name', input_value(params,:state)), :include_blank => '- Región -'
-      .input
-        = select_tag 'search[province]', options_from_collection_for_select(Province.used, 'id','name', input_value(params,:province)), :include_blank => '- Provincia -'
+        -#= select_tag 'search[state]', options_from_collection_for_select(State.used, 'id','name', input_value(params,:state)), :include_blank => '- Región -'
+        -#.input
+        -#= select_tag 'search[province]', options_from_collection_for_select(Province.used, 'id','name', input_value(params,:province)), :include_blank => '- Provincia -'
 
     %section
       .input
-        = select_tag 'search[topic]', options_from_collection_for_select(Topic.used, 'id','name', input_value(params,:topic)), :include_blank => '- Temas -'
+        -#= select_tag 'search[topic]', options_from_collection_for_select(Topic.used, 'id','name', input_value(params,:topic)), :include_blank => '- Temas -'
       .input
-        = select_tag 'search[official]', options_from_collection_for_select(Official.with_promises, 'id','name', input_value(params,:official)), :include_blank => '- Autoridad -'
+        -#= select_tag 'search[official]', options_from_collection_for_select(Official.with_promises, 'id','name', input_value(params,:official)), :include_blank => '- Autoridad -'
 
     %section
       .input
-        = text_field_tag 'search[keyword]', input_value(params,:keyword), :placeholder => 'Texto'
+        -#= text_field_tag 'search[keyword]', input_value(params,:keyword), :placeholder => 'Texto'
       .input
-        = select_tag 'search[political_party]', options_from_collection_for_select(PoliticalParty.with_promises, 'id','name', input_value(params,:political_party)), :include_blank => '- Partido Político -'
+        -#= select_tag 'search[political_party]', options_from_collection_for_select(PoliticalParty.with_promises, 'id','name', input_value(params,:political_party)), :include_blank => '- Partido Político -'
 
     %section.button
       = submit_tag 'Buscar', :class => :button
