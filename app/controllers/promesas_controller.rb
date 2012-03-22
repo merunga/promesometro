@@ -1,6 +1,7 @@
 class PromesasController < ApplicationController
   def denunciar
     @promesa = Promesa.new
+    @promesa.info_funcionario = InfoFuncionario.new
   end
   
   def ver
@@ -8,7 +9,12 @@ class PromesasController < ApplicationController
   end
   
   def crear
-    
+    @promesa = Promesa.new(params[:promesa])
+    if @promesa.save
+      redirect_to @promesa
+    else
+      render :action => 'denunciar'
+    end
   end
   
   def editar

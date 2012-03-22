@@ -6,7 +6,8 @@ class CreateInfoFuncionarios < ActiveRecord::Migration
       t.string :entidad
       t.string :dni
       t.string :telefono
-      t.references :ciudadano
+      t.references :promesa
+      t.references :funcionario
       
       t.timestamps
     end

@@ -44,4 +44,13 @@ es:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+  
+  errors:
+    template:
+      header:
+        one: '1 error'
+        other: '%{count} errors'
+      body: 'Existen errores para los siguientes campos:'
+    messages:
+      blank: 'no puede estar vacío'
 
