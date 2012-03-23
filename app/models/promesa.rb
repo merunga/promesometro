@@ -5,11 +5,11 @@ class Promesa < ActiveRecord::Base
     :on => [:create, :update]
   )
   
-  belongs_to :uploader, :class_name => :ciudadano, :inverse_of => :promesas
+  belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas
   has_one :info_funcionario
   accepts_nested_attributes_for :info_funcionario
   validates_presence_of :lo_prometido, :fecha_declaracion
-  #has_one :funcionario, :class_name => :ciudadano, :through => :info_funcionario
+  #has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list, :lo_prometido, :slug
   
@@ -21,6 +21,6 @@ class Promesa < ActiveRecord::Base
   
   before_save :set_slug
   def set_slug
-    self.slug = (self.info_funcionario.nombre+' '+self.lo_prometido).parameterize
+    self.slug = (self.info_funcionario.nombre+' prometio '+self.lo_prometido).parameterize
   end
 end

@@ -9,7 +9,7 @@ class Ciudadano < ActiveRecord::Base
     :password, :password_confirmation, :send_notifications
   
   has_one :info_funcionario, :foreign_key => :funcionario_id
-  has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'promesa'
+  has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
   #has_many :promesas, :through => :info_funcionario, :as => :promesas_legitimizadas
   
   def es_uploader_de? una_cosa
