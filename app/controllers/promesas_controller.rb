@@ -1,7 +1,10 @@
-class PromesasController < ApplicationController 
+class PromesasController < ApplicationController
+  load_and_authorize_resource
+  
   def denunciar
     @promesa = Promesa.new
     @promesa.info_funcionario = InfoFuncionario.new
+    @promesa.pruebas.build.recursos.build.type='Link'
   end
   
   def ver
