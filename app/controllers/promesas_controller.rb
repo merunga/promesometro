@@ -5,7 +5,7 @@ class PromesasController < ApplicationController
   end
   
   def ver
-    
+    @promesa = Promesa.find(params[:id])
   end
   
   def crear

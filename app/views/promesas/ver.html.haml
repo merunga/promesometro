@@ -1,0 +1,17 @@
+#denuncia
+  .promesa
+    %h1
+      =@promesa.info_funcionario
+      
+    %fieldset.lo_prometido
+      %legend prometi&oacute;:
+      .lo_prometido
+        =@promesa.lo_prometido
+      .tags
+        -@promesa.tags.each do |t|
+          =link_to t, :url => '#'
+      .fecha_declaracion
+        =@promesa.fecha_declaracion
+        
+    %fieldset.pruebas          
+    

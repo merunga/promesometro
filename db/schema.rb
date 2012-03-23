@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20120322225000) do
   create_table "pruebas", :force => true do |t|
     t.text     "descripcion",  :null => false
     t.integer  "ciudadano_id", :null => false
+    t.integer  "promesa_id",   :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
