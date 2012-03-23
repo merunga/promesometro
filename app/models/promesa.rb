@@ -11,6 +11,8 @@ class Promesa < ActiveRecord::Base
   validates_presence_of :lo_prometido, :fecha_declaracion
   #has_one :funcionario, :class_name => :ciudadano, :through => :info_funcionario
   
+  attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list, :lo_prometido, :slug
+  
   has_many :pruebas
   
   def esta_legitimizada?
@@ -19,6 +21,6 @@ class Promesa < ActiveRecord::Base
   
   before_save :set_slug
   def set_slug
-    self.slug = self.title.parameterize
+    self.slug = (self.info_funcionario.nombre+' '+self.lo_prometido).parameterize
   end
 end

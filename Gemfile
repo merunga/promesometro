@@ -62,7 +62,7 @@ gem 'custom_error_message'
 gem 'foreigner'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'dynamic_form'
-gem 'formtastic'
+gem 'jquery_datepicker'
 
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

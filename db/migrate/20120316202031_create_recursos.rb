@@ -10,4 +10,8 @@ class CreateRecursos < ActiveRecord::Migration
       t.timestamps
     end
   end
+  
+  def self.down
+    drop_table :recursos
+  end
 end
