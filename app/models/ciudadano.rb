@@ -7,12 +7,17 @@ class Ciudadano < ActiveRecord::Base
 
   attr_accessible :login, :login_type, :email, :name,
     :password, :password_confirmation, :send_notifications
-    
+  
+  has_one :info_funcionario, :foreign_key => :funcionario_id
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'promesa'
   #has_many :promesas, :through => :info_funcionario, :as => :promesas_legitimizadas
   
   def es_uploader_de? una_cosa
     una_cosa && una_cosa.uploader == self
+  end
+  
+  def es_funcionario?
+    self.info_funcionario.no.nil?
   end
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

@@ -62,4 +62,8 @@ class DeviseCreateCiudadanos < ActiveRecord::Migration
     add_index :ciudadanos, :unlock_token,         :unique => true
     add_index :ciudadanos, :authentication_token, :unique => true
   end
+  
+  def self.down
+    drop_table :ciudadanos
+  end
 end

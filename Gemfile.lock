@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: 76c6c10076733e5581eed7d7ab2a40ab621f2188
+  revision: 7a4fdd931f959aa651683799bc5184e9fbf9f5bc
   specs:
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.5)
@@ -102,8 +102,6 @@ GEM
     fastercsv (1.5.4)
     foreigner (1.1.5)
       activerecord (>= 3.0.0)
-    formtastic (2.1.1)
-      actionpack (~> 3.0)
     fssm (0.2.8.1)
     haml (3.1.4)
     haml-rails (0.3.4)
@@ -122,6 +120,7 @@ GEM
     jquery-ui-rails (0.2.2)
       jquery-rails
       railties (>= 3.1.0)
+    jquery_datepicker (0.3.4)
     json (1.6.5)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
@@ -138,7 +137,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
-    mime-types (1.17.2)
+    mime-types (1.18)
     multi_json (1.1.0)
     multipart-post (1.1.5)
     mysql2 (0.3.11)
@@ -245,9 +244,9 @@ DEPENDENCIES
   dynamic_form
   fastercsv
   foreigner
-  formtastic
   haml-rails
   jquery-rails
+  jquery_datepicker
   json
   kaminari
   meta_search

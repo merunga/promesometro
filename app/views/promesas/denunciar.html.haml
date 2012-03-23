@@ -2,11 +2,10 @@
   .promesa
     %h1 Nueva Promesa
     =form_for @promesa, :url => crear_promesas_path do |f|
-      - if @promesa.errors.any?
-        #errores
-          =flash
+      = f.error_messages
       
-      .info_funcionario
+      %fieldset.info_funcionario
+        %legend El que promete
         = f.fields_for :info_funcionario do |iff|
           .nombre
             =iff.label :nombre
@@ -18,18 +17,20 @@
             =iff.label :entidad
             =iff.text_field :entidad
       
-      .lo_prometido
-        =f.label :lo_prometido
-        %br
-        =f.text_area :lo_prometido
+      %fieldset.lo_prometido
+        %legend Lo prometido
+        .lo_prometido
+          =f.text_area :lo_prometido
       
-      .tags
-        =f.label :tag_list, 'Tags'
-        =f.text_field :tag_list
+        .tags
+          =f.label :tag_list, 'Tags'
+          =f.text_field :tag_list
       
-      .fecha_declaracion
-        =f.label :fecha_declaracion, 'Cúando?'
-        =f.text_field :fecha_declaracion, :class => 'datepicker'
+        .fecha_declaracion
+          =f.label :fecha_declaracion, 'Cúando?'
+          =f.datepicker :fecha_declaracion
+          
+      %fieldset.pruebas          
         
       =f.submit
      

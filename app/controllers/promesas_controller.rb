@@ -1,4 +1,6 @@
 class PromesasController < ApplicationController
+  authorize_resource
+  
   def denunciar
     @promesa = Promesa.new
     @promesa.info_funcionario = InfoFuncionario.new
@@ -10,11 +12,14 @@ class PromesasController < ApplicationController
   
   def crear
     @promesa = Promesa.new(params[:promesa])
-    if @promesa.save
+    @info_funcionario = @promesa.info_funcionario
+    if @promesa.valid?
+      @info_funcionario.save
+      @promesa.uploader = current_user
+      @promesa.save
       redirect_to @promesa
-    else
-      render :action => 'denunciar'
     end
+    render :action => 'denunciar'
   end
   
   def editar
