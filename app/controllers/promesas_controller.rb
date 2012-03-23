@@ -1,6 +1,4 @@
-class PromesasController < ApplicationController
-  authorize_resource
-  
+class PromesasController < ApplicationController 
   def denunciar
     @promesa = Promesa.new
     @promesa.info_funcionario = InfoFuncionario.new
@@ -15,11 +13,13 @@ class PromesasController < ApplicationController
     @info_funcionario = @promesa.info_funcionario
     if @promesa.valid?
       @info_funcionario.save
-      @promesa.uploader = current_user
+      logger.debug current_ciudadano
+      @promesa.uploader = current_ciudadano
       @promesa.save
-      redirect_to @promesa
+      redirect_to ver_promesa_url(@promesa)
+    else
+      render :action => 'denunciar'
     end
-    render :action => 'denunciar'
   end
   
   def editar

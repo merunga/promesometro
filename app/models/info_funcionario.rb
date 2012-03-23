@@ -4,6 +4,6 @@ class InfoFuncionario < ActiveRecord::Base
     :on => [:create, :update]
   )
   belongs_to :promesa
-  belongs_to :funcionario, :class_name => :ciudadano
+  belongs_to :funcionario, :class_name => 'Ciudadano'
   validates_presence_of :nombre
 end

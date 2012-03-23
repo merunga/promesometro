@@ -1,5 +1,5 @@
 class Prueba < ActiveRecord::Base
-  belongs_to :upload, :class_name => :ciudadano
+  belongs_to :upload, :class_name => 'Ciudadano'
   
   has_many :links
   has_many :imagenes
