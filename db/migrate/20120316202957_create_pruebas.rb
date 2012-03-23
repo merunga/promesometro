@@ -3,6 +3,7 @@ class CreatePruebas < ActiveRecord::Migration
     create_table :pruebas do |t|
       t.text :descripcion, :null => false
       t.references :ciudadano, :as => :uploader, :null => false
+      t.references :promesa, :null => false
       
       t.timestamps
     end

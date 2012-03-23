@@ -7,13 +7,15 @@ class Promesa < ActiveRecord::Base
   
   belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas
   has_one :info_funcionario
-  accepts_nested_attributes_for :info_funcionario
-  validates_presence_of :lo_prometido, :fecha_declaracion
-  #has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
-  
-  attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list, :lo_prometido, :slug
-  
   has_many :pruebas
+  belongs_to :region
+  has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
+  
+  accepts_nested_attributes_for :info_funcionario, :pruebas
+  validates_presence_of :lo_prometido, :fecha_declaracion
+  
+  attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
+    :lo_prometido, :slug, :region
   
   def esta_legitimizada?
     info_funcionario.no.nil?
