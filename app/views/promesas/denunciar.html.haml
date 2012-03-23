@@ -1,3 +1,6 @@
+=content_for :scripts do
+  =javascript_include_tag :promesa
+  
 .promesa
   #denuncia
     %h1 Nueva Promesa
@@ -33,15 +36,45 @@
         .region
           =f.label :region
           =f.collection_select :region, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}
-          
+            
       %fieldset.pruebas
         %legend Pruebas
         = f.fields_for :pruebas do |pf|
           #template
-            =f.label :descripcion
-            =f.text_field :descripcion
-            
+            .prueba
+              =pf.label :descripcion
+              =pf.text_field :descripcion
+              
+              =pf.fields_for :recursos do |rf|
+                .field.type
+                  =rf.radio_button(:type,'Link')
+                  Link
                   
-        
+                  =rf.radio_button(:type,'Foto')
+                  Foto / Imagen
+                  
+                  =rf.radio_button(:type,'Archivo')
+                  Archivo
+                  
+                  =rf.radio_button(:type,'Video')
+                  Video (youtube o vimeo)
+                  
+                  =rf.radio_button(:type,'Mapa')
+                  Mapa (google maps)
+                .field.link
+                  =rf.label :link
+                  =rf.text_field :link
+                .field.archivo.hidden
+                  =rf.label :file
+                  =rf.file_field :file
+                .field.foto.hidden
+                  =rf.label :file
+                  =rf.file_field :file
+                .field.video.hidden
+                  =rf.label :embed
+                  =rf.text_area :embed
+                .field.mapa.hidden
+                  =rf.label :embed
+                  =rf.text_area :embed
+
       =f.submit
-     

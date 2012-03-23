@@ -10,11 +10,14 @@
     %link{:href => "/stylesheets/ie.css", :media => "screen, projection", :rel => "stylesheet", :type => "text/css"}
     <![endif]-->
     = stylesheet_link_tag 'bootstrap.min'
+    =yield(:stylesheets)
 
     = stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.18.custom'
     = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
     = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'
     = javascript_include_tag :application
+    =yield(:scripts)
+    
     = csrf_meta_tag
     
     %script{:type => "text/javascript"}

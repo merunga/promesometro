@@ -1,3 +1,4 @@
 class Archivo < Recurso
-   mount_uploader :file, ArchivoPruebaUploader
+  validates_presence_of :file
+  mount_uploader :file, ArchivoPruebaUploader
 end
