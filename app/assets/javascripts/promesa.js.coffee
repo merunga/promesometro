@@ -1,6 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+window.promesa ||= {}
 
 $(document).ready ->
   $('.promesa .field.type > input[type=radio]').change ->
@@ -15,3 +16,12 @@ $(document).ready ->
     field_to_show = parent.find('.field.'+klass)
     field_to_show.find('input, textarea').removeAttr('disabled')
     field_to_show.show()
+    
+  #add_prueba()
+    
+promesa.add_prueba = ->
+  $pruebas = $('#pruebas')
+  $pruebas.append $ Mustache.render $('#prueba_upload_template').html(), {count : $pruebas.find('.prueba').size()}
+
+promesa.remove_prueba = ($promesa) ->
+  $promesa.remove()
