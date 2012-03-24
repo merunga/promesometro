@@ -1,0 +1,66 @@
+<script type="text/x-mustache" id="prueba_upload_template">
+	<div class="prueba">
+		<label for="promesa_pruebas_attributes_{{count}}_descripcion">Descripcion</label>
+		<input type="text" value="" size="30"
+			name="promesa[pruebas_attributes][{{count}}][descripcion]"
+			id="promesa_pruebas_attributes_{{count}}_descripcion">
+		<div class="field type">
+			<input type="radio" value="Link"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_link"
+				checked="checked">
+			Link
+			<input type="radio" value="Foto"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_foto">
+				Foto / Imagen
+			<input type="radio" value="Archivo"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_archivo">
+				Archivo
+			<input type="radio" value="Video"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_video">
+				Video (youtube o vimeo)
+			<input type="radio" value="Mapa"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_mapa">
+				Mapa (google maps)
+		</div>
+		<div class="field link">
+			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_link">Link</label>
+			<input type="text" size="30"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][link]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_link">
+		</div>
+		<div class="field archivo hidden">
+			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file">File</label>
+			<input type="file"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][file]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file"
+				disabled="disabled">
+		</div>
+		<div class="field foto hidden">
+			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file">File</label>
+			<input type="file"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][file]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file"
+				disabled="disabled">
+		</div>
+		<div class="field video hidden">
+			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed">Embed</label>
+			<textarea rows="20" cols="40"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][embed]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed"
+				disabled="disabled"></textarea>
+		</div>
+		<div class="field mapa hidden">
+			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed">Embed</label>
+			<textarea rows="20" cols="40"
+				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][embed]"
+				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed"
+				disabled="disabled"></textarea>
+		</div>
+		<button type="button" onclick="promesa.remove_prueba($(this).parent())" confirm="Estás segur@?">eliminar prueba</button>
+	</div>
+</script>
