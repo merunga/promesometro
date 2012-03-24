@@ -1,5 +1,5 @@
 class Prueba < ActiveRecord::Base
-  belongs_to :upload, :class_name => 'Ciudadano'
+  belongs_to :uploader, :class_name => 'Ciudadano'
   belongs_to :promesa
   
   validates_presence_of :descripcion

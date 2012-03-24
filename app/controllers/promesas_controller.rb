@@ -18,6 +18,7 @@ class PromesasController < ApplicationController
       @info_funcionario.save
       logger.debug current_ciudadano
       @promesa.uploader = current_ciudadano
+      @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
       @promesa.save
       redirect_to ver_promesa_url(@promesa)
     else
