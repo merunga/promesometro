@@ -7,7 +7,7 @@ $(document).ready ->
   $('.promesa .field.type > input[type=radio]').change ->
     $this = $(this)
     klass = $this.val().toLowerCase()
-    parent = $this.parents('.prueba')
+    parent = $this.parents('#prueba')
     
     fields_to_hide = parent.find('.field:not(.type):not(.'+klass+')')
     fields_to_hide.hide()

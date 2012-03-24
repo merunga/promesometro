@@ -1,5 +1,5 @@
 class PromesasController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   
   def denunciar
     @promesa = Promesa.new
