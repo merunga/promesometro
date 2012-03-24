@@ -36,7 +36,7 @@
           
         .region
           =f.label :region
-          =f.collection_select :region, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}
+          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}
             
       %fieldset.pruebas
         %legend Pruebas

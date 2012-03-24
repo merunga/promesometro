@@ -130,11 +130,11 @@ ActiveRecord::Schema.define(:version => 20120322225000) do
   end
 
   create_table "pruebas", :force => true do |t|
-    t.text     "descripcion",  :null => false
-    t.integer  "ciudadano_id", :null => false
-    t.integer  "promesa_id",   :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text     "descripcion", :null => false
+    t.integer  "uploader_id", :null => false
+    t.integer  "promesa_id",  :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

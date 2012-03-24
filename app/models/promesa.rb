@@ -16,7 +16,7 @@ class Promesa < ActiveRecord::Base
   validates_presence_of :lo_prometido, :fecha_declaracion
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
-    :lo_prometido, :slug, :region
+    :lo_prometido, :slug, :region, :pruebas_attributes, :region_id
   
   def esta_legitimizada?
     info_funcionario.no.nil?
