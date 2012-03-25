@@ -17,8 +17,6 @@ $(document).ready ->
     field_to_show.find('input, textarea').removeAttr('disabled')
     field_to_show.show()
     
-  #add_prueba()
-    
 promesa.add_prueba = ->
   $pruebas = $('#pruebas')
   $pruebas.append $ Mustache.render $('#prueba_upload_template').html(), {count : $pruebas.find('.prueba').size()}

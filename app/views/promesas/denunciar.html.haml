@@ -5,8 +5,8 @@
 .promesa
   #denuncia
     %h1 Nueva Promesa
-    =form_for @promesa, :url => crear_promesas_path do |f|
-      = f.error_messages
+    =form_for @promesa, :url => crear_promesas_path, :validate => true do |f|
+      =# f.error_messages
       
       %fieldset.info_funcionario
         %legend El que promete
@@ -42,7 +42,7 @@
         %legend Pruebas
         #pruebas
           = render 'prueba/upload.tpl'
-          %script
+          -#%script
             promesa.add_prueba()
         
         =button_tag(:type => 'button',:onclick => 'promesa.add_prueba()') do
