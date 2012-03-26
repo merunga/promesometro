@@ -5,8 +5,9 @@
 .promesa
   #denuncia
     %h1 Nueva Promesa
-    =form_for @promesa, :url => crear_promesas_path, :validate => true do |f|
-      =# f.error_messages
+    =form_for @promesa, :url => crear_promesas_path, |
+      :validate => true, :html => {:multipart => true} do |f|
+      = f.error_messages
       
       %fieldset.info_funcionario
         %legend El que promete
@@ -45,6 +46,14 @@
           -#%script
             promesa.add_prueba()
         
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba()') do
-          agregar prueba
+        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do
+          agregar link
+        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("imagen")') do
+          agregar foto o imagen
+        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("archivo")') do
+          agregar archivo
+        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("video")') do
+          agregar video (youtube/vimeo)
+        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("mapa")') do
+          agregar mapa (google maps)
       =f.submit
