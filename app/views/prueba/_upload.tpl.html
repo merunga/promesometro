@@ -4,63 +4,69 @@
 		<input type="text" value="" size="30"
 			name="promesa[pruebas_attributes][{{count}}][descripcion]"
 			id="promesa_pruebas_attributes_{{count}}_descripcion">
-		<div class="field type">
+		<!--div class="field type">
 			<input type="radio" value="Link"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_link"
+				name="promesa[pruebas_attributes][{{count}}][recurso_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recurso_attributes_{{count}}_type_link"
 				checked="checked">
 			Link
 			<input type="radio" value="Foto"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_foto">
+				name="promesa[pruebas_attributes][{{count}}][recurso_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recurso_attributes_{{count}}_type_foto">
 				Foto / Imagen
 			<input type="radio" value="Archivo"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_archivo">
+				name="promesa[pruebas_attributes][{{count}}][recurso_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recurso_attributes_{{count}}_type_archivo">
 				Archivo
 			<input type="radio" value="Video"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_video">
+				name="promesa[pruebas_attributes][{{count}}][recurso_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recurso_attributes_{{count}}_type_video">
 				Video (youtube o vimeo)
 			<input type="radio" value="Mapa"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][type]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_type_mapa">
+				name="promesa[pruebas_attributes][{{count}}][recurso_attributes][{{count}}][type]"
+				id="promesa_pruebas_attributes_{{count}}_recurso_attributes_{{count}}_type_mapa">
 				Mapa (google maps)
-		</div>
+		</div-->
+		{{#link}}
 		<div class="field link">
-			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_link">Link</label>
+			<label for="promesa_pruebas_attributes_{{count}}_link_attributes_link">Link</label>
 			<input type="text" size="30"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][link]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_link">
+				name="promesa[pruebas_attributes][{{count}}][link_attributes][link]"
+				id="promesa_pruebas_attributes_{{count}}_link_attributes_link">
 		</div>
-		<div class="field archivo hidden">
-			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file">File</label>
+		{{/link}}
+		{{#archivo}}
+		<div class="field archivo">
+			<label for="promesa_pruebas_attributes_{{count}}_archivo_attributes}_file">Archivo</label>
 			<input type="file"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][file]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file"
-				disabled="disabled">
+				name="promesa[pruebas_attributes][{{count}}][archivo_attributes][file]"
+				id="promesa_pruebas_attributes_{{count}}_archivo_attributes_file">
 		</div>
-		<div class="field foto hidden">
-			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file">File</label>
+		{{/archivo}}
+		{{#imagen}}
+		<div class="field imagen">
+			<label for="promesa_pruebas_attributes_{{count}}_imagen_attributes_file">Imagen</label>
 			<input type="file"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][file]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_file"
-				disabled="disabled">
+				name="promesa[pruebas_attributes][{{count}}][imagen_attributes][file]"
+				id="promesa_pruebas_attributes_{{count}}_imagen_attributes_file">
 		</div>
-		<div class="field video hidden">
-			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed">Embed</label>
+		{{/imagen}}
+		{{#video}}
+		<div class="field video">
+			<label for="promesa_pruebas_attributes_{{count}}_video_attributes_embed">Embed</label>
 			<textarea rows="20" cols="40"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][embed]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed"
-				disabled="disabled"></textarea>
+				name="promesa[pruebas_attributes][{{count}}][video_attributes][embed]"
+				id="promesa_pruebas_attributes_{{count}}_video_attributes_embed"></textarea>
 		</div>
-		<div class="field mapa hidden">
-			<label for="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed">Embed</label>
+		{{/video}}
+		{{#mapa}}
+		<div class="field mapa">
+			<label for="promesa_pruebas_attributes_{{count}}_mapa_attributes_embed">Embed</label>
 			<textarea rows="20" cols="40"
-				name="promesa[pruebas_attributes][{{count}}][recursos_attributes][{{count}}][embed]"
-				id="promesa_pruebas_attributes_{{count}}_recursos_attributes_{{count}}_embed"
-				disabled="disabled"></textarea>
+				name="promesa[pruebas_attributes][{{count}}][mapa_attributes][embed]"
+				id="promesa_pruebas_attributes_{{count}}_mapa_attributes_embed"></textarea>
 		</div>
+		{{/mapa}}
 		<button type="button" onclick="promesa.remove_prueba($(this).parent())" confirm="Estás segur@?">eliminar prueba</button>
 	</div>
 </script>
