@@ -13,10 +13,10 @@ class Promesa < ActiveRecord::Base
   
   accepts_nested_attributes_for :info_funcionario
   accepts_nested_attributes_for :pruebas
-  validates_presence_of :lo_prometido, :fecha_declaracion
+  validates_presence_of :lo_prometido
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
-    :lo_prometido, :slug, :region, :pruebas_attributes, :region_id
+    :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima
   
   def esta_legitimizada?
     info_funcionario.no.nil?
