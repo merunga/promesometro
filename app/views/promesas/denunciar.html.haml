@@ -1,3 +1,6 @@
+=content_for :stylesheets do
+  =stylesheet_link_tag :promesa  
+  
 =content_for :scripts do
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
   =javascript_include_tag :promesa  
@@ -46,14 +49,15 @@
           -#%script
             promesa.add_prueba()
         
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do
-          agregar link
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("imagen")') do
-          agregar foto o imagen
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("archivo")') do
-          agregar archivo
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("video")') do
-          agregar video (youtube/vimeo)
-        =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("mapa")') do
-          agregar mapa (google maps)
+        #botones
+          =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do
+            + link
+          =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("imagen")') do
+            + foto o imagen
+          =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("archivo")') do
+            + archivo
+          =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("video")') do
+            + video
+          =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("mapa")') do
+            + mapa
       =f.submit
