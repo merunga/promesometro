@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import blueprint
+@import compass/css3, compass/utilities
+@import partials/font
 
 .promesa
   +column(15)
@@ -10,6 +12,9 @@
   min-height: 750px
   padding: 20px
   
+  input
+    margin-bottom: 1px
+  
   fieldset
     padding: 10px
     border: solid 1px #aaa
@@ -17,11 +22,37 @@
     legend
       padding-left: 5px
       padding-right: 5px
+      color: #C66
+      +subheader-grande
     label
       +column(2)
     label.message
       +column(6)
       float: right
+      
+  #pruebas
+    fieldset.prueba
+      legend
+        padding-top: 14px
+        +subheader-chico
+        
+      +border-radius(4px, 4px)
+      padding: 10px
+      background-color: #F3F3F3
+      border: 1px solid #666
+      margin-bottom: 10px
+      input[type=text]
+        width: 350px
+      button
+        margin-top: 4px
+        background-color: #D2D5DB
+        color: black
+      .eliminar.prueba
+        +column(11)
+        padding: 0
+        margin: 0
+        button
+          float: right
       
   #botones
     text-align: center
@@ -29,3 +60,4 @@
   input[type=submit]
     float: right
     min-height: 30px
+    width: 70px
