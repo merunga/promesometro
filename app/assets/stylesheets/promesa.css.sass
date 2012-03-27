@@ -1,0 +1,31 @@
+// Place all the styles related to the Promesa controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import blueprint
+
+.promesa
+  +column(15)
+  background: url('/assets/promesa_detail-bg.png') no-repeat
+  margin-right: 40px
+  min-height: 750px
+  padding: 20px
+  
+  fieldset
+    padding: 10px
+    border: solid 1px #aaa
+    margin-bottom: 10px
+    legend
+      padding-left: 5px
+      padding-right: 5px
+    label
+      +column(2)
+    label.message
+      +column(6)
+      float: right
+      
+  #botones
+    text-align: center
+    
+  input[type=submit]
+    float: right
+    min-height: 30px
