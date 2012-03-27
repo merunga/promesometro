@@ -4,7 +4,7 @@
 @import blueprint
 // Import the non-default scaffolding module.
 @import blueprint/scaffolding
-@import "compass/css3"
+@import compass/css3, compass/utilities
 // To generate css equivalent to the blueprint css but with your
 // configuration applied, uncomment:
 // @include blueprint
@@ -54,6 +54,14 @@ body.two-col
     $content-columns: ceil(2 * $blueprint-grid-columns / 3)
     // true means it's the last column in the row
     +column($content-columns, true)
+
+body
+  button, input[type=button]
+    +border-radius(3px)
+    background-color: #F2F2F2
+    border: 1px solid #C7C7C7
+    color: gray
+    padding: 3px 8px 
 
 .popover 
   display: none
@@ -131,7 +139,12 @@ body.two-col
     
   &.in 
     opacity: 1
+    
+textarea
+  width: 480px
 
 .hidden
   display: none
-    
+  
+.clear
+  clear: both

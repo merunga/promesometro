@@ -119,14 +119,15 @@ ActiveRecord::Schema.define(:version => 20120322225000) do
   end
 
   create_table "promesas", :force => true do |t|
-    t.text     "lo_prometido",      :null => false
-    t.date     "fecha_declaracion", :null => false
+    t.text     "lo_prometido",                         :null => false
+    t.date     "fecha_declaracion"
     t.integer  "region_id"
-    t.integer  "uploader_id",       :null => false
+    t.integer  "uploader_id",                          :null => false
     t.date     "fecha_compromiso"
+    t.boolean  "denuncia_anonima",  :default => false
     t.text     "slug"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "pruebas", :force => true do |t|
