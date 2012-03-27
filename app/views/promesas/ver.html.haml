@@ -1,7 +1,22 @@
+=content_for :stylesheets do
+  =stylesheet_link_tag :promesa  
+  
+=content_for :scripts do
+  <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+  =javascript_include_tag :promesa  
+  
 #denuncia
   .promesa
-    %h1
-      =@promesa.info_funcionario
+    %div
+      .left
+        %h1
+          =@promesa.info_funcionario
+      .right.denuncia_anonima
+        -if @promesa.denuncia_anonima
+          denuncia anonima
+        -else
+          =@promesa.uploader.screen_name
+      %br.clear   
       
     %fieldset.lo_prometido
       %legend prometi&oacute;:
@@ -14,4 +29,7 @@
         =@promesa.fecha_declaracion
         
     %fieldset.pruebas          
-    
+      -@promesa.pruebas.each do |p|
+        =p.descripcion
+        =p.recurso.type
+        %br
