@@ -7,7 +7,7 @@ class Promesa < ActiveRecord::Base
   
   belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas
   has_one :info_funcionario
-  has_many :pruebas
+  has_many :pruebas, :order => 'posicion ASC'
   belongs_to :region
   has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
   

@@ -8,6 +8,9 @@
 			{{#mapa}}Mapa{{/mapa}}
 		</legend>
 		<label for="promesa_pruebas_attributes_{{count}}_descripcion">Descripcion</label>
+		<input type="hidden" value="{{count}}"
+			name="promesa[pruebas_attributes][{{count}}][posicion]"
+			id="promesa_pruebas_attributes_{{count}}_posicion"></input>
 		<input type="text" value="" size="30"
 			name="promesa[pruebas_attributes][{{count}}][descripcion]"
 			id="promesa_pruebas_attributes_{{count}}_descripcion">
