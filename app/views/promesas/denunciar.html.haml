@@ -6,23 +6,31 @@
   =javascript_include_tag :promesa  
   
 .promesa
-  #denuncia
-    %h1 Nueva Promesa
+  #denuncia      
     =form_for @promesa, :url => crear_promesas_path, |
       :validate => true, :html => {:multipart => true} do |f|
+      
+      %div
+        .left
+          %h1 Nueva Promesa
+        .right.denuncia_anonima
+          =f.label :denuncia_anonima, 'denuncia anonima'
+          =f.check_box :denuncia_anonima
+        %br.clear
+      
       = f.error_messages
       
       %fieldset.info_funcionario
         %legend El que promete
         = f.fields_for :info_funcionario do |iff|
           .nombre
-            =iff.label :nombre
+            =iff.label :nombre, 'Nombre: *'
             =iff.text_field :nombre
           .cargo
-            =iff.label :cargo
+            =iff.label :cargo, 'Cargo:'
             =iff.text_field :cargo
           .entidad
-            =iff.label :entidad
+            =iff.label :entidad, 'Entidad:'
             =iff.text_field :entidad
       
       %fieldset.lo_prometido
@@ -31,15 +39,15 @@
           =f.text_area :lo_prometido
       
         .tags
-          =f.label :tag_list, 'Tags'
+          =f.label :tag_list, 'Tags:'
           =f.text_field :tag_list
       
         .fecha_declaracion
-          =f.label :fecha_declaracion, 'Cúando?'
+          =f.label :fecha_declaracion, 'Cúando:'
           =f.datepicker :fecha_declaracion
           
         .region
-          =f.label :region
+          =f.label :region, 'Region:'
           =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}
             
       %fieldset.pruebas
