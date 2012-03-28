@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20120327023200) do
     t.integer  "promesa_id",  :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "posicion"
+    t.integer  "posicion",    :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

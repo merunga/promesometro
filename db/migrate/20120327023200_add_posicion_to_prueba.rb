@@ -1,6 +1,6 @@
 class AddPosicionToPrueba < ActiveRecord::Migration
   def self.up
-    add_column :pruebas, :posicion, :integer
+    add_column :pruebas, :posicion, :integer, :null => false
   end
 
   def self.down
