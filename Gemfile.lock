@@ -209,6 +209,7 @@ GEM
     ruby-debug-base (0.10.4)
       linecache (>= 0.3)
     ruby-openid (2.1.8)
+    rubygems-update (1.8.21)
     sass (3.1.15)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -265,5 +266,6 @@ DEPENDENCIES
   rails_admin!
   rake
   ruby-debug
+  rubygems-update
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
