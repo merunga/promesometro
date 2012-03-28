@@ -13,9 +13,11 @@
           =@promesa.info_funcionario
       .right.denuncia_anonima
         -if @promesa.denuncia_anonima
-          denuncia anonima
+          denuncia anonima, de hace
         -else
+          denunciado por
           =@promesa.uploader.screen_name
+        =time_ago_in_words @promesa.created_at
       %br.clear   
       
     %fieldset.lo_prometido
@@ -28,8 +30,8 @@
       .fecha_declaracion
         =@promesa.fecha_declaracion
         
-    %fieldset.pruebas          
+    %fieldset.pruebas
       -@promesa.pruebas.each do |p|
-        =p.descripcion
-        =p.recurso.type
-        %br
+        = render 'prueba/show', :prueba => p
+
+        

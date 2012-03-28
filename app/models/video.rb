@@ -1,3 +1,2 @@
-class Video < Recurso
-  validates_presence_of :embed
+class Video < Embed
 end

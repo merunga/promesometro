@@ -52,4 +52,9 @@ es:
       body: 'Existen errores para los siguientes campos:'
     messages:
       blank: 'no puede estar vacío'
+      
+  datetime:
+    distance_in_words:
+      about_x_hours: hace %{count} horas
+      
 

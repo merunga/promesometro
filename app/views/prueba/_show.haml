@@ -1,0 +1,12 @@
+%fieldset.prueba(id='prueba[#{prueba.posicion}]')
+  - recurso = prueba.recurso
+  %legend
+    = recurso.type
+  .descripcion
+    =prueba.descripcion
+  
+  =link_to(recurso.link, recurso.link) if prueba.link
+  -if recurso.file
+    %a(href="#{recurso.file.url}" target="_blank") descargar archivo
+  -if recurso.embed
+    =raw recurso.embed
