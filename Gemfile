@@ -11,7 +11,6 @@ gem 'json'
 
 gem 'rake'
 gem 'rack'
-gem 'rubygems-update'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,6 +24,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   
   gem 'compass-rails'
+  gem 'therubyracer'
 end
 
 gem 'jquery-rails'
