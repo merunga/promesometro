@@ -26,4 +26,25 @@ class Promesa < ActiveRecord::Base
   def set_slug
     self.slug = (self.info_funcionario.nombre+' prometio '+self.lo_prometido).parameterize
   end
+  
+  def screen_date
+    return self.fecha_declaracion if self.fecha_declaracion
+    self.created_at
+  end
+  
+  def teaser
+    el_que_promete+' prometio: '+lo_prometido[0,200] #+ ('...' if description.length > 200)
+  end
+  
+  def el_que_promete
+    info_funcionario.to_s
+  end
+  
+  def el_que_denuncia
+    if denuncia_anonima
+      "denuncia anonima"
+    else
+      uploader.screen_name
+    end
+  end
 end

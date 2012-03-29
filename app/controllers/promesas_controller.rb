@@ -32,7 +32,8 @@ class PromesasController < ApplicationController
   end
   
   def buscar
-    
+    @search = PromesaSearch.new({params[:search].try(:to_sym) => params[:query]}, params[:page])
+    @promesas = @search.promesas
   end
   
   def agregar_prueba
