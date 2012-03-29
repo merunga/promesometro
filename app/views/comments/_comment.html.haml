@@ -2,16 +2,16 @@
 .comment
   .comment_content
     %p.top
-      %span.title
+      -#%span.title
         %i Lo prometido:
-        = link_to promesa.title_scaped.humanize, promesa_path(promesa.slug)
-      %span.region(style='float:right')= promesa.official.state.name
+        = link_to promesa.title_scaped.humanize, ver_promesa_path(promesa)
+      -#%span.region(style='float:right')= promesa.official.state.name
       %div(syle='font-size:small !important')
         %span(style='float:left')
           Comentario de
           = comment.ciudadano.screen_name
         %span(style='float:right')
-          %span.fecha= "hace #{time_ago_in_words comment.created_at}"
+          %span.fecha= time_ago_in_words comment.created_at
     %p(style='margin:20px 0;text-align:center')
       %i="\"#{comment.body}\""
       =comentario_social_widgets comment

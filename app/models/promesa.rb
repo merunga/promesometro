@@ -1,5 +1,8 @@
 class Promesa < ActiveRecord::Base
+  acts_as_commentable
   acts_as_taggable
+  acts_as_followable
+
   has_paper_trail(
     :only => [:lo_prometido, :fecha_compromiso],
     :on => [:create, :update]

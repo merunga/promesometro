@@ -25,6 +25,13 @@ GIT
       activesupport (~> 3.0)
       awesome_nested_set (>= 2.0)
 
+GIT
+  remote: https://github.com/zonecheung/acts_as_voteable.git
+  revision: ea37a0feae49d285f3b2211e884f2e1d62074a89
+  specs:
+    acts_as_voteable (0.0.3)
+      rails (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,6 +247,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.2.2)
   acts_as_commentable_with_threading!
   acts_as_follower
+  acts_as_voteable (~> 0.0.3)!
   cancan
   carrierwave
   client_side_validations

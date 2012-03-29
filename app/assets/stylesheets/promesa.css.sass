@@ -54,8 +54,7 @@
         margin-top: 4px
         background-color: #D2D5DB
         color: black
-      .eliminar.prueba
-        +column(13)
+      .eliminar
         padding: 0
         margin: 0
         button
@@ -138,3 +137,29 @@
         +column(4)
       span
         +column(5,true)
+        
+.promesa
+  .ta_comment, .actions
+    +column(15,true)
+    margin: 10px 0
+    
+  .comment
+    +column(15, true)
+    background: url('/assets/comment_arrow.png') no-repeat 37px bottom
+    border-bottom: 1px dashed #666666
+    margin: 10px 0
+    padding-bottom: 18px
+    .comment_content
+      +border-radius(5px)
+      background: url('/assets/comment_bg.png') repeat
+      padding: 15px
+      span.author
+        color: #cc6666
+        font-size: 14px
+        float: left
+      p.title
+        border-bottom: 1px dashed #666666
+        color: #333333
+      p.the_comment
+        margin: 20px 0
+        text-align: center

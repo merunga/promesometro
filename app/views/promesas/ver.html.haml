@@ -13,7 +13,7 @@
           =@promesa.info_funcionario
       .right.denuncia_anonima
         -if @promesa.denuncia_anonima
-          denuncia anonima, de hace
+          denuncia anonima,
         -else
           denunciado por
           =@promesa.uploader.screen_name
@@ -34,4 +34,15 @@
       -@promesa.pruebas.each do |p|
         = render 'prueba/show', :prueba => p
 
+    .share
+      -comentarios_count(@promesa)
+
+      .compartir
+        = promesa_social_widgets(@promesa)
+
+    .post_comment
+      = render :partial => 'comments/form', :locals => {:promise => @promesa}
+
+    = render :partial => 'comments/comment', :collection => @comments
+    = paginate @comments
         

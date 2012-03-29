@@ -56,6 +56,8 @@
           = render 'prueba/upload.tpl'
           -#%script
             promesa.add_prueba()
+          -@promesa.pruebas.each do |p|
+            = render 'prueba/upload', :prueba => p
         
         #botones
           =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do

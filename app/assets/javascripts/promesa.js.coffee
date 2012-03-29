@@ -19,11 +19,11 @@ $(document).ready ->
     
 promesa.add_prueba = (tipo) ->
   $pruebas = $('#pruebas')
-  ctx = {count: $pruebas.find('.prueba').size()}
+  ctx = {count: $pruebas.find('fieldset.prueba').size()}
   ctx[recurso] = tipo == recurso for recurso in ['link','imagen','archivo','video','mapa']
   console.log ctx
   $pruebas.append $ Mustache.render $('#prueba_upload_template').html(), ctx
 
 promesa.remove_prueba = ($prueba) ->
   $prueba.find('input, textarea').attr('disabled',true)
-  $prueba.hide()
+  $prueba.remove()
