@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  acts_as_voteable
   
   validates_presence_of :ciudadano
   validates_presence_of :body, :message => '^Comment vacio'
@@ -8,10 +9,6 @@ class Comment < ActiveRecord::Base
   scope :by_oldest, :order => "comments.created_at ASC"
   scope :newer_than, lambda { |*args| where("comments.created_at > ?", args.first || 1.week.ago) }
   scope :by_ciudadano, lambda { |*args| where('comments.ciudadano_id = ?', args.first) }
-  
-  # NOTE: install the acts_as_votable plugin if you 
-  # want ciudadano to vote on the quality of comments.
-  #acts_as_voteable
   
   # NOTE: Comments belong to a ciudadano
   belongs_to :ciudadano

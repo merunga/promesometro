@@ -1,15 +1,6 @@
 module Social::MetaDataHelper
   def node_meta_data(model,id)
      case model
-       when 'd' then
-         d = Declaration.find(id)
-         p = d.promesa
-         render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
-             :title => "Declaracion de #{p.official.name} acerca de #{p.title}",
-             :desc => d.body
-         }
-
        when 'p' then
          p = Promesa.find(id)
          render :partial => 'social/meta_data_tags', :locals => {
@@ -22,8 +13,8 @@ module Social::MetaDataHelper
          c = Comment.find(id)
          p = c.commentable
          render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
-             :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
+             :link => ver_promesa_url(p)+"/?mdm=#{model}&mdi=#{id}",
+             :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.info_funcionario}: #{p.lo_prometido}",
              :desc => p.description
          }
      end
@@ -52,20 +43,11 @@ module Social::MetaDataHelper
       :width => 280
   end
 
-  def declaration_social_widgets(d)
-    p = d.promesa
-    render 'social/node_widgets',
-      :link => promesa_url(p.slug)+"/?mdm=d&mdi=#{d.id}",
-      :title => "Declaracion de #{p.official.name} acerca de #{p.title}",
-      :desc => d.body,
-      :width => 280
-  end
-
   def comentario_social_widgets(c)
     p = c.commentable
     render 'social/node_widgets',
-      :link => promesa_url(p.slug)+"/?mdm=c&mdi=#{c.id}",
-      :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.official.name}, funcionario de #{p.official.state.name}",
-      :desc => p.description
+      :link => ver_promesa_url(p)+"/?mdm=c&mdi=#{c.id}",
+      :title => "#{c.ciudadano.screen_name} opina sobre a promesa de #{p.info_funcionario}",
+      :desc => p.lo_prometido
   end
 end

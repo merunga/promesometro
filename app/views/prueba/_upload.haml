@@ -1,0 +1,56 @@
+%fieldset(class="prueba")
+  %legend
+    -type = prueba.link.type if prueba.link
+    -type = prueba.imagen.type if prueba.imagen
+    -type = prueba.archivo.type if prueba.archivo
+    -type = prueba.video.type if prueba.video
+    -type = prueba.mapa.type if prueba.mapa
+    =type
+  %label(for="promesa_pruebas_attributes_#{prueba.posicion}_descripcion") Descripcion
+  %input(type="hidden" value="#{prueba.posicion}" |
+    name="promesa[pruebas_attributes][#{prueba.posicion}][posicion]" |
+    id="promesa_pruebas_attributes_#{prueba.posicion}_posicion")
+  %input(type="text" value="" size="30" required="required" |
+    name="promesa[pruebas_attributes][#{prueba.posicion}][descripcion]" |
+    id="promesa_pruebas_attributes_#{prueba.posicion}_descripcion")
+
+  -if type == 'Link'
+    .field.link
+      %label(for="promesa_pruebas_attributes_#{prueba.posicion}_link_attributes_link") Link
+      %input(type="text" size="30" required="required" |
+        name="promesa[pruebas_attributes][#{prueba.posicion}][link_attributes][link]" |
+        id="promesa_pruebas_attributes_#{prueba.posicion}_link_attributes_link")
+
+  -if type == 'Archivo'
+    .field.archivo
+      %label(for="promesa_pruebas_attributes_#{prueba.posicion}_link_attributes_file") Archivo
+      %input(type="file" required="required" |
+        name="promesa[pruebas_attributes][#{prueba.posicion}][archivo_attributes][file]" |
+        id="promesa_pruebas_attributes_#{prueba.posicion}_archivo_attributes_file")
+
+  -if type == 'Imagen'
+    .field.imagen
+      %label(for="promesa_pruebas_attributes_#{prueba.posicion}_imagen_attributes_file") Imagen
+      %input(type="file" required="required" |
+        name="promesa[pruebas_attributes][#{prueba.posicion}][imagen_attributes][file]" |
+        id="promesa_pruebas_attributes_#{prueba.posicion}_imagen_attributes_file")
+
+  -if type == 'Video'
+    .field.video
+      %label(for="promesa_pruebas_attributes_#{prueba.posicion}_video_attributes_embed") Embed
+      %textarea(rows="20" cols="40" required="required" |
+        name="promesa[pruebas_attributes][#{prueba.posicion}][video_attributes][embed]" |
+        id="promesa_pruebas_attributes_#{prueba.posicion}_video_attributes_embed")
+
+  -if type == 'Mapa'
+    .field.mapa
+      %label(for="promesa_pruebas_attributes_#{prueba.posicion}_mapa_attributes_embed")Embed
+      %textarea(rows="20" cols="40" required="required" |
+        name="promesa[pruebas_attributes][#{prueba.posicion}][mapa_attributes][embed]" |
+        id="promesa_pruebas_attributes_#{prueba.posicion}_mapa_attributes_embed")
+
+  .eliminar
+    %button(type="button" onclick="promesa.remove_prueba($(this).parents('fieldset.prueba'))" |
+      confirm="Estás segur@?") eliminar #{type.downcase} 
+
+  .clear

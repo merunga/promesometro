@@ -8,6 +8,8 @@ class PromesasController < ApplicationController
   
   def ver
     @promesa = Promesa.find(params[:id])
+    #@search = Promise.search(params[:search])
+    @comments = @promesa.comment_threads.order('created_at desc').page(params[:page]).per(5)
   end
   
   def crear
@@ -37,6 +39,19 @@ class PromesasController < ApplicationController
   end
   
   def agregar_prueba
+  end
+  
+  def comentar
+    @promesa = Promesa.find(params[:id])
+    @comment = Comment.build_from(
+      @promesa,
+      params[:comment][:ciudadano_id],
+      params[:comment][:body]
+    )
+    @comment.save!
+    flash[:notice]= 'El comentario ha sido creado con exito'
+  
+    redirect_to ver_promesa_url(@promesa)
   end
   
   def seguir

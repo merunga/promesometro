@@ -22,6 +22,7 @@ Promesometro::Application.routes.draw do
     end
     member do
       get :ver, :editar, :actualizar
+      post :comentar
     end
   end
 
