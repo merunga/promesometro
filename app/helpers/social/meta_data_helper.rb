@@ -3,7 +3,7 @@ module Social::MetaDataHelper
      case model
        when 'd' then
          d = Declaration.find(id)
-         p = d.promise
+         p = d.promesa
          render :partial => 'social/meta_data_tags', :locals => {
              :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
              :title => "Declaracion de #{p.official.name} acerca de #{p.title}",
@@ -11,11 +11,11 @@ module Social::MetaDataHelper
          }
 
        when 'p' then
-         p = Promise.find(id)
+         p = Promesa.find(id)
          render :partial => 'social/meta_data_tags', :locals => {
-             :link => promesa_url(p.slug)+"/?mdm=#{model}&mdi=#{id}",
-             :title => p.title,
-             :desc => p.description
+             :link => ver_promesa_url(p)+"/?mdm=#{model}&mdi=#{id}",
+             :title => p.teaser,
+             :desc => p.lo_prometido
          }
 
        when 'c' then
@@ -44,16 +44,16 @@ module Social::MetaDataHelper
     end
   end
 
-  def promise_social_widgets(p)
+  def promesa_social_widgets(p)
     render 'social/node_widgets',
-      :link => promesa_url(p.slug)+"/?mdm=p&mdi=#{p.id}",
-      :title => p.title,
-      :desc => p.description,
+      :link => ver_promesa_url(p)+"/?mdm=p&mdi=#{p.id}",
+      :title => p.teaser,
+      :desc => p.lo_prometido,
       :width => 280
   end
 
   def declaration_social_widgets(d)
-    p = d.promise
+    p = d.promesa
     render 'social/node_widgets',
       :link => promesa_url(p.slug)+"/?mdm=d&mdi=#{d.id}",
       :title => "Declaracion de #{p.official.name} acerca de #{p.title}",

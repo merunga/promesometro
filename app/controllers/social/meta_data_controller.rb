@@ -4,7 +4,7 @@ class Social::MetaDataController < ApplicationController
     @p = @d.promise
     render :partial => 'social/meta_data', :locals => {
       :model => 'declaration',
-      :link => promesa_url(@p.slug),
+      :link => ver_promesa_url(@p),
       :title => "Declaracion de #{@p.official.name} acerca de #{@p.title}",
       :desc => @d.body
     }

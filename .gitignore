@@ -8,3 +8,4 @@ config/database.yml
 vendor/
 .project
 public/uploads/*
+public/assets/*

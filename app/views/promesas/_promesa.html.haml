@@ -1,0 +1,35 @@
+.promesa
+  .lo_prometido
+    -#%p.promesa_top
+      -#%span.region
+        = link_to promesa.region, buscar_promesas_path
+      %span.fecha
+        prometido 
+    %p
+      %span.title
+        hace
+        = time_ago_in_words(promesa.screen_date)
+        %i #{promesa.el_que_promete}
+        =link_to 'prometió:', ver_promesa_path(promesa)
+    -#%p.topic
+      - promesas_temas(promesa)
+    %p.descripcion
+      %i
+        = "\"#{promesa.lo_prometido}\""
+    %p
+      .compartir
+        = promesa_social_widgets(promesa)
+  .arrow
+  .el_resumen
+    %label subida por
+    %span= promesa.el_que_denuncia
+    %label apoyos
+    %span
+    %label comentarios
+    %span
+    %label estado
+    %span
+    %label número de pruebas
+    %span
+    %label region
+    %span

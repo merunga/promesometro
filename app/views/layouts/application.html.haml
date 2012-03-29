@@ -40,11 +40,7 @@
         = link_to image_tag('logo.png', :id => 'logo'), root_path
         = render 'social/login'
         %nav
-          %ul
-            -#%li.no-border= link_to 'Autoridades', directorio_path
-            %li= link_to 'Promesas', buscar_promesas_path
-            %li= link_to 'Acerca de', acerca_de_index_path
-            %li= link_to 'Contacto', new_contacto_path
+          = render 'shared/menu'
           = render 'social/page_widgets'
 
         #search_box
@@ -55,11 +51,7 @@
 
       %footer
         %nav
-          %ul
-            -#%li.no-border= link_to 'Autoridades', directorio_path
-            %li= link_to 'Promesas', buscar_promesas_path
-            %li= link_to 'Acerca De', acerca_de_index_path
-            %li= link_to 'Contacto', new_contacto_path
+          = render 'shared/menu'
           %div.logo(style='float:right')
             %span(style='width:350px;float:right;text-align:right')
               &copy;

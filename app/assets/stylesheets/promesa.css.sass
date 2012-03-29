@@ -5,7 +5,14 @@
 @import compass/css3, compass/utilities
 @import partials/font
 
-.promesa
+#promesas
+  .promesa_titulo
+    +column(16)
+
+  .promesa_estado_titulo
+    +column(8, true)
+
+#denuncia .promesa
   +column(15)
   background: url('/assets/promesa_detail-bg.png') no-repeat
   margin-right: 40px
@@ -61,3 +68,73 @@
     float: right
     min-height: 30px
     width: 70px
+
+.resumen
+  .promesa
+    .promesa_titulo
+      +column(16)
+      
+      h1
+        font-size: 30px
+      
+    .filtro-temas
+      +column(4)
+      text-transform: capitalize
+      
+    .promesa_estado_titulo
+      +column(8, true)
+    
+    .promesa_status
+      +column(6, true)
+      margin-top: -10px
+      +prepend(1)
+      .progreso
+        color: #898989
+      .hito
+        +column(2)
+        margin: 0 0 0 25px
+        img
+          margin: 11px 0
+      .estado_contenedor
+        +column(3, true)
+        margin-top: 10px
+  
+    p.descripcion
+      +column(12, true)
+      +prepend(1)
+      +append(1)
+      border-bottom: 1px dashed #999999
+      height: 55px
+      text-align: center
+      margin-top: 10px
+      margin-bottom: 10px
+      padding-bottom: 10px
+      
+    span.ver_mas a
+      color: #cc6666
+      float: left
+      
+    .lo_prometido
+      +column(14)
+      background: url('/assets/promesa-bg.png')
+      height: 164px
+      margin: 0 0 10px 0
+      padding: 15px 0 0 20px
+      
+    .arrow
+      background: url('/assets/arrow.png')
+      display: inline
+      float: left
+      height: 179px
+      width: 50px
+      
+    .el_resumen
+      +column(8, true)
+      background: url('/assets/promesa-bg.png')
+      height: 164px
+      padding: 15px 0 0 20px
+      
+      label
+        +column(4)
+      span
+        +column(5,true)

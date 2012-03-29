@@ -1,15 +1,15 @@
-class PromiseSearch
+class PromesaSearch
 
-  attr_accessor :promises
+  attr_accessor :promesas
 
   def initialize conditions = nil, page = 1
-    @promises ||= find_promises conditions, page
+    @promesas ||= find_promesas conditions, page
   end
 
   private
 
-  def find_promises conditions, current_page
-    @promise_search = Promise
+  def find_promesas conditions, current_page
+    @promesa_search = Promesa
     if conditions
 
       find_by_state_id conditions[:state] if conditions[:state]
@@ -19,7 +19,7 @@ class PromiseSearch
       find_by_topic_id conditions[:topic] if conditions[:topic]
       find_by_political_party_id conditions[:political_party] if conditions[:political_party]
     end
-    @promise_search.page current_page
+    @promesa_search.page current_page
   end
 
   def set_id_value(conditions, field)
@@ -34,7 +34,7 @@ class PromiseSearch
   end
 
   def find_by_title title
-    @promise_search = @promise_search.where('upper(promises.title) LIKE upper(?)',"%#{title}%") if title
+    @promesa_search = @promesa_search.where('upper(promesas.title) LIKE upper(?)',"%#{title}%") if title
   end
 
   def find_by_state state_name
@@ -71,15 +71,15 @@ class PromiseSearch
   end
 
   def find_by_keywords keywords
-    @promise_search = @promise_search.joins(
-        'LEFT JOIN milestones ON milestones.promise_id = promises.id'
+    @promesa_search = @promesa_search.joins(
+        'LEFT JOIN milestones ON milestones.promesa_id = promesas.id'
     ).where(
-        'upper(promises.title) LIKE upper(:keywords) '+
-        'OR upper(promises.description) LIKE upper(:keywords) '+
+        'upper(promesas.title) LIKE upper(:keywords) '+
+        'OR upper(promesas.description) LIKE upper(:keywords) '+
         'OR upper(milestones.name) LIKE upper(:keywords) '+
         'OR upper(milestones.description) LIKE upper(:keywords) ',
         :keywords => "%#{keywords}%"
-    ).select("distinct promises.*") if keywords
+    ).select("distinct promesas.*") if keywords
   end
 
   def find_by_topic_name topic_name
@@ -93,13 +93,13 @@ class PromiseSearch
   private
     def find_by_id(join,cond,id)
       if id != '' then
-        @promise_search = @promise_search.joins(join).where(cond,id)
+        @promesa_search = @promesa_search.joins(join).where(cond,id)
       end
     end
 
     def find_by_name(join,cond,name)
       if name != '' then
-        @promise_search = @promise_search.joins(join).where(cond,name)
+        @promesa_search = @promesa_search.joins(join).where(cond,name)
       end
     end
 end

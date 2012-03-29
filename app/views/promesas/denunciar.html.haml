@@ -4,9 +4,9 @@
 =content_for :scripts do
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
   =javascript_include_tag :promesa  
-  
-.promesa
-  #denuncia      
+
+#denuncia    
+  .promesa
     =form_for @promesa, :url => crear_promesas_path, |
       :validate => true, :html => {:multipart => true} do |f|
       
