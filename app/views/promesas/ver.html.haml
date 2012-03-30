@@ -5,7 +5,7 @@
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
   =javascript_include_tag :promesa  
   
-#denuncia
+#ver
   .promesa
     %div
       .left
@@ -30,7 +30,8 @@
       .fecha_declaracion
         =@promesa.fecha_declaracion
         
-    %fieldset.pruebas
+    .pruebas
+      %legend Pruebas
       -@promesa.pruebas.each do |p|
         = render 'prueba/show', :prueba => p
 

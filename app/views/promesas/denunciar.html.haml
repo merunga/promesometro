@@ -25,7 +25,7 @@
         = f.fields_for :info_funcionario do |iff|
           .nombre
             =iff.label :nombre, 'Nombre: *'
-            =iff.text_field :nombre
+            =iff.text_field :nombre, :required => 'required'
           .cargo
             =iff.label :cargo, 'Cargo:'
             =iff.text_field :cargo
@@ -36,7 +36,7 @@
       %fieldset.lo_prometido
         %legend Lo prometido
         .lo_prometido
-          =f.text_area :lo_prometido
+          =f.text_area :lo_prometido, :required => 'required'
       
         .tags
           =f.label :tag_list, 'Tags:'
@@ -56,8 +56,8 @@
           = render 'prueba/upload.tpl'
           -#%script
             promesa.add_prueba()
-          -@promesa.pruebas.each do |p|
-            = render 'prueba/upload', :prueba => p
+          = f.fields_for :pruebas do |pf|
+            = render 'prueba/upload', :form => pf
         
         #botones
           =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do

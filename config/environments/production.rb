@@ -65,7 +65,7 @@ Promesometro::Application.configure do
   config.action_mailer.perform_deliveries = true
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( *.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -79,6 +79,11 @@ Promesometro::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.assets.compile = true
+  
+  # Do not compress assets
+  config.assets.compress = false
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
