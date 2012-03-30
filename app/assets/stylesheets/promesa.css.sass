@@ -11,14 +11,15 @@
 
   .promesa_estado_titulo
     +column(8, true)
-
-#denuncia .promesa
+    
+.promesa
   +column(15)
   background: url('/assets/promesa_detail-bg.png') no-repeat
   margin-right: 40px
   min-height: 750px
   padding: 20px
- 
+
+#denuncia .promesa
   input
     margin-bottom: 1px
   
@@ -138,10 +139,30 @@
       span
         +column(5,true)
         
-.promesa
+#ver .promesa
   .ta_comment, .actions
     +column(15,true)
     margin: 10px 0
+    
+  .pruebas
+    background-color: #F3F3F3
+    border: 1px dashed #666
+    display: inline-block
+    float: left
+    list-style-type: none
+    padding: 10px
+    padding-top: 5px
+    margin-top: 10px
+    
+    legend
+      +subheader-grande
+    
+  .prueba
+    border-bottom: 1px dashed #666
+    padding: 5px 5px
+    
+    iframe
+      padding-top: 5px
     
   .comment
     +column(15, true)

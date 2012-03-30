@@ -28,6 +28,13 @@ class PromesasController < ApplicationController
   end
   
   def editar
+    @promesa = Promesa.find(params[:id])
+    render :template => 'promesas/denunciar'
+  end
+  
+  def actualizar
+    @promesa = Promesa.find(params[:id])
+    render :action => :crear
   end
   
   def ver_todas

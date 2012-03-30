@@ -18,7 +18,7 @@ class Ability
       can :ver_perfil, Ciudadano do |maria|
         maria.es_funcionario?
       end
-      can :editar, Promesa do |la_promesa|
+      can [:editar,:actualizar], Promesa do |la_promesa|
         ciudadano.es_funcionario_de? la_promesa ||
         (la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
       end
