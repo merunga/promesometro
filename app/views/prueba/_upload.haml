@@ -8,6 +8,10 @@
     -type = prueba.mapa.type if prueba.mapa
     =type
   
+  -if params[:action] == 'editar' 
+    =form.hidden_field :id
+    =form.fields_for :uploader do |uf|
+      =uf.hidden_field :id
   =form.hidden_field :posicion
   =form.label :descripcion
   =form.text_field :descripcion
@@ -16,32 +20,38 @@
     =form.fields_for :link do |lf|
       .field.link
         =lf.label :link
-        =lf.text_field :link, :required => 'required'
+        =lf.url_field :link, :required => 'required', :maxlength => 1000
 
   -elsif type == 'Archivo'
     =form.fields_for :archivo do |af|
       .field.archivo
         =af.label :archivo
-        =af.file_field :archivo, :required => 'required'
+        -if params[:action] != 'editar' 
+          =af.file_field :archivo, :required => 'required'
+        -else
+          =link_to prueba.archivo.file.url
 
   -elsif type == 'Imagen'
     =form.fields_for :imagen do |af|
       .field.imagen
         =af.label :imagen
-        =af.file_field :archivo, :required => 'required'
+        -if params[:action] != 'editar' 
+          =af.file_field :archivo, :required => 'required'
+        -else
+          =link_to prueba.imagen.file.url
 
 
   -elsif type == 'Video'
     =form.fields_for :video do |ef|
       .field.video
         =ef.label :video
-        =ef.text_area :embed, :required => 'required'
+        =ef.text_area :embed, :required => 'required', :maxlength => 1000
 
   -elsif type == 'Mapa'
     =form.fields_for :mapa do |ef|
       .field.mapa
         =ef.label :mapa
-        =ef.text_area :embed, :required => 'required'
+        =ef.text_area :embed, :required => 'required', :maxlength => 1000
         
   .eliminar
     %button(type="button" onclick="promesa.remove_prueba($(this).parents('fieldset.prueba'))" |

@@ -10,12 +10,12 @@ class Promesa < ActiveRecord::Base
   
   belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas
   has_one :info_funcionario
-  has_many :pruebas, :order => 'posicion ASC'
+  has_many :pruebas, :order => 'id ASC'
   belongs_to :region
   has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
   
   accepts_nested_attributes_for :info_funcionario
-  accepts_nested_attributes_for :pruebas
+  accepts_nested_attributes_for :pruebas, :allow_destroy => true
   validates_presence_of :lo_prometido
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
