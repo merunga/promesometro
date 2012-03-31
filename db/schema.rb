@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327023200) do
+ActiveRecord::Schema.define(:version => 20120330064029) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -85,6 +85,11 @@ ActiveRecord::Schema.define(:version => 20120327023200) do
   add_index "comments", ["ciudadano_id"], :name => "index_comments_on_ciudadano_id"
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
 
+  create_table "embedes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "follows", :force => true do |t|
     t.integer  "followable_id",                      :null => false
     t.string   "followable_type",                    :null => false
@@ -119,15 +124,17 @@ ActiveRecord::Schema.define(:version => 20120327023200) do
   end
 
   create_table "promesas", :force => true do |t|
-    t.text     "lo_prometido",                         :null => false
+    t.text     "lo_prometido",                                         :null => false
     t.date     "fecha_declaracion"
     t.integer  "region_id"
-    t.integer  "uploader_id",                          :null => false
+    t.integer  "uploader_id",                                          :null => false
     t.date     "fecha_compromiso"
-    t.boolean  "denuncia_anonima",  :default => false
+    t.boolean  "denuncia_anonima",                  :default => false
     t.text     "slug"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "link",              :limit => 1000
+    t.string   "embed",             :limit => 1000
   end
 
   create_table "pruebas", :force => true do |t|
@@ -155,11 +162,11 @@ ActiveRecord::Schema.define(:version => 20120327023200) do
   create_table "recursos", :force => true do |t|
     t.integer  "prueba_id"
     t.string   "type"
-    t.string   "link"
-    t.string   "embed"
+    t.string   "link",       :limit => 1000
+    t.string   "embed",      :limit => 1000
     t.string   "file"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "regiones", :force => true do |t|
@@ -197,5 +204,17 @@ ActiveRecord::Schema.define(:version => 20120327023200) do
   end
 
   add_index "versiones", ["item_type", "item_id"], :name => "index_versiones_on_item_type_and_item_id"
+
+  create_table "votes", :force => true do |t|
+    t.boolean  "voting",        :default => false
+    t.datetime "created_at",                       :null => false
+    t.integer  "voteable_id"
+    t.string   "voteable_type"
+    t.integer  "ciudadano_id"
+  end
+
+  add_index "votes", ["ciudadano_id"], :name => "index_votes_on_ciudadano_id"
+  add_index "votes", ["voteable_id"], :name => "index_votes_on_voteable_id"
+  add_index "votes", ["voteable_type"], :name => "index_votes_on_voteable_type"
 
 end

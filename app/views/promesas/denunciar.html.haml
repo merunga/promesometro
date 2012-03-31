@@ -7,8 +7,11 @@
 
 #denuncia    
   .promesa
-    =form_for @promesa, :url => crear_promesas_path, |
+    =form_for @promesa, :url => actualizar_promesa_path, |
       :validate => true, :html => {:multipart => true} do |f|
+      
+      - if params[:action] == 'editar'
+        = f.hidden_field :id 
       
       %div
         .left
@@ -23,6 +26,8 @@
       %fieldset.info_funcionario
         %legend El que promete
         = f.fields_for :info_funcionario do |iff|
+          - if params[:action] == 'editar'
+            = iff.hidden_field :id 
           .nombre
             =iff.label :nombre, 'Nombre: *'
             =iff.text_field :nombre, :required => 'required'

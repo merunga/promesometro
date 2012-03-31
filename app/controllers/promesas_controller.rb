@@ -33,8 +33,15 @@ class PromesasController < ApplicationController
   end
   
   def actualizar
-    @promesa = Promesa.find(params[:id])
-    render :action => :crear
+    p = params[:promesa]
+    @promesa = Promesa.find(p[:id])
+    p[:pruebas_attributes][:uploader] = {:id => current_ciudadano.id} if !p[:pruebas_attributes][:uploader]
+    if @promesa.update_attributes(p) 
+      @promesa.save
+      redirect_to :action => 'ver'
+    else
+      redirect_to :action => 'editar'
+    end
   end
   
   def ver_todas

@@ -11,7 +11,8 @@ class Prueba < ActiveRecord::Base
   
   validates_presence_of :descripcion
   attr_accessible :posicion, :descripcion, :link_attributes,
-    :imagen_attributes, :archivo_attributes, :video_attributes, :mapa_attributes
+    :imagen_attributes, :archivo_attributes, :video_attributes, :mapa_attributes,
+    :uploader_attributes
   
-  accepts_nested_attributes_for :link, :imagen, :archivo, :video, :mapa
+  accepts_nested_attributes_for :link, :imagen, :archivo, :video, :mapa, :uploader
 end
