@@ -7,7 +7,10 @@
 
 #denuncia    
   .promesa
-    =form_for @promesa, :url => actualizar_promesa_path, |
+    - url = denunciar_promesas_path
+    - url = actualizar_promesa_path if params[:action] == 'editar'
+    
+    =form_for @promesa, :url => url, |
       :validate => true, :html => {:multipart => true} do |f|
       
       - if params[:action] == 'editar'
