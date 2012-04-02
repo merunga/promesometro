@@ -35,7 +35,12 @@ class PromesasController < ApplicationController
   def actualizar
     p = params[:promesa]
     @promesa = Promesa.find(p[:id])
-    p[:pruebas_attributes][:uploader] = {:id => current_ciudadano.id} if !p[:pruebas_attributes][:uploader]
+#    p[:pruebas_attributes].each_with_index do |pb, idx|
+#      puts "---------------- #{pb.to_yaml}"
+#      if !pb[idx][:uploader_attributes]
+#        pb[idx][:uploader_attributes][:id] = current_ciudadano.id
+#      end
+#    end
     if @promesa.update_attributes(p) 
       @promesa.save
       redirect_to :action => 'ver'
