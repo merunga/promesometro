@@ -1,5 +1,5 @@
-.prueba(id='prueba[#{prueba.posicion}]')
-  - recurso = prueba.recurso
+-recurso = prueba.recurso
+.prueba(id='prueba[#{prueba.posicion}]' class='#{recurso.type.downcase}')
   .descripcion
     =prueba.descripcion
   
