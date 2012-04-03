@@ -17,12 +17,16 @@ $(document).ready ->
     field_to_show.find('input, textarea').removeAttr('disabled')
     field_to_show.show()
     
+promesa.upload_template = null
+    
 promesa.add_prueba = (tipo) ->
   $pruebas = $('#pruebas')
   ctx = {count: $pruebas.find('fieldset.prueba').size()}
   ctx[recurso] = tipo == recurso for recurso in ['link','imagen','archivo','video','mapa']
-  console.log ctx
-  $pruebas.append $ Mustache.render $('#prueba_upload_template').html(), ctx
+  if !promesa.upload_template
+    promesa.upload_template = $('#prueba_upload_template')
+      .html().replace(/_0_/g,'_{{count}}_').replace(/\[0\]/g,'[{{count}}]')
+  $pruebas.append $ Mustache.render promesa.upload_template, ctx
 
 promesa.remove_prueba = ($prueba) ->
   $prueba.find('input, textarea').attr('disabled',true)

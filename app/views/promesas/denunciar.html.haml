@@ -3,17 +3,19 @@
   
 =content_for :scripts do
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-  =javascript_include_tag :promesa  
+  =javascript_include_tag :promesa
+  
+- edition = params[:action] == 'editar'
 
 #denuncia    
   .promesa
-    - url = denunciar_promesas_path
-    - url = actualizar_promesa_path if params[:action] == 'editar'
+    - url = crear_promesas_path
+    - url = actualizar_promesa_path if edition
     
     =form_for @promesa, :url => url, |
       :validate => true, :html => {:multipart => true} do |f|
       
-      - if params[:action] == 'editar'
+      - if edition
         = f.hidden_field :id 
       
       %div
@@ -29,7 +31,7 @@
       %fieldset.info_funcionario
         %legend El que promete
         = f.fields_for :info_funcionario do |iff|
-          - if params[:action] == 'editar'
+          - if edition
             = iff.hidden_field :id 
           .nombre
             =iff.label :nombre, 'Nombre: *'
@@ -61,11 +63,12 @@
       %fieldset.pruebas
         %legend Pruebas
         #pruebas
-          = render 'prueba/upload.tpl'
-          -#%script
-            promesa.add_prueba()
           = f.fields_for :pruebas do |pf|
-            = render 'prueba/upload', :form => pf
+            = render 'prueba/upload', :form => pf, :to_be => true
+            -#%script
+              promesa.add_prueba()
+            - if edition
+              = render 'prueba/upload', :form => pf, :to_be => false
         
         #botones
           =button_tag(:type => 'button',:onclick => 'promesa.add_prueba("link")') do
