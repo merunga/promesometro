@@ -6,7 +6,8 @@
       %span.fecha
         prometido 
     %p
-      %span.title= time_ago_in_words(promesa.screen_date)
+      %span.title
+        =time_ago_in_words(promesa.screen_date)
         %i #{promesa.el_que_promete}
         =link_to 'prometió:', ver_promesa_path(promesa)
     -#%p.topic

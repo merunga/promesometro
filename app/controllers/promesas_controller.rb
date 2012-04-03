@@ -4,6 +4,12 @@ class PromesasController < ApplicationController
   def denunciar
     @promesa = Promesa.new
     @promesa.info_funcionario = InfoFuncionario.new
+    prueba = @promesa.pruebas.build
+    prueba.link = Link.new
+    prueba.archivo = Archivo.new
+    prueba.imagen = Imagen.new
+    prueba.video = Video.new
+    prueba.mapa = Mapa.new
   end
   
   def ver
@@ -19,7 +25,10 @@ class PromesasController < ApplicationController
       @info_funcionario.save
       logger.debug current_ciudadano
       @promesa.uploader = current_ciudadano
-      @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
+      @promesa.pruebas.each_with_index do |p, idx|
+        p.uploader = current_ciudadano
+        p.posicion = idx if p.posicion.nil?
+      end
       @promesa.save
       redirect_to ver_promesa_url(@promesa)
     else
