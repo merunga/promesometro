@@ -1,15 +1,19 @@
 class PromesasController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   
   def denunciar
-    @promesa = Promesa.new
-    @promesa.info_funcionario = InfoFuncionario.new
-    prueba = @promesa.pruebas.build
-    prueba.link = Link.new
-    prueba.archivo = Archivo.new
-    prueba.imagen = Imagen.new
-    prueba.video = Video.new
-    prueba.mapa = Mapa.new
+    if ciudadano_signed_in?
+      @promesa = Promesa.new
+      @promesa.info_funcionario = InfoFuncionario.new
+      prueba = @promesa.pruebas.build
+      prueba.link = Link.new
+      prueba.archivo = Archivo.new
+      prueba.imagen = Imagen.new
+      prueba.video = Video.new
+      prueba.mapa = Mapa.new
+    else
+      render 'shared/_not_logged_in'
+    end
   end
   
   def ver

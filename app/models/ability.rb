@@ -5,7 +5,7 @@ class Ability
     #can :manage, :all if ciudadano.es_admin?
     can [:ver,:buscar], Promesa
     if ciudadano
-      can [:denunciar,:agregar_prueba], Promesa
+      can [:agregar_prueba], Promesa
       can :comentar, :all
       can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
         carlos.es_funcionario?
@@ -26,6 +26,6 @@ class Ability
         ciudadano.es_uploader_de? la_prueba
       end
     end
-    
+    can [:denunciar], Promesa
   end
 end
