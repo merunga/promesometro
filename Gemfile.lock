@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sferik/rails_admin.git
-  revision: db1ac45d8e9248a5f93ccbc4df162a3a5568f41d
+  revision: 6d32552b9929aa196af3b1c0bd292c723c5f6c0c
   specs:
     rails_admin (0.0.1)
       bbenezech-nested_form (~> 0.0.6)
@@ -84,7 +84,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.2.0)
+    coffee-script-source (1.3.1)
     columnize (0.3.6)
     compass (0.12.1)
       chunky_png (~> 1.2)
