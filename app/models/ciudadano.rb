@@ -1,5 +1,6 @@
 class Ciudadano < ActiveRecord::Base       
   acts_as_tagger
+  acts_as_follower
   
   devise :database_authenticatable, :lockable, :recoverable,
       :rememberable, :registerable, :trackable, :timeoutable,
@@ -19,6 +20,26 @@ class Ciudadano < ActiveRecord::Base
   def es_funcionario?
     self.info_funcionario.no.nil?
   end
+  
+  ### RECLAMOS
+  def reclamando?(promesa)
+    Reclamo.where(
+      'promesa_id = :promesa_id and ciudadano_id = :ciudadano_id',
+      :promesa_id => promesa.id, :ciudadano_id => self.id
+    ).count > 0
+  end
+  
+  def reclamar_cumplimiento(promesa)
+    Reclamo.create(:promesa => promesa, :ciudadano => self)
+  end
+  
+  def dejar_de_reclamar_cumplimiento(promesa)
+    Reclamo.where(
+      'promesa_id = :promesa_id and ciudadano_id = :ciudadano_id',
+      :promesa_id => promesa.id, :ciudadano_id => self.id
+    ).delete_all
+  end
+  ###
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info

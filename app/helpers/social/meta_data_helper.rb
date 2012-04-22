@@ -36,11 +36,12 @@ module Social::MetaDataHelper
   end
 
   def promesa_social_widgets(p)
-    render 'social/node_widgets',
+    render 'social/promesa_widgets',
       :link => ver_promesa_url(p)+"/?mdm=p&mdi=#{p.id}",
       :title => p.teaser,
       :desc => p.lo_prometido,
-      :width => 280
+      :width => 280,
+      :promesa => p
   end
 
   def comentario_social_widgets(c)

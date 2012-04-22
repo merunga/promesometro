@@ -2,6 +2,10 @@ class Object
   define_method :no do
     No.new(self)
   end
+  
+  define_method :not do
+    no
+  end
 
   class No
     private *instance_methods.select { |m| m !~ /(^__|^\W|^binding$)/ }
