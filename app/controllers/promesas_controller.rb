@@ -87,23 +87,27 @@ class PromesasController < ApplicationController
   end
   
   def seguir
-    @promesa = Promesa.find(params[:id])
-    current_ciudadano.follow @promesa
+    social_action('_seguir') {
+      current_ciudadano.follow @promesa
+    }
   end
   
   def dejar_de_seguir
-    @promesa = Promesa.find(params[:id])
-    current_ciudadano.stop_following @promesa
+    social_action('_seguir') {
+      current_ciudadano.stop_following @promesa
+    }
   end
   
   def reclamar_cumplimiento
-    @promesa = Promesa.find(params[:id])
-    current_ciudadano.reclamar_cumplimiento @promesa
+    social_action('_reclamar') {
+      current_ciudadano.reclamar_cumplimiento @promesa
+    }
   end
   
   def dejar_de_reclamar_cumplimiento
-    @promesa = Promesa.find(params[:id])
-    current_ciudadano.dejar_de_reclamar_cumplimiento @promesa
+    social_action('_reclamar') {
+      current_ciudadano.dejar_de_reclamar_cumplimiento @promesa
+    }
   end
   
   def hacerse_cargo
@@ -111,4 +115,16 @@ class PromesasController < ApplicationController
   
   def lavarse_las_manos
   end
+  
+private
+  def social_action(template, &block)
+    @promesa = Promesa.find(params[:id])
+    
+    block.call
+    
+    respond_to do |format|
+        format.html { render template, :layout => ! request.xhr?, :promesa => @promesa }
+    end
+  end
+  
 end

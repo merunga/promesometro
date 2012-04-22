@@ -1,0 +1,8 @@
+.reclamar
+  - if current_ciudadano.not.reclamando? @promesa
+    - text = 'reclama cumplimiento!'
+    - path = reclamar_cumplimiento_promesa_path @promesa
+  - else
+    - text = 'deja de reclamar'
+    - path = dejar_de_reclamar_cumplimiento_promesa_path @promesa
+  = link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html

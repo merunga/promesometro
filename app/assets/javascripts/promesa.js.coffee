@@ -31,3 +31,7 @@ promesa.add_prueba = (tipo) ->
 promesa.remove_prueba = ($prueba) ->
   $prueba.find('input, textarea').attr('disabled',true)
   $prueba.remove()
+  
+jQuery ($) ->
+  $('.seguir a[data-type=html], .reclamar a[data-type=html]').on 'ajax:success', (event, data, status, xhr) ->
+    $(this).html data
