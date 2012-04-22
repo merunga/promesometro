@@ -87,9 +87,23 @@ class PromesasController < ApplicationController
   end
   
   def seguir
+    @promesa = Promesa.find(params[:id])
+    current_ciudadano.follow @promesa
+  end
+  
+  def dejar_de_seguir
+    @promesa = Promesa.find(params[:id])
+    current_ciudadano.stop_following @promesa
   end
   
   def reclamar_cumplimiento
+    @promesa = Promesa.find(params[:id])
+    current_ciudadano.reclamar_cumplimiento @promesa
+  end
+  
+  def dejar_de_reclamar_cumplimiento
+    @promesa = Promesa.find(params[:id])
+    current_ciudadano.dejar_de_reclamar_cumplimiento @promesa
   end
   
   def hacerse_cargo

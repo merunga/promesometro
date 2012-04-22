@@ -10,7 +10,10 @@ class Ability
       can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
         carlos.es_funcionario?
       end
-      can [:seguir,:reclamar_cumplimiento], Promesa
+      can [
+        :seguir, :dejar_de_seguir, :reclamar_cumplimiento,
+        :dejar_de_reclamar_cumplimiento
+      ], Promesa
       can [:hacerse_cargo, :lavarse_las_manos], Promesa
       can [:crear, :actualizar, :cumplir], Hito do |el_hito|
         ciudadano.es_duenio_de? el_hito

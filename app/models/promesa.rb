@@ -14,6 +14,8 @@ class Promesa < ActiveRecord::Base
   belongs_to :region
   has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
   
+  has_many :reclamos, :order => 'id ASC'
+  
   accepts_nested_attributes_for :info_funcionario
   accepts_nested_attributes_for :pruebas, :allow_destroy => true
   validates_presence_of :lo_prometido
