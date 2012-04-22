@@ -1,0 +1,14 @@
+- @promesa = promesa
+=render 'social/node_widgets',
+  :link => link,
+  :title => title,
+  :desc => desc,
+  :width => width
+
+- if ciudadano_signed_in?
+  = render 'seguir'
+  = render 'reclamar'
+    
+- else
+  para apoyar o reclamar el cumplimiento de esta promesa
+  = render 'social/login'
