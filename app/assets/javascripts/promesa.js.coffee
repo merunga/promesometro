@@ -33,5 +33,5 @@ promesa.remove_prueba = ($prueba) ->
   $prueba.remove()
   
 jQuery ($) ->
-  $('.seguir a[data-type=html], .reclamar a[data-type=html]').on 'ajax:success', (event, data, status, xhr) ->
+  $('.seguir a[data-type=html], .reclamar a[data-type=html]').parent().on 'ajax:success', (event, data, status, xhr) ->
     $(this).html data
