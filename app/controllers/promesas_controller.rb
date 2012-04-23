@@ -44,7 +44,6 @@ class PromesasController < ApplicationController
   
   def editar
     @promesa = Promesa.find(params[:id])
-    @tags = ActsAsTaggableOn::Tag.all.collect{|it| it.name }.to_json
     render :template => 'promesas/denunciar'
   end
   
@@ -69,7 +68,7 @@ class PromesasController < ApplicationController
   end
   
   def buscar
-    @search = PromesaSearch.new({params[:search].try(:to_sym) => params[:query]}, params[:page])
+    @search = PromesaSearch.new({:keyword => params[:search][:keyword]}, params[:page])
     @promesas = @search.promesas
   end
   
