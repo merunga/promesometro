@@ -67,6 +67,7 @@ gem 'foreigner'
 gem 'acts-as-taggable-on', '~> 2.2.2'
 gem 'dynamic_form'
 gem 'jquery_datepicker'
+gem 'rails3-jquery-autocomplete'
 #gem 'client_side_validations'
 gem 'acts_as_voteable', '~> 0.0.3', :git => 'https://github.com/zonecheung/acts_as_voteable.git'
 
