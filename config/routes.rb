@@ -19,15 +19,14 @@ Promesometro::Application.routes.draw do
     collection do
       get :ver_todas, :buscar, :denunciar
       post :crear
+      post :buscar
     end
     member do
       get :ver, :editar, :actualizar
       post :comentar
       put :actualizar
-      get :seguir
-      get :dejar_de_seguir
-      get :reclamar_cumplimiento
-      get :dejar_de_reclamar_cumplimiento
+      get :seguir, :dejar_de_seguir
+      get :reclamar_cumplimiento, :dejar_de_reclamar_cumplimiento
     end
   end
 

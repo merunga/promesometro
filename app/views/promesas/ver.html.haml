@@ -30,6 +30,9 @@
       .fecha_declaracion
         =@promesa.fecha_declaracion
         
+    .compartir
+      = promesa_social_widgets(@promesa)
+        
     .pruebas
       %legend Pruebas
       -@promesa.pruebas.each do |p|
@@ -39,9 +42,6 @@
 
     .share
       -comentarios_count(@promesa)
-
-      .compartir
-        = promesa_social_widgets(@promesa)
 
     .post_comment
       = render :partial => 'comments/form', :locals => {:promise => @promesa}
