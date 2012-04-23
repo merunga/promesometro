@@ -17,8 +17,12 @@ class Ciudadano < ActiveRecord::Base
     una_cosa && una_cosa.uploader == self
   end
   
+  def es_funcionario_de? una_promesa
+    una_promesa && self.es_funcionario? && una_promesa.info_funcionario == self.info_funcionario
+  end
+  
   def es_funcionario?
-    self.info_funcionario.no.nil?
+    self.info_funcionario.not.nil?
   end
   
   ### RECLAMOS
