@@ -5,7 +5,7 @@ class Ability
     #can :manage, :all if ciudadano.es_admin?
     can [:ver,:buscar], Promesa
     if ciudadano
-      can [:agregar_prueba], Promesa
+      can [:crear, :agregar_prueba], Promesa
       can :comentar, :all
       can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
         carlos.es_funcionario?
@@ -22,13 +22,15 @@ class Ability
         maria.es_funcionario?
       end
       can [:editar,:actualizar], Promesa do |la_promesa|
-        ciudadano.es_funcionario_de? la_promesa ||
-        (la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
+        #ciudadano.es_funcionario_de? la_promesa ||
+        #(la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
+        ciudadano.es_uploader_de? la_promesa
       end
       can :editar, Prueba do |la_prueba|
         ciudadano.es_uploader_de? la_prueba
       end
     end
     can [:denunciar], Promesa
+    can [:autocomplete_region_nombre, :autocomplete_tag_name], Promesa
   end
 end

@@ -22,16 +22,17 @@
   .el_resumen
     %label
       subida por
-      %span= promesa.el_que_denuncia
+      = promesa.el_que_denuncia
 
     %label
       comentarios
-      %span= promesa.comment_threads.count
+      = promesa.comment_threads.count
      
-    %label número de pruebas
-      %span= promesa.pruebas.count
+    %label
+      número de pruebas
+      = promesa.pruebas.count
     
     - if promesa.region  
       %label
         region
-      %span= promesa.region
+        = promesa.region

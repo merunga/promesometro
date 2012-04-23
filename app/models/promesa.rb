@@ -24,7 +24,7 @@ class Promesa < ActiveRecord::Base
     :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima
   
   def esta_legitimizada?
-    info_funcionario.no.nil?
+    info_funcionario.funcionario.not.nil?
   end
   
   before_save :set_slug

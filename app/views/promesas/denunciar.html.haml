@@ -3,6 +3,7 @@
   
 =content_for :scripts do
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+  <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
   =javascript_include_tag :promesa
   
 - edition = params[:action] == 'editar'
@@ -47,10 +48,19 @@
         %legend Lo prometido
         .lo_prometido
           =f.text_area :lo_prometido, :required => 'required'
+          
+        %script(type='text/javascript')
+          $(document).ready(function(){ |
+            $('#tags').tagsInput({ |
+                autocomplete_url: '#{autocomplete_tag_name_promesas_path}', |
+                width: '80%', |
+                defaultText: 'agrega un tag' |
+            }); |
+          })
       
         .tags
           =f.label :tag_list, 'Tags:'
-          =f.text_field :tag_list
+          =f.text_field :tag_list, :id=>'tags'
       
         .fecha_declaracion
           =f.label :fecha_declaracion, 'Cúando:'
@@ -58,7 +68,7 @@
           
         .region
           =f.label :region, 'Region:'
-          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}
+          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox'
             
       %fieldset.pruebas
         %legend Pruebas

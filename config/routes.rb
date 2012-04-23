@@ -20,6 +20,7 @@ Promesometro::Application.routes.draw do
       get :ver_todas, :buscar, :denunciar
       post :crear
       post :buscar
+      get :autocomplete_region_nombre, :autocomplete_tag_name
     end
     member do
       get :ver, :editar, :actualizar

@@ -1,5 +1,7 @@
 class PromesasController < ApplicationController
   load_and_authorize_resource
+  autocomplete :region, :nombre, :full => true
+  autocomplete :tag, :name, :full => true
   
   def denunciar
     if ciudadano_signed_in?
@@ -42,6 +44,7 @@ class PromesasController < ApplicationController
   
   def editar
     @promesa = Promesa.find(params[:id])
+    @tags = ActsAsTaggableOn::Tag.all.collect{|it| it.name }.to_json
     render :template => 'promesas/denunciar'
   end
   
