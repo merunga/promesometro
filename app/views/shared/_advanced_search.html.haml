@@ -1,26 +1,38 @@
 %h2 Busqueda Avanzada
-%form(action=buscar_promesas_path method='post')
+=form_for @search, :url => buscar_promesas_path, :html => {:method => :post} do |f|
   %section.container
     %section
       .input
-        -#= select_tag 'search[state]', options_from_collection_for_select(State.used, 'id','name', input_value(params,:state)), :include_blank => '- Región -'
-        -#.input
-        -#= select_tag 'search[province]', options_from_collection_for_select(Province.used, 'id','name', input_value(params,:province)), :include_blank => '- Provincia -'
+        =f.text_field :info_funcionario_nombre_like, :placeholder => 'nombre'
+      .input
+        =f.text_field :info_funcionario_cargo_like, :placeholder => 'cargo'
+      .input
+        =f.text_field :info_funcionario_entidad_like, :placeholder => 'entidad'
 
     %section
       .input
-        -#= select_tag 'search[topic]', options_from_collection_for_select(Topic.used, 'id','name', input_value(params,:topic)), :include_blank => '- Temas -'
+        =f.text_field :lo_prometido_contains, :placeholder => 'lo prometido'
       .input
-        -#= select_tag 'search[official]', options_from_collection_for_select(Official.with_promises, 'id','name', input_value(params,:official)), :include_blank => '- Autoridad -'
+        =f.collection_select :region_id_equals, Region.all, :id, :nombre, {:prompt => '-- Region --'}, :class => 'combobox'
+      .input
+        =f.text_field :pruebas_descripcion_contains, :placeholder => 'pruebas'
 
-    %section
+    -#%section
       .input
-        -#= text_field_tag 'search[keyword]', input_value(params,:keyword), :placeholder => 'Texto'
-      .input
-        -#= select_tag 'search[political_party]', options_from_collection_for_select(PoliticalParty.with_promises, 'id','name', input_value(params,:political_party)), :include_blank => '- Partido Político -'
+        %script(type='text/javascript')
+          $(document).ready(function(){ |
+            $('#tags').tagsInput({ |
+                autocomplete_url: '#{autocomplete_tag_name_promesas_path}', |
+                width: '80%', |
+                defaultText: 'tags a buscar' |
+            }); |
+          })
+      
+        .tags
+          =f.text_field :tag_list, :id=>'tags'
 
     %section.button
       = submit_tag 'Buscar', :class => :button
 
-  %span
+  %small
     Nota: No es necesario llenar todos los campos del filtro

@@ -10,9 +10,8 @@
 - content_for :title, ":: Promesas"
 #promesas
 
-  - if (params[:controller] == 'promesas' && params[:action] == 'index') or (params[:controller] == 'promesa_filter')
-    #filter-container
-      = render 'shared/advanced_search'
+  #filter-container
+    = render 'shared/advanced_search'
 
   .promesa_titulo
     %h1 Promesas

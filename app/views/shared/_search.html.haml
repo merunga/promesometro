@@ -1,7 +1,5 @@
-%form(action=buscar_promesas_path method='post')
-  -# if params[:controller] == 'promesas'
-  -#  = select_tag :tema, options_from_collection_for_select(Topic.used, 'name','name', ((params[:search] == 'topic')? "" :  params[:query])), :include_blank => '- Temas -'
+=form_for @search, :url => buscar_promesas_path, :html => {:method => :post} do |f|
+  =# f.text_field :lo_prometido_or_info_funcionario_nombre_or_info_funcionario_cargo_or_info_funcionario_entidad_or_region_nombre_or_pruebas_descripcion_or_comments_title_or_comments_body_contains, :placeholder => 'Busqueda'
+  =  f.text_field :lo_prometido_or_info_funcionario_nombre_or_info_funcionario_cargo_or_info_funcionario_entidad_or_region_nombre_or_pruebas_descripcion_contains, :placeholder => 'Busqueda'
 
-  = text_field_tag 'search[keyword]', nil, :placeholder => 'Busqueda'
-
-  = submit_tag 'Buscar', :class => :button
+  = f.submit 'Buscar', :class => :button

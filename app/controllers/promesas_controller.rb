@@ -68,8 +68,8 @@ class PromesasController < ApplicationController
   end
   
   def buscar
-    @search = PromesaSearch.new({:keyword => params[:search][:keyword]}, params[:page])
-    @promesas = @search.promesas
+    @search = Promesa.search(params[:search])
+    @promesas = @search.order('created_at DESC').page params[:page]
   end
   
   def agregar_prueba
