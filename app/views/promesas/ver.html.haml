@@ -47,7 +47,8 @@
       = render :partial => 'comments/form', :locals => {:promise => @promesa}
 
     - @comments.each do |c|
-      - @comment = c
-      = render :partial => 'comments/comment'
+      = render :partial => 'comments/comment',
+        :locals => {:comment => c, :level => 0, :position => 0}
+      
     = paginate @comments
         
