@@ -1,4 +1,4 @@
-=form_for @search, :url => buscar_promesas_path, :html => {:method => :post} do |f|
+=form_for @search, :url => buscar_promesas_path, :html => {:method => :get} do |f|
   =# f.text_field :lo_prometido_or_info_funcionario_nombre_or_info_funcionario_cargo_or_info_funcionario_entidad_or_region_nombre_or_pruebas_descripcion_or_comments_title_or_comments_body_contains, :placeholder => 'Busqueda'
   =  f.text_field :lo_prometido_or_info_funcionario_nombre_or_info_funcionario_cargo_or_info_funcionario_entidad_or_region_nombre_or_pruebas_descripcion_contains, :placeholder => 'Busqueda'
 
