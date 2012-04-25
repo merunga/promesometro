@@ -35,6 +35,9 @@ Promesometro::Application.routes.draw do
     :constraints => { :type => /(comment|promesa|prueba)/ }
   match "vote/down/:type/:key" => "votes#vote_down", :as => :vote_down,
     :constraints => { :type => /(comment|promesa|prueba)/ }
+    
+  match "comments/:id/reply/:level" => "comments#reply", :as => :reply_comment,
+    :constraints => {:level => /\d/}
 
   resources :acerca_de, :only => [:index]
   #match '/promesas_buscar/*query', :to => 'promise_filter#create', :via => :get, :as => :promise_filter

@@ -7,6 +7,7 @@ class Ability
     if ciudadano
       can [:crear, :agregar_prueba], Promesa
       can :comentar, :all
+      can :reply, Comment
       can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
         carlos.es_funcionario?
       end

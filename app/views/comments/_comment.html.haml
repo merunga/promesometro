@@ -1,5 +1,5 @@
-- promesa = @comment.commentable
-.comment
+- promesa = comment.commentable
+.comment(class="level#{level} #{position%2==0? 'par': 'impar'}")
   .comment_content
     %p.top
       -#%span.title
@@ -9,18 +9,26 @@
       %div(syle='font-size:small !important')
         %span(style='float:left')
           Comentario de
-          = @comment.ciudadano.screen_name
+          = comment.ciudadano.screen_name
         %span(style='float:right')
-          %span.fecha= time_ago_in_words @comment.created_at
+          %span.fecha= time_ago_in_words comment.created_at
     %p(style='margin:20px 0;text-align:center')
-      %i="\"#{@comment.body}\""
+      %i="\"#{comment.body}\""
       =#comentario_social_widgets comment
       %br
       
     - if ciudadano_signed_in?
       -@type = 'comment'
-      -@votable = @comment
+      -@votable = comment
       .votar= render 'shared/votar'
+      
+      .responder
+        = link_to 'responder', reply_comment_path(comment,level), :disable_with => 'enviando...', :remote => true, "data-type" => :html
     - else
       para votar por este comentario
       =login
+      
+    .thread
+      -if comment.has_children?
+        -comment.children.each_with_index do |c, index|
+          = render 'comments/comment', :comment => c, :level => level+1, :position => index      
