@@ -26,7 +26,7 @@
         =@promesa.lo_prometido
       .tags
         -@promesa.tags.each do |t|
-          =link_to t, :url => '#'
+          %span.tag= link_to t, :url => '#'
       .fecha_declaracion
         =@promesa.fecha_declaracion
         
@@ -46,6 +46,8 @@
     .post_comment
       = render :partial => 'comments/form', :locals => {:promise => @promesa}
 
-    = render :partial => 'comments/comment', :collection => @comments
+    - @comments.each do |c|
+      - @comment = c
+      = render :partial => 'comments/comment'
     = paginate @comments
         

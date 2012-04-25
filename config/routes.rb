@@ -30,6 +30,12 @@ Promesometro::Application.routes.draw do
       get :reclamar_cumplimiento, :dejar_de_reclamar_cumplimiento
     end
   end
+  
+  resources :comments, :except => [:index, :new, :edit, :destroy, :show, :update, :create]  do
+    member do
+      get :vote_up, :vote_down
+    end
+  end
 
   resources :acerca_de, :only => [:index]
   #match '/promesas_buscar/*query', :to => 'promise_filter#create', :via => :get, :as => :promise_filter

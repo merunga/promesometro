@@ -1,6 +1,7 @@
 class Ciudadano < ActiveRecord::Base       
   acts_as_tagger
   acts_as_follower
+  acts_as_voter
   
   devise :database_authenticatable, :lockable, :recoverable,
       :rememberable, :registerable, :trackable, :timeoutable,

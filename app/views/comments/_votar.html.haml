@@ -1,0 +1,10 @@
+- text = 'bien'
+- path = vote_up_comment_path @comment
+= link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html
+
+- count = @comment.up_votes.count-@comment.down_votes.count
+%span= "#{count}"
+
+- text = 'mal'
+- path = vote_down_comment_path @comment
+= link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html

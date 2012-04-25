@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
-  acts_as_voteable
+  acts_as_votable
   
   validates_presence_of :ciudadano
   validates_presence_of :body, :message => '^Comment vacio'

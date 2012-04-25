@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422181503) do
+ActiveRecord::Schema.define(:version => 20120425071901) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -216,15 +216,16 @@ ActiveRecord::Schema.define(:version => 20120422181503) do
   add_index "versiones", ["item_type", "item_id"], :name => "index_versiones_on_item_type_and_item_id"
 
   create_table "votes", :force => true do |t|
-    t.boolean  "voting",        :default => false
-    t.datetime "created_at",                       :null => false
-    t.integer  "voteable_id"
-    t.string   "voteable_type"
-    t.integer  "ciudadano_id"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
-  add_index "votes", ["ciudadano_id"], :name => "index_votes_on_ciudadano_id"
-  add_index "votes", ["voteable_id"], :name => "index_votes_on_voteable_id"
-  add_index "votes", ["voteable_type"], :name => "index_votes_on_voteable_type"
+  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
+  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
 end
