@@ -2,7 +2,7 @@
   =stylesheet_link_tag :promesa  
   
 =content_for :scripts do
-  <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+  <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
   =javascript_include_tag :promesa  
   
 = render "shared/flash"
@@ -10,7 +10,7 @@
 - content_for :title, ":: Promesas"
 #promesas
 
-  #filter-container
+  #busqueda_avanzada
     = render 'shared/advanced_search'
 
   .promesa_titulo

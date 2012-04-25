@@ -12,6 +12,46 @@
   .promesa_estado_titulo
     +column(8, true)
     
+  #busqueda_avanzada
+    +column(24)
+    background-color: #ffffff
+    margin: 0 0 20px 0
+    padding: 10px
+    
+    #tags_tag
+      width: 150px
+      
+    #tags_tagsinput
+      width: 250px !important
+    
+    h2
+      color: #CC6666
+      margin-bottom: 0
+    
+    section
+      +column(6)
+      border-right: 1px dashed #999999
+      margin: 0 10px
+      padding: 0 10px
+      
+      &.container
+        +column-base(true)
+        border-top: 1px dashed #999999
+        border-bottom: 1px dashed #999999
+        border-right: 0
+        margin: 10px 0
+        padding: 10px 0
+        width: 930px
+      
+      &.button
+        +column(2,true)
+        border: 0
+        margin-top: 43px
+
+    .input
+      +column(6, true)
+      padding: 5px 0
+    
 #denuncia .promesa,
 #ver .promesa
   +column(15)

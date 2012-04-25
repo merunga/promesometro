@@ -3,6 +3,8 @@ class PromesasController < ApplicationController
   autocomplete :region, :nombre, :full => true
   autocomplete :tag, :name, :full => true
   
+  before_filter :create_search
+  
   def denunciar
     if ciudadano_signed_in?
       @promesa = Promesa.new
@@ -68,7 +70,6 @@ class PromesasController < ApplicationController
   end
   
   def buscar
-    @search = Promesa.search(params[:search])
     @promesas = @search.order('created_at DESC').page params[:page]
   end
   
@@ -127,6 +128,10 @@ private
     respond_to do |format|
         format.html { render template, :layout => ! request.xhr?, :promesa => @promesa }
     end
+  end
+  
+  def create_search
+    @search = Promesa.search(params[:search])
   end
   
 end
