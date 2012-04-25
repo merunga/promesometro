@@ -2,6 +2,15 @@
 .prueba(id='prueba[#{prueba.posicion}]' class='#{recurso.type.downcase}')
   .descripcion
     =prueba.descripcion
+    
+  .left
+    - if ciudadano_signed_in?
+      -@type = 'prueba'
+      -@votable = prueba
+      .votar= render 'shared/votar'
+    - else
+      para votar por este comentario
+      =login
   
   =link_to(recurso.link, recurso.link) if prueba.link
   -if recurso.file
