@@ -110,5 +110,12 @@ jQuery(function($) {
 jQuery(function($) {
 	$(document).ready(function() {
 		$('select.combobox').combobox()
-	});
+
+		$('.votar a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
+	    	$(this).html(data)
+	  	})
+	 })
 })
+
+
+  

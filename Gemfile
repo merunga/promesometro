@@ -69,7 +69,7 @@ gem 'dynamic_form'
 gem 'jquery_datepicker'
 gem 'rails3-jquery-autocomplete'
 #gem 'client_side_validations'
-gem 'acts_as_voteable', '~> 0.0.3', :git => 'https://github.com/zonecheung/acts_as_voteable.git'
+gem 'acts_as_votable'
 
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

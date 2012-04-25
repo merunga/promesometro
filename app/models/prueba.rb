@@ -1,4 +1,6 @@
 class Prueba < ActiveRecord::Base
+  acts_as_votable
+  
   belongs_to :uploader, :class_name => 'Ciudadano'
   belongs_to :promesa
   

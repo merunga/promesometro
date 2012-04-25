@@ -7,6 +7,7 @@ class Ability
     if ciudadano
       can [:crear, :agregar_prueba], Promesa
       can :comentar, :all
+      can [:vote_up, :vote_down], Comment
       can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
         carlos.es_funcionario?
       end
@@ -29,6 +30,7 @@ class Ability
       can :editar, Prueba do |la_prueba|
         ciudadano.es_uploader_de? la_prueba
       end
+      can [:vote_up, :vote_down], Prueba
     end
     can [:denunciar], Promesa
     can [:autocomplete_region_nombre, :autocomplete_tag_name], Promesa

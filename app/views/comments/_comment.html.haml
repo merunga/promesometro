@@ -1,4 +1,4 @@
-- promesa = comment.commentable
+- promesa = @comment.commentable
 .comment
   .comment_content
     %p.top
@@ -9,10 +9,16 @@
       %div(syle='font-size:small !important')
         %span(style='float:left')
           Comentario de
-          = comment.ciudadano.screen_name
+          = @comment.ciudadano.screen_name
         %span(style='float:right')
-          %span.fecha= time_ago_in_words comment.created_at
+          %span.fecha= time_ago_in_words @comment.created_at
     %p(style='margin:20px 0;text-align:center')
-      %i="\"#{comment.body}\""
+      %i="\"#{@comment.body}\""
       =#comentario_social_widgets comment
       %br
+      
+    - if ciudadano_signed_in?
+      .votar= render 'comments/votar'
+    - else
+      para votar por este comentario
+      =login

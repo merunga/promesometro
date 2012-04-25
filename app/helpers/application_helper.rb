@@ -14,4 +14,8 @@ module ApplicationHelper
       yield t.name, classes[(t.count.to_i - min) / divisor]
     }
   end
+  
+  def login
+    render 'social/login'
+  end
 end
