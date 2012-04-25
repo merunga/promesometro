@@ -2,6 +2,7 @@
 =form_for @search, :url => buscar_promesas_path, :html => {:method => :post} do |f|
   %section.container
     %section
+      %h3 sobre el que promete
       .input
         =f.text_field :info_funcionario_nombre_like, :placeholder => 'nombre'
       .input
@@ -10,26 +11,23 @@
         =f.text_field :info_funcionario_entidad_like, :placeholder => 'entidad'
 
     %section
+      %h3 sobre lo prometido
       .input
         =f.text_field :lo_prometido_contains, :placeholder => 'lo prometido'
       .input
+        %script(type='text/javascript')
+          jQuery(function($) {$(document).ready(function(){ |
+            $('.ui-combobox > input.ui-autocomplete-input'). |
+              attr('placeholder','región').css('background-color','#F2F2F2') |
+          });})
         =f.collection_select :region_id_equals, Region.all, :id, :nombre, {:prompt => '-- Region --'}, :class => 'combobox'
       .input
         =f.text_field :pruebas_descripcion_contains, :placeholder => 'pruebas'
 
-    -#%section
+    %section
+      %h3 tags
       .input
-        %script(type='text/javascript')
-          $(document).ready(function(){ |
-            $('#tags').tagsInput({ |
-                autocomplete_url: '#{autocomplete_tag_name_promesas_path}', |
-                width: '80%', |
-                defaultText: 'tags a buscar' |
-            }); |
-          })
-      
-        .tags
-          =f.text_field :tag_list, :id=>'tags'
+        = render 'shared/tag_cloud', :tags => Promesa.tag_counts_on(:tags)
 
     %section.button
       = submit_tag 'Buscar', :class => :button

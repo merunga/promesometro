@@ -3,6 +3,8 @@ class Promesa < ActiveRecord::Base
   acts_as_taggable
   acts_as_followable
   
+  search_methods :tag_list
+  
   paginates_per 8
 
   has_paper_trail(
