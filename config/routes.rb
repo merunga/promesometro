@@ -31,11 +31,10 @@ Promesometro::Application.routes.draw do
     end
   end
   
-  resources :comments, :except => [:index, :new, :edit, :destroy, :show, :update, :create]  do
-    member do
-      get :vote_up, :vote_down
-    end
-  end
+  match "vote/up/:type/:key" => "votes#vote_up", :as => :vote_up,
+    :constraints => { :type => /(comment|promesa|prueba)/ }
+  match "vote/down/:type/:key" => "votes#vote_down", :as => :vote_down,
+    :constraints => { :type => /(comment|promesa|prueba)/ }
 
   resources :acerca_de, :only => [:index]
   #match '/promesas_buscar/*query', :to => 'promise_filter#create', :via => :get, :as => :promise_filter

@@ -18,7 +18,9 @@
       %br
       
     - if ciudadano_signed_in?
-      .votar= render 'comments/votar'
+      -@type = 'comment'
+      -@votable = @comment
+      .votar= render 'shared/votar'
     - else
       para votar por este comentario
       =login
