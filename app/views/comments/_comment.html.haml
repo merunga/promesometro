@@ -1,4 +1,4 @@
-- promesa = comment.commentable
+- @promesa = comment.commentable
 .comment(class="level#{level}")
   .comment_content
     %p.top
@@ -23,7 +23,7 @@
       .votar= render 'shared/votar'
       
       .responder
-        = link_to 'responder', reply_comment_path(comment,level), :disable_with => 'enviando...', :remote => true, "data-type" => :html
+        =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)
     - else
       para votar por este comentario
       =login

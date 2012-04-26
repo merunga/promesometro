@@ -51,15 +51,32 @@
     .input
       +column(6, true)
       padding: 5px 0
-    
-#denuncia .promesa,
+
 #ver .promesa
-  +column(15)
-  background: url('/assets/promesa_detail-bg.png') no-repeat
-  margin-right: 40px
-  min-height: 750px
+  +column(24)
+#ver .promesa  
+  .discusion
+    padding: 20px
+    padding-top: 20px
+    +column(12)
+    float: left
+    background: url('/assets/promesa_detail-bg.png') no-repeat
+  .break
+    +column(1)
+  .pruebas
+    +column(10)
+    float: left
+
+#denuncia .promesa
+  background: url('/assets/promesa_denuncia-bg.png') no-repeat
+  +column(16)
   padding: 20px
 
+#denuncia .promesa,      
+#ver .promesa,
+#ver .promesa .discusion
+  min-height: 750px
+  
 #denuncia .promesa
   input
     margin-bottom: 1px
@@ -193,9 +210,6 @@
     float: left
     list-style-type: none
     padding: 10px
-    padding-top: 5px
-    margin-top: 10px
-    width: 90%
     
     legend
       +subheader-grande
@@ -206,14 +220,19 @@
     
     iframe
       padding-top: 5px
-      
+  
+  $iframe_width: 380px
+  $iframe_height: 285px
+  
   .video
     iframe
-      max-width: 500px
+      max-width: $iframe_width
+      max-height: $iframe_height
     
   .mapa
     iframe
-      width: 500px !important
+      width: $iframe_width !important
+      height: $iframe_height !important
   
   .comment.level0
     border-bottom: 1px dashed #666666
