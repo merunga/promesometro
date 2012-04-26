@@ -9,3 +9,4 @@ vendor/
 .project
 public/uploads/*
 public/assets/*
+public/favicon.gif
