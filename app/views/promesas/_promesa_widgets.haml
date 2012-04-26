@@ -5,10 +5,5 @@
   :desc => desc,
   :width => width
 
-- if ciudadano_signed_in?
-  .seguir= render 'seguir'
-  .reclamar= render 'reclamar'
-    
-- else
-  para apoyar o reclamar el cumplimiento de esta promesa
-  = render 'social/login'
+.seguir= render 'seguir'
+.reclamar= render 'reclamar'

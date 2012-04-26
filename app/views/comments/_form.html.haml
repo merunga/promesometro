@@ -13,10 +13,3 @@
           .actions
             = form.submit 'Responder', :class => 'button'
     .comment_footer(class="#{position%2==0? 'par': 'impar'}")
-    
-- else
-  %span.estado
-    %div(style='float:left')
-      Para comentar y mantenerte informado&nbsp;
-    %div(style='float:left')
-      = render 'social/login'
