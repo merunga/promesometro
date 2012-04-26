@@ -17,16 +17,13 @@
       =#comentario_social_widgets comment
       %br
       
-    - if ciudadano_signed_in?
-      -@type = 'comment'
-      -@votable = comment
-      .votar= render 'shared/votar'
+    -@type = 'comment'
+    -@votable = comment
+    .votar= render 'social/votar'
       
+    - if ciudadano_signed_in?
       .responder
         =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)
-    - else
-      para votar por este comentario
-      =login
   
   .comment_footer(class="#{position%2==0? 'par': 'impar'}")
       
