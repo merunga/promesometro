@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   load_and_authorize_resource
   
   def reply
-    @reply = Comment.build_from(@comment.commentable, current_ciudadano.id, 'un comentario')
+    @reply = Comment.build_from(@comment.commentable, current_ciudadano.id, params[:comment][:body])
     @reply.save!
     @reply.move_to_child_of(@comment)
     level = params[:level]==0?1:params[:level]

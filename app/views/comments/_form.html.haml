@@ -1,14 +1,19 @@
 - if ciudadano_signed_in?
-  %span.estado Agrega tu comentario
-  %div{:id=>"promise_#{promise.id}_comments"}
-    %form
-    = form_for(@promesa.comment_threads.build, :url => comentar_promesa_path(@promesa)) do |form|
-      .ta_comment
-        .input
-          = form.text_area :body, :class => 'xlarge', :rows => 7
-        = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
-      .actions
-        = form.submit 'Publicar', :class => 'button'
+  .comment.reply(class="level#{level}")
+    .comment_content(style='min-height:160px; margin-top: 30px; width: 510px')
+      %span.estado Agrega tu comentario
+      %div
+        = form_for @promesa.comment_threads.build, :url => url,
+            :disable_with => 'enviando...', :remote => true, "data-type" => :html,
+            :remote => true  do |form|
+          .ta_comment
+            .input
+              = form.text_area :body, :class => 'xlarge', :rows => 7
+            = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
+          .actions
+            = form.submit 'Responder', :class => 'button'
+    .comment_footer(class="#{position%2==0? 'par': 'impar'}")
+    
 - else
   %span.estado
     %div(style='float:left')

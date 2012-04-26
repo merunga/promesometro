@@ -6,8 +6,8 @@ module CommentsHelper
   #
   def latest_comments(limit = 5, truncate_comment = true, length = 30, omission = '...')
     Comment.by_newest.limit(limit).each do |c|
-      @comment = c
-      render :partial => 'comments/comment', :locals => { :truncate_comment => truncate_comment, :length => length, :omission => omission }
+      render :partial => 'comments/comment',
+        :locals => { :comment => c, :level => 0, :position => 0 }
     end
   end
 
