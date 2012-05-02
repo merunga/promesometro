@@ -22,8 +22,10 @@
     .votar= render 'social/votar'
       
     - if ciudadano_signed_in?
+      %a(onclick='$(this).next().show(); return false;' href='#') responder
       .responder
         =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)
+      
   
   .comment_footer(class="#{position%2==0? 'par': 'impar'}")
       
