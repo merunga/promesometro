@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @reply = Comment.build_from(@comment.commentable, current_ciudadano.id, params[:comment][:body])
     @reply.save!
     @reply.move_to_child_of(@comment)
-    level = params[:level]==0?1:params[:level]
+    level = 1#params[:level]==0?1:params[:level]
     position = @comment.children.count
     
     respond_to do |format|

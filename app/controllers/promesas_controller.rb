@@ -23,7 +23,7 @@ class PromesasController < ApplicationController
   def ver
     @promesa = Promesa.find(params[:id])
     #@search = Promise.search(params[:search])
-    @comments = @promesa.comment_threads.order('created_at desc').page(params[:page]).per(5)
+    @comments = @promesa.root_comments.order('created_at desc').page(params[:page]).per(5)
   end
   
   def crear

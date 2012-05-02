@@ -35,8 +35,7 @@ promesa.remove_prueba = ($prueba) ->
 jQuery ($) ->
   $('.seguir a[data-type=html], .reclamar a[data-type=html]').parent().on 'ajax:success', (event, data, status, xhr) ->
     $(this).html data
-  $('.responder form[data-remote=true]').on 'ajax:success', (event, data, status, xhr) ->
-    #alert($(this).parents('.responder').parents('.comment').find('.thread:first').html())
-    $(this).parent('.responder').parent('.comment').find('.thread:first').prepend $(data)
   $('.comentar form[data-remote=true]').on 'ajax:success', (event, data, status, xhr) ->
-    $(this).parents('.comentar').siblings('.comentarios').prepend $(data)
+    $(this).parents('.comentar').siblings('.comentarios').append $(data)
+  $('.responder form[data-remote=true]').live 'ajax:success', (event, data, status, xhr) ->
+    $(this).parents('.comment:not(.reply)').first().find('.thread:first').append $(data)
