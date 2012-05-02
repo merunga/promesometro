@@ -1,0 +1,49 @@
+.comment.level0
+  border-bottom: 1px dashed #666666
+  
+.comment.level1
+  margin-left: 30px
+  width: 560px
+  
+.comment
+  +column(15, true)
+  margin: 10px 0
+  
+  .comment_content
+    +border-radius(5px)
+    background: url('/assets/comment_bg.png') repeat
+    padding: 15px
+    
+    span.author
+      color: #cc6666
+      font-size: 14px
+      float: left
+      
+    p.title
+      border-bottom: 1px dashed #666666
+      color: #333333
+    p.the_comment
+      margin: 20px 0
+      text-align: center
+  
+  .thread
+    .comment.level1
+      .thread
+        .comment.level1
+          margin-left: 0px
+   
+  .comment_footer
+    padding-bottom: 18px
+    margin-bottom: 10px
+    
+  .comment_footer.par
+    background: url('/assets/comment_arrow.png') no-repeat 5% bottom
+  .comment_footer.impar
+    background: url('/assets/comment_arrow_reply.png') no-repeat 95% bottom
+      
+.comentar
+  .ocultar
+    display: none
+.comment.level1
+  .show_responder
+    display: none

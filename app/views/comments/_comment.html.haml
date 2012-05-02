@@ -2,10 +2,6 @@
 .comment(class="level#{level}")
   .comment_content
     %p.top
-      -#%span.title
-        %i Lo prometido:
-        = link_to promesa.title_scaped.humanize, ver_promesa_path(promesa)
-      -#%span.region(style='float:right')= promesa.official.state.name
       %div(syle='font-size:small !important')
         %span(style='float:left')
           Comentario de
@@ -20,16 +16,16 @@
     -@type = 'comment'
     -@votable = comment
     .votar= render 'social/votar'
-      
-    - if ciudadano_signed_in?
-      %a(onclick='$(this).next().show(); return false;' href='#') responder
-      .responder
-        =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)
-      
+    
+    -#%a.show_responder(onclick="$(this).parent().siblings('.responder').show().focus(); return false;" href='#') responder
   
   .comment_footer(class="#{position%2==0? 'par': 'impar'}")
       
   .thread
     -if comment.has_children?
       -comment.children.each_with_index do |c, index|
-        = render 'comments/comment', :comment => c, :level => level==0?1:level, :position => position+index+1      
+        = render 'comments/comment', :comment => c, :level => level==0?1:level, :position => position+index+1
+  
+  - if ciudadano_signed_in? and level == 0
+    .responder
+      =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)      

@@ -21,7 +21,7 @@ private
     block.call
     
     respond_to do |format|
-        format.html { render 'shared/_votar', :layout => !request.xhr? }
+        format.html { render 'social/_votar', :layout => !request.xhr? }
     end
   end
 end

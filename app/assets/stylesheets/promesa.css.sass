@@ -4,6 +4,7 @@
 @import blueprint
 @import compass/css3, compass/utilities
 @import partials/font
+@import partials/comments
 
 #promesas
   .promesa_titulo
@@ -61,11 +62,6 @@
     +column(12)
     float: left
     background: url('/assets/promesa_detail-bg.png') no-repeat
-    .comentar
-      .ocultar
-        display: none
-    .responder
-      display: none
   .break
     +column(1)
   .pruebas
@@ -238,46 +234,3 @@
     iframe
       width: $iframe_width !important
       height: $iframe_height !important
-  
-  .comment.level0
-    border-bottom: 1px dashed #666666
-    
-  .comment.level1
-    margin-left: 30px
-    width: 560px
-    
-  .comment
-    +column(15, true)
-    margin: 10px 0
-    
-    .comment_content
-      +border-radius(5px)
-      background: url('/assets/comment_bg.png') repeat
-      padding: 15px
-      
-      span.author
-        color: #cc6666
-        font-size: 14px
-        float: left
-        
-      p.title
-        border-bottom: 1px dashed #666666
-        color: #333333
-      p.the_comment
-        margin: 20px 0
-        text-align: center
-    
-    .thread
-      .comment.level1
-        .thread
-          .comment.level1
-            margin-left: 0px
-     
-    .comment_footer
-      padding-bottom: 18px
-      margin-bottom: 10px
-      
-    .comment_footer.par
-      background: url('/assets/comment_arrow.png') no-repeat 5% bottom
-    .comment_footer.impar
-      background: url('/assets/comment_arrow_reply.png') no-repeat 95% bottom
