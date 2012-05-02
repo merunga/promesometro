@@ -5,8 +5,7 @@
       %div
         = form_for @promesa.comment_threads.build, :url => url,
             :disable_with => 'enviando...', :remote => true, "data-type" => :html,
-            :autocomplete => 'off',
-            :remote => true  do |form|
+            :autocomplete => 'off' do |form|
           .ta_comment
             .input
               = form.text_area :body, :class => 'xlarge', :rows => 7, :required => true
