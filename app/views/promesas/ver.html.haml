@@ -7,7 +7,6 @@
   
 #ver
   .promesa
-   
     .discusion
       .left
         %h1
@@ -40,13 +39,14 @@
       .share
         -comentarios_count(@promesa)
   
-      .post_comment
+      .comentar
         = render :partial => 'comments/form',
           :locals => {:promise=>@promesa, :level=>0, :position=>0, :url=>comentar_promesa_path(@promesa)}
-  
-      - @comments.each do |c|
-        = render :partial => 'comments/comment',
-          :locals => {:comment => c, :level => 0, :position => 0}
+      
+      .comentarios
+        - @comments.each do |c|
+          = render :partial => 'comments/comment',
+            :locals => {:comment => c, :level => 0, :position => 0}
         
       = paginate @comments
     

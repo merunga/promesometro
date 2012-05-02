@@ -8,7 +8,7 @@
             :remote => true  do |form|
           .ta_comment
             .input
-              = form.text_area :body, :class => 'xlarge', :rows => 7
+              = form.text_area :body, :class => 'xlarge', :rows => 7, :required => true
             = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
           .actions
             = form.submit 'Responder', :class => 'button'

@@ -86,7 +86,8 @@ class PromesasController < ApplicationController
     @comment.save!
     flash[:notice]= 'El comentario ha sido creado con exito'
   
-    redirect_to ver_promesa_url(@promesa)
+    render 'comments/_comment', :layout => false,
+      :locals => {:comment => @comment, :level => 0, :position => 0}
   end
   
   def seguir
