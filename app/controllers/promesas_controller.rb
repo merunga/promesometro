@@ -74,6 +74,12 @@ class PromesasController < ApplicationController
   end
   
   def agregar_prueba
+    @promesa = Promesa.find(params[:id])
+    @prueba = Promesa.new(params[:promesa])
+    @prueba.promesa = @promesa
+    @prueba.save
+    
+    render 'prueba/show', :layout => false
   end
   
   def comentar

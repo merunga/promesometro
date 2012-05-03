@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425071901) do
+ActiveRecord::Schema.define(:version => 20120503154529) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -138,12 +139,13 @@ ActiveRecord::Schema.define(:version => 20120425071901) do
   end
 
   create_table "pruebas", :force => true do |t|
-    t.text     "descripcion", :null => false
-    t.integer  "uploader_id", :null => false
-    t.integer  "promesa_id",  :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "posicion",    :null => false
+    t.text     "descripcion",                    :null => false
+    t.integer  "uploader_id",                    :null => false
+    t.integer  "promesa_id",                     :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "posicion",                       :null => false
+    t.boolean  "anonima",     :default => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

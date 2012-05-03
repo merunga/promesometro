@@ -1,0 +1,111 @@
+- edition = params[:action] == 'editar'
+
+%fieldset.prueba
+  %legend.left
+    -if to_be
+      {{#link}}Link{{/link}}
+      {{#imagen}}Imagen{{/imagen}}
+      {{#archivo}}Archivo{{/archivo}}
+      {{#video}}Video{{/video}}
+      {{#mapa}}Mapa{{/mapa}}
+    - else
+      - prueba = form.object
+      -type = prueba.link.type if prueba.link
+      -type = prueba.imagen.type if prueba.imagen
+      -type = prueba.archivo.type if prueba.archivo
+      -type = prueba.video.type if prueba.video
+      -type = prueba.mapa.type if prueba.mapa
+      =type
+   
+  -if params[:action] == 'ver'
+    .right
+      =form.check_box :anonima
+      anónima
+  .clear
+  
+  -if edition
+    =form.hidden_field :id
+    =form.fields_for :uploader do |uf|
+      =uf.hidden_field :id
+  -else
+    =form.fields_for :uploader do |uf|
+      =uf.hidden_field :id, :html => {:value => current_ciudadano.id}  
+       
+  =form.hidden_field :posicion
+  =form.label :descripcion
+  =form.text_field :descripcion
+  
+  -if to_be
+    {{#link}}
+  -if to_be || type == 'Link'
+    =form.fields_for :link do |lf|
+      .field.link
+        =lf.label :link
+        =lf.url_field :link, :required => 'required', :maxlength => 1000
+  -if to_be
+    {{/link}} 
+  
+  -if to_be
+    {{#archivo}}
+  -if to_be || type == 'Archivo'
+    =form.fields_for :archivo do |af|
+      .field.archivo
+        =af.label :archivo
+        -if to_be || edition
+          =af.file_field :archivo, :required => 'required'
+        -else prueba.archivo
+          =link_to prueba.archivo.file.url
+  -if to_be
+    {{/archivo}}
+  
+  -if to_be
+    {{#imagen}}
+  -if to_be || type == 'Imagen'
+    =form.fields_for :imagen do |af|
+      .field.imagen
+        =af.label :imagen
+        -if to_be || edition
+          =af.file_field :archivo, :required => 'required'
+        -else
+          =link_to prueba.imagen.file.url
+  -if to_be
+    {{/imagen}}
+  
+  -if to_be
+    {{#video}}
+  -if to_be || type == 'Video'
+    =form.fields_for :video do |ef|
+      .field.video
+        =ef.label :video
+        =ef.text_area :embed, :required => 'required', :maxlength => 1000
+  -if to_be
+    {{/video}}
+  
+  -if to_be
+    {{#mapa}}
+  -if to_be || type == 'Mapa'
+    =form.fields_for :mapa do |ef|
+      .field.mapa
+        =ef.label :mapa
+        =ef.text_area :embed, :required => 'required', :maxlength => 1000
+  -if to_be
+    {{/mapa}}
+        
+  .eliminar
+    %button(type="button" onclick="promesa.remove_prueba($(this).parents('fieldset.prueba'))" |
+        confirm="Estás segur@?")
+      eliminar
+      -if to_be
+        {{#link}}link{{/link}}
+        {{#imagen}}imagen{{/imagen}}
+        {{#archivo}}archivo{{/archivo}}
+        {{#video}}video{{/video}}
+        {{#mapa}}mapa{{/mapa}}
+      - else
+        #{type.downcase}
+  
+  -if params[:action] == 'ver'
+    .submit.right
+      =form.submit 'guardar', :class => 'button'
+    
+  .clear
