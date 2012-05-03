@@ -40,3 +40,5 @@ jQuery ($) ->
     $(this).parents('.comentar').siblings('.comentarios').append $(data)
   $(document).on 'ajax:success', '.responder form[data-remote=true]', (event, data, status, xhr) ->
     $(this).parents('.comment:not(.reply)').first().find('.thread:first').append $(data)
+  $(document).on 'ajax:success', '#pruebas > .add > form[data-remote=true]', (event, data, status, xhr) ->
+    $(this).parent('.add').replaceWith data

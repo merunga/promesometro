@@ -12,7 +12,8 @@ class Ciudadano < ActiveRecord::Base
   
   has_one :info_funcionario, :foreign_key => :funcionario_id
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
-  #has_many :promesas, :through => :info_funcionario, :as => :promesas_legitimizadas
+  has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
+
   
   def es_uploader_de? una_cosa
     una_cosa && una_cosa.uploader == self
