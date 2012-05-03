@@ -90,10 +90,14 @@ class PromesasController < ApplicationController
     @prueba.save
     
     #render 'prueba/_add', :layout => false
-    respond_to do |format|
-      format.html {
-        render 'prueba/_show', :layout => !request.xhr?, :locals => {:prueba => @prueba}
-      }
+    if request.xhr?
+      respond_to do |format|
+        format.html {
+          render 'prueba/_show', :layout => false, :locals => {:prueba => @prueba}
+        }
+      end
+    else
+      redirect_to :ver_promesa
     end
   end
   

@@ -73,6 +73,7 @@ gem 'jquery_datepicker'
 gem 'rails3-jquery-autocomplete'
 #gem 'client_side_validations'
 gem 'acts_as_votable'
+#gem 'remotipart', '~> 1.0'
 
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'

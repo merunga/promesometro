@@ -52,7 +52,7 @@
       .field.archivo
         =af.label :archivo
         -if to_be || edition
-          =af.file_field :archivo, :required => 'required'
+          =af.file_field :file, :required => 'required'
         -else prueba.archivo
           =link_to prueba.archivo.file.url
   -if to_be
@@ -65,7 +65,7 @@
       .field.imagen
         =af.label :imagen
         -if to_be || edition
-          =af.file_field :archivo, :required => 'required'
+          =af.file_field :file, :required => 'required'
         -else
           =link_to prueba.imagen.file.url
   -if to_be

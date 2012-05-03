@@ -9,7 +9,10 @@
     .votar= render 'social/votar'
   
   =link_to(recurso.link, recurso.link) if prueba.link
-  -if recurso.file
-    %a(href="#{recurso.file.url}" target="_blank") descargar archivo
+  -if recurso.file && recurso.type == 'Imagen'
+    %a(href="#{recurso.file.url}" target="_blank")
+      =image_tag recurso.file.url
+  -if recurso.file && recurso.type != 'Imagen'
+    %a(href="#{recurso.file.url}" target="_blank") descargar #{File.basename(recurso.file.url)}
   -if recurso.embed
     =raw recurso.embed
