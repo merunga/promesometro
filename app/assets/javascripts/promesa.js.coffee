@@ -19,8 +19,9 @@ $(document).ready ->
     
 promesa.upload_template = null
     
-promesa.add_prueba = (tipo) ->
-  $pruebas = $('#pruebas')
+promesa.add_prueba = (tipo, cont_selector) ->
+  cont_selector = '#pruebas' if not cont_selector
+  $pruebas = $(cont_selector)
   ctx = {count: $pruebas.find('fieldset.prueba').size()}
   ctx[recurso] = tipo == recurso for recurso in ['link','imagen','archivo','video','mapa']
   if !promesa.upload_template

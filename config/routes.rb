@@ -24,7 +24,7 @@ Promesometro::Application.routes.draw do
     end
     member do
       get :ver, :editar, :actualizar
-      post :comentar
+      post :comentar, :agregar_prueba
       put :actualizar
       get :seguir, :dejar_de_seguir
       get :reclamar_cumplimiento, :dejar_de_reclamar_cumplimiento

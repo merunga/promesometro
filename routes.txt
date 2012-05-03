@@ -29,20 +29,22 @@
                        buscar_promesas GET    /promesas/buscar(.:format)                             promesas#buscar
                     denunciar_promesas GET    /promesas/denunciar(.:format)                          promesas#denunciar
                         crear_promesas POST   /promesas/crear(.:format)                              promesas#crear
-                                       POST   /promesas/buscar(.:format)                             promesas#buscar
+                                       GET    /promesas/buscar(.:format)                             promesas#buscar
    autocomplete_region_nombre_promesas GET    /promesas/autocomplete_region_nombre(.:format)         promesas#autocomplete_region_nombre
         autocomplete_tag_name_promesas GET    /promesas/autocomplete_tag_name(.:format)              promesas#autocomplete_tag_name
                            ver_promesa GET    /promesas/:id/ver(.:format)                            promesas#ver
                         editar_promesa GET    /promesas/:id/editar(.:format)                         promesas#editar
                     actualizar_promesa GET    /promesas/:id/actualizar(.:format)                     promesas#actualizar
                       comentar_promesa POST   /promesas/:id/comentar(.:format)                       promesas#comentar
+                agregar_prueba_promesa POST   /promesas/:id/agregar_prueba(.:format)                 promesas#agregar_prueba
                                        PUT    /promesas/:id/actualizar(.:format)                     promesas#actualizar
                         seguir_promesa GET    /promesas/:id/seguir(.:format)                         promesas#seguir
                dejar_de_seguir_promesa GET    /promesas/:id/dejar_de_seguir(.:format)                promesas#dejar_de_seguir
          reclamar_cumplimiento_promesa GET    /promesas/:id/reclamar_cumplimiento(.:format)          promesas#reclamar_cumplimiento
 dejar_de_reclamar_cumplimiento_promesa GET    /promesas/:id/dejar_de_reclamar_cumplimiento(.:format) promesas#dejar_de_reclamar_cumplimiento
-                               vote_up        /vote/up/:type/:key(.:format)                          votes#vote_up
-                             vote_down        /vote/down/:type/:key(.:format)                        votes#vote_down
+                               vote_up        /vote/up/:type/:key(.:format)                          votes#vote_up {:type=>/(comment|promesa|prueba)/}
+                             vote_down        /vote/down/:type/:key(.:format)                        votes#vote_down {:type=>/(comment|promesa|prueba)/}
+                         reply_comment        /comments/:id/reply/:level(.:format)                   comments#reply {:level=>/\d/}
                        acerca_de_index GET    /acerca_de(.:format)                                   acerca_de#index
                           new_contacto        /contacto/new(.:format)                                contacto#new
                               contacto POST   /contacto(.:format)                                    contacto#create

@@ -58,11 +58,8 @@
         -@promesa.pruebas.each do |p|
           = render 'prueba/show', :prueba => p
           
-        - if ciudadano_signed_in?
-          =form_for @promesa, :url => agregar_prueba_promesa_path, 
-              :remote => true, "data-type" => :html, :html => {:multipart => true} do |f|
-            =f.fields_for :pruebas do |pf|
-              =render 'prueba/upload', :form => pf, :to_be => true
+      - if ciudadano_signed_in?
+        =render 'prueba/upload', :form => nil, :to_be => true
    
       - if ciudadano_signed_in?
         = render 'prueba/add'

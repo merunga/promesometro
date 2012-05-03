@@ -1,0 +1,12 @@
+- cont_selector = '#pruebas' if cont_selector.nil?
+#botones
+  =button_tag(:type => 'button',:onclick => "promesa.add_prueba('link','#{cont_selector}')") do
+    + link
+  =button_tag(:type => 'button',:onclick => "promesa.add_prueba('imagen','#{cont_selector}')") do
+    + foto o imagen
+  =button_tag(:type => 'button',:onclick => "promesa.add_prueba('archivo','#{cont_selector}')") do
+    + archivo
+  =button_tag(:type => 'button',:onclick => "promesa.add_prueba('video','#{cont_selector}')") do
+    + video
+  =button_tag(:type => 'button',:onclick => "promesa.add_prueba('mapa','#{cont_selector}')") do
+    + mapa
