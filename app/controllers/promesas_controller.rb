@@ -9,12 +9,25 @@ class PromesasController < ApplicationController
     if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
+      @promesa.uploader = current_ciudadano
       prueba = @promesa.pruebas.build
       prueba.link = Link.new
       prueba.archivo = Archivo.new
       prueba.imagen = Imagen.new
       prueba.video = Video.new
       prueba.mapa = Mapa.new
+    else
+      render 'shared/_not_logged_in'
+    end
+  end
+  
+  def prometer
+    if ciudadano_signed_in?
+      @promesa = Promesa.new
+      @promesa.info_funcionario = InfoFuncionario.new
+      @promesa.uploader = current_ciudadano
+      @promesa.funcionario = current_ciudadano
+      render 'denunciar'
     else
       render 'shared/_not_logged_in'
     end

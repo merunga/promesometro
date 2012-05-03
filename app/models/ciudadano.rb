@@ -10,8 +10,8 @@ class Ciudadano < ActiveRecord::Base
   attr_accessible :login, :login_type, :email, :name,
     :password, :password_confirmation, :send_notifications
   
-  has_one :info_funcionario, :foreign_key => :funcionario_id
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
+  has_many :promesas_prpias, :inverse_of => :funcionario, :class_name => 'Promesa'
   has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
 
   
@@ -20,11 +20,7 @@ class Ciudadano < ActiveRecord::Base
   end
   
   def es_funcionario_de? una_promesa
-    una_promesa && self.es_funcionario? && una_promesa.info_funcionario == self.info_funcionario
-  end
-  
-  def es_funcionario?
-    self.info_funcionario.not.nil?
+    una_promesa && una_promesa.funcionario == self
   end
   
   ### RECLAMOS
@@ -49,7 +45,8 @@ class Ciudadano < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if not (ciudadano = Ciudadano.where(:email => data.email).first)
+    ciudadano = Ciudadano.where(:email => data.email).first
+    if not ciudadano
       ciudadano = Ciudadano.create!(
           :email => data.email,
           :login => data.email,
@@ -73,7 +70,8 @@ class Ciudadano < ActiveRecord::Base
   
   def self.find_for_open_id(access_token, signed_in_resource=nil)
     data = access_token.info
-    if not (ciudadano = Ciudadano.where(:email => data.email).first)
+    ciudadano = Ciudadano.where(:email => data.email).first
+    if not ciudadano
       ciudadano=Ciudadano.create!(
           :email => data.email,
           :login => data.email,
@@ -88,7 +86,8 @@ class Ciudadano < ActiveRecord::Base
   def self.find_for_twitter(access_token, signed_in_resource=nil)
     data = access_token.info
     nickname = "@#{data.nickname}"
-    if not (ciudadano = Ciudadano.where(:login => nickname).first)
+    ciudadano = Ciudadano.where(:login => nickname).first
+    if not ciudadano
       ciudadano = Ciudadano.create!(
         :login => nickname,
         :login_type => 'twitter',
