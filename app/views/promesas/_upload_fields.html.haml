@@ -27,7 +27,7 @@
     =form.hidden_field :id
     =form.fields_for :uploader do |uf|
       =uf.hidden_field :id
-  -else
+  -elsif params[:action] != 'ver'
     =form.fields_for :uploader do |uf|
       =uf.hidden_field :id, :html => {:value => current_ciudadano.id}  
        

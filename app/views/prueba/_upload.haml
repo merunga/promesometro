@@ -2,9 +2,10 @@
   <script type="text/x-mustache" id="prueba_upload_template">
   
 - if form.nil?
-  =form_for :prueba, :url => agregar_prueba_promesa_path, 
-    :remote => true, "data-type" => :html, :html => {:multipart => true} do |f|
-    = render 'upload_fields', :form => f, :to_be => to_be
+  .add
+    =form_for @prueba, :url => agregar_prueba_promesa_path, 
+      :remote => true, "data-type" => :html, :html => {:multipart => true} do |f|
+      = render 'upload_fields', :form => f, :to_be => to_be
 
 - else
   =render 'upload_fields', :form => form, :to_be => to_be

@@ -23,6 +23,14 @@ class PromesasController < ApplicationController
   def ver
     @promesa = Promesa.find(params[:id])
     #@search = Promise.search(params[:search])
+    @prueba = Prueba.new(
+      :uploader => current_ciudadano,
+      :link => Link.new(),
+      :archivo => Archivo.new,
+      :imagen => Imagen.new(),
+      :video => Video.new(),
+      :mapa => Mapa.new()
+    )
     @comments = @promesa.root_comments.order('created_at desc').page(params[:page]).per(5)
   end
   
@@ -75,11 +83,18 @@ class PromesasController < ApplicationController
   
   def agregar_prueba
     @promesa = Promesa.find(params[:id])
-    @prueba = Promesa.new(params[:promesa])
+    @prueba = Prueba.new(params[:prueba])
     @prueba.promesa = @promesa
+    @prueba.uploader = current_ciudadano
+    @prueba.posicion = @promesa.pruebas.count
     @prueba.save
     
-    render 'prueba/show', :layout => false
+    #render 'prueba/_add', :layout => false
+    respond_to do |format|
+      format.html {
+        render 'prueba/_show', :layout => !request.xhr?, :locals => {:prueba => @prueba}
+      }
+    end
   end
   
   def comentar
