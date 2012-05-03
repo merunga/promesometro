@@ -16,7 +16,7 @@ class Promesa < ActiveRecord::Base
   has_one :info_funcionario
   has_many :pruebas, :order => 'id ASC'
   belongs_to :region
-  has_one :funcionario, :class_name => 'Ciudadano', :through => :info_funcionario
+  has_one :funcionario, :class_name => 'Ciudadano'
   
   has_many :reclamos, :order => 'id ASC'
   
@@ -25,7 +25,8 @@ class Promesa < ActiveRecord::Base
   validates_presence_of :lo_prometido
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
-    :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima
+    :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima,
+    :publica, :fecha_compromiso
   
   def esta_legitimizada?
     info_funcionario.funcionario.not.nil?

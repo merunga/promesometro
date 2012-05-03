@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503154529) do
+ActiveRecord::Schema.define(:version => 20120503215143) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(:version => 20120503154529) do
   create_table "ciudadanos", :force => true do |t|
     t.string   "name"
     t.string   "login"
-    t.string   "login_type",                                            :null => false
+    t.string   "login_type",                                              :null => false
     t.string   "facebook"
     t.string   "twitter"
     t.integer  "info_funcionario_id"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",   :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(:version => 20120503154529) do
     t.integer  "failed_attempts",                       :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at",                                              :null => false
+    t.datetime "updated_at",                                              :null => false
     t.string   "unconfirmed_email"
     t.string   "authentication_token"
+    t.boolean  "perfil_publico",                        :default => true, :null => false
   end
 
   add_index "ciudadanos", ["authentication_token"], :name => "index_ciudadanos_on_authentication_token", :unique => true
@@ -125,17 +126,17 @@ ActiveRecord::Schema.define(:version => 20120503154529) do
   end
 
   create_table "promesas", :force => true do |t|
-    t.text     "lo_prometido",                                         :null => false
+    t.text     "lo_prometido",                         :null => false
     t.date     "fecha_declaracion"
     t.integer  "region_id"
-    t.integer  "uploader_id",                                          :null => false
+    t.integer  "uploader_id",                          :null => false
     t.date     "fecha_compromiso"
-    t.boolean  "denuncia_anonima",                  :default => false
+    t.boolean  "denuncia_anonima",  :default => false
     t.text     "slug"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
-    t.string   "link",              :limit => 1000
-    t.string   "embed",             :limit => 1000
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "publica",           :default => true,  :null => false
+    t.string   "funcionario_token"
   end
 
   create_table "pruebas", :force => true do |t|

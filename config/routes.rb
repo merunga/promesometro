@@ -17,7 +17,7 @@ Promesometro::Application.routes.draw do
   #end
   resources :promesas, :except => [:index, :new, :edit, :destroy, :show, :update, :create]  do
     collection do
-      get :ver_todas, :buscar, :denunciar
+      get :ver_todas, :buscar, :denunciar, :prometer
       post :crear
       get :buscar
       get :autocomplete_region_nombre, :autocomplete_tag_name

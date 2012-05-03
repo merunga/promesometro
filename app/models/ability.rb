@@ -8,31 +8,30 @@ class Ability
       can [:crear, :agregar_prueba], Promesa
       can :comentar, :all
       can :reply, Comment
-      can [:seguir,:enviar_hacete_cargo], Ciudadano do |carlos|
-        carlos.es_funcionario?
+      can [:seguir,:enviar_hacete_cargo], Ciudadano
+      can :ver_perfil, Ciudadano do |maria|
+        maria.perfil_publico
       end
       can [
         :seguir, :dejar_de_seguir, :reclamar_cumplimiento,
         :dejar_de_reclamar_cumplimiento
       ], Promesa
       can [:hacerse_cargo, :lavarse_las_manos], Promesa
-      can [:crear, :actualizar, :cumplir], Hito do |el_hito|
-        ciudadano.es_duenio_de? el_hito
-      end if ciudadano.es_funcionario? 
-      can :ver_perfil, Ciudadano do |maria|
-        maria.es_funcionario?
-      end
+      #can [:crear, :actualizar, :cumplir], Hito do |el_hito|
+      #  ciudadano.es_duenio_de? el_hito
+      #end if ciudadano.es_funcionario? 
       can [:editar,:actualizar], Promesa do |la_promesa|
         #ciudadano.es_funcionario_de? la_promesa ||
         #(la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
-        ciudadano.es_uploader_de? la_promesa
+        (ciudadano.es_uploader_de?(la_promesa) && !la_prueba.funcionario) ||
+        ciudadano.es_funcionario_de?(la_promesa)
       end
       can :editar, Prueba do |la_prueba|
         ciudadano.es_uploader_de? la_prueba
       end
       can [:vote_up, :vote_down], Vote
     end
-    can [:denunciar], Promesa
+    can [:denunciar, :prometer], Promesa
     can [:autocomplete_region_nombre, :autocomplete_tag_name], Promesa
   end
 end

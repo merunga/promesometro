@@ -7,6 +7,8 @@
   =javascript_include_tag :promesa
   
 - edition = params[:action] == 'editar'
+- denunciando = @promesa.uploader != @promesa.funcionario 
+- prometiendo = @promesa.uploader == @promesa.funcionario
 
 #denuncia    
   .promesa
@@ -22,15 +24,20 @@
       %div
         .left
           %h1 Nueva Promesa
-        .right.denuncia_anonima
-          =f.label :denuncia_anonima, 'denuncia anonima'
-          =f.check_box :denuncia_anonima
+        .right
+          .promesa_publica
+            =f.label :publica, 'promesa pública'
+            =f.check_box :publica
+          - if denunciando
+            .denuncia_anonima
+              =f.label :denuncia_anonima, 'denuncia anonima'
+              =f.check_box :denuncia_anonima
         %br.clear
       
       = f.error_messages
       
       %fieldset.info_funcionario
-        %legend El que promete
+        %legend= if denunciando then 'El que promete' else 'Yo' end
         = f.fields_for :info_funcionario do |iff|
           - if edition
             = iff.hidden_field :id 
@@ -45,7 +52,7 @@
             =iff.text_field :entidad
       
       %fieldset.lo_prometido
-        %legend Lo prometido
+        %legend= if denunciando then 'Lo prometido' else 'Prometo' end
         .lo_prometido
           =f.text_area :lo_prometido, :required => 'required'
           
@@ -61,22 +68,29 @@
         .tags
           =f.label :tag_list, 'Tags:'
           =f.text_field :tag_list, :id=>'tags'
-      
-        .fecha_declaracion
-          =f.label :fecha_declaracion, 'Cúando:'
-          =f.datepicker :fecha_declaracion
+        
+        - if denunciando 
+          .fecha_declaracion
+            =f.label :fecha_declaracion, 'Cúando:'
+            =f.datepicker :fecha_declaracion
+        
+        - if prometiendo 
+          .fecha_compromiso
+            =f.label :fecha_compromiso, 'Para cuándo:*'
+            =f.datepicker :fecha_compromiso, :required => true
           
         .region
           =f.label :region, 'Region:'
           =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox'
-            
-      %fieldset.pruebas
-        %legend Pruebas
-        #pruebas
-          = f.fields_for :pruebas do |pf|
-            = render 'prueba/upload', :form => pf, :to_be => true
-            - if edition
-              = render 'prueba/upload', :form => pf, :to_be => false
+      
+      - if denunciando      
+        %fieldset.pruebas
+          %legend Pruebas
+          #pruebas
+            = f.fields_for :pruebas do |pf|
+              = render 'prueba/upload', :form => pf, :to_be => true
+              - if edition
+                = render 'prueba/upload', :form => pf, :to_be => false
         
-        =render 'prueba/add'
+          =render 'prueba/add'
       =f.submit(value='Guardar')
