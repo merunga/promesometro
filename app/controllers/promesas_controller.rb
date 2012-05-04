@@ -42,7 +42,6 @@ class PromesasController < ApplicationController
   
   def ver
     @promesa = Promesa.find(params[:id])
-    #@search = Promise.search(params[:search])
     @prueba = Prueba.new(
       :uploader => current_ciudadano,
       :link => Link.new(),
@@ -62,6 +61,7 @@ class PromesasController < ApplicationController
       @promesa.uploader = current_ciudadano
       if(params[:prometiendo])
         @promesa.funcionario = current_ciudadano
+        @promesa.fecha_declaracion = Time.now
       end
       @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
       @promesa.avances.each do |a| a.uploader = current_ciudadano end
@@ -80,12 +80,6 @@ class PromesasController < ApplicationController
   def actualizar
     p = params[:promesa]
     @promesa = Promesa.find(p[:id])
-#    p[:pruebas_attributes].each_with_index do |pb, idx|
-#      puts "---------------- #{pb.to_yaml}"
-#      if !pb[idx][:uploader_attributes]
-#        pb[idx][:uploader_attributes][:id] = current_ciudadano.id
-#      end
-#    end
     if @promesa.update_attributes(p) 
       @promesa.save
       redirect_to :action => 'ver'
@@ -109,7 +103,6 @@ class PromesasController < ApplicationController
     @prueba.posicion = @promesa.pruebas.count
     @prueba.save
     
-    #render 'prueba/_add', :layout => false
     if request.xhr?
       respond_to do |format|
         format.html {

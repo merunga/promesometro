@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504213759) do
+ActiveRecord::Schema.define(:version => 20120504222443) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20120504213759) do
     t.boolean  "publica",           :default => true,  :null => false
     t.integer  "funcionario_id"
     t.string   "funcionario_token"
+    t.string   "compartida_con"
   end
 
   create_table "pruebas", :force => true do |t|
