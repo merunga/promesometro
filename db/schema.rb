@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503215143) do
+ActiveRecord::Schema.define(:version => 20120504213759) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -105,24 +105,15 @@ ActiveRecord::Schema.define(:version => 20120503215143) do
   add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
   add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
 
-  create_table "hitos", :force => true do |t|
-    t.integer  "prueba_id",   :null => false
-    t.string   "descripcion", :null => false
-    t.boolean  "completado"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "info_funcionarios", :force => true do |t|
-    t.string   "nombre",         :null => false
+    t.string   "nombre",     :null => false
     t.string   "cargo"
     t.string   "entidad"
     t.string   "dni"
     t.string   "telefono"
     t.integer  "promesa_id"
-    t.integer  "funcionario_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "promesas", :force => true do |t|
@@ -136,17 +127,19 @@ ActiveRecord::Schema.define(:version => 20120503215143) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.boolean  "publica",           :default => true,  :null => false
+    t.integer  "funcionario_id"
     t.string   "funcionario_token"
   end
 
   create_table "pruebas", :force => true do |t|
-    t.text     "descripcion",                    :null => false
-    t.integer  "uploader_id",                    :null => false
-    t.integer  "promesa_id",                     :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "posicion",                       :null => false
+    t.text     "descripcion",                       :null => false
+    t.integer  "uploader_id",                       :null => false
+    t.integer  "promesa_id",                        :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.boolean  "anonima",     :default => false
+    t.string   "type",        :default => "Prueba", :null => false
+    t.boolean  "cumplida",    :default => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|

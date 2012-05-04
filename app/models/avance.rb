@@ -1,0 +1,2 @@
+class Avance < Prueba
+end

@@ -11,10 +11,9 @@ class Ciudadano < ActiveRecord::Base
     :password, :password_confirmation, :send_notifications
   
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
-  has_many :promesas_prpias, :inverse_of => :funcionario, :class_name => 'Promesa'
+  has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
   has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
 
-  
   def es_uploader_de? una_cosa
     una_cosa && una_cosa.uploader == self
   end

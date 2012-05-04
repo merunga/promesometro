@@ -12,24 +12,26 @@ class Promesa < ActiveRecord::Base
     :on => [:create, :update]
   )
   
-  belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas
+  belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas    
+  belongs_to :funcionario, :class_name => 'Ciudadano', :inverse_of => :promesas_propias
+  belongs_to :region
+  
   has_one :info_funcionario
   has_many :pruebas, :order => 'id ASC'
-  belongs_to :region
-  has_one :funcionario, :class_name => 'Ciudadano'
-  
+  has_many :avances, :order => 'created_at DESC'
   has_many :reclamos, :order => 'id ASC'
   
   accepts_nested_attributes_for :info_funcionario
   accepts_nested_attributes_for :pruebas, :allow_destroy => true
+  accepts_nested_attributes_for :avances, :allow_destroy => true
   validates_presence_of :lo_prometido
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
     :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima,
-    :publica, :fecha_compromiso
+    :publica, :fecha_compromiso, :avances_attributes
   
   def esta_legitimizada?
-    info_funcionario.funcionario.not.nil?
+    funcionario.not.nil?
   end
   
   before_save :set_slug
