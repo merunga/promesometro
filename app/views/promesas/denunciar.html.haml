@@ -19,7 +19,10 @@
       :validate => true, :html => {:multipart => true} do |f|
       
       - if edition
-        = f.hidden_field :id 
+        = f.hidden_field :id
+      
+      - if prometiendo
+        = hidden_field_tag :prometiendo, true
       
       %div
         .left
@@ -73,17 +76,18 @@
           .fecha_declaracion
             =f.label :fecha_declaracion, 'Cúando:'
             =f.datepicker :fecha_declaracion
-        
+ 
         - if prometiendo 
           .fecha_compromiso
-            =f.label :fecha_compromiso, 'Para cuándo:*'
+            =f.label :fecha_compromiso, 'Fecha compromiso:*'
             =f.datepicker :fecha_compromiso, :required => true
-          
+          %br
+
         .region
           =f.label :region, 'Region:'
           =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox'
       
-      - if denunciando      
+      - if denunciando
         %fieldset.pruebas
           %legend Pruebas
           #pruebas
@@ -91,6 +95,16 @@
               = render 'prueba/upload', :form => pf, :to_be => true
               - if edition
                 = render 'prueba/upload', :form => pf, :to_be => false
-        
           =render 'prueba/add'
+                
+      - if prometiendo and edition
+        %fieldset.avances
+          %legend Avances
+          #avances
+            = f.fields_for :avances do |af|
+              = render 'prueba/upload', :form => af, :to_be => true
+              - if edition
+                = render 'prueba/upload', :form => af, :to_be => false
+          =render 'prueba/add', :cont_selector => '#avances'
+        
       =f.submit(value='Guardar')

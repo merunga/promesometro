@@ -5,10 +5,10 @@
   .add
     =form_for @prueba, :url => agregar_prueba_promesa_path, 
       :remote => true, "data-type" => :html, :html => {:multipart => true} do |f|
-      = render 'upload_fields', :form => f, :to_be => to_be
+      = render 'prueba/upload_fields', :form => f, :to_be => to_be
 
 - else
-  =render 'upload_fields', :form => form, :to_be => to_be
+  =render 'prueba/upload_fields', :form => form, :to_be => to_be
 
 
 -if to_be

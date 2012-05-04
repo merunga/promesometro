@@ -27,6 +27,13 @@ class PromesasController < ApplicationController
       @promesa.info_funcionario = InfoFuncionario.new
       @promesa.uploader = current_ciudadano
       @promesa.funcionario = current_ciudadano
+      avance = @promesa.avances.build(
+        :link => Link.new,
+        :archivo => Archivo.new,
+        :imagen => Imagen.new,
+        :video => Video.new,
+        :mapa => Mapa.new
+      )
       render 'denunciar'
     else
       render 'shared/_not_logged_in'
@@ -52,12 +59,12 @@ class PromesasController < ApplicationController
     @info_funcionario = @promesa.info_funcionario
     if @promesa.valid?
       @info_funcionario.save
-      logger.debug current_ciudadano
       @promesa.uploader = current_ciudadano
-      @promesa.pruebas.each_with_index do |p, idx|
-        p.uploader = current_ciudadano
-        p.posicion = idx if p.posicion.nil?
+      if(params[:prometiendo])
+        @promesa.funcionario = current_ciudadano
       end
+      @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
+      @promesa.avances.each do |a| a.uploader = current_ciudadano end
       @promesa.save
       redirect_to ver_promesa_url(@promesa)
     else

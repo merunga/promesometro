@@ -24,6 +24,7 @@
       
     #tags_tagsinput
       width: 250px !important
+      min-height: 20px
     
     h2
       color: #CC6666
@@ -64,7 +65,7 @@
     background: url('/assets/promesa_detail-bg.png') no-repeat
   .break
     +column(1)
-  .pruebas
+  .pruebas, .avances
     +column(10)
     float: left
 
@@ -97,8 +98,8 @@
       +column(6)
       float: right
       
-  #pruebas
-    fieldset.prueba
+  #pruebas, #avances
+    fieldset.prueba, fieldset.avance  
       legend
         +subheader-chico
         
@@ -203,7 +204,7 @@
     +column(15,true)
     margin: 10px 0
     
-  .pruebas
+  .pruebas, .avances
     background-color: #F3F3F3
     border: 1px dashed #666
     display: inline-block
@@ -214,7 +215,7 @@
     legend
       +subheader-grande
     
-  .prueba
+  .prueba, .avance
     border-bottom: 1px dashed #666
     padding: 5px 5px
     
