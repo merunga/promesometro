@@ -5,6 +5,7 @@
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
   <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
   =javascript_include_tag :promesa
+  =javascript_include_tag 'lib/jquery.emailsinput.js'
   
 - edition = params[:action] == 'editar'
 - denunciando = @promesa.uploader != @promesa.funcionario 
@@ -86,6 +87,18 @@
         .region
           =f.label :region, 'Region:'
           =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox'
+          
+      - if prometiendo
+        %fieldset.destinatarios
+          %legend Destinatarios
+          %script(type='text/javascript')
+            $(document).ready(function(){ |
+              $('#destinatarios').emailsInput({ |
+                  width: '80%' |
+              }); |
+            })
+          =f.label :compartida_con, 'Destinatarios:'
+          =f.text_field :compartida_con, :id=>'destinatarios'
       
       - if denunciando
         %fieldset.pruebas
