@@ -92,6 +92,9 @@ class PromesasController < ApplicationController
     @promesa = Promesa.find(p[:id])
     if @promesa.update_attributes(p) 
       @promesa.save
+      
+      notificar_followers('promesa actualziada')
+      
       redirect_to :action => 'ver'
     else
       redirect_to :action => 'editar'
@@ -113,6 +116,8 @@ class PromesasController < ApplicationController
     @prueba.posicion = @promesa.pruebas.count
     @prueba.save
     
+    notificar_followers('nueva prueba agregada')
+    
     if request.xhr?
       respond_to do |format|
         format.html {
@@ -132,6 +137,9 @@ class PromesasController < ApplicationController
       params[:comment][:body]
     )
     @comment.save!
+    
+    notificar_followers('nuevo comentario creado')
+    
     flash[:notice]= 'El comentario ha sido creado con exito'
   
     render 'comments/_comment', :layout => false,
@@ -219,4 +227,8 @@ private
     @search = Promesa.publicas.search(params[:search])
   end
   
+  def notificar_followers motivo
+    emails = @promesa.followers.collect do |c| c.email end
+    FollowersMailer.informar_cambio(emails, @promesa, motivo).deliver
+  end
 end

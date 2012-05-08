@@ -20,6 +20,7 @@ Promesometro::Application.configure do
       :host => "dev.promesometro.pe:3000",
   }
   ActionMailer::Base.default :from => 'merunga@gmail.com'
+  ActionMailer::Base.default :to => 'merunga@gmail.com'
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

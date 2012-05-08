@@ -10,9 +10,6 @@
 #ver
   .promesa
     .discusion
-      .left
-        %h1
-          =@promesa.info_funcionario
       .right.denuncia_anonima
         -if @promesa.denuncia_anonima
           denuncia anonima,
@@ -20,6 +17,10 @@
           denunciado por 
           =@promesa.uploader.screen_name
         =time_ago_in_words @promesa.created_at
+        
+      .left
+        %h1
+          =@promesa.info_funcionario
       %br.clear
       
       - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
