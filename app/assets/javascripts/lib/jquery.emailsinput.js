@@ -1,11 +1,11 @@
 /*
 
-	jQuery Tags Input Plugin 1.3.3
+	jQuery Emails Input Plugin 1.3.3
 	
 	Copyright (c) 2011 XOXCO, Inc
 	
 	Documentation for this plugin lives here:
-	http://xoxco.com/clickable/jquery-tags-input
+	http://xoxco.com/clickable/jquery-emails-input
 	
 	Licensed under the MIT license:
 	http://www.opensource.org/licenses/mit-license.php
@@ -17,8 +17,8 @@
 (function($) {
 
 	var delimiter = new Array();
-	var tags_callbacks = new Array();
-	$.fn.doAutosize = function(o){
+	var emails_callbacks = new Array();
+	/*$.fn.doAutosize = function(o){
 	    var minWidth = $(this).data('minwidth'),
 	        maxWidth = $(this).data('maxwidth'),
 	        val = '',
@@ -47,7 +47,7 @@
   $.fn.resetAutosize = function(options){
     // alert(JSON.stringify(options));
     var minWidth =  $(this).data('minwidth') || options.minInputWidth || $(this).width(),
-        maxWidth = $(this).data('maxwidth') || options.maxInputWidth || ($(this).closest('.tagsinput').width() - options.inputPadding),
+        maxWidth = $(this).data('maxwidth') || options.maxInputWidth || ($(this).closest('.emailsinput').width() - options.inputPadding),
         val = '',
         input = $(this),
         testSubject = $('<tester/>').css({
@@ -71,9 +71,9 @@
     input.data('maxwidth', maxWidth);
     input.data('tester_id', testerId);
     input.css('width', minWidth);
-  };
+  };*/
   
-	$.fn.addTag = function(value,options) {
+	$.fn.addEmail = function(value,options) {
 			// is email?
 			if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))) {
 				return false
@@ -82,55 +82,55 @@
 			this.each(function() { 
 				var id = $(this).attr('id');
 
-				var tagslist = $(this).val().split(delimiter[id]);
-				if (tagslist[0] == '') { 
-					tagslist = new Array();
+				var emailslist = $(this).val().split(delimiter[id]);
+				if (emailslist[0] == '') { 
+					emailslist = new Array();
 				}
 
 				value = jQuery.trim(value);
 		
 				if (options.unique) {
-					var skipTag = $(this).tagExist(value);
-					if(skipTag == true) {
+					var skipEmail = $(this).emailExist(value);
+					if(skipEmail == true) {
 					    //Marks fake input as not_valid to let styling it
-    				    $('#'+id+'_tag').addClass('not_valid');
+    				    $('#'+id+'_email').addClass('not_valid');
     				}
 				} else {
-					var skipTag = false; 
+					var skipEmail = false; 
 				}
 				
-				if (value !='' && skipTag != true) { 
-                    $('<span>').addClass('tag').append(
+				if (value !='' && skipEmail != true) { 
+                    $('<span>').addClass('email').append(
                         $('<span>').text(value).append('&nbsp;&nbsp;'),
                         $('<a>', {
                             href  : '#',
-                            title : 'Removing tag',
+                            title : 'Removing email',
                             text  : 'x'
                         }).click(function () {
-                            return $('#' + id).removeTag(escape(value));
+                            return $('#' + id).removeEmail(escape(value));
                         })
-                    ).insertBefore('#' + id + '_addTag');
+                    ).insertBefore('#' + id + '_addEmail');
 
-					tagslist.push(value);
+					emailslist.push(value);
 				
-					$('#'+id+'_tag').val('');
+					$('#'+id+'_email').val('');
 					if (options.focus) {
-						$('#'+id+'_tag').focus();
+						$('#'+id+'_email').focus();
 					} else {		
-						$('#'+id+'_tag').blur();
+						$('#'+id+'_email').blur();
 					}
 					
-					$.fn.tagsInput.updateTagsField(this,tagslist);
+					$.fn.emailsInput.updateEmailsField(this,emailslist);
 					
-					if (options.callback && tags_callbacks[id] && tags_callbacks[id]['onAddTag']) {
-						var f = tags_callbacks[id]['onAddTag'];
+					if (options.callback && emails_callbacks[id] && emails_callbacks[id]['onAddEmail']) {
+						var f = emails_callbacks[id]['onAddEmail'];
 						f.call(this, value);
 					}
-					if(tags_callbacks[id] && tags_callbacks[id]['onChange'])
+					if(emails_callbacks[id] && emails_callbacks[id]['onChange'])
 					{
-						var i = tagslist.length;
-						var f = tags_callbacks[id]['onChange'];
-						f.call(this, $(this), tagslist[i-1]);
+						var i = emailslist.length;
+						var f = emails_callbacks[id]['onChange'];
+						f.call(this, $(this), emailslist[i-1]);
 					}					
 				}
 		
@@ -139,14 +139,14 @@
 			return false;
 		};
 		
-	$.fn.removeTag = function(value) { 
+	$.fn.removeEmail = function(value) { 
 			value = unescape(value);
 			this.each(function() { 
 				var id = $(this).attr('id');
 	
 				var old = $(this).val().split(delimiter[id]);
 					
-				$('#'+id+'_tagsinput .tag').remove();
+				$('#'+id+'_emailsinput .email').remove();
 				str = '';
 				for (i=0; i< old.length; i++) { 
 					if (old[i]!=value) { 
@@ -154,10 +154,10 @@
 					}
 				}
 				
-				$.fn.tagsInput.importTags(this,str);
+				$.fn.emailsInput.importEmails(this,str);
 
-				if (tags_callbacks[id] && tags_callbacks[id]['onRemoveTag']) {
-					var f = tags_callbacks[id]['onRemoveTag'];
+				if (emails_callbacks[id] && emails_callbacks[id]['onRemoveEmail']) {
+					var f = emails_callbacks[id]['onRemoveEmail'];
 					f.call(this, value);
 				}
 			});
@@ -165,23 +165,23 @@
 			return false;
 		};
 	
-	$.fn.tagExist = function(val) {
+	$.fn.emailExist = function(val) {
 		var id = $(this).attr('id');
-		var tagslist = $(this).val().split(delimiter[id]);
-		return (jQuery.inArray(val, tagslist) >= 0); //true when tag exists, false when not
+		var emailslist = $(this).val().split(delimiter[id]);
+		return (jQuery.inArray(val, emailslist) >= 0); //true when email exists, false when not
 	};
 	
-	// clear all existing tags and import new ones from a string
-	$.fn.importTags = function(str) {
+	// clear all existing emails and import new ones from a string
+	$.fn.importEmails = function(str) {
                 id = $(this).attr('id');
-		$('#'+id+'_tagsinput .tag').remove();
-		$.fn.tagsInput.importTags(this,str);
+		$('#'+id+'_emailsinput .email').remove();
+		$.fn.emailsInput.importEmails(this,str);
 	}
 		
 	$.fn.emailsInput = function(options) { 
     var settings = jQuery.extend({
       interactive:true,
-      defaultText:'email',
+      defaultText:'agrega un email',
       minChars:0,
       width:'300px',
       height:'100px',
@@ -202,33 +202,33 @@
 			}
 			var id = $(this).attr('id');
 			if (!id || delimiter[$(this).attr('id')]) {
-				id = $(this).attr('id', 'tags' + new Date().getTime()).attr('id');
+				id = $(this).attr('id', 'emails' + new Date().getTime()).attr('id');
 			}
 			
 			var data = jQuery.extend({
 				pid:id,
 				real_input: '#'+id,
-				holder: '#'+id+'_tagsinput',
-				input_wrapper: '#'+id+'_addTag',
-				fake_input: '#'+id+'_tag'
+				holder: '#'+id+'_emailsinput',
+				input_wrapper: '#'+id+'_addEmail',
+				fake_input: '#'+id+'_email'
 			},settings);
 	
 			delimiter[id] = data.delimiter;
 			
-			if (settings.onAddTag || settings.onRemoveTag || settings.onChange) {
-				tags_callbacks[id] = new Array();
-				tags_callbacks[id]['onAddTag'] = settings.onAddTag;
-				tags_callbacks[id]['onRemoveTag'] = settings.onRemoveTag;
-				tags_callbacks[id]['onChange'] = settings.onChange;
+			if (settings.onAddEmail || settings.onRemoveEmail || settings.onChange) {
+				emails_callbacks[id] = new Array();
+				emails_callbacks[id]['onAddEmail'] = settings.onAddEmail;
+				emails_callbacks[id]['onRemoveEmail'] = settings.onRemoveEmail;
+				emails_callbacks[id]['onChange'] = settings.onChange;
 			}
 	
-			var markup = '<div id="'+id+'_tagsinput" class="tagsinput"><div id="'+id+'_addTag">';
+			var markup = '<div id="'+id+'_emailsinput" class="emailsinput"><div id="'+id+'_addEmail">';
 			
 			if (settings.interactive) {
-				markup = markup + '<input id="'+id+'_tag" value="" data-default="'+settings.defaultText+'" />';
+				markup = markup + '<input id="'+id+'_email" value="" data-default="'+settings.defaultText+'" />';
 			}
 			
-			markup = markup + '</div><div class="tags_clear"></div></div>';
+			markup = markup + '</div><div class="emails_clear"></div></div>';
 			
 			$(markup).insertAfter(this);
 
@@ -237,7 +237,7 @@
 			$(data.holder).css('height','100%');
 	
 			if ($(data.real_input).val()!='') { 
-				$.fn.tagsInput.importTags($(data.real_input),$(data.real_input).val());
+				$.fn.emailsInput.importEmails($(data.real_input),$(data.real_input).val());
 			}		
 			if (settings.interactive) { 
 				$(data.fake_input).val($(data.fake_input).attr('data-default'));
@@ -265,26 +265,26 @@
 						$(data.fake_input).autocomplete(settings.autocomplete_url, settings.autocomplete);
 						$(data.fake_input).bind('result',data,function(event,data,formatted) {
 							if (data) {
-								$('#'+id).addTag(data[0] + "",{focus:true,unique:(settings.unique)});
+								$('#'+id).addEmail(data[0] + "",{focus:true,unique:(settings.unique)});
 							}
 					  	});
 					} else if (jQuery.ui.autocomplete !== undefined) {
 						$(data.fake_input).autocomplete(autocomplete_options);
 						$(data.fake_input).bind('autocompleteselect',data,function(event,ui) {
-							$(event.data.real_input).addTag(ui.item.value,{focus:true,unique:(settings.unique)});
+							$(event.data.real_input).addEmail(ui.item.value,{focus:true,unique:(settings.unique)});
 							return false;
 						});
 					}
 				
 					
 				} else {
-						// if a user tabs out of the field, create a new tag
+						// if a user tabs out of the field, create a new email
 						// this is only available if autocomplete is not used.
 						$(data.fake_input).bind('blur',data,function(event) { 
 							var d = $(this).attr('data-default');
 							if ($(event.data.fake_input).val()!='' && $(event.data.fake_input).val()!=d) { 
 								if( (event.data.minChars <= $(event.data.fake_input).val().length) && (!event.data.maxChars || (event.data.maxChars >= $(event.data.fake_input).val().length)) )
-									$(event.data.real_input).addTag($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
+									$(event.data.real_input).addEmail($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
 							} else {
 								$(event.data.fake_input).val($(event.data.fake_input).attr('data-default'));
 								$(event.data.fake_input).css('color',settings.placeholderColor);
@@ -293,12 +293,12 @@
 						});
 				
 				}
-				// if user types a comma, create a new tag
+				// if user types a comma, create a new email
 				$(data.fake_input).bind('keypress',data,function(event) {
 					if (event.which==event.data.delimiter.charCodeAt(0) || event.which==13 ) {
 					    event.preventDefault();
 						if( (event.data.minChars <= $(event.data.fake_input).val().length) && (!event.data.maxChars || (event.data.maxChars >= $(event.data.fake_input).val().length)) )
-							$(event.data.real_input).addTag($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
+							$(event.data.real_input).addEmail($(event.data.fake_input).val(),{focus:true,unique:(settings.unique)});
 					  	$(event.data.fake_input).resetAutosize(settings);
 						return false;
 					} else if (event.data.autosize) {
@@ -306,16 +306,16 @@
             
           			}
 				});
-				//Delete last tag on backspace
+				//Delete last email on backspace
 				data.removeWithBackspace && $(data.fake_input).bind('keydown', function(event)
 				{
 					if(event.keyCode == 8 && $(this).val() == '')
 					{
 						 event.preventDefault();
-						 var last_tag = $(this).closest('.tagsinput').find('.tag:last').text();
-						 var id = $(this).attr('id').replace(/_tag$/, '');
-						 last_tag = last_tag.replace(/[\s]+x$/, '');
-						 $('#' + id).removeTag(escape(last_tag));
+						 var last_email = $(this).closest('.emailsinput').find('.email:last').text();
+						 var id = $(this).attr('id').replace(/_email$/, '');
+						 last_email = last_email.replace(/[\s]+x$/, '');
+						 $('#' + id).removeEmail(escape(last_email));
 						 $(this).trigger('focus');
 					}
 				});
@@ -336,22 +336,22 @@
 	
 	};
 	
-	$.fn.emailsInput.updateTagsField = function(obj,tagslist) { 
+	$.fn.emailsInput.updateEmailsField = function(obj,emailslist) { 
 		var id = $(obj).attr('id');
-		$(obj).val(tagslist.join(delimiter[id]));
+		$(obj).val(emailslist.join(delimiter[id]));
 	};
 	
-	$.fn.emailsInput.importTags = function(obj,val) {			
+	$.fn.emailsInput.importEmails = function(obj,val) {			
 		$(obj).val('');
 		var id = $(obj).attr('id');
-		var tags = val.split(delimiter[id]);
-		for (i=0; i<tags.length; i++) { 
-			$(obj).addTag(tags[i],{focus:false,callback:false});
+		var emails = val.split(delimiter[id]);
+		for (i=0; i<emails.length; i++) { 
+			$(obj).addEmail(emails[i],{focus:false,callback:false});
 		}
-		if(tags_callbacks[id] && tags_callbacks[id]['onChange'])
+		if(emails_callbacks[id] && emails_callbacks[id]['onChange'])
 		{
-			var f = tags_callbacks[id]['onChange'];
-			f.call(obj, obj, tags[i]);
+			var f = emails_callbacks[id]['onChange'];
+			f.call(obj, obj, emails[i]);
 		}
 	};
 

@@ -30,7 +30,7 @@
     =uf.hidden_field :id
        
   =form.label :descripcion
-  =form.text_field :descripcion
+  =form.text_field :descripcion, :required => true
   
   -if to_be
     {{#link}}
@@ -87,6 +87,10 @@
         =ef.text_area :embed, :required => 'required', :maxlength => 1000
   -if to_be
     {{/mapa}}
+    
+  -if params[:action] == 'ver'
+    .submit.right
+      =form.submit 'guardar', :class => 'button'
         
   .eliminar
     %button(type="button" onclick="promesa.remove_prueba($(this).parents('fieldset.prueba'))" |
@@ -100,9 +104,5 @@
         {{#mapa}}mapa{{/mapa}}
       - else
         #{type.downcase}
-  
-  -if params[:action] == 'ver'
-    .submit.right
-      =form.submit 'guardar', :class => 'button'
     
   .clear

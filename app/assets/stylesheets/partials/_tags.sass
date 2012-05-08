@@ -16,17 +16,17 @@
 #tags_tagsinput
   min-height: 20px !important
 
-div.tagsinput
+div.tagsinput, div.emailsinput 
   height: 100px
   overflow-y: auto
   
-  span.tag 
+  span.tag, span.email 
     font-size: 13px
     padding: 5px
     display: block
     float: left
 
-span.tag 
+span.tag, span.email 
   border: 1px solid #a5d24a
   +border-radius(2px)
   text-decoration: none
@@ -60,7 +60,7 @@ span.tag
     display: block
     float: left
     
-.tags_clear
+.tags_clear, .emails_clear
   clear: both
   width: 100%
   height: 0px

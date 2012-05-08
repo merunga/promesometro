@@ -7,7 +7,7 @@ class Ability
       la_promesa.publica || (ciudadano && (
         ciudadano.es_funcionario_de?(la_promesa) ||
         (ciudadano.es_uploader_de?(la_promesa) && !la_promesa.funcionario) ||
-        (la_promesa.compartida_con.contains(ciudadano.email))
+        (la_promesa.compartida_con.include?(ciudadano.email))
       ))
     end
     can [:buscar], Promesa

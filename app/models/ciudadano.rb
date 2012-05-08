@@ -28,6 +28,11 @@ class Ciudadano < ActiveRecord::Base
     esta_promesa.funcionario = self
   end
   
+  def puede_ver? esta_promesa
+    puede_editar? esta_promesa ||
+    esta_promesa.compartida_con.include?(self.email)
+  end
+  
   ### RECLAMOS
   def reclamando?(promesa)
     Reclamo.where(
