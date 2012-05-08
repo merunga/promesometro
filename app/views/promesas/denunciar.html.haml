@@ -82,12 +82,12 @@
         - if denunciando 
           .fecha_declaracion
             =f.label :fecha_declaracion, 'Cúando:'
-            =f.datepicker :fecha_declaracion
+            =f.datepicker :fecha_declaracion, :dateFormat => "dd/mm/yy"
  
         - if prometiendo 
           .fecha_compromiso
             =f.label :fecha_compromiso, 'Fecha compromiso:*'
-            =f.datepicker :fecha_compromiso, :required => true
+            =f.datepicker :fecha_compromiso, :dateFormat => "dd/mm/yy", :required => true
           %br
 
         .region

@@ -1,5 +1,11 @@
 -recurso = prueba.recurso
 .prueba(id='prueba_#{prueba.id}' class='#{recurso.type.downcase}')
+  .right
+    -if !prueba.anonima
+      subida por
+      =@promesa.uploader.screen_name
+    =time_ago_in_words recurso.created_at
+  .clear
   .descripcion
     =prueba.descripcion
     
