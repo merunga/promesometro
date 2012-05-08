@@ -41,16 +41,18 @@ class PromesasController < ApplicationController
   end
   
   def ver
-    @promesa = Promesa.find(params[:id])
-    @prueba = Prueba.new(
-      :uploader => current_ciudadano,
-      :link => Link.new(),
-      :archivo => Archivo.new,
-      :imagen => Imagen.new(),
-      :video => Video.new(),
-      :mapa => Mapa.new()
-    )
-    @comments = @promesa.root_comments.order('created_at desc').page(params[:page]).per(5)
+    if @promesa.publica || (current_ciudadano && current_ciudadano.puede_ver?(@promesa)) 
+      @promesa = Promesa.find(params[:id])
+      @prueba = Prueba.new(
+        :uploader => current_ciudadano,
+        :link => Link.new(),
+        :archivo => Archivo.new,
+        :imagen => Imagen.new(),
+        :video => Video.new(),
+        :mapa => Mapa.new()
+      )
+      @comments = @promesa.root_comments.order('created_at asc').page(params[:page]).per(5)
+   end
   end
   
   def crear
@@ -66,6 +68,14 @@ class PromesasController < ApplicationController
       @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
       @promesa.avances.each do |a| a.uploader = current_ciudadano end
       @promesa.save
+      
+      if @promesa.compartida_con
+        emails = @promesa.compartida_con.split(',')
+        emails.each do |email|
+          CompartirMailer.enviar(@promesa, current_ciudadano, email).deliver
+        end
+      end
+      
       redirect_to ver_promesa_url(@promesa)
     else
       render :action => 'denunciar'

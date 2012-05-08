@@ -11,6 +11,12 @@
 - denunciando = @promesa.uploader != @promesa.funcionario 
 - prometiendo = @promesa.uploader == @promesa.funcionario
 
+-if denunciando
+  - content_for :title, ":: Me prometieron"
+  
+-if prometiendo
+  - content_for :title, ":: Yo prometo"
+
 #denuncia    
   .promesa
     - url = crear_promesas_path
@@ -110,7 +116,7 @@
                 = render 'prueba/upload', :form => pf, :to_be => false
           =render 'prueba/add'
                 
-      - if prometiendo and edition
+      -# if prometiendo and edition
         %fieldset.avances
           %legend Avances
           #avances

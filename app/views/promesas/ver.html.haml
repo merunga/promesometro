@@ -3,11 +3,15 @@
   
 =content_for :scripts do
   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-  =javascript_include_tag :promesa  
+  =javascript_include_tag :promesa
+  
+- content_for :title, ":: Ver"  
   
 #ver
   .promesa
     .discusion
+      .right
+        =time_ago_in_words @promesa.created_at
       .left
         %h1
           =@promesa.info_funcionario
@@ -17,11 +21,12 @@
         -else
           denunciado por
           =@promesa.uploader.screen_name
-        =time_ago_in_words @promesa.created_at
       %br.clear
       
       - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
-        edit   
+        .right
+          =link_to 'editar', editar_promesa_path
+        .clear   
       
       %fieldset.lo_prometido
         %legend #{time_ago_in_words(@promesa.fecha_inicio()).capitalize} prometi&oacute;:
