@@ -2,7 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :message => exception.message
+    redirect_to ciudadano_session_url, :message => exception.message
+  end
+  
+  def after_sign_in_path_for(resource)
+    puts request.env['omniauth.origin']
+    return request.env['omniauth.origin']
   end
   
   def current_ability

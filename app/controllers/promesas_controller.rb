@@ -152,10 +152,46 @@ class PromesasController < ApplicationController
     }
   end
   
-  def hacerse_cargo
+  def enviar_hazte_cargo
+    @promesa = Promesa.find(params[:id])
+    @promesa.hazte_cargo_sender = current_ciudadano
+    @promesa.hazte_cargo_token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    @promesa.hazte_cargo_nombre = params[:nombre_responsable]
+    @promesa.hazte_cargo_email = params[:email_responsable]
+    @promesa.hazte_cargo_body = params[:email_body]
+    @promesa.hazte_cargo_created_at = Time.now
+    @promesa.save
+
+    HazteCargoMailer.enviar(@promesa).deliver
+    render :json => 'success'
   end
   
-  def lavarse_las_manos
+  def hacerme_cargo
+    @promesa = Promesa.find(params[:id])
+    token = params[:token]
+    if(@promesa.hazte_cargo_token == token)
+      @promesa.funcionario = current_ciudadano
+      @promesa.save
+    end
+    redirect_to :editar_promesa
+  end
+  
+  def lavarme_las_manos
+    @promesa = Promesa.find(params[:id])
+    token = params[:token]
+    if(@promesa.hazte_cargo_token == token)
+      @promesa.hazte_cargo_sender = nil
+      @promesa.hazte_cargo_token = nil
+      @promesa.hazte_cargo_nombre = nil
+      @promesa.hazte_cargo_email = nil
+      @promesa.hazte_cargo_body = nil
+      @promesa.hazte_cargo_created_at = nil
+      if(@promesa.funcionario == current_ciudadano)
+        @promesa.funcionario = nil
+      end
+      @promesa.save
+    end
+    redirect_to :ver_promesa
   end
   
 private

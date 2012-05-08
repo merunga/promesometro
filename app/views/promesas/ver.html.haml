@@ -18,20 +18,48 @@
           denunciado por
           =@promesa.uploader.screen_name
         =time_ago_in_words @promesa.created_at
-      %br.clear   
+      %br.clear
+      
+      - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
+        edit   
       
       %fieldset.lo_prometido
-        %legend prometi&oacute;:
+        %legend #{time_ago_in_words(@promesa.fecha_inicio()).capitalize} prometi&oacute;:
         .lo_prometido
           =@promesa.lo_prometido
         .tags
           -@promesa.tags.each do |t|
-            %span.tag= link_to t, :url => '#'
-        .fecha_declaracion
-          =@promesa.fecha_declaracion
+            %span.tag= t #link_to t, :url => '#'
+        -if @promesa.region
+          .region
+            =@promesa.region
           
-      .compartir
-        = promesa_social_widgets(@promesa)
+      
+      - if ciudadano_signed_in? && @promesa.puede_enviar_hazte_cargo?   
+        %fieldset.hazte_cargo
+          %legend Responsable
+          %i
+            &iquest;Conoces a la persona que realiz&oacute; esta promesa?
+            Env&iacute;ale un email para que se haga cargo!
+          %br
+          %br
+          %div
+            =form_for @promesa, :url => enviar_hazte_cargo_promesa_path,
+              :remote => true do |f|
+              .nombre
+                =label_tag :nombre
+                =text_field_tag :nombre_responsable, '', :required => true
+              .email
+                =label_tag :email
+                =email_field_tag :email_responsable, '', :required => true
+              .body
+                =label_tag :mensaje
+                %br
+                =text_area_tag :email_body, '', :required => true
+              =submit_tag 'Enviar', :class => 'button'
+            
+        .compartir
+          = promesa_social_widgets(@promesa)
           
       .clear
         

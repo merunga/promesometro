@@ -14,6 +14,7 @@ class Promesa < ActiveRecord::Base
   
   belongs_to :uploader, :class_name => 'Ciudadano', :inverse_of => :promesas_creadas    
   belongs_to :funcionario, :class_name => 'Ciudadano', :inverse_of => :promesas_propias
+  belongs_to :hazte_cargo_sender, :class_name => 'Ciudadano', :inverse_of => :hazte_cargo_enviados
   belongs_to :region
   
   has_one :info_funcionario
@@ -29,6 +30,16 @@ class Promesa < ActiveRecord::Base
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
     :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima,
     :publica, :fecha_compromiso, :avances_attributes, :compartida_con
+    
+  def fecha_inicio
+    return fecha_declaracion || created_at
+  end
+  
+  def puede_enviar_hazte_cargo?
+    no.esta_legitimizada? && (
+      !hazte_cargo_token || (Time.now-hazte_cargo_created_at) > 30
+    )
+  end
   
   def esta_legitimizada?
     funcionario.not.nil?

@@ -3,12 +3,19 @@ class Ability
 
   def initialize(ciudadano)
     #can :manage, :all if ciudadano.es_admin?
-    can [:ver,:buscar], Promesa
+    can [:ver], Promesa do |la_promesa|
+      la_promesa.publica || (ciudadano && (
+        ciudadano.es_funcionario_de?(la_promesa) ||
+        (ciudadano.es_uploader_de?(la_promesa) && !la_promesa.funcionario) ||
+        (la_promesa.compartida_con.contains(ciudadano.email))
+      ))
+    end
+    can [:buscar], Promesa
     if ciudadano
       can [:crear, :agregar_prueba], Promesa
       can :comentar, :all
       can :reply, Comment
-      can [:seguir,:enviar_hacete_cargo], Ciudadano
+      can [:seguir], Ciudadano
       can :ver_perfil, Ciudadano do |maria|
         maria.perfil_publico
       end
@@ -16,14 +23,14 @@ class Ability
         :seguir, :dejar_de_seguir, :reclamar_cumplimiento,
         :dejar_de_reclamar_cumplimiento
       ], Promesa
-      can [:hacerse_cargo, :lavarse_las_manos], Promesa
+      can [:hacerme_cargo, :lavarme_las_manos, :enviar_hazte_cargo], Promesa
       #can [:crear, :actualizar, :cumplir], Hito do |el_hito|
       #  ciudadano.es_duenio_de? el_hito
       #end if ciudadano.es_funcionario? 
       can [:editar,:actualizar], Promesa do |la_promesa|
         #ciudadano.es_funcionario_de? la_promesa ||
         #(la_promesa.no.esta_legitimizada? && ciudadano.es_uploader_de?(la_promesa))
-        (ciudadano.es_uploader_de?(la_promesa) && !la_prueba.funcionario) ||
+        (ciudadano.es_uploader_de?(la_promesa) && !la_promesa.funcionario) ||
         ciudadano.es_funcionario_de?(la_promesa)
       end
       can :editar, Prueba do |la_prueba|

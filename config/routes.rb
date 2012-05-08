@@ -28,6 +28,8 @@ Promesometro::Application.routes.draw do
       put :actualizar
       get :seguir, :dejar_de_seguir
       get :reclamar_cumplimiento, :dejar_de_reclamar_cumplimiento
+      put :enviar_hazte_cargo
+      get :hacerme_cargo, :lavarme_las_manos
     end
   end
   

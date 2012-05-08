@@ -1,6 +1,6 @@
 - if ciudadano_signed_in?
   .comment.reply(class="level#{level}")
-    .comment_content(style='min-height:160px; margin-top: 30px; width: 510px')
+    .comment_content(style='min-height:160px; margin-top: 30px; width: 440px')
       %span.estado Agrega tu comentario
       %div
         = form_for @promesa.comment_threads.build, :url => url,
@@ -8,7 +8,7 @@
             :autocomplete => 'off' do |form|
           .ta_comment
             .input
-              = form.text_area :body, :class => 'xlarge', :rows => 7, :required => true
+              = form.text_area :body, :rows => 7, :cols => 30, :required => true
             = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
           .actions
             = form.submit 'Responder', :class => 'button'

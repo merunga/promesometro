@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504222443) do
+ActiveRecord::Schema.define(:version => 20120508114714) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -117,19 +117,24 @@ ActiveRecord::Schema.define(:version => 20120504222443) do
   end
 
   create_table "promesas", :force => true do |t|
-    t.text     "lo_prometido",                         :null => false
+    t.text     "lo_prometido",                              :null => false
     t.date     "fecha_declaracion"
     t.integer  "region_id"
-    t.integer  "uploader_id",                          :null => false
+    t.integer  "uploader_id",                               :null => false
     t.date     "fecha_compromiso"
-    t.boolean  "denuncia_anonima",  :default => false
+    t.boolean  "denuncia_anonima",       :default => false
     t.text     "slug"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.boolean  "publica",           :default => true,  :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "publica",                :default => true,  :null => false
     t.integer  "funcionario_id"
-    t.string   "funcionario_token"
     t.string   "compartida_con"
+    t.integer  "hazte_cargo_sender_id"
+    t.string   "hazte_cargo_token"
+    t.datetime "hazte_cargo_created_at"
+    t.string   "hazte_cargo_nombre"
+    t.string   "hazte_cargo_email"
+    t.string   "hazte_cargo_body"
   end
 
   create_table "pruebas", :force => true do |t|

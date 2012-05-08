@@ -24,7 +24,7 @@
       .input
         =f.text_field :pruebas_descripcion_contains, :placeholder => 'pruebas'
 
-    %section
+    -#%section
       %h3 tags
       .input
         = render 'shared/tag_cloud', :tags => Promesa.tag_counts_on(:tags)

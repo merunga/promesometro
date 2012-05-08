@@ -57,7 +57,7 @@ Promesometro::Application.configure do
     :port           => 587,
     :domain         => 'promesometro.pe',
     :authentication => :login,
-    :ciudadano_name      => ENV['NOREPLY_USERNAME'],
+    :ciudadano_name => ENV['NOREPLY_USERNAME'],
     :password       => ENV['NOREPLY_PASSWORD']
   }
 
