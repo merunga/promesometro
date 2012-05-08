@@ -43,6 +43,9 @@ es:
         subject: 'Reset password instructions'
       unlock_instructions:
         subject: 'Unlock Instructions'
+    profile:
+      ciudadano:
+        updated: 'Se actualizó la información de tu perfil'
   date:
     abbr_day_names:
     - dom

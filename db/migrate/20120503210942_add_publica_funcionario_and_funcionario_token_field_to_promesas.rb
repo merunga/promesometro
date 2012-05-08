@@ -1,6 +1,6 @@
 class AddPublicaFuncionarioAndFuncionarioTokenFieldToPromesas < ActiveRecord::Migration
   def change
-    #remove_column :info_funcionarios, :funcionario_id
+    remove_column :info_funcionarios, :funcionario_id
     
     change_table :promesas do |t|
       t.boolean :publica, :default => true, :null => false

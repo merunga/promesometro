@@ -8,7 +8,8 @@ class Ciudadano < ActiveRecord::Base
       :token_authenticatable, :omniauthable
 
   attr_accessible :login, :login_type, :email, :name,
-    :password, :password_confirmation, :send_notifications
+    :password, :password_confirmation, :send_notifications,
+    :perfil_publico
   
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
   has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
@@ -109,12 +110,10 @@ class Ciudadano < ActiveRecord::Base
   end
 
   def screen_name
-    if self.name
-      self.name
-    elsif self.login.starts_with?('@')
-      self.login
+    if perfil_publico
+      return name || 'un ciudadano'
     else
-      'un ciudadano'
+      return 'anonimo'
     end
   end
 
