@@ -3,10 +3,10 @@
   .descripcion
     =prueba.descripcion
     
-  .left
-    -@type = 'prueba'
-    -@votable = prueba
-    .votar= render 'social/votar'
+    .right
+      -@type = 'prueba'
+      -@votable = prueba
+      .votar= render 'social/votar'
   
   =link_to(recurso.link, recurso.link) if prueba.link
   -if recurso.file && recurso.type == 'Imagen'

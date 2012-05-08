@@ -20,6 +20,16 @@ Promesometro::Application.configure do
       :host => "dev.promesometro.pe:3000",
   }
   ActionMailer::Base.default :from => 'merunga@gmail.com'
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :user_name => ENV['GMAIL_USERNAME'],
+    :password =>  ENV['GMAIL_PASSWORD'],
+    :enable_starttls_auto => true,
+  }
 
 
   # Print deprecation notices to the Rails logger

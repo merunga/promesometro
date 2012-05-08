@@ -1,5 +1,4 @@
 class CommentMailer < ActionMailer::Base
-
   def new_comment(comment)
     if comment.ciudadano
       display_name = comment.ciudadano.screen_name

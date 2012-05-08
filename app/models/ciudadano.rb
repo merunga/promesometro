@@ -13,6 +13,7 @@ class Ciudadano < ActiveRecord::Base
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
   has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
   has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
+  has_many :hazte_cargo_enviados, :inverse_of => :hazte_cargo_sender, :class_name => 'Promesa'
 
   def es_uploader_de? una_cosa
     una_cosa && una_cosa.uploader == self
@@ -20,6 +21,11 @@ class Ciudadano < ActiveRecord::Base
   
   def es_funcionario_de? una_promesa
     una_promesa && una_promesa.funcionario == self
+  end
+  
+  def puede_editar? esta_promesa
+    (esta_promesa.no.esta_legitimizada? && esta_promesa.uploader = self) ||
+    esta_promesa.funcionario = self
   end
   
   ### RECLAMOS
