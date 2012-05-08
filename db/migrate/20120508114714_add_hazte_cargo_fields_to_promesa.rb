@@ -1,6 +1,6 @@
 class AddHazteCargoFieldsToPromesa < ActiveRecord::Migration
   def change
-    #remove_column :promesas, :funcionario_token
+    remove_column :promesas, :funcionario_token
     
     change_table :promesas do |t|
       t.references :hazte_cargo_sender, :null => true
