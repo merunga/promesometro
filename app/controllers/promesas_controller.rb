@@ -216,7 +216,7 @@ private
   end
   
   def create_search
-    @search = Promesa.search(params[:search])
+    @search = Promesa.publicas.search(params[:search])
   end
   
 end

@@ -1,4 +1,6 @@
 class Promesa < ActiveRecord::Base
+  scope :publicas, where(:publica => true)
+  
   acts_as_commentable
   acts_as_taggable
   acts_as_followable
