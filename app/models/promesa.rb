@@ -1,5 +1,7 @@
 class Promesa < ActiveRecord::Base
   scope :publicas, where(:publica => true)
+  scope :by_newest, :order => "promesas.created_at DESC"
+  scope :by_oldest, :order => "promesas.created_at ASC"
   
   acts_as_commentable
   acts_as_taggable

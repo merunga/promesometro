@@ -5,31 +5,21 @@
 
   = image_tag 'mide.png'
   = image_tag 'accelerometer.png'
-
-%br
-%br
-%br   
-%div
-  <iframe class="youtube-player" type="text/html" width="460" height="290" | 
-    src="http://www.youtube.com/embed/D4HtqfkNhNA" frameborder="0"> |
-  </iframe>
-
-  <iframe class="youtube-player" type="text/html" width="460" height="290" | 
-    src="http://www.youtube.com/embed/4b0mhi784B8" frameborder="0"> |
-  </iframe>
-
-#vp_title
-  %h1 En boca de todos
 #od_title
   %h1 Declaraciones Oficiales
-#peru_title
+#vp_title
+  %h1 En boca de todos
+-#peru_title
   %h1 Perú
 
-#vox_populi
-  = latest_comments
-
 #official_declaration
-  =# render :partial => 'declaration', :collection => @declarations
+  - Promesa.publicas.by_newest.limit(12).each do |p|
+    .comment
+      = render :partial => 'promesas/resumen', :locals => { :promesa => p }
+      
+#vox_populi
+  - Comment.by_newest.limit(8).each do |c|
+    = render :partial => 'comments/comment', :locals => { :comment => c, :level => 0, :position => 0 }
 
 #peru
   = image_tag('peru_home.png', :usemap => '#home_map')
