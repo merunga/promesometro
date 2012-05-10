@@ -26,6 +26,6 @@
       -comment.children.each_with_index do |c, index|
         = render 'comments/comment', :comment => c, :level => level==0?1:level, :position => position+index+1
   
-  - if ciudadano_signed_in? and level == 0
+  -# if ciudadano_signed_in? and level == 0
     .responder
       =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)      

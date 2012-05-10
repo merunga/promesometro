@@ -6,7 +6,7 @@
   = image_tag 'mide.png'
   = image_tag 'accelerometer.png'
 #od_title
-  %h1 Declaraciones Oficiales
+  %h1 Últimas promesas
 #vp_title
   %h1 En boca de todos
 -#peru_title
@@ -21,9 +21,9 @@
   - Comment.by_newest.limit(8).each do |c|
     = render :partial => 'comments/comment', :locals => { :comment => c, :level => 0, :position => 0 }
 
-#peru
-  = image_tag('peru_home.png', :usemap => '#home_map')
-  = content_tag('div','encuentra tus representantes y mide sus promesas', :class => 'encuentra')
+-#peru
+  =# image_tag('peru_home.png', :usemap => '#home_map')
+  =# content_tag('div','encuentra tus representantes y mide sus promesas', :class => 'encuentra')
 
 -#%map{:name => "home_map"}
   -#%area{:shape => "poly", :title => "Lambayeque", :coords => "66,132,74,129,77,125,72,119,75,114,71,112,69,113,69,110,64,106,62,112,59,111,55,115,53,119,59,122,65,127,64,127", :href => "#{promesas_filters_path(:search => 'state', :query => 14)}", :target => "_self", :alt => "Lambayeque"}
