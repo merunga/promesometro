@@ -44,5 +44,4 @@ jQuery ($) ->
     $(this).parent('.add').replaceWith data
   $(document).on 'ajax:success', '.hazte_cargo form[data-remote=true]', (event, data, status, xhr) ->
     $(this).parent('.hazte_cargo').remove
-    alert $(this).parent('.hazte_cargo').size
     

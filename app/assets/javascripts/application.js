@@ -111,15 +111,15 @@ jQuery(function($) {
 	$(document).ready(function() {
 		$('select.combobox').combobox()
 
-		$('.votar a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
-	    	$(this).html(data)
+		$(document).on('ajax:success', '.votar a[data-type=html]', function(event, data, status, xhr) {
+	    	$(this).parent('.votar').html(data)
 	  	})
 	 })
 	$(document).on('submit', 'form[data-remote=true]', function(event, data, status, xhr) {
-		$(this).find('type[submit]').attr('disabled','disabled')
+		$(this).find('[type=submit]').attr('disabled','disabled')
 	})
 	$(document).on('ajax:success', 'form[data-remote=true]', function(event, data, status, xhr) {
-		$(this).find('type[submit]').removeAttr('disabled')
+		$(this).find('[type=submit]').removeAttr('disabled')
 	})
 })
 
