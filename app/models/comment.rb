@@ -30,7 +30,7 @@ class Comment < ActiveRecord::Base
     emails = self.emails_to_notify
 
     if !emails.empty? then
-      CommentMailer.new_comment(self).deliver
+      PromeMailer.new_comment(self).deliver
     end
   end
   

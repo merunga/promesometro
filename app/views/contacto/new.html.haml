@@ -12,7 +12,7 @@
 
 = form_for @contact_form, :url => '/contacto', :method => :post do |form|
   .nombre
-    .input
+    .input.hidden
       = form.radio_button(:tipo, 'contacto', :checked => true, :style => 'width:auto')
       pregunta / comentario
       %br

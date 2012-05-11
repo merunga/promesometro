@@ -72,7 +72,7 @@ class PromesasController < ApplicationController
       if @promesa.compartida_con
         emails = @promesa.compartida_con.split(',')
         emails.each do |email|
-          CompartirMailer.enviar(@promesa, current_ciudadano, email).deliver
+          PromeMailer.compartir(@promesa, current_ciudadano, email).deliver
         end
       end
       
@@ -180,7 +180,7 @@ class PromesasController < ApplicationController
     @promesa.hazte_cargo_created_at = Time.now
     @promesa.save
 
-    HazteCargoMailer.enviar(@promesa).deliver
+    PromeMailer.hazte_cargo(@promesa).deliver
     render :json => 'success'
   end
   
@@ -229,6 +229,6 @@ private
   
   def notificar_followers motivo
     emails = @promesa.followers.collect do |c| c.email end
-    FollowersMailer.informar_cambio(emails, @promesa, motivo).deliver
+    PromeMailer.cambio_promesa(emails, @promesa, motivo).deliver
   end
 end

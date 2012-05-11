@@ -7,7 +7,7 @@ class ContactoController < ApplicationController
     @contact_form = ContactForm.new params[:contact_form]
     if @contact_form.valid?
       tipo = @contact_form.tipo
-      ContactoMailer.send_email(@contact_form).deliver
+      PromeMailer.contacto(@contact_form).deliver
       notice = 'Email enviado, pronto recibiras respuesta.' if tipo == 'contacto'
       notice = 'Denuncia recibida, te avisaremos sobre su avance.' if tipo == 'denuncia'
       redirect_to :action => :new, :notice => notice

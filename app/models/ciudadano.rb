@@ -66,7 +66,7 @@ class Ciudadano < ActiveRecord::Base
           :password => Devise.friendly_token[0,20],
           :image => access_token.info.image
       )
-      CommentMailer.welcome(ciudadano).deliver
+      PromeMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
@@ -89,7 +89,7 @@ class Ciudadano < ActiveRecord::Base
           :login_type => 'google',
           :password => Devise.friendly_token[0,20]
       )
-      CommentMailer.welcome(ciudadano).deliver
+      PromeMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
@@ -104,7 +104,7 @@ class Ciudadano < ActiveRecord::Base
         :login_type => 'twitter',
         :password => Devise.friendly_token[0,20]
       )
-      #CommentMailer.welcome(ciudadano).deliver
+      #PromeMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
