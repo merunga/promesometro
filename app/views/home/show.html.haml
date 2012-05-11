@@ -13,12 +13,12 @@
   %h1 Perú
 
 #official_declaration
-  - Promesa.publicas.by_newest.limit(12).each do |p|
+  - Promesa.publicas.by_newest.order('fecha_declaracion, created_at DESC').limit(12).each do |p|
     .comment
       = render :partial => 'promesas/resumen', :locals => { :promesa => p }
       
 #vox_populi
-  - Comment.by_newest.limit(8).each do |c|
+  - Comment.by_newest.order('created_at DESC').limit(8).each do |c|
     = render :partial => 'comments/comment', :locals => { :comment => c, :level => 0, :position => 0 }
 
 -#peru

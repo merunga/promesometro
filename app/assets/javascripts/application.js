@@ -115,6 +115,12 @@ jQuery(function($) {
 	    	$(this).html(data)
 	  	})
 	 })
+	$(document).on('submit', 'form[data-remote=true]', function(event, data, status, xhr) {
+		$(this).find('type[submit]').attr('disabled','disabled')
+	})
+	$(document).on('ajax:success', 'form[data-remote=true]', function(event, data, status, xhr) {
+		$(this).find('type[submit]').removeAttr('disabled')
+	})
 })
 
 

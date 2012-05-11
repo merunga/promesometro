@@ -36,7 +36,8 @@ class Promesa < ActiveRecord::Base
     :publica, :fecha_compromiso, :avances_attributes, :compartida_con, :posicion
     
   def fecha_inicio
-    return fecha_declaracion || created_at
+    return fecha_declaracion if fecha_declaracion
+    return created_at
   end
   
   def puede_enviar_hazte_cargo?

@@ -63,7 +63,7 @@ class PromesasController < ApplicationController
       @promesa.uploader = current_ciudadano
       if(params[:prometiendo])
         @promesa.funcionario = current_ciudadano
-        @promesa.fecha_declaracion = Time.now
+        @promesa.fecha_declaracion = nil
       end
       @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
       @promesa.avances.each do |a| a.uploader = current_ciudadano end

@@ -42,3 +42,7 @@ jQuery ($) ->
     $(this).parents('.comment:not(.reply)').first().find('.thread:first').append $(data)
   $(document).on 'ajax:success', '#pruebas > .add > form[data-remote=true]', (event, data, status, xhr) ->
     $(this).parent('.add').replaceWith data
+  $(document).on 'ajax:success', '.hazte_cargo form[data-remote=true]', (event, data, status, xhr) ->
+    $(this).parent('.hazte_cargo').remove
+    alert $(this).parent('.hazte_cargo').size
+    

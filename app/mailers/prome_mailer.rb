@@ -46,10 +46,8 @@ class PromeMailer < ActionMailer::Base
   end
   
   def contacto(cform)
-    prepend = 'Nueva'
-    prepend = 'ATENTO! Nueva' if cform.tipo == 'denuncia'
     mail(:from => cform.email,
-         :subject => "[promesometro.pe] #{prepend} #{cform.tipo} #{cform.nombre}",
+         :subject => "[promesometro.pe] Nueva mail de contacto de #{cform.nombre}",
          :body => cform.comentario)
   end
   
