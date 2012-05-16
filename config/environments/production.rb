@@ -55,7 +55,7 @@ Promesometro::Application.configure do
     :enable_starttls_auto => false,
     :address        => 'mail.promesometro.pe',
     :port           => 587,
-    :domain         => 'promesometro.pe',
+    :domain         => 'nuevo.promesometro.pe',
     :authentication => :login,
     :ciudadano_name => ENV['NOREPLY_USERNAME'],
     :password       => ENV['NOREPLY_PASSWORD']
