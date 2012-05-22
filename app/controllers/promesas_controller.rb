@@ -172,15 +172,7 @@ class PromesasController < ApplicationController
   
   def enviar_hazte_cargo
     @promesa = Promesa.find(params[:id])
-    @promesa.hazte_cargo_sender = current_ciudadano
-    @promesa.hazte_cargo_token = Digest::SHA1.hexdigest([Time.now, rand].join)
-    @promesa.hazte_cargo_nombre = params[:nombre_responsable]
-    @promesa.hazte_cargo_email = params[:email_responsable]
-    @promesa.hazte_cargo_body = params[:email_body]
-    @promesa.hazte_cargo_created_at = Time.now
-    @promesa.save
-
-    PromeMailer.hazte_cargo(@promesa).deliver
+    registrar_envio_de_hazte_cargo
     render :json => 'success'
   end
   
@@ -230,5 +222,17 @@ private
   def notificar_followers motivo
     emails = @promesa.followers.collect do |c| c.email end
     PromeMailer.cambio_promesa(emails, @promesa, motivo).deliver
+  end
+  
+  def registrar_envio_de_hazte_cargo
+    @promesa.hazte_cargo_sender = current_ciudadano
+    @promesa.hazte_cargo_token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    @promesa.hazte_cargo_nombre = params[:nombre_responsable]
+    @promesa.hazte_cargo_email = params[:email_responsable]
+    @promesa.hazte_cargo_body = params[:email_body]
+    @promesa.hazte_cargo_created_at = Time.now
+    @promesa.save
+
+    PromeMailer.hazte_cargo(@promesa).deliver
   end
 end

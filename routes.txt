@@ -28,6 +28,7 @@
                     ver_todas_promesas GET    /promesas/ver_todas(.:format)                          promesas#ver_todas
                        buscar_promesas GET    /promesas/buscar(.:format)                             promesas#buscar
                     denunciar_promesas GET    /promesas/denunciar(.:format)                          promesas#denunciar
+                     prometer_promesas GET    /promesas/prometer(.:format)                           promesas#prometer
                         crear_promesas POST   /promesas/crear(.:format)                              promesas#crear
                                        GET    /promesas/buscar(.:format)                             promesas#buscar
    autocomplete_region_nombre_promesas GET    /promesas/autocomplete_region_nombre(.:format)         promesas#autocomplete_region_nombre
@@ -42,6 +43,10 @@
                dejar_de_seguir_promesa GET    /promesas/:id/dejar_de_seguir(.:format)                promesas#dejar_de_seguir
          reclamar_cumplimiento_promesa GET    /promesas/:id/reclamar_cumplimiento(.:format)          promesas#reclamar_cumplimiento
 dejar_de_reclamar_cumplimiento_promesa GET    /promesas/:id/dejar_de_reclamar_cumplimiento(.:format) promesas#dejar_de_reclamar_cumplimiento
+            enviar_hazte_cargo_promesa PUT    /promesas/:id/enviar_hazte_cargo(.:format)             promesas#enviar_hazte_cargo
+                 hacerme_cargo_promesa GET    /promesas/:id/hacerme_cargo(.:format)                  promesas#hacerme_cargo
+             lavarme_las_manos_promesa GET    /promesas/:id/lavarme_las_manos(.:format)              promesas#lavarme_las_manos
+                                       GET    /promesas/:id/enviar_hazte_cargo(.:format)             promesas#enviar_hazte_cargo
                                vote_up        /vote/up/:type/:key(.:format)                          votes#vote_up {:type=>/(comment|promesa|prueba)/}
                              vote_down        /vote/down/:type/:key(.:format)                        votes#vote_down {:type=>/(comment|promesa|prueba)/}
                          reply_comment        /comments/:id/reply/:level(.:format)                   comments#reply {:level=>/\d/}

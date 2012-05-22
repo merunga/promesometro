@@ -1,0 +1,21 @@
+%fieldset.hazte_cargo
+  %legend Quien prometi&oacute;
+  %i
+    &iquest;Conoces a la persona que realiz&oacute; esta promesa?
+    Env&iacute;ale un email para que se haga cargo!
+  %br
+  %br
+  %div
+    =form_for @promesa, :url => enviar_hazte_cargo_promesa_path, :remote => true do |f|
+      .nombre
+        =label_tag :nombre
+        =text_field_tag :nombre_responsable, '', :required => true
+      .email
+        =label_tag :email
+        =email_field_tag :email_responsable, '', :required => true
+      .body
+        =label_tag :mensaje
+        %br
+        =text_area_tag :email_body, '', :required => true
+      - if params['action'] == 'ver'
+        =submit_tag 'Enviar', :class => 'button'

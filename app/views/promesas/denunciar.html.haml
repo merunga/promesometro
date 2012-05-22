@@ -61,6 +61,8 @@
             =iff.label :entidad, 'Entidad:'
             =iff.text_field :entidad
       
+      =#render 'promesas/enviar_hazte_cargo'
+      
       %fieldset.lo_prometido
         %legend= if denunciando then 'Lo prometido' else 'Prometo' end
         .lo_prometido
