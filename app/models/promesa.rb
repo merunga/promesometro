@@ -29,7 +29,7 @@ class Promesa < ActiveRecord::Base
   accepts_nested_attributes_for :info_funcionario
   accepts_nested_attributes_for :pruebas, :allow_destroy => true
   accepts_nested_attributes_for :avances, :allow_destroy => true
-  validates_presence_of :lo_prometido
+  validates_presence_of :lo_prometido, :region
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
     :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima,
@@ -51,7 +51,7 @@ class Promesa < ActiveRecord::Base
   end
   
   def esta_asumida?
-    esta_legitimizada? && hazte_cargo_token
+    esta_legitimizada? #&& hazte_cargo_token
   end
   
   before_save :set_slug

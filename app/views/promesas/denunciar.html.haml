@@ -93,8 +93,8 @@
           %br
 
         .region
-          =f.label :region, 'Region:'
-          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox'
+          =f.label :region, 'Region: *'
+          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
           
       - if prometiendo
         %fieldset.destinatarios
