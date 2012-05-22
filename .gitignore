@@ -10,3 +10,4 @@ vendor/
 public/uploads/*
 public/assets/*
 public/favicon.gif
+config/passenger*
