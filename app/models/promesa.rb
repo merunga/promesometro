@@ -50,6 +50,10 @@ class Promesa < ActiveRecord::Base
     funcionario.not.nil?
   end
   
+  def esta_asumida?
+    esta_legitimizada? && hazte_cargo_token
+  end
+  
   before_save :set_slug
   def set_slug
     self.slug = (self.info_funcionario.nombre+' prometio '+self.lo_prometido).parameterize

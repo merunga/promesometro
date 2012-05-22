@@ -17,10 +17,13 @@
           denunciado por 
           =@promesa.uploader.screen_name
         =time_ago_in_words @promesa.created_at
-        
+      -if @promesa.esta_asumida?
+        .clear
+        %h2.asumida Promesa Asumida  
       .left
         %h1
           =@promesa.info_funcionario
+
       %br.clear
       
       - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
