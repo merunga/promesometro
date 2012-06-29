@@ -6,7 +6,7 @@ class PromesasController < ApplicationController
   before_filter :create_search
   
   def denunciar
-    if ciudadano_signed_in?
+    #if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
       @promesa.uploader = current_ciudadano
@@ -16,13 +16,13 @@ class PromesasController < ApplicationController
       prueba.imagen = Imagen.new
       prueba.video = Video.new
       prueba.mapa = Mapa.new
-    else
-      render 'shared/_not_logged_in'
-    end
+    #else
+    #  render 'shared/_not_logged_in'
+    #end
   end
   
   def prometer
-    if ciudadano_signed_in?
+    #if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
       @promesa.uploader = current_ciudadano
@@ -35,9 +35,9 @@ class PromesasController < ApplicationController
         :mapa => Mapa.new
       )
       render 'denunciar'
-    else
-      render 'shared/_not_logged_in'
-    end
+    #else
+    #  render 'shared/_not_logged_in'
+    #end
   end
   
   def ver
