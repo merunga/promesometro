@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Promesometro</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/youTubeEmbed-jquery-1.0.css" />
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/youTubeEmbed-jquery-1.0.js"></script>
+		<script type="text/javascript" src="js/jquery.swfobject.1-1-1.min.js"></script>
+		<script type="text/javascript" src="js/js.js"></script>
+
+		<!--[if lt IE 9]>
+   			 <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    	<![endif]-->
+    	<script type="text/javascript">
+    		$(document).ready(function(){
+
+				$('#player').youTubeEmbed();
+
+			});
+    	</script>
+    	
+	</head>
+	<body>
+		<header>
+			<section>
+				<aside>
+					<span class="h_twitter"></span>
+					Conectate con: <a href="" class="h_facebook"></a><a href="" class="h_google"></a>
+				</aside>
+				<h1 class="logo"><a href="index.html">Promesómetro, no más palabras vacías</a></h1>
+				<nav>
+					<ul>
+						<li><a href="#">Me Prometieron</a></li>
+						<li><a href="#">Yo Prometo</a></li>
+						<li><a href="#">Promesas</a></li>
+						<li><a href="#">Acerca De</a></li>
+						<li><a href="#">Contacto</a></li>
+					</ul>
+				</nav>
+			</section>
+		</header>
+		<section id="banner_2">
+			<img src="images/banner_2.png" alt=""/>
+		</section>
+		<section id="content">
+			
+			<section id="promesa">
+				<span class="icon_nueva_promesa"></span>
+				<h2>
+					<span class="gris">PROMESAS</span>
+					<span class="naranja">PUBLICAS</span>
+				</h2>
+				<div class="linea_promesa"></div>
+				<article class="detalle_promesa">
+					<span class="usuario">Denunciado por <a href="#">Juan Ayala</a></span>
+					<span class="tiempo">hace 8 meses</span>
+					<h4>OLLANTA HUMALA TASSO, PRESIDENTE DEL GOBIERNO DEL PERÚ</h4>
+					<fieldset>
+						<legend>Hace 6 meses prometió</legend>
+						<div class="descripcion">Llevar agua al distrito de Salaverry, construir una tuberia que transporte el agua.</div>
+						<span class="lugar">La Libertad</span>
+					</fieldset>
+					<div class="redes_sociales"><img src="images/redes_sociales.png" /></div>
+					<div class="extras">
+						<span class="count_comentarios">24 comentarios</span>
+						<span class="seguidores">3 seguidores  <a href="#">sigue!</a></span>
+						<span class="reclamos">2 reclamos  <a href="#">reclama cumplimiento!</a></span>
+					</div>
+					<h4>Agregar comentario</h4>
+					<textarea class="area_comentario"></textarea>
+					<input type="submit" name="" class="btn_responder" value="Responde" />
+					<div class="linea_comentario"></div>
+					<div class="comentarios">
+						<span class="ciudadano">Comentario de un ciudadano</span>
+						<span class="tiempo">hace 24 dias</span>
+						<div class="texto_comentario">"Salvo que sea del Pardos Chicken"</div>
+						<span class="votos">Votos <a href="#" class="mas">15</a> <a href="#" class="menos">4</a></span>
+					</div>
+					
+				</article>
+				<article class="pruebas">
+					<h4>Pruebas</h4>
+					<span class="user">Subida por Lorena Zolezzi hace 24 dias</span>
+					<div class="flashContainer" id="player" style="width: 330px; height: 260px; margin:0 0 0.5em 1.3em">
+						<object height="260" width="330" id="video_26ELpS3Wc4Q" type="application/x-shockwave-flash"
+						data="http://www.youtube.com/apiplayer?enablejsapi=1&version=3">
+
+							<param value="always" name="allowScriptAccess">
+							<param value="transparent" name="wmode">
+							<param value="video_id=QjFwOjXXOoE&playerapiid=QjFwOjXXOoE"
+							name="flashvars">
+							<param value="http://www.youtube.com/apiplayer?enablejsapi=1&version=3"
+							name="movie">
+
+						</object>
+
+						<div class="controlDiv play"></div>
+
+						<div class="progressBar">
+							<div class="elapsed"></div>
+						</div>
+					</div>
+					<div class="descripcion_prueba">Video de la promesa <span class="votos">Votos <a href="#" class="mas">15</a> <a href="#" class="menos">4</a></span>
+					</div>
+					<div class="tipos_pruebas">
+						<a href="#">Link</a> | <a href="#">Foto</a> | <a href="#">Archivo</a> | <a href="#">Video</a> | <a href="#">Mapa</a> 
+					</div>
+				</article>
+			</section>
+
+		</section>
+		<footer>
+			<section>
+				<ul>
+					<li><a href="#">Me Prometieron</a></li>
+					<li><a href="#">Yo Prometo</a></li>
+					<li><a href="#">Promesas</a></li>
+					<li><a href="#">Acerca De</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>
+				<div class="copy"><span>&copy;</span> Proetica es una marca registrada. El contenido de la página es</div>
+				<div class="proetica"><img src="images/proetica.png" /></div>
+			</section>
+		</footer>	
+	</body>
+
+</html>
