@@ -63,8 +63,8 @@ class Ciudadano < ActiveRecord::Base
           :login => data.email,
           :login_type => 'facebook',
           :name => "#{data.first_name} #{data.last_name}",
-          :password => Devise.friendly_token[0,20],
-          :image => access_token.info.image
+          :password => Devise.friendly_token[0,20]
+          # :image => access_token.info.image
       )
       PromeMailer.welcome(ciudadano).deliver
     end

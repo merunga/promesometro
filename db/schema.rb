@@ -37,31 +37,31 @@ ActiveRecord::Schema.define(:version => 20120508182807) do
   create_table "ciudadanos", :force => true do |t|
     t.string   "name"
     t.string   "login"
-    t.string   "login_type",                                              :null => false
+    t.string   "login_type",                               :null => false
     t.string   "facebook"
     t.string   "twitter"
     t.integer  "info_funcionario_id"
-    t.string   "email",                                 :default => "",   :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "",   :null => false
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.string   "email",                                    :null => false
+    t.string   "encrypted_password",     :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "failed_attempts",                       :default => 0
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
-    t.string   "unconfirmed_email"
     t.string   "authentication_token"
-    t.boolean  "perfil_publico",                        :default => true, :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.boolean  "perfil_publico",         :default => true, :null => false
   end
 
   add_index "ciudadanos", ["authentication_token"], :name => "index_ciudadanos_on_authentication_token", :unique => true
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20120508182807) do
     t.integer  "commentable_id",   :default => 0
     t.string   "commentable_type", :default => ""
     t.string   "title",            :default => ""
-    t.text     "body"
+    t.text     "body",             :default => ""
     t.string   "subject",          :default => ""
     t.integer  "ciudadano_id",     :default => 0,  :null => false
     t.integer  "parent_id"
@@ -183,11 +183,11 @@ ActiveRecord::Schema.define(:version => 20120508182807) do
   end
 
   create_table "regiones", :force => true do |t|
-    t.string   "nombre",                                    :null => false
-    t.decimal  "long",       :precision => 10, :scale => 0
-    t.decimal  "lat",        :precision => 10, :scale => 0
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.string   "nombre",     :null => false
+    t.decimal  "long"
+    t.decimal  "lat"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "taggings", :force => true do |t|
