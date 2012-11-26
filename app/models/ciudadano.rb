@@ -66,7 +66,7 @@ class Ciudadano < ActiveRecord::Base
           :password => Devise.friendly_token[0,20]
           # :image => access_token.info.image
       )
-      PromeMailer.welcome(ciudadano).deliver
+      # PromeMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end
