@@ -30,7 +30,7 @@ class PromeMailer < ActionMailer::Base
     @account_type = ciudadano.login_type
     @login = ciudadano.login
 
-    mail(:to => ciudadano.email,:from => @from :subject => subject)
+    mail(:to => ciudadano.email, :subject => subject)
     #do |format|
     #  format.html
     #  format.text
