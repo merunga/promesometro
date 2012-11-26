@@ -25,11 +25,12 @@ class PromeMailer < ActionMailer::Base
 
   def welcome(ciudadano)
     subject = '[promesometro.pe] Bienvenido ciudadano a construir con el Promesometro'
+    @from = ciudadano.contact_name
     @display_name = ciudadano.contact_name
     @account_type = ciudadano.login_type
     @login = ciudadano.login
 
-    mail(:to => ciudadano.email, :subject => subject)
+    mail(:to => ciudadano.email,:from => @from :subject => subject)
     #do |format|
     #  format.html
     #  format.text
