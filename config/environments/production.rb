@@ -46,7 +46,8 @@ Promesometro::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   config.action_mailer.default_url_options = {
-      :host => "www.promesometro.pe"
+      # :host => "www.promesometro.pe"
+      :host => "demopromesometro.herokuapp.com"
   }
   ActionMailer::Base.default :from => 'noreply@promesometro.pe'
   ActionMailer::Base.default :to => 'promesometro@proetica.org.pe'
