@@ -49,17 +49,14 @@ Promesometro::Application.configure do
       # :host => "www.promesometro.pe"
       :host => "demopromesometro.herokuapp.com"
   }
-  ActionMailer::Base.default :from => 'noreply@promesometro.pe'
-  ActionMailer::Base.default :to => 'promesometro@proetica.org.pe'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :enable_starttls_auto => false,
-    :address        => 'mail.promesometro.pe',
-    :port           => 587,
-    :domain         => 'nuevo.promesometro.pe',
-    :authentication => :login,
-    :ciudadano_name => ENV['NOREPLY_USERNAME'],
-    :password       => ENV['NOREPLY_PASSWORD']
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :user_name => ENV['GMAIL_USERNAME'],
+    :password => ENV['GMAIL_PASSWORD'],
+    :enable_starttls_auto => true,
   }
 
   config.action_mailer.raise_delivery_errors = true
