@@ -5,12 +5,14 @@ class Ciudadano < ActiveRecord::Base
   
   devise :database_authenticatable, :lockable, :recoverable,
       :rememberable, :registerable, :trackable, :timeoutable,
-      :token_authenticatable, :omniauthable
+      :token_authenticatable, :omniauthable, :confirmable
 
   attr_accessible :login, :login_type, :email, :name,
     :password, :password_confirmation, :send_notifications,
     :perfil_publico
   
+  validates  :name,:password,:password_confirmation,:email, :presence => true
+  validates  :email, :uniqueness => true
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
   has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
   has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
@@ -66,7 +68,7 @@ class Ciudadano < ActiveRecord::Base
           :password => Devise.friendly_token[0,20]
           # :image => access_token.info.image
       )
-      # PromeMailer.welcome(ciudadano).deliver
+      PromeMailer.welcome(ciudadano).deliver
     end
     ciudadano
   end

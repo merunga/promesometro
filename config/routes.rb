@@ -7,6 +7,10 @@ Promesometro::Application.routes.draw do
   }
 
   devise_scope :ciudadano do
+    match "ciudadanos/new", :to => "ciudadano#new", :as => "ciudadanos_new"
+    match "ciudadanos/create", :to => "ciudadano#create", :as => "ciudadanos_create"
+    match "ciudadanos/inicio", :to => "ciudadano#inicio", :as => "ciudadanos_inicio"
+    match "ciudadanos/sesion_new", :to => "ciudadano#sesion_new", :as => "ciudadanos_sesion_new"
     match "ciudadanos/profile/", :to => "ciudadanos/profile#update", :as => "ciudadanos_update_profile"
   end
 

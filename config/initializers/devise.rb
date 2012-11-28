@@ -102,12 +102,12 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
-  # config.password_length = 6..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
   # to give ciudadano feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the ciudadano session without activity. After this
@@ -140,7 +140,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your ciudadanos won't have the time to
