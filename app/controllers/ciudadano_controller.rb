@@ -32,7 +32,7 @@ class CiudadanoController < ApplicationController
       elsif  @ciudadano.save  
         flash[:notice] = "Confirm su direccion de correo"
 
-        @ciudadano.send_confirmation_instructions
+        # @ciudadano.send_confirmation_instructions
         format.html{redirect_to root_path}
       else
         format.html { render :action => "new" }
