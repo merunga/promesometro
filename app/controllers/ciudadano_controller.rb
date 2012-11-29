@@ -29,6 +29,9 @@ class CiudadanoController < ApplicationController
 
         flash[:notice] = "Ya existe un ciudadano registrado con ese Email"
         format.html { redirect_to :root }
+      elsif params[:ciudadano][:password] != params[:ciudadano][:password_confirmation]
+        flash[:notice] = "Las passwords no coinciden"
+        format.html { render :action => "new" }
       elsif  @ciudadano.save  
         flash[:notice] = "Confirm su direccion de correo"
 

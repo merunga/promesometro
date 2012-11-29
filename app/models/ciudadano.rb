@@ -11,7 +11,7 @@ class Ciudadano < ActiveRecord::Base
     :password, :password_confirmation, :send_notifications,
     :perfil_publico
   
-  validates  :name,:password,:password_confirmation,:email, :presence => true
+  validates  :name,:password,:email, :presence => true
   validates  :email, :uniqueness => true
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
   has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
