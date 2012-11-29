@@ -11,6 +11,8 @@ Promesometro::Application.routes.draw do
     match "ciudadanos/create", :to => "ciudadano#create", :as => "ciudadanos_create"
     match "ciudadanos/inicio", :to => "ciudadano#inicio", :as => "ciudadanos_inicio"
     match "ciudadanos/sesion_new", :to => "ciudadano#sesion_new", :as => "ciudadanos_sesion_new"
+    match "ciudadanos/recovery_password", :to => "ciudadano#recovery_password", :as => "ciudadanos_recovery_password"
+    match "ciudadanos/reset_password", :to => "ciudadano#reset_password", :as => "ciudadanos_reset_password"
     match "ciudadanos/profile/", :to => "ciudadanos/profile#update", :as => "ciudadanos_update_profile"
   end
 

@@ -56,6 +56,7 @@ class CiudadanoController < ApplicationController
 
   def sesion_new
     @ciudadano=Ciudadano.where(:email=>params[:ciudadano][:email]).first
+    @ciudadano=Ciudadano.where(:login=>params[:ciudadano][:email]).first if @ciudadano.blank?
     respond_to do |format|
       if !@ciudadano.blank?  && @ciudadano.valid_password?(params[:ciudadano][:password])
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "email"
@@ -66,6 +67,33 @@ class CiudadanoController < ApplicationController
         flash[:notice] = "Error de usuario o password"
         @ciudadano=Ciudadano.new if @ciudadano.blank?
         format.html{render :action=>'inicio'}
+      end
+    end
+  end
+
+  def recovery_password
+    @ciudadano=Ciudadano.new
+    respond_to do |format|
+      unless ciudadano_signed_in?
+        format.html
+      else
+        format.html{redirect_to root_path}
+      end
+    end
+  end
+
+  def reset_password
+    @ciudadano=Ciudadano.where(:email=>params[:ciudadano][:email]).first
+    respond_to do |format|
+      if !@ciudadano.blank?  
+        @ciudadano.send_reset_password_instructions
+        flash[:notice] = 'Verifique su correo.'
+        format.html{redirect_to root_path}
+        
+      else
+        flash[:notice] = "Error usuario no registrado"
+        @ciudadano=Ciudadano.new if @ciudadano.blank?
+        format.html{render :action=>'recovery_password'}
       end
     end
   end
