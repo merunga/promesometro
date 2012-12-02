@@ -1,0 +1,70 @@
+!!! 5
+%html
+  %head
+    %title
+      Promesometro
+      =h yield(:title)
+    = stylesheet_link_tag :application
+    %link{:href => 'http://fonts.googleapis.com/css?family=Oswald|Open+Sans+Condensed:300|Anton', :rel => 'stylesheet', :type => 'text/css', :cache => true}
+    <!--[if IE]>
+    %link{:href => "/stylesheets/ie.css", :media => "screen, projection", :rel => "stylesheet", :type => "text/css"}
+    <![endif]-->
+    = stylesheet_link_tag 'bootstrap.min'
+    =yield(:stylesheets)
+
+    = stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.18.custom'
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'
+    = javascript_include_tag :application
+    =# javascript_include_tag 'webshim/modernizr-yepnope-custom.js'
+    =# javascript_include_tag 'webshim/polyfiller.js'
+    %script(type='text/javascript')
+      //$.webshims.polyfill('forms');
+    =yield(:scripts)
+    
+    = csrf_meta_tag
+    
+    %script{:type => "text/javascript"}
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29520503-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    = meta_data_tags(params[:mdm],params[:mdi])
+
+    <script type="text/javascript">var mpq=[];mpq.push(["init","3ceb8a43ebe0f86a05265246453f4e37"]);(function(){var b,a,e,d,c;b=document.createElement("script");b.type="text/javascript";b.async=true;b.src=(document.location.protocol==="https:"?"https:":"http:")+"//api.mixpanel.com/site_media/js/api/mixpanel.js";a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a);e=function(f){return function(){mpq.push([f].concat(Array.prototype.slice.call(arguments,0)))}};d=["init","track","track_links","track_forms","register","register_once","identify","name_tag","set_config"];for(c=0;c<d.length;c++){mpq[d[c]]=e(d[c])}})();</script>
+  %body{:class => "#{controller.controller_name}"}
+    #container
+      %header
+        = link_to image_tag('logo.png', :id => 'logo'), root_path
+        = render 'social/login'
+        = render 'social/page_widgets'
+        
+        %nav
+          = render 'shared/menu'
+          
+        #search_box
+          - unless controller.controller_name == 'home'
+            = render :partial => 'shared/search'
+      .content
+        = yield
+
+      %footer
+        %nav
+          = render 'shared/menu'
+          %div.logo(style='float:right')
+            %span(style='width:350px;float:right;text-align:right')
+              &copy;
+              %i Proetica
+              es una marca registrada
+              <br /><span style="vertical-align:top">El contenido de la p&aacute;gina es</span>         |
+              <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/"> |
+                <img alt="Creative Commons License" style="border-width:0"            |
+                  src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />         |
+              </a>
+          %div.no-border.logo(style='float:right')= link_to(image_tag('proetica.png'), 'http://www.proetica.org.pe/', :target => '_blank')
