@@ -6,7 +6,7 @@
     %span.naranja
       PROMESAS
   - Promesa.publicas.by_newest.order('fecha_declaracion, created_at DESC').limit(4).each do |p|
-    = render 'promesas/resumen', :promesa => promesa
+    = render 'promesas/resumen', :promesa => p
 
     / %article
     /   .titulo
