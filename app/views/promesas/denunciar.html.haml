@@ -1,12 +1,15 @@
-/ =content_for :stylesheets do
-/   =stylesheet_link_tag :promesa  
-
-=content_for :stylesheets do
-  =stylesheet_link_tag "dropkick"
   
-=content_for :scripts do
-  =javascript_include_tag 'jquery.dropkick-1.0.0.js'
-  =javascript_include_tag :promesa
+
+=#content_for :stylesheets do
+=stylesheet_link_tag "dropkick"
+=stylesheet_link_tag "jquery.tagsinput"
+  
+=#content_for :scripts do
+=javascript_include_tag 'jquery-ui.min'
+=javascript_include_tag 'jquery.dropkick-1.0.0'
+=javascript_include_tag 'mustache'
+=javascript_include_tag 'jquery.tagsinput'
+=javascript_include_tag :promesa
 
 
 - edition = params[:action] == 'editar'
@@ -65,7 +68,7 @@
       = f.label "Cargo" do
         Cargo
         %span.ayuda ?
-      =f.datepicker :fecha_declaracion, :dateFormat => "dd/mm/yy",:class=>"text_promesa" 
+      =f.text_field :fecha_declaracion, :dateFormat => "dd/mm/yy",:class=>"text_promesa" 
 
       = f.label "Región" do
         Región  
@@ -87,6 +90,15 @@
           =f.check_box :denuncia_anonima
           Promesa pública
           %span.ayuda ?
+
+:javascript
+  $(document).ready(function(){ 
+    $('#tags').tagsInput({ 
+        autocomplete_url: '#{autocomplete_tag_name_promesas_path}', 
+        width: '80%', 
+        defaultText: 'agrega un tag' 
+    }); 
+  })
 
 
 /   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>

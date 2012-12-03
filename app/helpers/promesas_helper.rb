@@ -44,4 +44,7 @@ module PromesasHelper
     concat(content_tag(:span, promesa.comment_threads.count.to_s + " Comentarios", :class => 'comentarios_counter'))
   end
 
+  def comentarios(promesa)
+    promesa.comment_threads.count.to_s + " Comentarios"
+  end
 end
