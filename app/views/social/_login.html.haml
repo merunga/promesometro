@@ -3,6 +3,7 @@
   Conectate con: 
   = link_to "", ciudadano_omniauth_authorize_path(:facebook), :class=>"h_facebook"
   = link_to "", ciudadano_omniauth_authorize_path(:google), :class=>"h_google"
+  = link_to "",ciudadanos_inicio_path, :class=>"h_mail"
 -else 
   = image_tag "#{current_ciudadano.login_type}.png",
     :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"

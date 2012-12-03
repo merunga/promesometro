@@ -64,6 +64,16 @@ header section aside a.h_google
 	margin-left: 1em;
 }
 
+header section aside a.h_mail
+{
+	background: url(/assets/email.png)no-repeat;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1em;
+}
+
 header section h1
 {
 	margin: 1.2em 0em 0em 0em;
