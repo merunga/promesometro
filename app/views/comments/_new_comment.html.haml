@@ -1,0 +1,14 @@
+%article
+  %span.autor
+    Comentarios de 
+    = comment.ciudadano.screen_name
+  %span.fecha
+    = time_ago_in_words comment.created_at
+  .comentario
+    ="\"#{comment.body}\""
+  
+  %span.votos
+    Votos:
+    =link_to "#{comment.up_votes.count}","#",:class=>"mas"
+    =link_to "#{comment.down_votes.count}","#",:class=>"menos"
+  =link_to "Ver Promesa","#",:class=>"ver_promesa"

@@ -1,6 +1,7 @@
 class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     # You need to implement the method below in your model
+    logger.info("VALLL =  #{request.env["omniauth.auth"].to_json}")
     @ciudadano = Ciudadano.find_for_facebook_oauth(request.env["omniauth.auth"], current_ciudadano)
 
     if @ciudadano.persisted?

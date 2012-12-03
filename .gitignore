@@ -2,8 +2,7 @@
 db/*.sqlite3
 log/
 tmp/
-config/social_login.yml
-config/database.yml
+
 *~
 vendor/
 .project

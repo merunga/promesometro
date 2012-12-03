@@ -1,0 +1,28 @@
+%h2 Registración
+
+= form_for(@ciudadano, :url => url_for(:action=>"create", :controller=>"ciudadano")) do |f| 
+  =# devise_error_messages! 
+
+  %div
+    = f.label :email 
+    %br
+    = f.email_field :email , :autofocus => true 
+
+  %div
+    = f.label :name, 'Nombre' 
+    %br
+    = f.text_field :name
+  
+  %div
+    = f.label :password 
+    %br
+    = f.password_field :password 
+
+  %div
+    = f.label :password_confirmation 
+    %br
+    = f.password_field :password_confirmation 
+    = f.hidden_field :login_type,  :value=>'email'
+
+  = f.submit "Registrar" ,:class=>'button'
+

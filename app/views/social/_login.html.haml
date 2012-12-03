@@ -1,26 +1,42 @@
-#ciudadano_login_box
-  - if ciudadano_signed_in?
-    = image_tag "#{current_ciudadano.login_type}.png",
-      :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"
-    |
-    = current_ciudadano.contact_name
-    |
-    = link_to 'mi perfil', edit_ciudadano_registration_path
-    |
-    = link_to 'salir', destroy_ciudadano_session_path, :method => :delete
-  - else
-    %span(style='vertical-align: top')
-      con&eacute;ctate con
-      = link_to image_tag('google.png'), ciudadano_omniauth_authorize_path(:google)
-      -#&oacute;
-      -#= link_to image_tag('facebook.png'), ciudadano_omniauth_authorize_path(:facebook)
-      -# &oacute;
-      -# = link_to image_tag('twitter.png'), ciudadano_omniauth_authorize_path(:twitter)
+-unless ciudadano_signed_in?
+  %span.h_twitter
+  Conectate con: 
+  = link_to "", ciudadano_omniauth_authorize_path(:facebook), :class=>"h_facebook"
+  = link_to "", ciudadano_omniauth_authorize_path(:google), :class=>"h_google"
+-else 
+  = image_tag "#{current_ciudadano.login_type}.png",
+    :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"
+  |
+  = current_ciudadano.contact_name
+  |
+  = link_to 'mi perfil', edit_ciudadano_registration_path
+  |
+  = link_to 'salir', destroy_ciudadano_session_path, :method => :delete
+/ #ciudadano_login_box
+/   - if ciudadano_signed_in?
+/     = image_tag "#{current_ciudadano.login_type}.png",
+/       :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"
+/     |
+/     = current_ciudadano.contact_name
+/     |
+/     = link_to 'mi perfil', edit_ciudadano_registration_path
+/     |
+/     = link_to 'salir', destroy_ciudadano_session_path, :method => :delete
+/   - else
+/     %span(style='vertical-align: top')
+/       con&eacute;ctate con
+/       = link_to image_tag('google.png'), ciudadano_omniauth_authorize_path(:google)
+/       -#&oacute;
+/       = link_to image_tag('facebook.png'), ciudadano_omniauth_authorize_path(:facebook)
+/       -# &oacute;
+      
+/       = link_to image_tag('mail.png', :width=>'25px'),ciudadanos_inicio_path
+/       -# = link_to image_tag('twitter.png'), ciudadano_omniauth_authorize_path(:twitter)
 
-- if admin_signed_in?
-  #admin_login_box(style="float:left")
-    = current_admin.email
-    |
-    =# link_to raw('p&aacute;gina de admin'), rails_admin, :method => :show
-    |
-    = link_to 'salir', destroy_admin_session_path, :method => :delete
+/ - if admin_signed_in?
+/   #admin_login_box(style="float:left")
+/     = current_admin.email
+/     |
+/     =# link_to raw('p&aacute;gina de admin'), rails_admin, :method => :show
+/     |
+/     = link_to 'salir', destroy_admin_session_path, :method => :delete

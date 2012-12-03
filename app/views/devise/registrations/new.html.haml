@@ -1,0 +1,32 @@
+%h2 Registración
+
+= form_for(resource, :url => url_for(:controller=>"ciudadano",:action=>"create")) do |f| 
+  = devise_error_messages! 
+
+  %div
+    = f.label :email 
+    %br
+    = f.email_field :email , :autofocus => true 
+
+  %div
+    = f.label :name, 'Nombre' 
+    %br
+    = f.text_field :name
+  
+  %div
+    = f.label :password 
+    %br
+    = f.password_field :password 
+
+  %div
+    = f.label :password_confirmation 
+    %br
+    = f.password_field :password_confirmation 
+
+  = f.submit "Sign up" 
+
+
+
+
+
+=# render :partial => "devise/shared/links" 

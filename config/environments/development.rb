@@ -17,10 +17,10 @@ Promesometro::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   
   config.action_mailer.default_url_options = {
-      :host => "dev.promesometro.pe:3000",
+      :host => "localhost:3000",
   }
-  ActionMailer::Base.default :from => 'merunga@gmail.com'
-  ActionMailer::Base.default :to => 'merunga@gmail.com'
+  # ActionMailer::Base.default :from => 'merunga@gmail.com'
+  # ActionMailer::Base.default :to => 'merunga@gmail.com'
   
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

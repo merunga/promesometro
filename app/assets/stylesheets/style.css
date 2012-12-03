@@ -1,0 +1,1472 @@
+@font-face{ 
+	font-family: 'Satellite';
+	src: url('/assets/fonts/satellite.eot');
+	src: url('/assets/fonts/satellite.eot?#iefix') format('embedded-opentype'),
+	     url('/assets/fonts/satellite.woff') format('woff'),
+	     url('/assets/fonts/satellite.ttf') format('truetype'),
+	     url('/assets/fonts/satellite.svg#webfont') format('svg');
+}
+
+body
+{
+	background: #fffae0;
+	color: #504f51;
+	font-size: 1em;
+	font-family: 'Satellite', Arial;
+}
+
+img
+{
+	/*max-width: 100%;*/
+}
+
+header
+{
+	width: 100%;
+	border-top: solid 20px #f5ff80;
+	background: #fffefa;
+	padding-bottom: 1.2em;
+}
+
+header section
+{
+	margin: 0 auto;
+	max-width: 1000px;
+	width: 96%;
+}
+
+header section aside
+{
+	color: #5b5b5b;
+	font: bold 13px 'Satellite', Arial;
+	margin-top: 1em;
+	text-align: right;
+}
+
+
+header section aside a.h_facebook
+{
+	background: url(/assets/h_facebook.png)no-repeat;
+	display: inline-block;
+	margin-left: 0.5em;
+	height: 18px;
+	vertical-align: top;
+	width: 18px;
+}
+
+header section aside a.h_google
+{
+	background: url(/assets/h_google.png)no-repeat;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1em;
+}
+
+header section h1
+{
+	margin: 1.2em 0em 0em 0em;
+}
+
+header section h1 a
+{
+	background: url(/assets/logo.png) no-repeat;
+	display: block;
+	text-indent: -9999px;
+	height: 70px;
+	width: 275px; 
+}
+
+header section nav
+{
+	margin: 0.5em 0px 0px 0em;
+	text-align: right;
+}
+
+header nav ul li
+{
+	display: inline-block;
+	margin-left: 1em;
+	vertical-align: top;
+}
+
+header nav ul li a
+{
+	
+	color: #080808;
+	font: normal 18px 'Satellite', Arial;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.98px;
+	display: block;
+	text-align: center; 
+	padding: 0.3em 0.1em;
+}
+
+section#banner
+{
+	width: 100%;
+	height: 370px;
+	border-top: solid 1px #8c8f8b;
+}
+
+section#banner img, section#banner_2 img
+{
+	width: 100%;
+	height: 100%;
+}
+
+section#banner_2
+{
+	width: 100%;
+	height: 250px;
+	border-top: solid 1px #8c8f8b;
+}
+
+section#content
+{
+	max-width: 1000px;
+	width: 96%;
+	margin: 0 auto 2em auto;
+}
+
+section#content .c_left
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
+	position: relative;
+}
+
+section#content .icon_promesas
+{
+	background: url(/assets/icon_promesa.png) no-repeat;
+	width: 450px;
+	height: 200px;
+	display: block;
+	position: absolute;
+	top: -30px;
+	left: -10px;
+}
+
+section#content h2
+{
+	
+	margin-top: 3.5em;
+	text-align: left;
+	position: relative;
+}
+
+section#content h2 .gris, section#content h2 .naranja
+{
+	display: block;
+	margin: 0 0 0 5.2em;
+}
+
+section#content h2 .gris
+{
+	color: #636362;
+	font: normal 2em Arial;
+}
+
+section#content h2 .naranja
+{
+	color: #fe3c00;
+	font: bold 2em Arial;
+	margin-top: -0.2em;
+}
+
+section#content .c_left article
+{
+	width: 330px;
+	margin: 1.7em 0 0 6.8em;
+	padding-bottom: 1em;
+	border-bottom: dotted 1px #373c44;
+}
+
+section#content article .titulo
+{
+	color: #fe3c00;
+	font: normal 16px 'Satellite', Arial;
+	text-align: left;
+}
+
+section#content article .promesa
+{
+	color: #373c44;
+	text-align: left;
+	margin-top: 0.6em;
+	font: bold 14px 'Satellite', Arial;
+}
+
+section#content article a.ver_promesa
+{
+	color: #000;
+	margin-top: 1.8em;
+	font: bold 11px 'Satellite', Arial;
+	display: inline-block;
+	text-decoration: none;
+	background: url(/assets/ver_promesa.png) no-repeat;
+	padding: 4px 0px 0px 32px;
+	width: 82px;
+	height: 23px;
+}
+
+section#content article a.ver_promesa:hover
+{
+	opacity: 0.8;
+}
+
+section#content article a.icon_e
+{
+	background: url(/assets/e.png) no-repeat;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	margin: 1.2em 0 0 10em;
+	vertical-align: top;
+}
+
+section#content .c_right
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
+	position: relative;
+	margin-left: 5.5em;
+}
+
+section#content .icon_boca
+{
+	background: url(/assets/icon_boca.png) no-repeat;
+	width: 450px;
+	height: 200px;
+	display: block;
+	position: absolute;
+	top: -45px;
+	left: -30px;
+}
+
+section#content .c_right h2
+{
+	
+	margin-top: 2.7em;
+	text-align: left;
+	position: relative;
+}
+
+section#content .c_right .gris, section#content .c_right .naranja
+{
+	display: block;
+	margin: 0 0 0 4.5em;
+}
+
+section#content .c_right .gris
+{
+	color: #636362;
+	font: normal 2em Arial;
+}
+
+section#content .c_right .naranja
+{
+	color: #fe3c00;
+	font: bold 2em Arial;
+	margin-top: -0.2em;
+}
+
+section#content .c_right article
+{
+	width: 345px;
+	margin: 1.7em 0 0 5em;
+	padding-bottom: 1em;
+	border-bottom: dotted 1px #373c44;
+}
+
+section#content article .autor
+{
+	color: #fe3c00;
+	font: bold 13px 'Satellite', Arial;
+	text-align: left;
+}
+
+section#content article .fecha
+{
+	color: #373c44;
+	text-align: left;
+	font: bold 10px 'Satellite', Arial;
+	border-left: solid 1px #373c44;
+	padding-left: 0.5em;
+}
+
+section#content article .comentario
+{
+	color: #373c44;
+	text-align: justify;
+	margin-top: 0.6em;
+	font: bold 14px 'Satellite', Arial;
+}
+
+
+section#content article .votos
+{
+	color: #000;
+	margin-top: 1.8em;
+	font: bold 12px 'Satellite', Arial;
+	display: inline-block;
+	vertical-align: top;
+	border: solid 2px #c3c3c3;
+	border-radius: 5px;
+	padding: 3px 5px;
+}
+
+section#content .c_right article a.ver_promesa
+{
+	color: #000;
+	margin: 1.9em 0 0 10.5em;
+	font: bold 11px 'Satellite', Arial;
+	display: inline-block;
+	vertical-align: top;
+	text-decoration: none;
+	background: url(/assets/ver_promesa.png) no-repeat;
+	padding: 4px 0px 0px 32px;
+	width: 82px;
+	height: 23px;
+}
+
+section#content .votos a.mas
+{
+	color: #00d7ba;
+	font-weight: bold;
+	text-decoration: none;
+	background: url(/assets/mas.png) no-repeat center left;
+	padding-left: 0.9em;
+	margin-left: 0.2em;
+}
+
+section#content .votos a.menos
+{
+	color: #fe3c00;
+	font-weight: bold;
+	text-decoration: none;
+	background: url(/assets/menos.png) no-repeat center left;
+	padding-left: 0.9em;
+	margin-left: 0.2em;
+}
+
+
+/* BUSQUEDAS AVANZADAS*/
+section#content .busqueda_avanzada
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+}
+
+section#content .icon_bus_avanzada
+{
+	background: url(/assets/icon_busqueda_avanzada.png) no-repeat;
+	width: 120px;
+	height: 400px;
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 0px;
+}
+
+section#content .busqueda_avanzada h2
+{	
+	margin-top: 3.8em;
+}
+
+section#content .busqueda_avanzada h2 .gris, 
+section#content .busqueda_avanzada h2 .naranja
+{
+	display: block;
+	margin: 0 0 0 5em;
+	font: normal 1.7em Arial;
+}
+
+section#content .busqueda_avanzada h2 .naranja
+{
+	font: bold 1.7em Arial;
+	margin-top: -0.1em;
+}
+
+section#content .linea_busqueda
+{
+	height: 3px;
+	background: #373c44;
+	width: 90%;
+	margin: 0.6em 0 0 4em;
+}
+
+section#content .formulario_busqueda
+{
+	margin: 1.3em 0 0 4em;
+}
+
+section#content .formulario_busqueda article
+{
+	width: 215px;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+}
+
+section#content .formulario_busqueda .linea_formulario
+{
+	border:dotted 1px #7d7b75;
+	display: inline-block;
+	vertical-align: top;
+	height: 140px;
+	margin: 0 0.4em;
+}
+
+.formulario_busqueda h3
+{
+	color: #504f51;
+	font: bold 17px Arial;
+	margin-bottom: 0.4em;
+}
+.formulario_busqueda .text_busqueda
+{
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	width: 200px;
+	height: 22px;
+	padding-left: 0.5em;
+	margin-top: 1em;
+	color: #fe3c00;
+	outline: none;
+}
+
+.formulario_busqueda .dk_container
+{
+	margin-top: 1em;
+	font-weight: normal;
+	line-height: 10px;
+	margin-bottom: 0; 
+	border-radius: 4px;
+	outline: none;
+}
+.formulario_busqueda .dk_open
+{
+	box-shadow: none;
+	-moz-box-shadow: none;
+}
+
+
+.formulario_busqueda .dk_container a.dk_toggle
+{
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	width: 155px;
+	padding-left: 0.5em;
+	color: #fe3c00;
+	outline: none;
+	background-position: 101% center;
+}
+
+.text_busqueda::-webkit-input-placeholder 
+{
+	color:#fe3c00;
+}
+
+section#content .formulario_busqueda .nota
+{
+	margin: 2.2em 0;
+	display: block;
+	font: normal 10px Arial;
+}
+
+.formulario_busqueda .seguida
+{
+	margin-top: 2.1em;
+}
+
+.formulario_busqueda .seguida label
+{
+	width: 110px;
+	display: inline-block;
+	overflow: hidden;
+	vertical-align: top;
+	font: normal 12px 'Satellite', Arial;
+	cursor: pointer;
+	color: #000;
+}
+
+.formulario_busqueda .seguida .icon_proetica
+{
+	background: url(/assets/proetica_small.png)no-repeat;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	margin-top: 2px;
+}
+
+.formulario_busqueda .btn_busqueda
+{
+	margin: 4em 0 0 0; 
+	background: url(/assets/ver_promesa.png)no-repeat;
+	width: 110px;
+	height: 25px;
+	border: none;
+	cursor: pointer;
+}
+
+.formulario_busqueda .btn_busqueda:hover
+{
+ 	opacity: 0.8;
+}
+
+
+section#content .listado_promesas
+{
+	margin: 2em 0 0 4em;
+}
+
+section#content .listado_promesas h2
+{
+	display: inline-block;
+	vertical-align: top;
+	color: #504f51;
+	font: normal 20px Arial;
+	margin-top: 0em;
+}
+
+.listado_promesas h2.promesas
+{
+	width: 475px;
+	background: url(/assets/h2_promesas.png)no-repeat; 
+	padding: 0.4em 0 0.3em 1em;
+}
+
+.listado_promesas h2.estado_promesas
+{
+	width: 340px;
+	background: url(/assets/h2_estado_p.png)no-repeat; 
+	padding: 0.4em 0 0.3em 3em;
+	margin-left: -1.2em;
+}
+
+.left, .right
+{
+	display: inline-block;
+	vertical-align: top;
+}
+.left
+{
+	width: 52%;
+}
+.right
+{
+	width: 42%;
+}
+
+section#content .left .titulo
+{
+	width: 300px;
+	font: normal 14px 'Satellite', Arial;
+	color: #504f51;
+	margin: 1.3em 0 0 1.2em;
+}
+
+section#content .left .promesa
+{
+	width: 300px;
+	font: normal 15px 'Satellite', Arial;
+	color: #000;
+	margin: 1.3em 0 0 1.2em;
+}
+
+.usuario_p, .fecha_p{
+	display: inline-block;
+	vertical-align: top;
+	margin: 1.3em 0 0 3em;
+}
+
+.usuario_p
+{
+	width: 150px;
+}
+
+.usuario_p span
+{
+	display: block;
+	margin-bottom: 1em;
+	font-size: 15px;
+}
+
+.usuario_p a
+{
+	display: block;
+	margin-top: 0.5em;
+	text-decoration: none;
+	color: #585858;
+	font-size: 11px;
+	padding: 0.4em 0 0em 2.5em;
+}
+
+.usuario_p a.icon_user
+{
+	background: url(/assets/icon_user.png)no-repeat left center;
+}
+.usuario_p a.icon_coment
+{
+	background: url(/assets/icon_coment.png)no-repeat left center;
+}
+.usuario_p a.icon_pruebas
+{
+	background: url(/assets/icon_pruebas.png)no-repeat 5px center;
+}
+.usuario_p a.icon_lugar
+{
+	background: url(/assets/icon_lugar.png)no-repeat 5px center;
+}
+
+.fecha_p
+{
+	width: 100px;
+	margin-left: 5em;
+}
+
+.fecha_p span
+{
+	display: block;
+	font-size: 11px;
+}
+
+.fecha_p span.dias
+{
+	font-size: 23px;
+	color: #fe3c00;
+	margin: 0.2em 0;
+}
+
+.listado_promesas .compartir
+{
+	margin: 1.5em 0 0 1.2em;
+}
+
+.compartir .seguidores, .compartir .reclamos
+{
+	display: block;
+	font-size: 12px;
+	margin-top: 0.5em;
+}
+
+.compartir .seguidores a, 
+.compartir .reclamos a
+{
+	color: #fe3c00;
+	text-decoration: none;
+}
+
+.compartir .redes_sociales
+{
+	width: 300px;
+	height: 20px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 1em;
+}
+
+section#content .compartir a.ver_promesa
+{
+	margin: 1.2em 0em 0em 2em; 
+}
+
+.listado_promesas .linea_promesas
+{
+	border-top: solid 1px #585858;
+	margin: 1.5em 0em 0.2em 1.2em;
+}
+
+.listado_promesas .paginacion
+{
+	margin: 3em 0em 0em 1.2em;
+	background: #d2d2d2;
+	padding: 0.5em;
+	text-align: right;
+}
+
+.listado_promesas .paginacion a
+{
+	color: #000;
+	text-decoration: none;
+	font-size: 15px;
+	margin: 0 0.5em;
+}
+
+/* PARTICIPAR */
+section#content .participar
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+}
+
+section#content .icon_participar
+{
+	background: url(/assets/icon_participar.png) no-repeat;
+	width: 80px;
+	height: 600px;
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 0px;
+}
+
+section#content .participar .t_prosometro
+{	
+	margin: 3.5em 0 0 3.5em;
+	color: #ff3c00;
+	font: normal 28px Arial;
+	width: 65%;
+}
+
+section#content .t_participar
+{
+	margin: 5.5em 0 0 6em;
+}
+
+section#content .t_participar  .gris, 
+section#content .t_participar .naranja
+{
+	display: block;
+	margin: 0 0 0 0em;
+}
+
+section#content .t_participar .gris 
+{
+	color: #636362;
+	font: normal 35px Arial;
+}
+
+section#content .t_participar .naranja
+{
+	color: #FE3C00;
+	font: bold 35px Arial;
+}
+
+.participar .descripcion_participar
+{
+	color: #373c44;
+	font-size: 20px;
+	margin: 0.5em 0em 0em 5em;
+	line-height: 150%;
+	width: 85%;
+}
+
+section#content .t_proetica
+{
+	margin: 1.8em 0 0 2.8em;
+	font: normal 35px Arial;
+}
+
+
+/* NUEVA PROMESA*/
+section#nueva_promesa
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+}
+
+section#nueva_promesa .icon_nueva_promesa
+{
+	background: url(/assets/icon_nueva_promesa.png) no-repeat;
+	width: 100px;
+	height: 105px;
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 25px;
+}
+
+section#nueva_promesa h2
+{	
+	margin-top: 3em;
+}
+
+section#nueva_promesa h2 .gris, 
+section#nueva_promesa h2 .naranja
+{
+	display: block;
+	margin: 0 0 0 5em;
+	font: normal 1.7em Arial;
+}
+
+section#nueva_promesa h2 .naranja
+{
+	font: bold 1.7em Arial;
+	margin-top: -0.1em;
+}
+
+section#nueva_promesa .linea_promesa
+{
+	height: 3px;
+	background: #373c44;
+	width: 90%;
+	margin: 0.3em 0 0 5em;
+}
+
+section#nueva_promesa .formulario_promesa
+{
+	margin: 1.3em 0 0 5em;
+	width: 55%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#nueva_promesa .formulario_promesa h3
+{
+	font: bold 18px Arial;
+	color: #504f51;
+	margin: 0em 0 0.8em 0;
+}
+
+section#nueva_promesa .formulario_promesa label
+{
+	font-size: 12px;
+	color: #fe3c00;
+	width: 80px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 1.2em;
+}
+
+section#nueva_promesa .formulario_promesa .ayuda
+{
+	padding: 0.2em 0.4em 0.1em 0.3em;
+	display: inline-block;
+	background: #abaaa5;
+	color: #fff;
+	font-size: 12px;
+	margin: -0.2em 0 0 0;
+	float: right;
+	cursor: pointer;
+}
+
+section#nueva_promesa .formulario_promesa .text_promesa
+{
+
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0.5em 0 0.5em 0.5em;
+	outline: none;
+}
+
+section#nueva_promesa .formulario_promesa .area_promesa
+{
+
+	width: 90%;
+	height: 100px;
+	display: block;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0.5em 0 2em 0;
+	outline: none;
+}
+
+section#nueva_promesa .formulario_promesa .pruebas
+{
+	width: 70%;
+	background: #d4d4d4;
+	padding: 0.3em 0em 0.4em 0;
+	display: block;
+	color: #fe3c00;
+	font-size: 16px;
+}
+
+section#nueva_promesa .pruebas a
+{
+	color: #fe3c00;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 0 1em;
+}
+
+section#nueva_promesa .btn_guardar
+{
+	color: #000;
+	margin: 3em 0 0 0em;
+	font: bold 12px 'Satellite', Arial;
+	display: inline-block;
+	vertical-align: top;
+	text-decoration: none;
+	background: url(/assets/ver_promesa.png) no-repeat;
+	padding: -2px 0px 0px 20px;
+	width: 115px;
+	height: 26px;
+	cursor: pointer;
+	border: none;
+}
+
+section#nueva_promesa .btn_guardar:hover
+{
+	opacity: 0.8;
+}
+
+section#nueva_promesa .tipo_promesa
+{
+	margin: 1.3em 0 0 1em;
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+
+
+section#nueva_promesa .tipo_promesa label
+{
+	font-size: 12px;
+	color: #000;
+	display: block;
+	margin: 0.3em 0 0 0.3em;
+}
+
+section#nueva_promesa .tipo_promesa .ayuda
+{
+	padding: 0.2em 0.4em 0.1em 0.3em;
+	display: inline-block;
+	background: #abaaa5;
+	color: #fff;
+	font-size: 12px;
+	margin: -0.2em 0 0 0.5em;
+	cursor: pointer;
+}
+
+/* MI PERFIL*/
+section#perfil
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+}
+
+section#perfil .icon_perfil
+{
+	background: url(/assets/icon_perfil.png) no-repeat;
+	width: 105px;
+	height: 107px;
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 25px;
+}
+
+section#perfil h2
+{	
+	margin-top: 3em;
+}
+
+section#perfil h2 .gris, 
+section#perfil h2 .naranja
+{
+	display: block;
+	margin: 0 0 0 5em;
+	font: normal 1.7em Arial;
+}
+
+section#perfil h2 .naranja
+{
+	font: bold 1.7em Arial;
+	margin-top: -0.1em;
+}
+
+section#perfil .linea_perfil
+{
+	height: 3px;
+	background: #373c44;
+	width: 90%;
+	margin: 0.3em 0 0 5em;
+}
+
+section#perfil .formulario_perfil
+{
+	margin: 1.3em 0 0 5em;
+	width: 55%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#perfil .formulario_perfil h3
+{
+	font: bold 18px Arial;
+	color: #504f51;
+	margin: 0em 0 0.8em 0;
+}
+
+section#perfil .formulario_perfil label
+{
+	font-size: 12px;
+	color: #fe3c00;
+	width: 80px;
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 1.2em;
+}
+
+section#perfil .formulario_perfil .ayuda
+{
+	padding: 0.2em 0.4em 0.1em 0.3em;
+	display: inline-block;
+	background: #abaaa5;
+	color: #fff;
+	font-size: 12px;
+	margin: -0.2em 0 0 0;
+	float: right;
+	cursor: pointer;
+}
+
+section#perfil .formulario_perfil .text_perfil
+{
+
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0.5em 0 0.5em 0.5em;
+	outline: none;
+}
+
+section#perfil .formulario_perfil div
+{
+	font-size: 12px;
+	color: #000;
+	margin-top: 1em;
+}
+
+section#perfil .btn_guardar
+{
+	color: #000;
+	margin: 1.5em 0 3em 0em;
+	font: bold 12px 'Satellite', Arial;
+	display: block;
+	text-decoration: none;
+	background: url(/assets/ver_promesa.png) no-repeat;
+	padding: 0px 0px 0px 20px;
+	width: 115px;
+	height: 26px;
+	cursor: pointer;
+	border: none;
+}
+
+section#perfil .btn_guardar:hover
+{
+	opacity: 0.8;
+}
+
+section#perfil .formulario_perfil a
+{
+	color: #fe3c00;
+	font-size: 12px;
+	text-decoration: none;
+	margin-top: 0.3em;
+	display: inline-block;
+}
+
+section#perfil .m_ayuda
+{
+	vertical-align: top;
+	display: inline-block;
+	width: 32%;
+	text-align: right;
+	margin-top: 1.2em; 
+}
+
+section#perfil .m_ayuda .ayuda
+{
+	padding: 0.2em 0.4em 0.1em 0.3em;
+	display: inline-block;
+	background: #abaaa5;
+	color: #fff;
+	font-size: 12px;
+	margin: -0.2em 0 0 0.5em;
+	cursor: pointer;
+}
+
+/* PROMESA DETALLE */
+section#promesa
+{
+	display: inline-block;
+	vertical-align: top;
+	width: 100%;
+	position: relative;
+}
+
+section#promesa .icon_nueva_promesa
+{
+	background: url(/assets/icon_nueva_promesa.png) no-repeat;
+	width: 100px;
+	height: 105px;
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: 25px;
+}
+
+section#promesa h2
+{	
+	margin-top: 3em;
+}
+
+section#promesa h2 .gris, 
+section#promesa h2 .naranja
+{
+	display: block;
+	margin: 0 0 0 5em;
+	font: normal 1.7em Arial;
+}
+
+section#promesa h2 .naranja
+{
+	font: bold 1.7em Arial;
+	margin-top: -0.1em;
+}
+
+section#promesa .linea_promesa
+{
+	height: 3px;
+	background: #373c44;
+	width: 90%;
+	margin: 0.3em 0 0 5em;
+}
+
+section#promesa .detalle_promesa
+{
+	margin: 1.3em 0 0 5em;
+	width: 500px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#promesa .detalle_promesa h3
+{
+	font: bold 18px Arial;
+	color: #fe3c00;
+	margin: 0em 4em 0em 0;
+	width: auto;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#promesa .detalle_promesa .usuario
+{
+	font-size: 12px;
+	margin: 0.3em 0 0em 0em;
+	width: auto;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#promesa .detalle_promesa .usuario a
+{
+	color: #fe3c00;
+	text-decoration: none;
+}
+
+section#promesa .detalle_promesa .tiempo
+{
+	font-size: 12px;
+	margin: 0.3em 0 0em 1em;
+	width: auto;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#promesa .detalle_promesa h4
+{
+	font: bold 16px Arial;
+	color: #504f51;
+	margin: 2em 0 2em 0;
+}
+section#promesa .detalle_promesa fieldset
+{
+	margin: 2em 0 2em 0;
+	border: solid 2px #fe3c00;
+	border-radius: 5px;
+	width: auto;
+	
+}
+
+section#promesa .detalle_promesa legend
+{
+	padding: 0 0.8em;
+	text-align: left;
+	margin-left: 1em;
+	font-size: 15px;
+	color: #7a7a7a;
+}
+
+section#promesa fieldset .descripcion
+{
+	margin: 1em auto 0.5em auto;
+	width: 90%;
+	font-size: 20px;
+	color: #565656; 
+}
+
+section#promesa fieldset .lugar
+{
+	margin: 0 auto 1.5em auto;
+	width: 90%;
+	font-size: 14px;
+	color: #565656; 
+	display: block;
+}
+
+section#promesa .detalle_promesa .extras
+{
+	margin-top: 1.2em;
+}
+
+section#promesa .detalle_promesa .extras span
+{
+	display: block;
+	color: #585858;
+	font-size: 12px;
+	margin-top: 0.5em;
+}
+
+section#promesa .detalle_promesa .extras span a
+{
+	color: #fe3c00;
+	text-decoration: none;
+	margin-left: 0.3em;
+}
+
+section#promesa .detalle_promesa .area_comentario
+{
+
+	width: 465px;
+	height: 80px;
+	display: block;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0em 0 2em 0;
+	outline: none;
+}
+
+section#promesa .btn_responder
+{
+	color: #000;
+	margin: 0em 0 0 0em;
+	font: bold 12px 'Satellite', Arial;
+	display: inline-block;
+	vertical-align: top;
+	text-decoration: none;
+	background: url(/assets/ver_promesa.png) no-repeat;
+	padding: 0px 0px 0px 20px;
+	width: 115px;
+	height: 26px;
+	cursor: pointer;
+	border: none;
+}
+
+section#promesa .btn_responder:hover
+{
+	opacity: 0.8;
+}
+
+
+section#promesa .linea_comentario
+{
+	border-top: dotted 1px #585858;
+	margin: 1.5em 0;
+	width: 480px;
+}
+
+section#promesa .comentarios
+{
+	background: url(/assets/bg_respuestas.png)no-repeat;
+	width: 480px;
+	height: 120px;
+	margin: 1em 0;
+	display: block;
+	position: relative;
+}
+
+section#promesa .comentarios .ciudadano
+{
+	float: left;
+	font-size: 11px;
+	margin: 0.8em;
+}
+section#promesa .comentarios .tiempo
+{
+	float: right;
+	font-size: 11px;
+	margin: 0.8em;
+}
+
+section#promesa .comentarios .texto_comentario
+{
+	width: 470px;
+	float: none;
+	display: block;
+	text-align: center;
+	font-size: 15px;
+	margin: 2em 0 0 0;
+	overflow: hidden;
+}
+
+section#promesa .comentarios .votos
+{
+	position: absolute;
+	bottom: 25px;
+	right: 0px;
+	border: none;
+}
+
+section#promesa .pruebas
+{
+	border-left: dotted 2px #585858;
+	display: inline-block;
+	vertical-align: top;
+	width: 350px;
+	margin: 1.2em 0 0 1em;
+}
+
+section#promesa .pruebas h4
+{
+	font: bold 16px Arial;
+	color: #504f51;
+	margin: 0em 0 1em 1.5em;
+	display: inline-block;
+	vertical-align: top;
+}
+
+section#promesa .pruebas .user
+{
+	font-size: 12px;
+	margin: 0.3em 0 0em 0em;
+	width: auto;
+	display: inline-block;
+	vertical-align: top;
+	float: right;
+}
+
+section#promesa .pruebas .imagen
+{
+	margin: 0em 0 0.5em 1em;
+}
+
+
+section#promesa .pruebas .descripcion_prueba
+{
+	margin: 0em 0 1em 1.6em;
+	font-size: 13px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+section#promesa .pruebas .descripcion_prueba .votos
+{
+	border: none;
+	display: inline-block;
+	position: none;
+	margin: 0em 0em 0em 4em;
+	padding: 0;
+}
+
+section#promesa .pruebas .tipos_pruebas
+{
+	width: 93%;
+	background: #d4d4d4;
+	padding: 0.3em 0em 0.4em 0;
+	display: block;
+	color: #fe3c00;
+	font-size: 16px;
+	margin-left: 1.5em; 
+}
+
+section#promesa .pruebas .tipos_pruebas a
+{
+	color: #fe3c00;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 0 0.7em;
+}
+
+
+
+footer
+{
+	background: #323232 url(/assets/bg_footer.png) repeat-x;
+	width: 100%;
+	min-height: 220px;
+	height: auto;
+}
+
+footer section
+{
+	margin: 0 auto;
+	max-width: 1000px;
+	width: 96%;
+	overflow: hidden;
+}
+
+footer section ul
+{
+	display: inline-block;
+	vertical-align: top;
+	margin-top: 2.5em;
+	min-width: 160px;
+	width: 20%;
+}
+
+footer section ul li
+{
+	margin: 0.7em 0 0 0;
+}
+
+footer section ul a
+{
+	color: #ffffff;
+	font: normal 14px 'Satellite', Arial;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+footer section .copy
+{
+	color: #ffffff;
+	display: inline-block;
+	font: normal 15px 'Satellite', Arial;
+	vertical-align: top;
+	margin: 8em 0 0 0em;
+	width: 55%;
+	text-align: right;
+}
+
+footer section .copy span
+{
+	
+	font: normal 30px 'Satellite', Arial;
+}
+
+footer section .proetica
+{
+	display: inline-block;
+	vertical-align: top;
+	margin: 4.5em 0 0 0em;
+	float: right;
+	width: 20%;
+	text-align: right;
+	min-width: 200px;
+}

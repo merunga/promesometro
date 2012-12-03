@@ -1,0 +1,49 @@
+!!! 5
+%html{:lang=>'es'}
+  %head
+    %meta{:charset=>"UTF-8"}
+    %title
+      Promesometro
+      =h yield(:title)
+    = stylesheet_link_tag :application
+    = javascript_include_tag :application
+    
+
+    <!--[if lt IE 9]>
+    %script{:src=>"http://html5shim.googlecode.com/svn/trunk/html5.js"}
+    <![endif]-->
+      
+  %body
+    %header
+      %section
+        %aside
+          = render "social/login"
+          / %span.h_twitter
+          / Conectate con: 
+          / = link_to "", "#", :class=>"h_facebook"
+          / = link_to "", "#", :class=>"h_google"
+        %h1.logo
+          %a{:href=>'/'} Promesómetro, no más palabras vacías
+        %nav
+          =render "shared/menu"
+        /   %ul
+        /     %li= link_to "Me Prometieron", "#"
+        /     %li= link_to "Yo Prometo", "#"
+        /     %li= link_to "Promesas", "#"
+        /     %li= link_to "Acerca De", "#"
+        /     %li= link_to "Contacto", "#"
+            
+    %section#banner
+      = image_tag "banner.png", :alt=>""
+    %section#content
+      = yield
+    %footer
+      %section
+        =render "shared/menu"
+        .copy
+          %span
+            &copy;
+          Proetica es una marca registrada. El contenido de la página es
+        .proetica
+          = image_tag "proetica.png" 
+      

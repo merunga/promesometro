@@ -1,81 +1,161 @@
+/ =content_for :stylesheets do
+/   =stylesheet_link_tag :promesa  
+  
+/ =content_for :scripts do
+/   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+/   =javascript_include_tag :promesa
+  
+
 =content_for :stylesheets do
-  =stylesheet_link_tag :promesa  
+  =stylesheet_link_tag "dropkick"
   
 =content_for :scripts do
-  <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+  =javascript_include_tag 'jquery.dropkick-1.0.0.js'
   =javascript_include_tag :promesa
-  
-- content_for :title, ":: Ver"  
-  
-#ver
-  .promesa
-    .discusion
-      .right.denuncia_anonima
-        -if @promesa.denuncia_anonima
-          denuncia anonima,
-        -else
-          denunciado por 
-          =@promesa.uploader.screen_name
-        =time_ago_in_words @promesa.created_at
-      -if @promesa.esta_asumida?
-        %h2.asumida.left Promesa Asumida!
-        .clear  
-      .left
-        %h1
-          =@promesa.info_funcionario
 
-      %br.clear
-      
-      - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
-        .right
-          =link_to 'editar', editar_promesa_path
-        .clear   
-      
-      %fieldset.lo_prometido
-        %legend #{time_ago_in_words(@promesa.fecha_inicio()).capitalize} prometi&oacute;:
-        .lo_prometido
-          =@promesa.lo_prometido
-        .tags
-          -@promesa.tags.each do |t|
-            %span.tag= t #link_to t, :url => '#'
-        -if @promesa.region
-          .region
-            =@promesa.region
-          
-      - if ciudadano_signed_in? && @promesa.puede_enviar_hazte_cargo? 
-        =render 'promesas/enviar_hazte_cargo'
-            
-      .compartir
-        = promesa_social_widgets(@promesa)
-          
-      .clear
-        
+- content_for :title, ":: Ver"  
+
+
+%section#promesa
+  %span.icon_nueva_promesa
+  %h2
+    %span.gris NUEVA
+    %span.naranja PROMESA
   
-      .share
-        -comentarios_count(@promesa)
-  
-      .comentar
-        = render :partial => 'comments/form',
-          :locals => {:promise=>@promesa, :level=>0, :position=>0, :url=>comentar_promesa_path(@promesa)}
-      
+  .linea_promesa
+  %article.detalle_promesa
+    %h3 PROMESA ASUMIDA
+    %span.usuario Denunciado por #{@promesa.denuncia_anonima ? 'anonimo' : @promesa.uploader.screen_name}
+    %span.tiempo= time_ago_in_words @promesa.created_at
+    %h4=@promesa.info_funcionario# El presidente de mi comité
+    %fieldset
+      %legend=time_ago_in_words(@promesa.fecha_inicio()).capitalize# Hace 6 meses prometió
+      .descripcion=@promesa.lo_prometido # no dejar de comer pollo
+      %span.lugar=@promesa.region # Juliaca
+    .redes_sociales 
+      = promesa_social_widgets(@promesa)
+    .extras
+      %span.count_comentarios=comentarios(@promesa)#24 comentarios
+      %span.seguidores= render 'promesas/seguir'
+      / <a href="#">sigue!</a>
+      %span.reclamos= render 'promesas/reclamar'
+      / <a href="#">reclama cumplimiento!</a>
+
+    %h4 Agregar comentario
+    %textarea.area_comentario
+
+    = submit_tag "Responde #{@promesa.comment_threads.count}", :class=>"btn_responder"
+    .linea_comentario
+    - @promesa.comment_threads.each do |c|
       .comentarios
-        - @comments.each do |c|
-          = render :partial => 'comments/comment',
-            :locals => {:comment => c, :level => 0, :position => 0}
-        
-      = paginate @comments
+        %span.ciudadano 
+          Comentarios de 
+          = c.ciudadano.screen_name
+        %span.tiempo
+          =time_ago_in_words(c.created_at)
+        %div.texto_comentario
+          ="\"#{c.body}\""
+        %span.votos 
+          Votos 
+          =link_to "#{c.up_votes.count}","#",:class=>"mas"
+          =link_to "#{c.down_votes.count}","#",:class=>"menos"
+      / <a href="#" class="mas">15</a> 
+      / <a href="#" class="menos">4</a>
     
-    -#.break &nbsp;
+  %article.pruebas
+    %h4 Pruebas
+    %span.user Subida por Lorena Zolezzi hace 24 dias
+    .imagen
+      <img src="images/prueba.png" />
+    .descripcion_prueba 
+      Aqui se come el pollo del chango 
+      %span.votos Votos 
+      / <a href="#" class="mas">15</a> <a href="#" class="menos">4</a>
+    .tipos_pruebas
+      =render 'prueba/add'
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/ #ver
+/   .promesa
+/     .discusion
+/       .right.denuncia_anonima
+/         -if @promesa.denuncia_anonima
+/           denuncia anonima,
+/         -else
+/           denunciado por 
+/           =@promesa.uploader.screen_name
+/         =time_ago_in_words @promesa.created_at
+/       -if @promesa.esta_asumida?
+/         %h2.asumida.left Promesa Asumida!
+/         .clear  
+/       .left
+/         %h1
+/           =@promesa.info_funcionario
+
+/       %br.clear
       
-    .pruebas
-      %legend Pruebas
-      #pruebas
-        -@promesa.pruebas.each do |p|
-          = render 'prueba/show', :prueba => p
+/       - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
+/         .right
+/           =link_to 'editar', editar_promesa_path
+/         .clear   
+      
+/       %fieldset.lo_prometido
+/         %legend #{time_ago_in_words(@promesa.fecha_inicio()).capitalize} prometi&oacute;:
+/         .lo_prometido
+/           =@promesa.lo_prometido
+/         .tags
+/           -@promesa.tags.each do |t|
+/             %span.tag= t #link_to t, :url => '#'
+/         -if @promesa.region
+/           .region
+/             =@promesa.region
           
-      - if ciudadano_signed_in?
-        =render 'prueba/upload', :form => nil, :to_be => true
+/       - if ciudadano_signed_in? && @promesa.puede_enviar_hazte_cargo? 
+/         =render 'promesas/enviar_hazte_cargo'
+            
+/       .compartir
+/         = promesa_social_widgets(@promesa)
+          
+/       .clear
+        
+  
+/       .share
+/         -comentarios_count(@promesa)
+  
+/       .comentar
+/         = render :partial => 'comments/form',
+/           :locals => {:promise=>@promesa, :level=>0, :position=>0, :url=>comentar_promesa_path(@promesa)}
+      
+/       .comentarios
+/         - @comments.each do |c|
+/           = render :partial => 'comments/comment',
+/             :locals => {:comment => c, :level => 0, :position => 0}
+        
+/       = paginate @comments
+    
+/     -#.break &nbsp;
+      
+/     .pruebas
+/       %legend Pruebas
+/       #pruebas
+/         -@promesa.pruebas.each do |p|
+/           = render 'prueba/show', :prueba => p
+          
+/       - if ciudadano_signed_in?
+/         =render 'prueba/upload', :form => nil, :to_be => true
    
-      - if ciudadano_signed_in?
-        = render 'prueba/add'
+/       - if ciudadano_signed_in?
+/         = render 'prueba/add'
         

@@ -94,7 +94,7 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  # config.use_salt_as_remember_token = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -102,12 +102,12 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
-  # config.password_length = 6..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
   # to give ciudadano feedback and not to assert the e-mail validity.
-  # config.email_regexp = /\A[^@]+@[^@]+\z/
+  config.email_regexp = /\A[^@]+@[^@]+\z/
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the ciudadano session without activity. After this
@@ -140,7 +140,7 @@ Devise.setup do |config|
   # ==> Configuration for :recoverable
   #
   # Defines which key will be used when recovering the password for an account
-  # config.reset_password_keys = [ :email ]
+  config.reset_password_keys = [ :email ]
 
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your ciudadanos won't have the time to
@@ -176,7 +176,7 @@ Devise.setup do |config|
   # Configure sign_out behavior.
   # Sign_out action can be scoped (i.e. /ciudadanos/sign_out affects only :ciudadano scope).
   # The default is true, which means any logout action will sign out all active scopes.
-  # config.sign_out_all_scopes = true
+  config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -200,7 +200,7 @@ Devise.setup do |config|
   SOCIAL_LOGIN = YAML.load_file(  "#{Rails.root}/config/social_login.yml" )
 
   config.omniauth :twitter, SOCIAL_LOGIN['twitter_app_id'], SOCIAL_LOGIN['twitter_app_secret']
-  config.omniauth :facebook, SOCIAL_LOGIN['facebook_app_id'], SOCIAL_LOGIN['facebook_app_secret']
+  config.omniauth :facebook, SOCIAL_LOGIN['facebook']['add_id'], SOCIAL_LOGIN['facebook']['app_secret']
 
   require 'openid/store/filesystem'
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google',

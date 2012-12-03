@@ -1,12 +1,17 @@
-=content_for :stylesheets do
-  =stylesheet_link_tag :promesa  
   
-=content_for :scripts do
-  <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-  <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
-  =javascript_include_tag :promesa
-  =javascript_include_tag 'lib/jquery.emailsinput.js'
+
+=#content_for :stylesheets do
+=stylesheet_link_tag "dropkick"
+=stylesheet_link_tag "jquery.tagsinput"
   
+=#content_for :scripts do
+=javascript_include_tag 'jquery-ui.min'
+=javascript_include_tag 'jquery.dropkick-1.0.0'
+=javascript_include_tag 'mustache'
+=javascript_include_tag 'jquery.tagsinput'
+=javascript_include_tag :promesa
+
+
 - edition = params[:action] == 'editar'
 - denunciando = @promesa.uploader != @promesa.funcionario 
 - prometiendo = @promesa.uploader == @promesa.funcionario
@@ -17,115 +22,209 @@
 -if prometiendo
   - content_for :title, ":: Yo prometo"
 
-#denuncia    
-  .promesa
-    - url = crear_promesas_path
-    - url = actualizar_promesa_path if edition
-    
-    =form_for @promesa, :url => url, |
-      :validate => true, :html => {:multipart => true} do |f|
-      
+- url = crear_promesas_path
+- url = actualizar_promesa_path if edition
+
+
+
+
+%section#nueva_promesa
+  %span.icon_nueva_promesa
+  %h2
+    %span.gris NUEVA
+    %span.naranja PROMESA
+  
+  =form_for @promesa, :url => url, :validate => true, :html => {:multipart => true} do |f|
+    .linea_promesa
+    %article.formulario_promesa
+      = f.fields_for :info_funcionario do |iff|
+
+        %h3 El que promete
+        %label Nombre
+        =iff.text_field :nombre, :required => 'required',:class=>"text_promesa" 
+
+        = f.label "Cargo" do 
+          Cargo
+          %span.ayuda ?
+        =iff.text_field :cargo, :class=>"text_promesa" 
+
+        = f.label "Entidad" do
+          Entidad
+          %span.ayuda ?
+        =iff.text_field :entidad,:class=>"text_promesa" 
       - if edition
         = f.hidden_field :id
       
       - if prometiendo
         = hidden_field_tag :prometiendo, true
-      
-      %div
-        .left
-          %h1 Nueva Promesa
-        .right
-          .promesa_publica
-            =f.label :publica, 'promesa pública'
-            =f.check_box :publica
-          - if denunciando
-            .denuncia_anonima
-              =f.label :denuncia_anonima, 'denuncia anonima'
-              =f.check_box :denuncia_anonima
-        %br.clear
-      
-      = f.error_messages
-      
-      %fieldset.info_funcionario
-        %legend= if denunciando then 'El que promete' else 'Yo' end
-        = f.fields_for :info_funcionario do |iff|
-          - if edition
-            = iff.hidden_field :id 
-          .nombre
-            =iff.label :nombre, 'Nombre: *'
-            =iff.text_field :nombre, :required => 'required'
-          .cargo
-            =iff.label :cargo, 'Cargo:'
-            =iff.text_field :cargo
-          .entidad
-            =iff.label :entidad, 'Entidad:'
-            =iff.text_field :entidad
-      
-      =#render 'promesas/enviar_hazte_cargo'
-      
-      %fieldset.lo_prometido
-        %legend= if denunciando then 'Lo prometido' else 'Prometo' end
-        .lo_prometido
-          =f.text_area :lo_prometido, :required => 'required'
-          
-        %script(type='text/javascript')
-          $(document).ready(function(){ |
-            $('#tags').tagsInput({ |
-                autocomplete_url: '#{autocomplete_tag_name_promesas_path}', |
-                width: '80%', |
-                defaultText: 'agrega un tag' |
-            }); |
-          })
-      
-        .tags
-          =f.label :tag_list, 'Tags:'
-          =f.text_field :tag_list, :id=>'tags'
-        
-        - if denunciando 
-          .fecha_declaracion
-            =f.label :fecha_declaracion, 'Cúando:'
-            =f.datepicker :fecha_declaracion, :dateFormat => "dd/mm/yy"
- 
-        - if prometiendo 
-          .fecha_compromiso
-            =f.label :fecha_compromiso, 'Fecha compromiso:*'
-            =f.datepicker :fecha_compromiso, :dateFormat => "dd/mm/yy", :required => true
-          %br
+      %h3{:style=>"margin-top:1.2em;"} Lo prometido
+      =f.text_area :lo_prometido, :required => 'required',:class=>"area_promesa"
 
-        .region
-          =f.label :region, 'Region: *'
-          =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
-          
-      - if prometiendo
-        %fieldset.destinatarios
-          %legend Destinatarios
-          %script(type='text/javascript')
-            $(document).ready(function(){ |
-              $('#destinatarios').emailsInput({ |
-                  width: '80%' |
-              }); |
-            })
-          =f.label :compartida_con, 'Destinatarios:'
-          =f.text_field :compartida_con, :id=>'destinatarios'
-      
+      = f.label "Tags" do
+        Tags
+        %span.ayuda ?
+      = f.text_field :tag_list, :id=>'tags',:class=>"text_promesa"
+
+      = f.label "Cargo" do
+        Cargo
+        %span.ayuda ?
+      =f.text_field :fecha_declaracion, :dateFormat => "dd/mm/yy",:class=>"text_promesa" 
+
+      = f.label "Región" do
+        Región  
+        %span.ayuda ?
+      =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
+
+
+      %h3{ :style=>"margin-top:1.2em;"} Pruebas
+      .pruebas
+        =render 'prueba/add'
+      = f.submit "Guardar", :class=> 'btn_guardar'
+    %article.tipo_promesa
+      %label
+        =f.check_box :publica
+        Promesa pública
+        %span.ayuda ?
       - if denunciando
-        %fieldset.pruebas
-          %legend Pruebas
-          #pruebas
-            = f.fields_for :pruebas do |pf|
-              = render 'prueba/upload', :form => pf, :to_be => true
-              - if edition
-                = render 'prueba/upload', :form => pf, :to_be => false
-          =render 'prueba/add'
-                
-      -# if prometiendo and edition
-        %fieldset.avances
-          %legend Avances
-          #avances
-            = f.fields_for :avances do |af|
-              = render 'prueba/upload', :form => af, :to_be => true
-              - if edition
-                = render 'prueba/upload', :form => af, :to_be => false
-          =render 'prueba/add', :cont_selector => '#avances'
+        %label
+          =f.check_box :denuncia_anonima
+          Promesa pública
+          %span.ayuda ?
+
+:javascript
+  $(document).ready(function(){ 
+    $('#tags').tagsInput({ 
+        autocomplete_url: '#{autocomplete_tag_name_promesas_path}', 
+        width: '80%', 
+        defaultText: 'agrega un tag' 
+    }); 
+  })
+
+
+/   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
+/   <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
+/   =javascript_include_tag :promesa
+/   =javascript_include_tag 'lib/jquery.emailsinput.js'
+  
+/ - edition = params[:action] == 'editar'
+/ - denunciando = @promesa.uploader != @promesa.funcionario 
+/ - prometiendo = @promesa.uploader == @promesa.funcionario
+
+/ -if denunciando
+/   - content_for :title, ":: Me prometieron"
+  
+/ -if prometiendo
+/   - content_for :title, ":: Yo prometo"
+
+/ #denuncia    
+/   .promesa
+/     - url = crear_promesas_path
+/     - url = actualizar_promesa_path if edition
+    
+/     =form_for @promesa, :url => url, |
+/       :validate => true, :html => {:multipart => true} do |f|
+      
+/       - if edition
+/         = f.hidden_field :id
+      
+/       - if prometiendo
+/         = hidden_field_tag :prometiendo, true
+      
+/       %div
+/         .left
+/           %h1 Nueva Promesa
+/         .right
+/           .promesa_publica
+/             =f.label :publica, 'promesa pública'
+/             =f.check_box :publica
+/           - if denunciando
+/             .denuncia_anonima
+/               =f.label :denuncia_anonima, 'denuncia anonima'
+/               =f.check_box :denuncia_anonima
+/         %br.clear
+      
+/       = f.error_messages
+      
+/       %fieldset.info_funcionario
+/         %legend= if denunciando then 'El que promete' else 'Yo' end
+/         = f.fields_for :info_funcionario do |iff|
+/           - if edition
+/             = iff.hidden_field :id 
+/           .nombre
+/             =iff.label :nombre, 'Nombre: *'
+/             =iff.text_field :nombre, :required => 'required'
+/           .cargo
+/             =iff.label :cargo, 'Cargo:'
+/             =iff.text_field :cargo
+/           .entidad
+/             =iff.label :entidad, 'Entidad:'
+/             =iff.text_field :entidad
+      
+/       =#render 'promesas/enviar_hazte_cargo'
+      
+/       %fieldset.lo_prometido
+/         %legend= if denunciando then 'Lo prometido' else 'Prometo' end
+/         .lo_prometido
+/           =f.text_area :lo_prometido, :required => 'required'
+          
+/         %script(type='text/javascript')
+/           $(document).ready(function(){ |
+/             $('#tags').tagsInput({ |
+/                 autocomplete_url: '#{autocomplete_tag_name_promesas_path}', |
+/                 width: '80%', |
+/                 defaultText: 'agrega un tag' |
+/             }); |
+/           })
+      
+/         .tags
+/           =f.label :tag_list, 'Tags:'
+/           =f.text_field :tag_list, :id=>'tags'
         
-      =f.submit(value='Guardar')
+/         - if denunciando 
+/           .fecha_declaracion
+/             =f.label :fecha_declaracion, 'Cúando:'
+/             =f.datepicker :fecha_declaracion, :dateFormat => "dd/mm/yy"
+ 
+/         - if prometiendo 
+/           .fecha_compromiso
+/             =f.label :fecha_compromiso, 'Fecha compromiso:*'
+/             =f.datepicker :fecha_compromiso, :dateFormat => "dd/mm/yy", :required => true
+/           %br
+
+/         .region
+/           =f.label :region, 'Region: *'
+/           =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
+          
+/       - if prometiendo
+/         %fieldset.destinatarios
+/           %legend Destinatarios
+/           %script(type='text/javascript')
+/             $(document).ready(function(){ |
+/               $('#destinatarios').emailsInput({ |
+/                   width: '80%' |
+/               }); |
+/             })
+/           =f.label :compartida_con, 'Destinatarios:'
+/           =f.text_field :compartida_con, :id=>'destinatarios'
+      
+/       - if denunciando
+/         %fieldset.pruebas
+/           %legend Pruebas
+/           #pruebas
+/             = f.fields_for :pruebas do |pf|
+/               = render 'prueba/upload', :form => pf, :to_be => true
+/               - if edition
+/                 = render 'prueba/upload', :form => pf, :to_be => false
+/           =render 'prueba/add'
+                
+/       -# if prometiendo and edition
+/         %fieldset.avances
+/           %legend Avances
+/           #avances
+/             = f.fields_for :avances do |af|
+/               = render 'prueba/upload', :form => af, :to_be => true
+/               - if edition
+/                 = render 'prueba/upload', :form => af, :to_be => false
+/           =render 'prueba/add', :cont_selector => '#avances'
+        
+/       =f.submit(value='Guardar')

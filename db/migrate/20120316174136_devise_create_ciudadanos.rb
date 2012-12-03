@@ -14,13 +14,13 @@ class DeviseCreateCiudadanos < ActiveRecord::Migration
       t.string :email,              :null => false
       t.string :encrypted_password, :null => false, :default => ""
 
-      t.database_authenticatable
-      t.confirmable
-      t.recoverable
-      t.rememberable
-      t.trackable
-      t.lockable
-      t.timestamps
+      # t.database_authenticatable
+      # t.confirmable
+      # t.recoverable
+      # t.rememberable
+      # t.trackable
+      # t.lockable
+      # t.timestamps
 
       ## Recoverable
       t.string   :reset_password_token

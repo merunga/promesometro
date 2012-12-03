@@ -46,6 +46,7 @@ group :development do
   #gem 'ruby-debug'
 end
 
+gem 'pg'
 gem 'mysql2'
 gem 'cancan'
 gem 'devise'
@@ -77,3 +78,4 @@ gem 'acts_as_votable'
 
 gem 'fastercsv' # Only required on Ruby 1.8 and below
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'thin'
