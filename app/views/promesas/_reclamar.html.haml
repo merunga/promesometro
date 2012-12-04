@@ -1,13 +1,13 @@
-- count = @promesa.reclamos.count
+- count = promesa.reclamos.count
 - label = 'reclamos'
 - label = 'reclamo' if count == 1 
 %span= "#{count} #{label}"
 
 -if ciudadano_signed_in?
-  - if current_ciudadano.not.reclamando? @promesa
+  - if current_ciudadano.not.reclamando? promesa
     - text = 'reclama cumplimiento!'
-    - path = reclamar_cumplimiento_promesa_path @promesa
+    - path = reclamar_cumplimiento_promesa_path promesa
   - else
     - text = 'deja de reclamar'
-    - path = dejar_de_reclamar_cumplimiento_promesa_path @promesa
+    - path = dejar_de_reclamar_cumplimiento_promesa_path promesa
   = link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html

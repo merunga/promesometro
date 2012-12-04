@@ -1,0 +1,40 @@
+-@promesas.each do |promesa|
+  %article.listado
+    .left
+      .titulo
+        =time_ago_in_words(promesa.screen_date)
+        #{promesa.el_que_promete} prometió: 
+      .promesa
+        = "\"#{promesa.lo_prometido}\""
+    .right
+      .usuario_p
+        %span Subido por:
+
+        = link_to "#{promesa.el_que_denuncia}","javascript:void(0);", :class=>"icon_user"
+        = link_to "#{promesa.comment_threads.count} comentarios","javascript:void(0);", :class=>"icon_coment"
+        = link_to "#{promesa.pruebas.count} pruebas","javascript:void(0);", :class=>"icon_pruebas"
+        = link_to "Región #{promesa.region.nombre}","javascript:void(0);", :class=>"icon_lugar"
+
+      .fecha_p
+        %span Publicado hace:
+        %span.dias #{ (Date.today - promesa.created_at.to_date).to_i}
+        %span dias
+    .compartir
+      - count = promesa.followers.count
+      - label = 'seguidores'
+      - label = 'seguidor' if count == 1
+      -if ciudadano_signed_in?
+        - if current_ciudadano.not.following? promesa
+          - text = 'sigue!'
+          - path = seguir_promesa_path promesa
+        - else
+          - text = 'deja de seguir'
+          - path = dejar_de_seguir_promesa_path promesa 
+      .seguidores= render :partial => 'promesas/seguir', :locals=>{ :promesa => promesa}
+       
+      .reclamos= render :partial => 'promesas/reclamar', :locals=>{ :promesa => promesa}
+      .redes_sociales= promesa_social_widgets(promesa)
+
+      =link_to "Ver Promesa",ver_promesa_path(promesa),:class=>"ver_promesa"
+  
+  .linea_promesas

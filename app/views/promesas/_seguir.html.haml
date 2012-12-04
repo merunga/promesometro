@@ -1,13 +1,13 @@
-- count = @promesa.followers.count
+- count = promesa.followers.count
 - label = 'seguidores'
 - label = 'seguidor' if count == 1
 %span= "#{count} #{label}"
 
 -if ciudadano_signed_in?
-  - if current_ciudadano.not.following? @promesa
+  - if current_ciudadano.not.following? promesa
     - text = 'sigue!'
-    - path = seguir_promesa_path @promesa
+    - path = seguir_promesa_path promesa
   - else
     - text = 'deja de seguir'
-    - path = dejar_de_seguir_promesa_path @promesa
+    - path = dejar_de_seguir_promesa_path promesa
   = link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html
