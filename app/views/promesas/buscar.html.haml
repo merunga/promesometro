@@ -1,31 +1,143 @@
-=content_for :stylesheets do
-  =stylesheet_link_tag :promesa  
+%section.busqueda_avanzada
+  %span.icon_bus_avanzada
+  %h2
+    %span.gris BUSQUEDA
+    %span.naranja AVANZADA
+  .linea_busqueda
+  %section.formulario_busqueda
+    =form_for @search, :url => buscar_promesas_path, :html => {:method => :get} do |f|
+      %article
+        %h3 Sobre el que promete
+        =f.text_field :info_funcionario_nombre_like, :placeholder => 'Nombre',:class=>'text_busqueda'
+        =f.text_field :info_funcionario_cargo_like, :placeholder => 'Cargo',:class=>'text_busqueda'
+        =f.text_field :info_funcionario_entidad_like, :placeholder => 'Entidad',:class=>'text_busqueda'
+
+        
+      .linea_formulario
+      %article
+        %h3 Sobre lo prometido
+        =f.text_field :lo_prometido_contains, :placeholder => 'lo prometido',:class=>"text_busqueda"
+        / <input type="text" name="" class="text_busqueda" placeholder="Nombre" />
+        =f.collection_select :region_id_equals, Region.all, :id, :nombre, {:prompt => '-- Region --'}, :class => 'select'
+        / <select class="select" name="select_1" id="select_1">
+        /   <option>Region</option>
+        /   <option>Region 2</option>
+        /   <option>Region 3</option>
+        /   <option>Region 4</option>
+        /   <option>Region 5</option>
+        / </select>
+        =f.text_field :pruebas_descripcion_contains, :placeholder => 'pruebas',:class=>"text_busqueda"
+        / <input type="text" name="" class="text_busqueda" placeholder="Entidad" />
+      .linea_formulario
+      %article
+        %h3 Por apoyo
+        = select_tag :select_2,options_for_select([['Mas apoyados'],['Apoyados 1'],['Apoyados 2'],['Apoyados 3'],['Apoyados 4'],['Apoyados 5']]),:class=>"select"
+        / <select class="select" name="select_2" id="select_2">
+        /   <option>Mas apoyados</option>
+        /   <option>apoyado 2</option>
+        /   <option>apoyado 3</option>
+        /   <option>apoyado 4</option>
+        /   <option>apoyado 5</option>
+        / </select>
+        %h3{ :style=>"margin: 3.5em 0 0em 0em"} Por antiguedad
+        = select_tag :select_3, options_for_select([['Mas antiguos'],['antiguos 1'],['antiguos 2'],['antiguos 3'],['antiguos 4'],['antiguos 5']]),:class=>"select"
+        / <select class="select" name="select_3" id="select_3">
+        /   <option>Mas antiguos</option>
+        /   <option>antiguos 2</option>
+        /   <option>antiguos 3</option>
+        /   <option>antiguos 4</option>
+        /   <option>antiguos 5</option>
+        / </select>
+      .linea_formulario
+      %article
+        .seguida
+          =check_box_tag :chk_seguir
+          / <input type="checkbox" name="chk_seguir" id="chk_seguir" /> 
+          =label_tag :chk_seguir do 
+            Promesa seguidas por Proetica 
+            %span.icon_proetica
+        
+        / <input type="submit" name="buscar" class="btn_busqueda" value="Buscar" />
+        =submit_tag "Buscar", :class=>'btn_busqueda'
+      %span.nota Nota: No es necesario llenar todos los campos del filtro.#{@promesas.count}
+
+  %section.listado_promesas
+    %h2.promesas Promesas
+    %h2.estado_promesas Estado de la promesa
+    = render :partial => 'promesas/search'
+  /     <article class="listado">
+  /       <div class="left">
+  /         <div class="titulo">
+  /           Hace alrededor de 1 mes Ollanta Humala Tasso. Presidente de Gobierno del Perú prometió: 
+  /         </div>
+  /         <div class="promesa">
+  /           "LLevar agua al distrito de Salaverry, construir una tuberia que transporte el agua."
+  /         </div>
+  /       </div>
+  /       <div class="right">
+  /         <div class="usuario_p">
+  /           <span>Subido por:</span>
+  /           <a href="#" class="icon_user">Lorenzo Zoleti</a>
+  /           <a href="#" class="icon_coment">24 comentarios</a>
+  /           <a href="#" class="icon_pruebas">5 pruebas</a>
+  /           <a href="#" class="icon_lugar">Región Lima</a>
+  /         </div>
+  /         <div class="fecha_p">
+  /           <span>Publicado hace:</span>
+  /           <span class="dias">58937</span>
+  /           <span>dias</span>
+  /         </div>
+  /       </div>
+  /       <div class="compartir">
+  /         <div class="seguidores">3 seguidores <a href="#">sigue!</a></div>
+  /         <div class="reclamos">2 reclamos <a href="#">reclama cumplimiento!</a></div>
+  /         <div class="redes_sociales"><img src="images/redes_sociales.png" /></div>
+  /         <a href="#" class="ver_promesa">Ver promesa</a>
+  /       </div>
+  /     </article>
+  /     <div class="paginacion">
+  /       <a href="#">Inicion</a> | <a href="#">Previo</a> | <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">Siguiente</a> | <a href="#">Final</a>
+  /     </div>          
+      
+  /   </section>
+
+  / </section>
+
+/ =content_for :stylesheets do
+/   =stylesheet_link_tag :promesa  
   
-=content_for :scripts do
-  <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
-  =javascript_include_tag :promesa  
+/ =content_for :scripts do
+/   <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
+/   =javascript_include_tag :promesa  
   
-= render "shared/flash"
+/ = render "shared/flash"
 
-- content_for :title, ":: Promesas"
-#promesas
+/ - content_for :title, ":: Promesas"
+/ #promesas
 
-  #busqueda_avanzada
-    = render 'shared/advanced_search'
+/   #busqueda_avanzada
+/     = render 'shared/advanced_search'
 
-  .promesa_titulo
-    %h1 Promesas
+/   .promesa_titulo
+/     %h1 Promesas
 
-  .promesa_estado_titulo
-    %h1 Estado de la Promesa
+/   .promesa_estado_titulo
+/     %h1 Estado de la Promesa
 
-  - titulo_filtro_promesas({})
+/   - titulo_filtro_promesas({})
       
   
-  .resumen
-    = render :partial => 'promesas/promesa', :collection => @promesas
-  - if @promesas.empty?
-    %h3
-      No existen coincidencias para su busqueda
+/   .resumen
+/     = render :partial => 'promesas/promesa', :collection => @promesas
+/   - if @promesas.empty?
+/     %h3
+/       No existen coincidencias para su busqueda
 
-  = paginate @promesas
+/   = paginate @promesas
+
+:javascript
+  $(document).ready(function(){
+
+    $('.select').dropkick();
+
+  });

@@ -1,22 +1,29 @@
-%h1 Inicio
-= form_for(@ciudadano, :url => url_for(:action=>"sesion_new", :controller=>"ciudadano")) do |f| 
-  %div  
-    = f.label :email 
-    %br
-    = f.text_field :email, :autofocus => true 
-  %div  
-    = f.label :password 
-    %br 
-    = f.password_field :password
-
-    
-    
-    %br 
-
-  = f.submit "Entrar",:class=>"button"
+%section#perfil
+  %span.icon_perfil
+  %h2
+    %span.gris Inicio
+  .linea_perfil
+  %article.formulario_perfil
 
 
-= link_to "Registrar", ciudadanos_new_path
-|
-= link_to "Recuperar Contraseña", ciudadanos_recovery_password_path
- 
+    = form_for(@ciudadano, :url => url_for(:action=>"sesion_new", :controller=>"ciudadano")) do |f| 
+      %div  
+        = f.label :email 
+        %br
+        = f.text_field :email, :autofocus => true 
+      %div  
+        = f.label :password 
+        %br 
+        = f.password_field :password
+
+        
+        
+        %br 
+
+      = f.submit "Entrar",:class=>"btn_guardar"
+
+
+    = link_to "Registrar", ciudadanos_new_path
+    |
+    = link_to "Recuperar Contraseña", ciudadanos_recovery_password_path
+     

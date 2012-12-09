@@ -55,7 +55,8 @@ class CiudadanoController < ApplicationController
   end
 
   def sesion_new
-    @ciudadano=Ciudadano.where(:email=>params[:ciudadano][:email]).first
+    @ciudadano=Admin.where(:email=>params[:ciudadano][:email]).first
+    @ciudadano=Ciudadano.where(:email=>params[:ciudadano][:email]).first if @ciudadano.blank?
     @ciudadano=Ciudadano.where(:login=>params[:ciudadano][:email]).first if @ciudadano.blank?
     respond_to do |format|
       if !@ciudadano.blank?  && @ciudadano.valid_password?(params[:ciudadano][:password])

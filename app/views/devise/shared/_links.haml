@@ -2,7 +2,7 @@
   %h1 Login
   - if devise_mapping.omniauthable?
     -# resource_class.omniauth_providers.reverse.each do |provider|
-      -%div
+      %div
         = link_to "con #{provider.to_s.titleize}", |
           omniauth_authorize_path(resource_name, provider), |
           :class => "auth_signup_button_#{provider} "
@@ -10,9 +10,15 @@
     %div
       = link_to "con Google", |
         omniauth_authorize_path(resource_name, 'google'), |
-        :class => "auth_signup_button_google "
+        :class => "h_google "
+    
     %br
     %div
       = link_to "con Facebook", |
         omniauth_authorize_path(resource_name, 'facebook'), |
-        :class => "auth_signup_button_facebook "
+        :class => "h_facebook "
+    %br
+    %div
+      = link_to "con Email", |
+        ciudadanos_inicio_path, |
+        :class => "h_mail "

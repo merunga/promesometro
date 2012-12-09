@@ -36,9 +36,9 @@
       = promesa_social_widgets(@promesa)
     .extras
       %span.count_comentarios=comentarios(@promesa)#24 comentarios
-      %span.seguidores= render 'promesas/seguir'
+      %span.seguidores= render :partial =>'promesas/seguir', :locals => {:promesa => @promesa}
       / <a href="#">sigue!</a>
-      %span.reclamos= render 'promesas/reclamar'
+      %span.reclamos= render :partial =>'promesas/reclamar', :locals => {:promesa => @promesa}
       / <a href="#">reclama cumplimiento!</a>
 
     %h4 Agregar comentario
