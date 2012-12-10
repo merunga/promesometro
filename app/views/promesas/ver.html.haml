@@ -1,17 +1,15 @@
-/ =content_for :stylesheets do
-/   =stylesheet_link_tag :promesa  
-  
-/ =content_for :scripts do
-/   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-/   =javascript_include_tag :promesa
   
 
-=content_for :stylesheets do
-  =stylesheet_link_tag "dropkick"
+=#content_for :stylesheets do
+=stylesheet_link_tag "dropkick"
+=stylesheet_link_tag "jquery.tagsinput"
   
-=content_for :scripts do
-  =javascript_include_tag 'jquery.dropkick-1.0.0.js'
-  =javascript_include_tag :promesa
+=#content_for :scripts do
+=javascript_include_tag 'jquery-ui.min'
+=javascript_include_tag 'jquery.dropkick-1.0.0'
+=javascript_include_tag 'mustache'
+=javascript_include_tag 'jquery.tagsinput'
+=javascript_include_tag :promesa
 
 - content_for :title, ":: Ver"  
 
@@ -36,31 +34,22 @@
       = promesa_social_widgets(@promesa)
     .extras
       %span.count_comentarios=comentarios(@promesa)#24 comentarios
-      %span.seguidores= render :partial =>'promesas/seguir', :locals => {:promesa => @promesa}
-      / <a href="#">sigue!</a>
-      %span.reclamos= render :partial =>'promesas/reclamar', :locals => {:promesa => @promesa}
-      / <a href="#">reclama cumplimiento!</a>
+      %span.seguidores= render :partial => 'promesas/seguir', :locals=>{ :promesa => @promesa}
+      %span.reclamos= render :partial =>'promesas/reclamar', :locals=>{ :promesa => @promesa}
 
-    %h4 Agregar comentario
-    %textarea.area_comentario
-
-    = submit_tag "Responde #{@promesa.comment_threads.count}", :class=>"btn_responder"
     .linea_comentario
     - @promesa.comment_threads.each do |c|
-      .comentarios
-        %span.ciudadano 
-          Comentarios de 
-          = c.ciudadano.screen_name
-        %span.tiempo
-          =time_ago_in_words(c.created_at)
-        %div.texto_comentario
-          ="\"#{c.body}\""
-        %span.votos 
-          Votos 
-          =link_to "#{c.up_votes.count}","#",:class=>"mas"
-          =link_to "#{c.down_votes.count}","#",:class=>"menos"
-      / <a href="#" class="mas">15</a> 
-      / <a href="#" class="menos">4</a>
+      =render :partial => 'comments/comment', :locals=>{:comment=>c}
+    
+    - if ciudadano_signed_in?
+      %h4 Agregar comentario
+      %div
+        = form_for @promesa.comment_threads.build, :url => comentar_promesa_path,
+            :disable_with => 'enviando...', :remote => true, "data-type" => :html,
+            :autocomplete => 'off' do |form|
+          = form.text_area :body, :required => true,:class=>'area_comentario'
+          = hidden_field_tag "comment[ciudadano_id]", current_ciudadano.id
+          = form.submit 'Responder', :class => 'btn_responder'
     
   %article.pruebas
     %h4 Pruebas
@@ -75,87 +64,21 @@
       =render 'prueba/add'
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-/ #ver
-/   .promesa
-/     .discusion
-/       .right.denuncia_anonima
-/         -if @promesa.denuncia_anonima
-/           denuncia anonima,
-/         -else
-/           denunciado por 
-/           =@promesa.uploader.screen_name
-/         =time_ago_in_words @promesa.created_at
-/       -if @promesa.esta_asumida?
-/         %h2.asumida.left Promesa Asumida!
-/         .clear  
-/       .left
-/         %h1
-/           =@promesa.info_funcionario
-
-/       %br.clear
-      
-/       - if ciudadano_signed_in? and current_ciudadano.puede_editar? @promesa
-/         .right
-/           =link_to 'editar', editar_promesa_path
-/         .clear   
-      
-/       %fieldset.lo_prometido
-/         %legend #{time_ago_in_words(@promesa.fecha_inicio()).capitalize} prometi&oacute;:
-/         .lo_prometido
-/           =@promesa.lo_prometido
-/         .tags
-/           -@promesa.tags.each do |t|
-/             %span.tag= t #link_to t, :url => '#'
-/         -if @promesa.region
-/           .region
-/             =@promesa.region
-          
-/       - if ciudadano_signed_in? && @promesa.puede_enviar_hazte_cargo? 
-/         =render 'promesas/enviar_hazte_cargo'
-            
-/       .compartir
-/         = promesa_social_widgets(@promesa)
-          
-/       .clear
-        
-  
-/       .share
-/         -comentarios_count(@promesa)
-  
-/       .comentar
-/         = render :partial => 'comments/form',
-/           :locals => {:promise=>@promesa, :level=>0, :position=>0, :url=>comentar_promesa_path(@promesa)}
-      
-/       .comentarios
-/         - @comments.each do |c|
-/           = render :partial => 'comments/comment',
-/             :locals => {:comment => c, :level => 0, :position => 0}
-        
-/       = paginate @comments
-    
-/     -#.break &nbsp;
-      
-/     .pruebas
-/       %legend Pruebas
-/       #pruebas
-/         -@promesa.pruebas.each do |p|
-/           = render 'prueba/show', :prueba => p
-          
-/       - if ciudadano_signed_in?
-/         =render 'prueba/upload', :form => nil, :to_be => true
-   
-/       - if ciudadano_signed_in?
-/         = render 'prueba/add'
-        
+:javascript
+  jQuery(function($) {
+    $('.seguir a[data-type=html], .reclamar a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
+      return $(this).html(data);
+    });
+    $(document).on('ajax:success', '.comentar form[data-remote=true]', function(event, data, status, xhr) {
+      return $(this).parents('.comentar').siblings('.comentarios').append($(data));
+    });
+    $(document).on('ajax:success', '.comentarios form[data-remote=true]', function(event, data, status, xhr) {
+      return $(this).parents('.linea_comentario').before(data);
+    });
+    $(document).on('ajax:success', '#pruebas > .add > form[data-remote=true]', function(event, data, status, xhr) {
+      return $(this).parent('.add').replaceWith(data);
+    });
+    return $(document).on('ajax:success', '.hazte_cargo form[data-remote=true]', function(event, data, status, xhr) {
+      return $(this).parent('.hazte_cargo').remove;
+    });
+  });

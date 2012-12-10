@@ -85,8 +85,10 @@ class Ciudadano < ActiveRecord::Base
     data = access_token.info
     ciudadano = Ciudadano.where(:email => data.email).first
     if not ciudadano
+      
       ciudadano=Ciudadano.create!(
           :email => data.email,
+          :name =>  data.name,
           :login => data.email,
           :login_type => 'google',
           :password => Devise.friendly_token[0,20]

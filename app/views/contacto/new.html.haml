@@ -1,41 +1,83 @@
-= render 'shared/flash'
-- if params[:error]
-  %div(class="alert alert-error")
-    = params[:error]
-- if params[:notice]
-  %div(class="alert alert-success")
-    = params[:notice]
-
-%h1 Contacto
-
-= render "shared/error_messages", :target => @contact_form
-
-= form_for @contact_form, :url => '/contacto', :method => :post do |form|
-  .nombre
-    .input.hidden
-      = form.radio_button(:tipo, 'contacto', :checked => true, :style => 'width:auto')
-      pregunta / comentario
-      %br
-      = form.radio_button(:tipo, 'denuncia', :style => 'width:auto')
-      denuncia
-      %br
-      %br
-
-  .nombre
-    = form.label :nombre
-    .input
-      = form.text_field :nombre, :class => 'xlarge'
-
-  .nombre
-    = form.label :email
-    .input
-      = form.email_field :email, :class => 'xlarge'
-
-  .ta_comment
-    = form.label :comentario
-    .input
-      = form.text_area :comentario, :class => 'xlarge', :rows => 7
-    = hidden_field_tag :other_email
+%section#perfil
+  %span.icon_perfil
+  %h2
+    %span.gris CONTACTO
+    %span.naranja 
+  .linea_perfil
+  = form_for @contact_form, :url => '/contacto', :method => :post do |form|
+    %article.formulario_perfil
       
-  .actions
-    = form.submit 'Enviar', :class => 'button'
+      
+      =label_tag :nombre 
+
+      = form.email_field :nombre,:class=>'text_perfil'
+
+      =label_tag :email 
+
+      = form.email_field :email,:class=>'text_perfil'
+
+      %h3{:style=>"margin-top:1.2em;"} Comentario
+      = form.text_area :comentario,:class=>"area_comentario",:rows=>20, :cols=>40
+
+      = form.submit 'Enviar', :class => 'btn_guardar'
+
+    %article.tipo_mensaje
+      .izq
+        = form.radio_button(:tipo, 'contacto', :checked => true, :style => 'width:auto')
+        pregunta / comentario
+        %br
+        = form.radio_button(:tipo, 'denuncia', :style => 'width:auto')
+        denuncia
+    %btn_guardar
+
+
+/       <h3>Eliminar mi cuenta</h3>
+/       <div style="width:230px;"><span>¿No estas contento? <a href="#">Cancelar mi cuenta</a></span>
+/       <a href="#">Volver</a></div>
+/     </article>
+/     <article class="m_ayuda">
+/       <span class="ayuda">?</span>
+/     </article>
+/   </section>
+
+/ = render 'shared/flash'
+/ - if params[:error]
+/   %div(class="alert alert-error")
+/     = params[:error]
+/ - if params[:notice]
+/   %div(class="alert alert-success")
+/     = params[:notice]
+
+/ %h1 Contacto
+
+/ = render "shared/error_messages", :target => @contact_form
+
+/ = form_for @contact_form, :url => '/contacto', :method => :post do |form|
+/   .nombre
+/     .input.hidden
+/       = form.radio_button(:tipo, 'contacto', :checked => true, :style => 'width:auto')
+/       pregunta / comentario
+/       %br
+/       = form.radio_button(:tipo, 'denuncia', :style => 'width:auto')
+/       denuncia
+/       %br
+/       %br
+
+/   .nombre
+/     = form.label :nombre
+/     .input
+/       = form.text_field :nombre, :class => 'xlarge'
+
+/   .nombre
+/     = form.label :email
+/     .input
+/       = form.email_field :email, :class => 'xlarge'
+
+/   .ta_comment
+/     = form.label :comentario
+/     .input
+/       = form.text_area :comentario, :class => 'xlarge', :rows => 7
+/     = hidden_field_tag :other_email
+      
+/   .actions
+/     = form.submit 'Enviar', :class => 'button'

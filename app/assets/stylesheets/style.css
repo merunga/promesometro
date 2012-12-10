@@ -1109,6 +1109,33 @@ section#perfil .m_ayuda .ayuda
 	cursor: pointer;
 }
 
+section#perfil .tipo_mensaje
+{
+	margin: 1.3em 0 0 1em;
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+
+section#perfil .izq
+{
+	text-align: left;
+}
+
+section#perfil .formulario_perfil .area_comentario
+{
+
+	width: 90%;
+	height: 100px;
+	display: block;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0.5em 0 2em 0;
+	outline: none;
+}
+
 /* PROMESA DETALLE */
 section#promesa
 {

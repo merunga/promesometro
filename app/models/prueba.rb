@@ -22,7 +22,7 @@ class Prueba < ActiveRecord::Base
   attr_accessible :posicion, :descripcion, :anonima,
     :uploader, :link, :archivo, :imagen, :video, :mapa,
     :link_attributes, :imagen_attributes, :archivo_attributes,
-    :video_attributes, :mapa_attributes, :uploader_attributes
+    :video_attributes, :mapa_attributes, :uploader_attributes,:uploader_id
   
   accepts_nested_attributes_for :link, :imagen, :archivo, :video, :mapa, :uploader
 end

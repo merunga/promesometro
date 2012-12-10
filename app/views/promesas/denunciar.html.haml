@@ -1,12 +1,12 @@
   
 
 =#content_for :stylesheets do
-=stylesheet_link_tag "dropkick"
+=#stylesheet_link_tag "dropkick"
 =stylesheet_link_tag "jquery.tagsinput"
   
 =#content_for :scripts do
 =javascript_include_tag 'jquery-ui.min'
-=javascript_include_tag 'jquery.dropkick-1.0.0'
+=#javascript_include_tag 'jquery.dropkick-1.0.0'
 =javascript_include_tag 'mustache'
 =javascript_include_tag 'jquery.tagsinput'
 =javascript_include_tag :promesa
@@ -73,11 +73,16 @@
       = f.label "Región" do
         Región  
         %span.ayuda ?
-      =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
 
+      =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
 
       %h3{ :style=>"margin-top:1.2em;"} Pruebas
       .pruebas
+        #pruebas
+        = f.fields_for :pruebas do |pf|
+          = render 'prueba/upload', :form => pf, :to_be => true
+          - if edition
+            = render 'prueba/upload', :form => pf, :to_be => false
         =render 'prueba/add'
       = f.submit "Guardar", :class=> 'btn_guardar'
     %article.tipo_promesa
@@ -93,16 +98,16 @@
 
 :javascript
   $(document).ready(function(){ 
+    //$('.select').dropkick();
     $('#tags').tagsInput({ 
         autocomplete_url: '#{autocomplete_tag_name_promesas_path}', 
         width: '80%', 
         defaultText: 'agrega un tag' 
     }); 
   })
+  
 
 
-/   <script src="http://github.com/janl/mustache.js/raw/master/mustache.js"></script>
-/   <script src="https://raw.github.com/xoxco/jQuery-Tags-Input/master/jquery.tagsinput.js"></script>
 /   =javascript_include_tag :promesa
 /   =javascript_include_tag 'lib/jquery.emailsinput.js'
   

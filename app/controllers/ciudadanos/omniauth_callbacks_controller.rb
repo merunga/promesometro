@@ -3,8 +3,10 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
     # You need to implement the method below in your model
     logger.info("VALLL =  #{request.env["omniauth.auth"].to_json}")
     @ciudadano = Ciudadano.find_for_facebook_oauth(request.env["omniauth.auth"], current_ciudadano)
-
-    if @ciudadano.persisted?
+    if !@ciudadano.confirmed? 
+      flash[:notice] = "Debe Confirmar su Email. Revise su correo."
+      sign_in_and_redirect @ciudadano, :event => :authentication
+    elsif @ciudadano.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
       sign_in_and_redirect @ciudadano, :event => :authentication
     else
@@ -15,8 +17,10 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
   
   def google
     @ciudadano = Ciudadano.find_for_open_id(request.env["omniauth.auth"], current_ciudadano)
-
-    if @ciudadano.persisted?
+    if !@ciudadano.confirmed? 
+      flash[:notice] = "Debe Confirmar su Email. Revise su correo."
+      sign_in_and_redirect @ciudadano, :event => :authentication
+    elsif @ciudadano.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success",
         :kind => "Google"#, :profile_link_tag => edit_ciudadano_registration_path
       sign_in_and_redirect @ciudadano, :event => :authentication

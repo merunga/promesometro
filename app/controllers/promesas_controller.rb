@@ -6,7 +6,7 @@ class PromesasController < ApplicationController
   before_filter :create_search
   
   def denunciar
-    #if ciudadano_signed_in?
+    if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
       @promesa.uploader = current_ciudadano
@@ -16,17 +16,23 @@ class PromesasController < ApplicationController
       prueba.imagen = Imagen.new
       prueba.video = Video.new
       prueba.mapa = Mapa.new
-    #else
-    #  render 'shared/_not_logged_in'
-    #end
+    else
+     render 'shared/_not_logged_in'
+    end
   end
   
   def prometer
-    #if ciudadano_signed_in?
+    if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
       @promesa.uploader = current_ciudadano
       @promesa.funcionario = current_ciudadano
+      prueba = @promesa.pruebas.build
+      prueba.link = Link.new
+      prueba.archivo = Archivo.new
+      prueba.imagen = Imagen.new
+      prueba.video = Video.new
+      prueba.mapa = Mapa.new
       avance = @promesa.avances.build(
         :link => Link.new,
         :archivo => Archivo.new,
@@ -35,9 +41,9 @@ class PromesasController < ApplicationController
         :mapa => Mapa.new
       )
       render 'denunciar'
-    #else
-    #  render 'shared/_not_logged_in'
-    #end
+    else
+     render 'shared/_not_logged_in'
+    end
   end
   
   def ver
@@ -84,6 +90,12 @@ class PromesasController < ApplicationController
   
   def editar
     @promesa = Promesa.find(params[:id])
+    prueba = @promesa.pruebas.build
+    prueba.link = Link.new
+    prueba.archivo = Archivo.new
+    prueba.imagen = Imagen.new
+    prueba.video = Video.new
+    prueba.mapa = Mapa.new
     render :template => 'promesas/denunciar'
   end
   
@@ -141,30 +153,37 @@ class PromesasController < ApplicationController
     notificar_followers('nuevo comentario creado')
     
     flash[:notice]= 'El comentario ha sido creado con exito'
-  
-    render 'comments/_comment', :layout => false,
-      :locals => {:comment => @comment, :level => 0, :position => 0}
+    
+    respond_to do |format|
+      format.js
+    end
+
+    #render 'comments/_comment', :layout => false, :locals => {:comment => @comment, :level => 0, :position => 0}
   end
   
   def seguir
+    @promesa=Promesa.find(params[:id])
     social_action('_seguir') {
       current_ciudadano.follow @promesa
     }
   end
   
   def dejar_de_seguir
+    @promesa=Promesa.find(params[:id])
     social_action('_seguir') {
       current_ciudadano.stop_following @promesa
     }
   end
   
   def reclamar_cumplimiento
+    @promesa=Promesa.find(params[:id])
     social_action('_reclamar') {
       current_ciudadano.reclamar_cumplimiento @promesa
     }
   end
   
   def dejar_de_reclamar_cumplimiento
+    @promesa=Promesa.find(params[:id])
     social_action('_reclamar') {
       current_ciudadano.dejar_de_reclamar_cumplimiento @promesa
     }
