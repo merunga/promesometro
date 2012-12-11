@@ -65,7 +65,7 @@ class PromeMailer < ActionMailer::Base
     @promesa = promesa
     
     mail(:to => emails,
-         :subject => "[promesometro.pe] #{motivo.capitalize}",
+         :subject => "[promesometro.pe] #{motivo.capitalize}"
     )
   end
 end
