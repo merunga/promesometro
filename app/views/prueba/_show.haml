@@ -1,19 +1,10 @@
 -recurso = prueba.recurso
-.prueba(id='prueba_#{prueba.id}' class='#{recurso.type.downcase}')
-  .right
-    -if !prueba.anonima
-      subida por
-      =@promesa.uploader.screen_name
-    =time_ago_in_words recurso.created_at
-  .clear
-  .descripcion
-    =prueba.descripcion
-    
-    .right
-      -@type = 'prueba'
-      -@votable = prueba
-      .votar= render 'social/votar'
-  
+%span.user 
+  -if !prueba.anonima
+    subida por
+    =@promesa.uploader.screen_name
+  =time_ago_in_words recurso.created_at
+.imagen
   =link_to(recurso.link, recurso.link) if prueba.link
   -if recurso.file && recurso.type == 'Imagen'
     %a(href="#{recurso.file.url}" target="_blank")
@@ -22,3 +13,9 @@
     %a(href="#{recurso.file.url}" target="_blank") descargar #{File.basename(recurso.file.url)}
   -if recurso.embed
     =raw recurso.embed
+.descripcion_prueba 
+  =prueba.descripcion
+  %span.votos 
+    
+    = render :partial => 'social/votar',:locals =>{:type=>'prueba',:votable=>prueba}
+

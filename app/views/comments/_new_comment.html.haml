@@ -8,7 +8,6 @@
     ="\"#{comment.body}\""
   
   %span.votos
-    Votos:
-    =link_to "#{comment.up_votes.count}","#",:class=>"mas"
-    =link_to "#{comment.down_votes.count}","#",:class=>"menos"
+    = render :partial => 'social/votar',:locals =>{:type=>'comment',:votable=>comment}
+    
   =link_to "Ver Promesa","#",:class=>"ver_promesa"

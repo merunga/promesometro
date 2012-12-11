@@ -53,13 +53,9 @@
     
   %article.pruebas
     %h4 Pruebas
-    %span.user Subida por Lorena Zolezzi hace 24 dias
-    .imagen
-      <img src="images/prueba.png" />
-    .descripcion_prueba 
-      Aqui se come el pollo del chango 
-      %span.votos Votos 
-      / <a href="#" class="mas">15</a> <a href="#" class="menos">4</a>
+    - @promesa.pruebas.each do |prueba|
+      = render :partial => 'prueba/show',:locals=>{:prueba=> prueba}
+
     .tipos_pruebas
       =render 'prueba/add'
 
@@ -67,6 +63,9 @@
 :javascript
   jQuery(function($) {
     $('.seguir a[data-type=html], .reclamar a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
+      return $(this).html(data);
+    });
+    $('.votos a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
       return $(this).html(data);
     });
     $(document).on('ajax:success', '.comentar form[data-remote=true]', function(event, data, status, xhr) {

@@ -1,12 +1,9 @@
--if ciudadano_signed_in?
-  - text = 'bien'
-  - path = vote_up_path @type, @votable.id
-  = link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html
+Votos 
+- type ||= @type
+- votable ||= @votable
+- path = ciudadano_signed_in? ? vote_up_path(type, votable.id) : "javascript:void(0)"
+= link_to "#{votable.up_votes.count}", path,:class=>'mas', :disable_with => 'enviando...', :remote => true, "data-type" => :html
 
-- count = @votable.up_votes.count-@votable.down_votes.count
-%span= "#{count} #{count.abs==1?'voto':'votos'}"
+- path = ciudadano_signed_in? ? vote_down_path(type, votable.id) : "javascript:void(0)"
 
--if ciudadano_signed_in?
-  - text = 'mal'
-  - path = vote_down_path @type, @votable.id
-  = link_to text, path, :disable_with => 'enviando...', :remote => true, "data-type" => :html
+= link_to "#{votable.down_votes.count}", path,:class=>'menos', :disable_with => 'enviando...', :remote => true, "data-type" => :html

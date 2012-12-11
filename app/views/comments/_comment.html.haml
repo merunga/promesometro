@@ -7,6 +7,5 @@
   %div.texto_comentario
     ="\"#{comment.body}\""
   %span.votos 
-    Votos 
-    =link_to "#{comment.up_votes.count}","#",:class=>"mas"
-    =link_to "#{comment.down_votes.count}","#",:class=>"menos"
+    = render :partial => 'social/votar',:locals =>{:type=>'comment',:votable=>comment}
+    
