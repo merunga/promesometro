@@ -1,10 +1,10 @@
 -if admin_signed_in?
  
-  =# current_admin.name
+  = image_tag "email.png",
+    :style => 'vertical-align: text-bottom;'
   |
   = link_to 'Panel de Control', "/siteadmin"
-  |
-  =# =>  link_to 'mi perfil', edit_admin_registration_path
+  
   |
   = link_to 'salir', destroy_admin_session_path, :method => :delete
 -elsif !ciudadano_signed_in?

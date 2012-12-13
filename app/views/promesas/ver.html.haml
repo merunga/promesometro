@@ -53,11 +53,17 @@
     
   %article.pruebas
     %h4 Pruebas
-    - @promesa.pruebas.each do |prueba|
-      = render :partial => 'prueba/show',:locals=>{:prueba=> prueba}
+    .listado
+      - @promesa.pruebas.each do |prueba|
+        = render :partial => 'prueba/show',:locals=>{:prueba=> prueba}
 
-    .tipos_pruebas
-      =render 'prueba/add'
+
+    - if ciudadano_signed_in?
+      .tipos_pruebas
+        #pruebas
+          = render 'prueba/upload',:form=>nil ,:to_be => true
+          =render 'prueba/add'
+          
 
 
 :javascript
@@ -75,8 +81,9 @@
       return $(this).parents('.linea_comentario').before(data);
     });
     $(document).on('ajax:success', '#pruebas > .add > form[data-remote=true]', function(event, data, status, xhr) {
-      return $(this).parent('.add').replaceWith(data);
+      return $(".prueba").remove();
     });
+    
     return $(document).on('ajax:success', '.hazte_cargo form[data-remote=true]', function(event, data, status, xhr) {
       return $(this).parent('.hazte_cargo').remove;
     });

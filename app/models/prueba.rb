@@ -24,5 +24,5 @@ class Prueba < ActiveRecord::Base
     :link_attributes, :imagen_attributes, :archivo_attributes,
     :video_attributes, :mapa_attributes, :uploader_attributes,:uploader_id
   
-  accepts_nested_attributes_for :link, :imagen, :archivo, :video, :mapa, :uploader
+  accepts_nested_attributes_for :link, :imagen, :archivo, :video, :mapa
 end

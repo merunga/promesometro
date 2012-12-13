@@ -13,10 +13,10 @@ class Ciudadano < ActiveRecord::Base
   
   validates  :name,:password,:email, :presence => true
   validates  :email, :uniqueness => true
-  has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa'
-  has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa'
-  has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba'
-  has_many :hazte_cargo_enviados, :inverse_of => :hazte_cargo_sender, :class_name => 'Promesa'
+  has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa',:foreign_key => 'uploader_id'
+  has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa',:foreign_key => 'funcionario_id'
+  has_many :pruebas_creadas, :inverse_of => :uploader, :class_name => 'Prueba',:foreign_key => 'uploader_id'
+  has_many :hazte_cargo_enviados, :inverse_of => :hazte_cargo_sender, :class_name => 'Promesa',:foreign_key => 'hazte_cargo_sender_id'
 
   def es_uploader_de? una_cosa
     una_cosa && una_cosa.uploader == self

@@ -41,7 +41,7 @@ jQuery ($) ->
   $(document).on 'ajax:success', '.responder form[data-remote=true]', (event, data, status, xhr) ->
     $(this).parents('.comment:not(.reply)').first().find('.thread:first').append $(data)
   $(document).on 'ajax:success', '#pruebas > .add > form[data-remote=true]', (event, data, status, xhr) ->
-    $(this).parent('.add').replaceWith data
+    $('.listado').append data
   $(document).on 'ajax:success', '.hazte_cargo form[data-remote=true]', (event, data, status, xhr) ->
     $(this).parent('.hazte_cargo').remove
     

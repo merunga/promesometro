@@ -1,3 +1,4 @@
+-prueba ||= @prueba
 -recurso = prueba.recurso
 %span.user 
   -if !prueba.anonima
@@ -18,4 +19,6 @@
   %span.votos 
     
     = render :partial => 'social/votar',:locals =>{:type=>'prueba',:votable=>prueba}
+
+.linea_prueba
 

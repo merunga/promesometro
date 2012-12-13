@@ -71,8 +71,8 @@ class PromesasController < ApplicationController
         @promesa.funcionario = current_ciudadano
         @promesa.fecha_declaracion = nil
       end
-      @promesa.pruebas.each do |p| p.uploader = current_ciudadano end
-      @promesa.avances.each do |a| a.uploader = current_ciudadano end
+      @promesa.pruebas.each do |p| p.uploader_id = current_ciudadano.id end
+      @promesa.avances.each do |a| a.uploader_id = current_ciudadano.id end
       @promesa.save
       
       if @promesa.compartida_con
@@ -101,7 +101,7 @@ class PromesasController < ApplicationController
   
   def actualizar
     p = params[:promesa]
-    @promesa = Promesa.find(p[:id])
+    @promesa = Promesa.find(params[:id])
     if @promesa.update_attributes(p) 
       @promesa.save
       
@@ -124,12 +124,16 @@ class PromesasController < ApplicationController
     @promesa = Promesa.find(params[:id])
     @prueba = Prueba.new(params[:prueba])
     @prueba.promesa = @promesa
-    @prueba.uploader = current_ciudadano
+    @prueba.uploader_id = current_ciudadano.id
     @prueba.posicion = @promesa.pruebas.count
     @prueba.save
+
+    if !@prueba.errors.blank?
+      raise "#{@prueba.errors.messages}"
+    end
     
     notificar_followers('nueva prueba agregada')
-    
+      
     if request.xhr?
       respond_to do |format|
         format.html {
@@ -240,7 +244,10 @@ private
   
   def notificar_followers motivo
     emails = @promesa.followers.collect do |c| c.email end
-    PromeMailer.cambio_promesa(emails, @promesa, motivo).deliver
+    begin
+      PromeMailer.cambio_promesa(emails, @promesa, motivo).deliver
+    rescue 
+    end
   end
   
   def registrar_envio_de_hazte_cargo

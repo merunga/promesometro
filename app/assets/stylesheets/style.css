@@ -1379,6 +1379,14 @@ section#promesa .pruebas
 	margin: 1.2em 0 0 1em;
 }
 
+section#promesa .pruebas .linea_prueba
+{
+	border-top: dotted 1px #585858;
+	margin: 1.5em 0;
+	width: 350px;
+}
+
+
 section#promesa .pruebas h4
 {
 	font: bold 16px Arial;
@@ -1396,6 +1404,20 @@ section#promesa .pruebas .user
 	display: inline-block;
 	vertical-align: top;
 	float: right;
+}
+
+
+section#promesa .pruebas .prueba .text_promesa
+{
+
+	width: 75%;
+	display: inline-block;
+	vertical-align: top;
+	border: solid 1px #adadad;
+	border-radius: 4px;
+	padding: 0.6em;
+	margin: 0.5em 0 0.5em 0.5em;
+	outline: none;
 }
 
 section#promesa .pruebas .imagen
