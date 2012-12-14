@@ -64,8 +64,8 @@ class PromeMailer < ActionMailer::Base
   def cambio_promesa(emails, promesa, motivo)
     @promesa = promesa
     
-    mail(:to => emails,
-         :subject => "[promesometro.pe] #{motivo.capitalize}",
-    )
+    mail(:bcc => emails,:subject => "[promesometro.pe] #{motivo.capitalize}") do |format|
+      format.text
+    end
   end
 end

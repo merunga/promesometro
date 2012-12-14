@@ -1,31 +1,11 @@
-- @promesa = comment.commentable
-.comment(class="level#{level}")
-  .comment_content
-    %p.top
-      %div(syle='font-size:small !important')
-        %span(style='float:left')
-          Comentario de
-          = comment.ciudadano.screen_name
-        %span(style='float:right')
-          %span.fecha= time_ago_in_words comment.created_at
-    %p(style='margin:20px 0;text-align:center')
-      %i="\"#{comment.body}\""
-      =#comentario_social_widgets comment
-      %br
-      
-    -@type = 'comment'
-    -@votable = comment
-    .votar= render 'social/votar'
+.comentarios
+  %span.ciudadano 
+    Comentarios de 
+    = comment.ciudadano.screen_name if comment.ciudadano
+  %span.tiempo
+    =time_ago_in_words(comment.created_at)
+  %div.texto_comentario
+    ="\"#{comment.body}\""
+  %span.votos 
+    = render :partial => 'social/votar',:locals =>{:type=>'comment',:votable=>comment}
     
-    -#%a.show_responder(onclick="$(this).parent().siblings('.responder').show().focus(); return false;" href='#') responder
-  
-  .comment_footer(class="#{position%2==0? 'par': 'impar'}")
-      
-  .thread
-    -if comment.has_children?
-      -comment.children.each_with_index do |c, index|
-        = render 'comments/comment', :comment => c, :level => level==0?1:level, :position => position+index+1
-  
-  -# if ciudadano_signed_in? and level == 0
-    .responder
-      =render 'comments/form', :comment => comment, :level => level==0?1:level, :position => position+1, :url => reply_comment_path(comment,level)      

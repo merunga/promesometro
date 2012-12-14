@@ -1,4 +1,13 @@
--unless ciudadano_signed_in?
+-if admin_signed_in?
+ 
+  = image_tag "email.png",
+    :style => 'vertical-align: text-bottom;'
+  |
+  = link_to 'Panel de Control', "/siteadmin"
+  
+  |
+  = link_to 'salir', destroy_admin_session_path, :method => :delete
+-elsif !ciudadano_signed_in?
   %span.h_twitter
   Conectate con: 
   = link_to "", ciudadano_omniauth_authorize_path(:facebook), :class=>"h_facebook"

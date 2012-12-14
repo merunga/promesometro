@@ -27,4 +27,11 @@
   - Comment.by_newest.order('created_at DESC').limit(4).each do |c|
     = render :partial => 'comments/new_comment', :locals => { :comment => c, :level => 0, :position => 0 }    
 
+
+:javascript
+  $(document).ready(function(){
+    $('.votos a[data-type=html]').parent().on('ajax:success', function(event, data, status, xhr) {
+      return $(this).html(data);
+    });
+  });
   

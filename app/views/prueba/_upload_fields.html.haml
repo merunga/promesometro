@@ -30,7 +30,8 @@
     =uf.hidden_field :id
        
   =form.label :descripcion
-  =form.text_field :descripcion, :required => true
+  =form.text_field :descripcion, :required => true, :class=>'text_promesa'
+  =form.hidden_field :uploader_id, :value=>current_ciudadano.id.to_s
   
   -if to_be
     {{#link}}
@@ -38,7 +39,7 @@
     =form.fields_for :link do |lf|
       .field.link
         =lf.label :link
-        =lf.url_field :link, :required => 'required', :maxlength => 1000
+        =lf.url_field :link, :required => 'required', :maxlength => 1000, :class=>'text_promesa'
   -if to_be
     {{/link}} 
   

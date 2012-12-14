@@ -7,19 +7,3 @@
     = "\"#{promesa.lo_prometido}\""
   =link_to "Ver Promesa",ver_promesa_path(promesa),:class=>"ver_promesa"
   =link_to "","#",:class=>"icon_e"
-
-/ -#%p.promesa_top
-/   -#%span.region
-/     = link_to promesa.region, buscar_promesas_path
-/   %span.fecha
-/     prometido 
-/ %p
-/   %span.title
-/     =time_ago_in_words(promesa.screen_date)
-/     %i #{promesa.el_que_promete}
-/     =link_to 'prometió:', ver_promesa_path(promesa)
-/ -#%p.topic
-/   - promesas_temas(promesa)
-/ %p.descripcion
-/   %i
-/     = "\"#{promesa.lo_prometido}\""
