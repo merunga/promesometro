@@ -10,4 +10,4 @@
   %span.votos
     = render :partial => 'social/votar',:locals =>{:type=>'comment',:votable=>comment}
     
-  =link_to "Ver Promesa","#",:class=>"ver_promesa"
+  =link_to "Ver Promesa",ver_promesa_path(comment.commentable),:class=>"ver_promesa"
