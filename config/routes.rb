@@ -1,10 +1,11 @@
 Promesometro::Application.routes.draw do
-  devise_for :admines
-  mount RailsAdmin::Engine => '/siteadmin', :as => 'rails_admin'
+  
+  #   devise_for :admines
   
   devise_for :ciudadanos, :controllers => {
       :omniauth_callbacks => "ciudadanos/omniauth_callbacks"
   }
+  mount RailsAdmin::Engine => '/siteadmin', :as => 'rails_admin'
 
   devise_scope :ciudadano do
     match "ciudadanos/new", :to => "ciudadano#new", :as => "ciudadanos_new"

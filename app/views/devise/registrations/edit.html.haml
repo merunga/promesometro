@@ -2,7 +2,7 @@
   .icon_perfil
   %h2
     %span.gris MI
-    %span.naranja" PERFIL
+    %span.naranja PERFIL
   .linea_perfil
   %article.formulario_perfil
     %h3 Preferencias
@@ -34,7 +34,7 @@
     %div{ :style=>"width:230px;"}
       %span 
         ¿No estas contento? 
-        = link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete 
+        = link_to "Cancelar mi cuenta", registration_path(resource_name), :confirm => "¿Estas Seguro?", :method => :delete 
         \.
 
     = link_to "Volver", :back 

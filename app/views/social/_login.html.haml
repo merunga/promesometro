@@ -1,18 +1,10 @@
--if admin_signed_in?
- 
-  = image_tag "email.png",
-    :style => 'vertical-align: text-bottom;'
-  |
-  = link_to 'Panel de Control', "/siteadmin"
-  
-  |
-  = link_to 'salir', destroy_admin_session_path, :method => :delete
--elsif !ciudadano_signed_in?
+-if !ciudadano_signed_in?
   %span.h_twitter
   Conectate con: 
   = link_to "", ciudadano_omniauth_authorize_path(:facebook), :class=>"h_facebook"
   = link_to "", ciudadano_omniauth_authorize_path(:google), :class=>"h_google"
   = link_to "",ciudadanos_inicio_path, :class=>"h_mail"
+
 -else 
   = image_tag "#{current_ciudadano.login_type}.png",
     :style => 'vertical-align: text-bottom;', :title => "loggeado con #{current_ciudadano.login_type}"
@@ -20,6 +12,9 @@
   = current_ciudadano.contact_name
   |
   = link_to 'mi perfil', edit_ciudadano_registration_path
+  -if current_ciudadano.admin?
+    |
+    = link_to 'Panel de Control', "/siteadmin"
   |
   = link_to 'salir', destroy_ciudadano_session_path, :method => :delete
 / #ciudadano_login_box
