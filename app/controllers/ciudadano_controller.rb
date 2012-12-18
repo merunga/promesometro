@@ -33,7 +33,7 @@ class CiudadanoController < ApplicationController
         flash[:notice] = "Las passwords no coinciden"
         format.html { render :action => "new" }
       elsif  @ciudadano.save  
-        flash[:notice] = "Confirm su direccion de correo"
+        flash[:notice] = "Confirme su direccion de correo"
 
         # @ciudadano.send_confirmation_instructions
         format.html{redirect_to root_path}

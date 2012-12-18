@@ -47,7 +47,7 @@ Promesometro::Application.configure do
 
   config.action_mailer.default_url_options = {
       # :host => "www.promesometro.pe"
-      :host => "promesometro.herokuapp.com"
+      :host => "promesometrope.herokuapp.com"
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
