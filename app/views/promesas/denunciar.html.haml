@@ -82,10 +82,15 @@
       %h3{ :style=>"margin-top:1.2em;"} Pruebas
       .pruebas
         #pruebas
-        = f.fields_for :pruebas do |pf|
-          = render 'prueba/upload', :form => pf, :to_be => true
-          - if edition
+        - if edition
+          = f.fields_for :pruebas do |pf|
             = render 'prueba/upload', :form => pf, :to_be => false
+          = f.fields_for :pruebas, @pruebas_to_be do |pf|
+            = render 'prueba/upload', :form => pf, :to_be => true
+        - else
+          = f.fields_for :pruebas do |pf|
+            = render 'prueba/upload', :form => pf, :to_be => true
+            
         =render 'prueba/add'
       = f.submit "Guardar", :class=> 'btn_guardar'
     %article.tipo_promesa

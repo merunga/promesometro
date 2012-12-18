@@ -38,6 +38,8 @@
       %span.lugar=@promesa.region # Juliaca
     .redes_sociales 
       = promesa_social_widgets(@promesa)
+    -if @promesa.uploader == current_ciudadano
+      = link_to 'Editar', :editar_promesa
     .extras
       %span.count_comentarios=comentarios(@promesa)#24 comentarios
       %span.seguidores= render :partial => 'promesas/seguir', :locals=>{ :promesa => @promesa}

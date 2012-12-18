@@ -10,12 +10,13 @@
       {{#mapa}}Mapa{{/mapa}}
     - else
       - prueba = form.object
-      -type = prueba.link.type if prueba.link
-      -type = prueba.imagen.type if prueba.imagen
-      -type = prueba.archivo.type if prueba.archivo
-      -type = prueba.video.type if prueba.video
-      -type = prueba.mapa.type if prueba.mapa
-      =type
+      - type = []
+      -type << prueba.link.type if prueba.link
+      -type << prueba.imagen.type if prueba.imagen
+      -type << prueba.archivo.type if prueba.archivo
+      -type << prueba.video.type if prueba.video
+      -type << prueba.mapa.type if prueba.mapa
+      =type[0]
    
   -if params[:action] == 'ver'
     .right
@@ -35,7 +36,7 @@
   
   -if to_be
     {{#link}}
-  -if to_be || type == 'Link'
+  -if to_be || type.include?('Link')
     =form.fields_for :link do |lf|
       .field.link
         =lf.label :link
@@ -45,7 +46,7 @@
   
   -if to_be
     {{#archivo}}
-  -if to_be || type == 'Archivo'
+  -if to_be || type.include?('Archivo')
     =form.fields_for :archivo do |af|
       .field.archivo
         =af.label :archivo
@@ -58,7 +59,7 @@
   
   -if to_be
     {{#imagen}}
-  -if to_be || type == 'Imagen'
+  -if to_be || type.include?('Imagen')
     =form.fields_for :imagen do |af|
       .field.imagen
         =af.label :imagen
@@ -71,7 +72,7 @@
   
   -if to_be
     {{#video}}
-  -if to_be || type == 'Video'
+  -if to_be || type.include?('Video')
     =form.fields_for :video do |ef|
       .field.video
         =ef.label :video
@@ -81,7 +82,7 @@
   
   -if to_be
     {{#mapa}}
-  -if to_be || type == 'Mapa'
+  -if to_be || type.include?('Mapa')
     =form.fields_for :mapa do |ef|
       .field.mapa
         =ef.label :mapa
@@ -92,7 +93,7 @@
   -if params[:action] == 'ver'
     .submit.right
       =form.submit 'guardar', :class => 'button'
-  - if !edition      
+  - if !edition || to_be      
     .eliminar
       %button(type="button" onclick="promesa.remove_prueba($(this).parents('fieldset.prueba'))" |
           confirm="Estás segur@?")
@@ -107,3 +108,4 @@
           #{type.downcase}
     
   .clear
+  %hr

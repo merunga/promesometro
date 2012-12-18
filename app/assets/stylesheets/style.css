@@ -1558,3 +1558,10 @@ footer section .proetica
 	text-align: right;
 	min-width: 200px;
 }
+
+input.ui-state-default, input.ui-widget-content input.ui-state-default,
+	input.ui-widget-header input.ui-state-default {
+	border: 1px solid #93C3CD;
+	background: white !important;
+	color: black;
+}

@@ -91,12 +91,14 @@ class PromesasController < ApplicationController
   
   def editar
     @promesa = Promesa.find(params[:id])
-    prueba = @promesa.pruebas.build
-    prueba.link = Link.new
+    @tiene_pruebas = @promesa.pruebas.size
+    prueba = Prueba.new
     prueba.archivo = Archivo.new
     prueba.imagen = Imagen.new
     prueba.video = Video.new
     prueba.mapa = Mapa.new
+    prueba.link = Link.new
+    @pruebas_to_be = [prueba]
     render :template => 'promesas/denunciar'
   end
   
