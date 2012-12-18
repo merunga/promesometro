@@ -75,6 +75,8 @@ class Promesa < ActiveRecord::Base
   def el_que_denuncia
     if denuncia_anonima
       "denuncia anonima"
+    elsif uploader.blank?
+      "denuncia anonima"
     else
       uploader.screen_name
     end

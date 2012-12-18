@@ -5,5 +5,5 @@ class Admin < ActiveRecord::Base
         :timeoutable, :validatable, :timeout_in => 20.minutes
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :super
+  # attr_accessible :email, :password, :password_confirmation, :remember_me, :super
 end
