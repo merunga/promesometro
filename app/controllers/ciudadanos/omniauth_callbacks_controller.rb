@@ -21,8 +21,7 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
       flash[:notice] = "Debe Confirmar su Email. Revise su correo."
       sign_in_and_redirect @ciudadano, :event => :authentication
     elsif @ciudadano.persisted?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success",
-        :kind => "Google"#, :profile_link_tag => edit_ciudadano_registration_path
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"#, :profile_link_tag => edit_ciudadano_registration_path
       sign_in_and_redirect @ciudadano, :event => :authentication
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
