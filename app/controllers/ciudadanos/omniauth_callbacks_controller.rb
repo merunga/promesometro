@@ -7,7 +7,7 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
       flash[:notice] = "Debe Confirmar su Email. Revise su correo."
       sign_in_and_redirect @ciudadano, :event => :authentication
     elsif @ciudadano.persisted?
-      @ciudadano.update_attrbiutes(:login_type => 'facebook')
+      @ciudadano.update_attributes(:login_type => 'facebook')
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Facebook"
       sign_in_and_redirect @ciudadano, :event => :authentication
     else
@@ -22,7 +22,7 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
       flash[:notice] = "Debe Confirmar su Email. Revise su correo."
       sign_in_and_redirect @ciudadano, :event => :authentication
     elsif @ciudadano.persisted?
-      @ciudadano.update_attrbiutes(:login_type => 'google')
+      @ciudadano.update_attributes(:login_type => 'google')
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"#, :profile_link_tag => edit_ciudadano_registration_path
       sign_in_and_redirect @ciudadano, :event => :authentication
     else
@@ -35,7 +35,7 @@ class Ciudadanos::OmniauthCallbacksController < Devise::OmniauthCallbacksControl
     @ciudadano = Ciudadano.find_for_twitter(request.env["omniauth.auth"], current_ciudadano)
 
     if @ciudadano.persisted?
-      @ciudadano.update_attrbiutes(:login_type => 'twitter')
+      @ciudadano.update_attributes(:login_type => 'twitter')
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Twitter"
       sign_in_and_redirect @ciudadano, :event => :authentication
     else
