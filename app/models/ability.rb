@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(ciudadano)
-    #can :manage, :all if ciudadano.es_admin?
+    can :manage, :all if ciudadano.admin?
     can [:ver], Promesa do |la_promesa|
       la_promesa.publica || (ciudadano && (
         ciudadano.es_funcionario_de?(la_promesa) ||

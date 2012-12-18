@@ -9,9 +9,9 @@ class Ciudadano < ActiveRecord::Base
 
   attr_accessible :login, :login_type, :email, :name,
     :password, :password_confirmation, :send_notifications,
-    :perfil_publico
+    :perfil_publico, :admin
   
-  validates  :name,:password,:email, :presence => true
+  validates  :name,:email, :presence => true
   validates  :email, :uniqueness => true
   has_many :promesas_creadas, :inverse_of => :uploader, :class_name => 'Promesa',:foreign_key => 'uploader_id'
   has_many :promesas_propias, :inverse_of => :funcionario, :class_name => 'Promesa',:foreign_key => 'funcionario_id'
