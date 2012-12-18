@@ -1228,6 +1228,7 @@ section#promesa .detalle_promesa .usuario
 	width: auto;
 	display: inline-block;
 	vertical-align: top;
+	float:right;
 }
 
 section#promesa .detalle_promesa .usuario a
@@ -1243,6 +1244,7 @@ section#promesa .detalle_promesa .tiempo
 	width: auto;
 	display: inline-block;
 	vertical-align: top;
+	float:right;
 }
 
 section#promesa .detalle_promesa h4

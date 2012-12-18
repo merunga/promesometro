@@ -23,8 +23,14 @@
   .linea_promesa
   %article.detalle_promesa
     %h3 PROMESA ASUMIDA
-    %span.usuario Denunciado por #{@promesa.denuncia_anonima ? 'anonimo' : @promesa.uploader.screen_name}
+    %span.usuario Denunciado por #{@promesa.denuncia_anonima || !@promesa.uploader ? 'anonimo' : @promesa.uploader.screen_name}
     %span.tiempo= time_ago_in_words @promesa.created_at
+    
+    -if @promesa.monitoreada
+      %span{:class=>"proetica"}
+        %span{:class=>"icon_e"}
+        Monitoreada por Proetica
+    
     %h4=@promesa.info_funcionario# El presidente de mi comité
     %fieldset
       %legend=time_ago_in_words(@promesa.fecha_inicio()).capitalize# Hace 6 meses prometió

@@ -1,7 +1,7 @@
 -prueba ||= @prueba
 -recurso = prueba.recurso
 %span.user 
-  -if !prueba.anonima
+  -if !prueba.anonima && @promesa.uploader
     subida por
     =@promesa.uploader.screen_name
   =time_ago_in_words recurso.created_at
