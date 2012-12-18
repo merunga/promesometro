@@ -70,7 +70,7 @@
           Fecha Declaración
           %span.ayuda ?
       
-        = f.datepicker :fecha_declaracion
+        = f.datepicker :fecha_declaracion, :dateFormat => 'yy-mm-dd', :maxDate => '+0D'
         
       %div
         = f.label "Región" do
