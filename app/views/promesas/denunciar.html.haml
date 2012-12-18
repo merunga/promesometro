@@ -5,7 +5,7 @@
 =stylesheet_link_tag "jquery.tagsinput"
   
 =#content_for :scripts do
-=javascript_include_tag 'jquery-ui.min'
+=javascript_include_tag 'jquery-ui-1.9.2.custom.min.js'
 =#javascript_include_tag 'jquery.dropkick-1.0.0'
 =javascript_include_tag 'mustache'
 =javascript_include_tag 'jquery.tagsinput'
@@ -65,16 +65,19 @@
         %span.ayuda ?
       = f.text_field :tag_list, :id=>'tags',:class=>"text_promesa"
 
-      = f.label "Cargo" do
-        Cargo
-        %span.ayuda ?
-      =f.text_field :fecha_declaracion, :dateFormat => "dd/mm/yy",:class=>"text_promesa" 
-
-      = f.label "Región" do
-        Región  
-        %span.ayuda ?
-
-      =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
+      %div
+        = f.label "Fecha declaración" do
+          Fecha Declaración
+          %span.ayuda ?
+      
+        = f.datepicker :fecha_declaracion
+        
+      %div
+        = f.label "Región" do
+          Región  
+          %span.ayuda ?
+      
+        =f.collection_select :region_id, Region.all, :id, :nombre, {:prompt => '-- Selecciona --'}, :class => 'combobox', :required => true
 
       %h3{ :style=>"margin-top:1.2em;"} Pruebas
       .pruebas
@@ -85,7 +88,7 @@
             = render 'prueba/upload', :form => pf, :to_be => false
         =render 'prueba/add'
       = f.submit "Guardar", :class=> 'btn_guardar'
-    %article.tipo_promesa
+    -#%article.tipo_promesa
       %label
         =f.check_box :publica
         Promesa pública

@@ -1,5 +1,36 @@
-<p>Bienvenido <%= @resource.email %>!!!</p>
+Bienvenido <%= @resource.email%>!
 
-<p>Confirma tu cuenta haciendo click en el link  de abajo:</p>
+<p>Confirma tu cuenta haciendo click en el link  de abajo:<br/>
+<%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
 
-<p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p>¡Eres ahora ciudadano miembro de la comunidad de Promesómetro.pe!</p>
+<p>“El Promesómetro es un instrumento que facilita la comunicación entre autoridades y ciudadanos en
+torno a los compromisos electorales de las campañas políticas.”</p>
+
+<p>(Puedes ver un video introductorio aquí [http://www.youtube.com/watch?feature=player_embedded&v=D4HtqfkNhNA])</p>
+
+
+<p>Ahora, ingresa a: [http://promesometro.pe] para:<br/>
+1 - Conocer las principales promesas de tus gobernates.<br/>
+2 - Fiscalizar el cumplimiento de las promesas de tus autoridades.<br/>
+3 - Ser un ciudadan@ informad@, que no se contenta con discursos al aire.<br/>
+4 - Recuerda que es tu derecho exigir explicaciones! Que el gobierno cumpla con lo que promete!<br/>
+</p>
+
+<p>¡Gracias por tu participación!</br/>
+El equipo de Promesómetro.pe</p>
+
+
+<p>Notas:</p>
+Proética es la institución de la sociedad civil que administra esta página web. Nuestra experiencia
+desde 2002 trabajando con ciudadanos, organizaciones sociales e instituciones públicas nos permite
+estar en posición de asegurar el manejo imparcial de los contenidos que aquí se comparten.Ten en
+cuenta que no se aceptarán insultos de ningún tipo y que ésta no es una página de recepción de
+denuncias, aunque puedes hacerlo, en cuyo caso se redireccionará a las entidades competentes.</p>
+
+<p>Para ponerte en contacto con nosotros, escríbenos a promesometro@proetica.org.pe</p>
+
+<p>Si no deseas recibir notificaciones o quieres modificar tu información, por favor ingresa
+a ésta dirección [http://www.promesometro.pe/ciudadanos/edit]</p>
+
+

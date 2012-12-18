@@ -1,10 +1,9 @@
-//= require jquery-1.7.2.min
+//= require jquery-1.8.3
 // require jquery.dropkick-1.0.0
 //= require js
 
-
 //= require jquery_ujs
-/*
+
 jQuery(function($) {
 	$.widget( "ui.combobox", {
 		_create: function() {
@@ -128,5 +127,5 @@ jQuery(function($) {
 	})
 })
 
-*/
+
   
