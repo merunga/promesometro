@@ -1,4 +1,6 @@
 class PromeMailer < ActionMailer::Base
+  default :from => 'merunga@gmail.com'
+  
   def new_comment(comment)
     if comment.ciudadano
       display_name = comment.ciudadano.screen_name
@@ -49,7 +51,8 @@ class PromeMailer < ActionMailer::Base
   def contacto(cform)
     mail(:from => cform.email,
          :subject => "[promesometro.pe] Nueva mail de contacto de #{cform.nombre}",
-         :body => cform.comentario)
+         :body => cform.comentario,
+         :to=> 'merunga@gmail.com')
   end
   
   def hazte_cargo(promesa)
