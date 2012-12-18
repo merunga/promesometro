@@ -3,13 +3,15 @@ class VotesController < ApplicationController
   
   def vote_up
     vote_action {
-      @votable.vote_up current_ciudadano
+      #@votable.vote_up current_ciudadano
+      @votable.liked_by current_ciudadano
     }
   end
   
   def vote_down
     vote_action {
-      @votable.vote_down current_ciudadano
+      #@votable.vote_down current_ciudadano
+      @votable.downvote_from current_ciudadano
     }
   end
   

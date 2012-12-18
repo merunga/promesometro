@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216225905) do
+ActiveRecord::Schema.define(:version => 20121218160105) do
 
   create_table "admines", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(:version => 20121216225905) do
     t.string   "hazte_cargo_nombre"
     t.string   "hazte_cargo_email"
     t.string   "hazte_cargo_body"
+    t.boolean  "monitoreada",            :default => false
   end
 
   create_table "pruebas", :force => true do |t|

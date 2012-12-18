@@ -88,16 +88,24 @@
             = render 'prueba/upload', :form => pf, :to_be => false
         =render 'prueba/add'
       = f.submit "Guardar", :class=> 'btn_guardar'
-    -#%article.tipo_promesa
+    %article.tipo_promesa
       %label
-        =f.check_box :publica
-        Promesa pública
-        %span.ayuda ?
+        -#=f.check_box :publica
+        -#Promesa pública
+        -#%span.ayuda ?
       - if denunciando
         %label
           =f.check_box :denuncia_anonima
-          Promesa pública
+          Promesa anónima
           %span.ayuda ?
+          
+      - if current_ciudadano.admin?
+        %label
+          =f.check_box :monitoreada
+          %span{:href=>"#", :class=>"icon_e"}
+          Monitoreada por Proetica
+          
+          
 
 :javascript
   $(document).ready(function(){ 

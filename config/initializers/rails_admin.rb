@@ -6,6 +6,16 @@ RailsAdmin.config do |config|
   # If your default_local is different from :en, uncomment the following 2 lines and set your default locale here:
   # require 'i18n'
   # I18n.default_locale = :de
+  
+  config.model Promesa do
+    edit do
+      exclude_fields :pruebas
+    end
+    
+    list do
+      include_fields :lo_prometido, :fecha_declaracion, :monitoreada, :region, :info_funcionario
+    end
+  end
 
   config.current_user_method { current_ciudadano } # auto-generated
 

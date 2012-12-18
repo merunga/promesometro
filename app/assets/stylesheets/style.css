@@ -106,12 +106,16 @@ header nav ul li a
 	
 	color: #080808;
 	font: normal 18px 'Satellite', Arial;
-	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 0.98px;
 	display: block;
 	text-align: center; 
 	padding: 0.3em 0.1em;
+	text-decoration: underline;
+}
+
+header nav ul li a:hover {
+	text-decoration: none;
 }
 
 section#banner
@@ -237,6 +241,22 @@ section#content article a.icon_e
 	margin: 1.2em 0 0 10em;
 	vertical-align: top;
 }
+
+section#content article span.icon_e
+{
+	background: url(/assets/e.png) no-repeat;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	vertical-align: top;
+}
+
+.proetica {
+	width: 300px;
+	display: block;
+	margin-top: 10px;
+}
+
 
 section#content .c_right
 {
@@ -1382,6 +1402,13 @@ section#promesa .pruebas
 section#promesa .pruebas .linea_prueba
 {
 	border-top: dotted 1px #585858;
+	margin: 1.5em 0;
+	width: 350px;
+}
+
+section#promesa .pruebas .prueba
+{
+	border-bottom: dotted 1px #585858;
 	margin: 1.5em 0;
 	width: 350px;
 }

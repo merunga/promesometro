@@ -56,7 +56,7 @@ gem 'kaminari'
 gem 'omniauth', '>= 0.2.6'
 gem 'omniauth-facebook'
 gem 'omniauth-openid'
-gem 'omniauth-twitter'
+#gem 'omniauth-twitter'
 
 gem 'crummy'
 gem 'kaminari'

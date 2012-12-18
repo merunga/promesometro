@@ -9,6 +9,7 @@ class PromesasController < ApplicationController
     if ciudadano_signed_in?
       @promesa = Promesa.new
       @promesa.info_funcionario = InfoFuncionario.new
+      puts current_ciudadano
       @promesa.uploader = current_ciudadano
       prueba = @promesa.pruebas.build
       prueba.link = Link.new

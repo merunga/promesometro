@@ -33,7 +33,8 @@ class Promesa < ActiveRecord::Base
   
   attr_accessible :fecha_declaracion, :info_funcionario_attributes, :tag_list,
     :lo_prometido, :slug, :region, :pruebas_attributes, :region_id, :denuncia_anonima,
-    :publica, :fecha_compromiso, :avances_attributes, :compartida_con, :posicion
+    :publica, :fecha_compromiso, :avances_attributes, :compartida_con, :posicion,
+    :monitoreada
     
   def fecha_inicio
     return fecha_declaracion if fecha_declaracion

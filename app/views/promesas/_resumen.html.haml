@@ -6,4 +6,5 @@
   .promesa
     = "\"#{promesa.lo_prometido}\""
   =link_to "Ver Promesa",ver_promesa_path(promesa),:class=>"ver_promesa"
-  =link_to "","#",:class=>"icon_e"
+  -if promesa.monitoreada
+    =link_to "","#",:class=>"icon_e", :title=>'Monitoreada por Proetica'

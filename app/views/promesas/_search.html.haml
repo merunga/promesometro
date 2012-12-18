@@ -14,11 +14,17 @@
         = link_to "#{promesa.comment_threads.count} comentarios","javascript:void(0);", :class=>"icon_coment"
         = link_to "#{promesa.pruebas.count} pruebas","javascript:void(0);", :class=>"icon_pruebas"
         = link_to "Región #{promesa.region.nombre}","javascript:void(0);", :class=>"icon_lugar"
+        
+        -if promesa.monitoreada
+          %span{:class=>"proetica"}
+            %span{:class=>"icon_e"}
+            Monitoreada por Proetica
 
       .fecha_p
         %span Publicado hace:
         %span.dias #{ (Date.today - promesa.created_at.to_date).to_i}
         %span dias
+    
     .compartir
       - count = promesa.followers.count
       - label = 'seguidores'
